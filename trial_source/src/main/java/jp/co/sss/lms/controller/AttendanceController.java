@@ -1,6 +1,8 @@
 package jp.co.sss.lms.controller;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import jp.co.sss.lms.dto.AttendanceManagementDto;
 import jp.co.sss.lms.dto.LoginUserDto;
 import jp.co.sss.lms.form.AttendanceForm;
+import jp.co.sss.lms.mapper.TStudentAttendanceMapper;
 import jp.co.sss.lms.service.StudentAttendanceService;
 import jp.co.sss.lms.util.Constants;
+import jp.co.sss.lms.util.LoginUserUtil;
 
 /**
  * 勤怠管理コントローラ
@@ -26,9 +30,13 @@ import jp.co.sss.lms.util.Constants;
 public class AttendanceController {
 
 	@Autowired
+	private LoginUserUtil loginUserUtil;
+	@Autowired
 	private StudentAttendanceService studentAttendanceService;
 	@Autowired
 	private LoginUserDto loginUserDto;
+	@Autowired
+	private TStudentAttendanceMapper tStudentAttendanceMapper;
 
 	/**
 	 * 勤怠管理画面 初期表示
@@ -41,6 +49,30 @@ public class AttendanceController {
 	 */
 	@RequestMapping(path = "/detail", method = RequestMethod.GET)
 	public String index(Model model) {
+		
+		if(loginUserUtil.isStudent()) {
+			//Integer courseId = loginUserDto.getCourseId(); 
+			Integer lmsUserId = loginUserDto.getLmsUserId();
+			
+			//現在の日付取得
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			String today = simpleDateFormat.format(new Date());
+			Date todayDate;
+			try {
+				todayDate = simpleDateFormat.parse(today);
+			} catch (ParseException e){
+				return "error";
+			}
+			Integer count = tStudentAttendanceMapper.onEnterCount(lmsUserId, (short) 0, todayDate);
+			boolean notEnterFlg = false;
+			if(count > 0) {
+				notEnterFlg = true;
+			}
+			model.addAttribute("notEnterFlg", notEnterFlg);
+		} else {
+			//Integer courseId = loginUserDto.getCourseId(); 
+			//Integer lmsUserId = loginUserDto.getLmsUserId();
+		}
 
 		// 勤怠一覧の取得
 		List<AttendanceManagementDto> attendanceManagementDtoList = studentAttendanceService
