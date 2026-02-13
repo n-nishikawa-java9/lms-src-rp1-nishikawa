@@ -32,7 +32,7 @@
 				<small id="now"></small>
 			</div>
 			<div class="form-group">
-				<form th:action="@{/attendance/detail}" method="post" class="form-inline">
+				<form th:action="@{/attendance/detail}" method="post" class="form-inline" onsubmit="return punchCheck();" >
 					<input type="submit" value="出勤" name="punchIn" class="btn btn-default" />
 					<input type="submit" value="退勤" name="punchOut" class="btn btn-default" />
 				</form>
@@ -47,25 +47,25 @@
 				<thead class="db">
 					<tr>
 						<th class="w160">日付</th>
-						<th class="w260">コース内容</th>
-						<th class="w80">出勤</th>
-						<th class="w80">退勤</th>
+						<th class="w350">コース内容</th>
+						<th class="w70">出勤</th>
+						<th class="w70">退勤</th>
 						<th class="w120">中抜け時間</th>
 						<th class="w120">ステータス</th>
-						<th class="w200">備考</th>
+						<th class="w120">備考</th>
 					</tr>
 				</thead>
 
 				<tbody class="db">
-					<th:block th:each="attendanceManagementDto : ${attendanceManagementDtoList}" th:object="${attendanceManagementDto}">
+					<th:block th:each="attendanceManagementDto : ${attendanceManagementDtoList}" th:object="${attendanceManagementDto}" >
 						<tr>
 							<td class="w160">[[*{#dates.format(trainingDate, 'yyyy年M月d日(E)')}]]</td>
-							<td class="w260">[[*{sectionName}]]</td>
-							<td class="w80">[[*{trainingStartTime}]]</td>
-							<td class="w80">[[*{trainingEndTime}]]</td>
+							<td class="w350">[[*{sectionName}]]</td>
+							<td class="w70">[[*{trainingStartTime}]]</td>
+							<td class="w70">[[*{trainingEndTime}]]</td>
 							<td class="w120">[[*{blankTimeValue}]]</td>
 							<td class="w120">[[*{statusDispName}]]</td>
-							<td class="w200">[[*{note}]]</td>
+							<td class="w120">[[*{note}]]</td>
 						</tr>
 					</th:block>
 				</tbody>
@@ -86,42 +86,13 @@
 			const minutes = ('0' + today.getMinutes()).slice(-2);
 			return hours + ':' + minutes;
 		}
-		
-	</script>
-	<script>
-        window.onload = function () {
+		window.onload = function(){
+			const notEnterFlg = '[[${isError}]]';
           if (notEnterFlg) {
             alert("過去日の勤怠に未入力があります。");
-          }
-        };
-
-        function punchCheck() {
-          if (confirm("打刻します。よろしいですか？")) {
-            return true;
-          } else {
-            return false;
-          }
-        }
-
-        $("#page_top").hide();
-        $(window).scroll(function () {
-          if ($(this).scrollTop() > 300) {
-            $("#page_top").fadeIn();
-          } else {
-            $("#page_top").fadeOut();
-          }
-        });
-
-        $("#page_top").click(function () {
-          $("body,html").animate(
-            {
-              scrollTop: 0,
-            },
-            700
-          );
-          return false;
-        });
-      </script>
+          }};
+		
+	</script>
 
 </body>
 </html>
