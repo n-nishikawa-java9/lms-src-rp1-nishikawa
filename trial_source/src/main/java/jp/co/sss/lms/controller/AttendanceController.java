@@ -50,6 +50,7 @@ public class AttendanceController {
 	@RequestMapping(path = "/detail", method = RequestMethod.GET)
 	public String index(Model model) {
 		
+		//受講生権限の場合
 		if(loginUserUtil.isStudent()) {
 			//Integer courseId = loginUserDto.getCourseId(); 
 			Integer lmsUserId = loginUserDto.getLmsUserId();
@@ -63,17 +64,18 @@ public class AttendanceController {
 			} catch (ParseException e){
 				return "error";
 			}
+			
+			//現在の日付より前の勤怠が登録されていない箇所を数える
 			Integer count = tStudentAttendanceMapper.onEnterCount(lmsUserId, (short) 0, todayDate);
+			
+			//過去日未入力がある場合、ビューでダイアログを表示
 			boolean notEnterFlg = false;
 			if(count > 0) {
 				notEnterFlg = true;
 			}
 			model.addAttribute("notEnterFlg", notEnterFlg);
-		} else {
-			//Integer courseId = loginUserDto.getCourseId(); 
-			//Integer lmsUserId = loginUserDto.getLmsUserId();
 		}
-
+		
 		// 勤怠一覧の取得
 		List<AttendanceManagementDto> attendanceManagementDtoList = studentAttendanceService
 				.getAttendanceManagement(loginUserDto.getCourseId(), loginUserDto.getLmsUserId());
