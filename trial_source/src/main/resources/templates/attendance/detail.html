@@ -86,12 +86,13 @@
 			const minutes = ('0' + today.getMinutes()).slice(-2);
 			return hours + ':' + minutes;
 		}
+		/* 西川 - Task.25 -*/
 		window.onload = function(){
 			const notEnterFlg = /*[[${notEnterFlg}]]*/ false;
           if (notEnterFlg) {
             alert("過去日の勤怠に未入力があります。");
           }};
-		
+		/* Task.25 ここまで*/
 	</script>
 
 </body>
