@@ -1,8 +1,6 @@
 package jp.co.sss.lms.controller;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import jp.co.sss.lms.dto.AttendanceManagementDto;
 import jp.co.sss.lms.dto.LoginUserDto;
 import jp.co.sss.lms.form.AttendanceForm;
-import jp.co.sss.lms.mapper.TStudentAttendanceMapper;
 import jp.co.sss.lms.service.StudentAttendanceService;
 import jp.co.sss.lms.util.Constants;
-import jp.co.sss.lms.util.LoginUserUtil;
 
 /**
  * 勤怠管理コントローラ
@@ -30,13 +26,10 @@ import jp.co.sss.lms.util.LoginUserUtil;
 public class AttendanceController {
 
 	@Autowired
-	private LoginUserUtil loginUserUtil;
-	@Autowired
 	private StudentAttendanceService studentAttendanceService;
 	@Autowired
 	private LoginUserDto loginUserDto;
-	@Autowired
-	private TStudentAttendanceMapper tStudentAttendanceMapper;
+
 
 	/**
 	 * 勤怠管理画面 初期表示
@@ -47,34 +40,14 @@ public class AttendanceController {
 	 * @return 勤怠管理画面
 	 * @throws ParseException
 	 */
+	//西川直希 - Task.25
 	@RequestMapping(path = "/detail", method = RequestMethod.GET)
-	public String index(Model model) {
+	public String index(Model model) throws ParseException{
 		
-		//受講生権限の場合
-		if(loginUserUtil.isStudent()) {
-			//Integer courseId = loginUserDto.getCourseId(); 
-			Integer lmsUserId = loginUserDto.getLmsUserId();
-			
-			//現在の日付取得
-			SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-			String today = simpleDateFormat.format(new Date());
-			Date todayDate;
-			try {
-				todayDate = simpleDateFormat.parse(today);
-			} catch (ParseException e){
-				return "error";
-			}
-			
-			//現在の日付より前の勤怠が登録されていない箇所を数える
-			Integer count = tStudentAttendanceMapper.onEnterCount(lmsUserId, (short) 0, todayDate);
-			
-			//過去日未入力がある場合、ビューでダイアログを表示
-			boolean notEnterFlg = false;
-			if(count > 0) {
-				notEnterFlg = true;
-			}
-			model.addAttribute("notEnterFlg", notEnterFlg);
-		}
+		//勤怠未入力チェック
+		Boolean notEnterFlg = studentAttendanceService.notEnterCheck();	
+		model.addAttribute("notEnterFlg", notEnterFlg);
+		//Task.25 - ここまで
 		
 		// 勤怠一覧の取得
 		List<AttendanceManagementDto> attendanceManagementDtoList = studentAttendanceService
