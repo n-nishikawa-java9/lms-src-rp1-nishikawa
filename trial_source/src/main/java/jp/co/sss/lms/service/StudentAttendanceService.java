@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
@@ -228,6 +229,14 @@ public class StudentAttendanceService {
 			attendanceForm.setDispLeaveDate(
 					dateUtil.dateToString(loginUserDto.getLeaveDate(), "yyyy年M月d日"));
 		}
+		
+		LinkedHashMap<Integer, String> hourMap = new LinkedHashMap<>();
+		hourMap.put(null, "");               // 未選択用（空欄）
+
+		for (int i = 0; i < 12; i++) {       // 0～11
+		    hourMap.put(i, String.format("%02d", i + 1));  // 表示は 01～12
+		}
+		attendanceForm.setHourMap(hourMap);
 
 		// 勤怠管理リストの件数分、日次の勤怠フォームに移し替え
 		for (AttendanceManagementDto attendanceManagementDto : attendanceManagementDtoList) {
@@ -359,6 +368,22 @@ public class StudentAttendanceService {
 		}
 		//過去日未入力の判定結果
 		return notEnterFlg;
+	}
+	
+	/**
+	 * 
+	 * @author 西川直希 - Task.26
+	 * @param attendanceForm
+	 */
+	public void formatConversion(AttendanceForm attendanceForm) {
+		/**for (DailyAttendanceForm daily : attendanceForm.getAttendanceList()) */{
+
+		        // 出勤：時・分が両方入っている場合のみ "hh:mm" にしてセット
+		        
+
+		        // 退勤：時・分が両方入っている場合のみ "hh:mm" にしてセット
+		        
+		    }
 	}
 
 }
