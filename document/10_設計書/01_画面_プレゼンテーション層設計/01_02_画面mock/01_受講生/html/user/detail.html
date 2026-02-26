@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ユーザー詳細 | LMS</title>
+
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/lms.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/jstree.css" />
+    <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <link href="https://use.fontawesome.com/releases/v5.6.4/css/all.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+    <script type="text/javascript" src="../../js/lms_common.js"></script>
+    <script type="text/javascript" src="../../js/jstree.min.js"></script>
+    <script type="text/javascript" src="../../js/currency.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <div id="header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <a href="../course/detail.html" class="navbar-brand">LMS 学習管理システム</a>
+          </div>
+          <div id="nav-content" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li>
+                <a href="../course/detail.html">マイコース</a>
+              </li>
+              <li>
+                <a href="../download/teachingMaterialList.html">教材ダウンロード</a>
+              </li>
+              <li>
+                <a href="../attendance/detail.html">勤怠</a>
+              </li>
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> 機能<span class="caret"></span> </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <a href="../fileshare/list.html" styleClass="form-horizontal">ファイル共有</a>
+                  </li>
+                  <li>
+                    <a href="../movie/index.html" styleClass="form-horizontal">動画視聴</a>
+                  </li>
+                  <li>
+                    <a href="../support/index.html" class="form-horizontal">サポートセンター</a>
+                  </li>
+                  <li>
+                    <a href="../help/index.html" styleClass="form-horizontal">ヘルプ</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="text-center">
+                <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+                <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom" title="お知らせ" data-content="btn btn-default" value="詳細" data-html="true"></span>
+              </li>
+              <li>
+                <a href="../user/detail.html"><small>ようこそ受講生さん</small></a>
+              </li>
+              <li>
+                <c:url var="logout" value="../../index.html"></c:url>
+                <button type="button" class="btn btn-default navbar-btn" onclick="location.href='${logout}'">
+                  <a href="../../index.html" class="glyphicon glyphicon-log-out"> ログアウト</a>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div id="wrap">
+      <div class="container">
+        <div id="contents" class="clearfix">
+          <div id="main" class="main2clm">
+            <script>
+              var recordId;
+              $(function () {
+                $("#modal-feedback").on("show.bs.modal", function (e) {
+                  var button = $(e.relatedTarget);
+                  recordId = button.data("id");
+                  var modal = $(this);
+                  var mhead = document.getElementById("modalHead");
+                  var mbody = document.getElementById("modalBody");
+                  var deliverablesName = document.getElementById("deliverablesName[" + recordId + "]").innerHTML;
+                  var feedback = document.getElementById("feedback[" + recordId + "]");
+
+                  mhead.innerHTML = deliverablesName + " / フィードバックコメント";
+                  mbody.innerHTML = feedback.value.replace(/\r?\n/g, "<br>");
+                });
+              });
+            </script>
+
+            <div class="modal" id="modal-feedback">
+              <div class="modal-dialog modal-dialog-center">
+                <!-- 3.モーダルのコンテンツ -->
+                <div class="modal-content">
+                  <!-- 4.モーダルのヘッダ -->
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="modalHead">aaa</h4>
+                  </div>
+                  <!-- 5.モーダルのボディ -->
+                  <div class="modal-body" id="modalBody"></div>
+                </div>
+              </div>
+            </div>
+
+            <h2>ユーザー詳細</h2>
+            <h3>基本情報</h3>
+            <table class="table table-hover">
+              <tr>
+                <th class="w33per">ユーザー名</th>
+                <td>受講生太郎</td>
+              </tr>
+              <tr>
+                <th>企業名</th>
+                <td>株式会社システムシェアード</td>
+              </tr>
+              <tr>
+                <th>コース</th>
+                <td>2020年度キャリア開発11月コース</td>
+              </tr>
+              <tr>
+                <th>会場</th>
+                <td>受講生自宅</td>
+              </tr>
+              <tr>
+                <th>研修を通じてどのようになってほしいか</th>
+                <td>
+                  <span class="text-danger">※登録されていません</span>
+                </td>
+              </tr>
+              <tr>
+                <th>プログラミング経験</th>
+                <td>あり</td>
+              </tr>
+            </table>
+            <form action="./../password/changePassword.html">
+              <input type="submit" class="btn btn-default" value="パスワード変更する" />
+            </form>
+
+            <h3>試験</h3>
+            <table class="table table-hover">
+              <tr>
+                <th class="w33per">試験名</th>
+                <th class="wq">日付</th>
+                <th class="w200">点数</th>
+                <th>詳細</th>
+              </tr>
+              <tr>
+                <td>CompTIA_PRO_確認試験1_01</td>
+                <td>2020年11月2日(月)</td>
+                <td>91.5点</td>
+                <td>
+                  <form action="../exam/detail.html">
+                    <input type="submit" class="btn btn-default" value="詳細" />
+                  </form>
+                </td>
+              </tr>
+            </table>
+
+            <h3>成果物</h3>
+            <table class="table table-hover">
+              <tr>
+                <th class="w33per">成果物名</th>
+                <th class="wq">日付</th>
+                <th class="w200">採点</th>
+                <th>フィードバック</th>
+              </tr>
+              <tr>
+                <td>テストデータ作成</td>
+                <td>2020年11月9日(月)</td>
+                <td>採点中</td>
+                <td>採点中</td>
+              </tr>
+              <tr>
+                <td>Spring基礎</td>
+                <td>2020年11月10日(火)</td>
+                <td>28点</td>
+                <td>
+                  <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-feedback" data-id="0">表示</button>
+                  <input type="hidden" class="hidden" id="feedback[0]" value="フィードバック" />
+                </td>
+              </tr>
+            </table>
+
+            <h3>レポート</h3>
+            <table class="table table-hover">
+              <tr>
+                <th>日付</th>
+                <th>レポート名</th>
+                <th>コメント</th>
+                <th>最新コメント登録日時</th>
+                <th>詳細</th>
+              </tr>
+              <tr>
+                <td>2020年11月9日(月)</td>
+                <td>Spring基礎</td>
+                <td>1件<small class="fc_red b">&nbsp;new</small></td>
+                <td>2020年11月9日(月) 12時59分</td>
+                <td>
+                  <form action="../report/detail_modal.html">
+                    <input type="submit" class="btn btn-default" value="詳細" />
+                  </form>
+                  <form action="../report/regist.html">
+                    <input type="submit" class="btn btn-default" value="修正する" />
+                  </form>
+                  <form action="/dailyReport/download">
+                    <input type="submit" class="btn btn-default" value="ダウンロード" />
+                  </form>
+                </td>
+              </tr>
+            </table>
+
+            <h3>課題一覧</h3>
+            <table class="table table-hover">
+              <tr>
+                <th class="col-xs-1 col-ms-1 col-md-1 col-lg-1"></th>
+                <th class="col-xs-7 col-ms-7 col-md-7 col-lg-7">課題名</th>
+                <th class="col-xs-2 col-ms-2 col-md-2 col-lg-2">状態</th>
+                <th class="col-xs-2 col-ms-2 col-md-2 col-lg-2">子課題状況</th>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                </td>
+                <td>
+                  <a href="#">テスト課題</a>
+                </td>
+
+                <td><strong>着手中</strong></td>
+                <td>1/4</td>
+              </tr>
+            </table>
+
+            <h3>成果物一覧</h3>
+            <table class="table table-hover">
+              <tr>
+                <th class="col-xs-1 col-ms-1 col-md-1 col-lg-1"></th>
+                <th class="col-xs-4 col-ms-4 col-md-4 col-lg-4">課題名</th>
+                <th class="col-xs-3 col-ms-3 col-md-3 col-lg-3">ファイル名</th>
+                <th class="col-xs-2 col-ms-2 col-md-2 col-lg-2">提出日時</th>
+                <th class="col-xs-2 col-ms-2 col-md-2 col-lg-2">状態</th>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                </td>
+                <td>
+                  <a href="#">テスト課題</a>
+                </td>
+                <td>
+                  <a href="#">テスト課題ファイル</a>
+                </td>
+                <td>
+                  <fmt:formatDate value="${deliverableDto.uploadDate}" pattern="yyyy/M/d H:mm:ss" />
+                </td>
+                <td>成果物確認中</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div id="push"></div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">Copyright&copy; 2021 System Shared co., ltd, ALL Rights Reserved</p>
+      </div>
+      <div id="page_top"><a href="#"></a></div>
+    </div>
+    <script>
+      $("#page_top").hide();
+      $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
+          $("#page_top").fadeIn();
+        } else {
+          $("#page_top").fadeOut();
+        }
+      });
+
+      $("#page_top").click(function () {
+        $("body,html").animate(
+          {
+            scrollTop: 0,
+          },
+          700
+        );
+        return false;
+      });
+    </script>
+  </body>
+</html>

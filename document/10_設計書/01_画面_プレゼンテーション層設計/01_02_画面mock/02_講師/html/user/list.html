@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ユーザー一覧 | LMS</title>
+
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/lms.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/jstree.css" />
+  <link rel="shortcut icon" href="../../img/favicon.ico" />
+
+  <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+  <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+  <script type="text/javascript" src="../../js/lms_common.js"></script>
+  <script type="text/javascript" src="../../js/jstree.min.js"></script>
+  <script type="text/javascript" src="../../js/currency.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+  <script>
+    $(function () {
+      $("#bulk-delete").click(function () {
+        var targetDiv = $(
+          $(this).attr("data-target") + " .modal-dialog .modal-content"
+        );
+        var chkRec = $("input[name=check]:checked").parents("tr");
+        if (chkRec.length <= 0) {
+          targetDiv.children(".modal-footer").hide();
+          targetDiv
+            .children(".modal-body")
+            .html(
+              '<span class="help-inline error">ユーザーを選択してください</span>'
+            );
+        } else {
+          targetDiv.children(".modal-footer").show();
+
+          var html = "以下のユーザーが削除されます。";
+          html = html + '<table class="table">';
+          html = html + "<thead>";
+          html = html + "<tr>";
+
+          html = html + "<th>";
+          html = html + "ユーザー";
+          html = html + "</th>";
+
+          html = html + "<th>";
+          html = html + "コース";
+          html = html + "</th>";
+
+          html = html + "<th>";
+          html = html + "企業";
+          html = html + "</th>";
+
+          html = html + "<th>";
+          html = html + "会場";
+          html = html + "</th>";
+
+          html = html + "</tr>";
+          html = html + "</thead>";
+
+          html = html + "<tbody>";
+          for (i = chkRec.length - 1; i >= 0; i--) {
+            var lmsUserId = $(chkRec[i])
+              .children("td")
+              .children(":hidden[name=lmsUserId]")
+              .val();
+            var userName = $(chkRec[i])
+              .children("td")
+              .children(":hidden[name=userName]")
+              .val();
+            var courseName = $(chkRec[i])
+              .children("td")
+              .children(":hidden[name=courseName]")
+              .val();
+            courseName =
+              courseName == "" ? "<small>(なし)</small>" : courseName;
+            var companyName = $(chkRec[i])
+              .children("td")
+              .children(":hidden[name=companyName]")
+              .val();
+            companyName =
+              companyName == "" ? "<small>(なし)</small>" : companyName;
+            var placeName = $(chkRec[i])
+              .children("td")
+              .children(":hidden[name=placeName]")
+              .val();
+            placeName = placeName == "" ? "<small>(なし)</small>" : placeName;
+            var placeNote = $(chkRec[i])
+              .children("td")
+              .children(":hidden[name=placeNote]")
+              .val();
+            placeName =
+              placeNote == ""
+                ? placeName
+                : placeName + "<small>(" + placeNote + ")</small>";
+
+            html = html + "<tr>";
+            html = html + "<td>";
+            html = html + userName;
+            html = html + '<input type="hidden" name="lmsUserIdArr[' + i + ']" value="' + lmsUserId + '">';
+            html = html + "</td>";
+
+            html = html + "<td>";
+            html = html + courseName;
+            html = html + "</td>";
+
+            html = html + "<td>";
+            html = html + companyName;
+            html = html + "</td>";
+
+            html = html + "<td>";
+            html = html + placeName;
+            html = html + "</td>";
+
+            html = html + "</tr>";
+          }
+          html = html + "</tbody>";
+          html = html + "</table>";
+          targetDiv.children(".modal-body").html(html);
+        }
+      });
+
+      $("#checkbox-all").click(function () {
+        allCheck("#user-table", this);
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div id="wrap">
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../course/list.html" class="navbar-brand">LMS 学習管理システム</a>
+
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-content">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="nav-content" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="../course/detail/?courseId=602#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">研修管理<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../course/list.html">コース</a></li>
+                <li><a href="../user/list.html">受講生</a></li>
+                <li><a href="../dailyReport/dailyList.html">日報</a></li>
+                <li><a href="../exam/list.html">試験結果</a></li>
+                <li><a href="../deliverables/list.html">成果物</a></li>
+                <li><a href="../attendance/list.html">勤怠確認</a></li>
+                <li>
+                  <a href="../attendance/bulkRegist.html">勤怠一括登録</a>
+                </li>
+                <li>
+                  <a href="../evReport/scoringConfirmation.html">評価レポート採点確認</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="../course/detail/?courseId=602#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">面談・報告会<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a href="../takeOver/list.html">引継面談／会場見学 実施予定</a>
+                </li>
+                <li>
+                  <a href="../presentation/teamList.html">チーム編成</a>
+                </li>
+                <li>
+                  <a href="../presentation/list.html">成果報告会実施予定</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="../course/detail/?courseId=602#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">その他<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+
+                <li>
+                  <a href="../fileshare/list.html" class="form-horizontal">ファイル共有</a>
+                </li>
+                <li>
+                  <a href="../movie/index.html" class="form-horizontal">動画視聴</a>
+                </li>
+
+                <li>
+                  <a href="../help/index.html" class="form-horizontal">ヘルプ</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="text-center">
+              <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom"
+                title="お知らせ" data-content="" data-html="true"></span>
+            </li>
+            <li><a href="../user/myAccount.html"><small>ようこそ講師さん</small></a></li>
+            <li>
+              <c:url var="logout" value="../../index.html"></c:url>
+              <button type="button" class="btn btn-default navbar-btn" onclick="location.href='../../index.html'">
+                <a href="../../index.html" class="glyphicon glyphicon-log-out"> ログアウト</a>
+              </button>
+            </li>
+          </ul>
+        </div>
+    </nav>
+    <div class="container">
+      <div id="contents" class="clearfix">
+        <div id="main" class="main2clm">
+          <form name="user_deleteActionForm" method="post" action="../user/list.html">
+            <input type="hidden" name="courseId" value="" />
+            <input type="hidden" name="placeId" value="" />
+            <input type="hidden" name="companyId" value="" />
+            <input type="hidden" name="userName" value="" />
+            <input type="hidden" name="role" value="" />
+
+            <div class="modal fade" id="bulk-del-modal">
+              <div class="modal-dialog modal-dialog-center">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="modal-label">一括削除</h4>
+                  </div>
+                  <div class="modal-body"></div>
+                  <div class="modal-footer">
+                    <input type="submit" value="削除する" class="btn btn-primary" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <h2>ユーザー一覧</h2>
+
+          <div class="well bs-component">
+            <fieldset>
+              <form name="user_listActionForm" method="post" action="../user/list.html" class="form-horizontal">
+                <div>
+                  <input type="hidden" name="org.apache.struts.taglib.html.TOKEN"
+                    value="135f8c327f500a8afca504f54ecac358" />
+                </div>
+                <legend>検索</legend>
+
+                <div class="form-group">
+                  <label for="courseName" class="col-lg-2 control-label">コース名</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="courseName" value="" id="courseName" class="form-control" list="courselist" />
+                    <datalist id="courselist">
+                      <option value="新人研修Aコース"></option>
+                      <option value="新人研修Bコース"></option>
+                      <option value="体験型研修コース"></option>
+                    </datalist>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="placeId" class="col-lg-2 control-label">会場名</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="" value="会場A（新人研修$402教室$）" readonly="readonly" id="placeId" class="form-control" />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="companyName" class="col-lg-2 control-label">企業名</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="companyName" value="" id="companyName" class="form-control" list="companylist" />
+                    <datalist id="companylist">
+                      <option value="エントリー企業A"></option>
+                      <option value="エントリー企業B$東京都港区芝公園4丁目2-8"></option>
+                      <option value="エントリー企業C"></option>
+                    </datalist>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="userName" class="col-lg-2 control-label">ユーザー名</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="userName" value="" id="userName" class="form-control" />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-lg-10 col-lg-offset-2">
+                    <input type="submit" name="search" value="検索" class="btn btn-primary" />
+                  </div>
+                </div>
+              </form>
+            </fieldset>
+          </div>
+
+          <div id="user-table_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="dataTables_length" id="user-table_length"></div>
+              </div>
+              <div class="col-sm-6"></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <table class="table table-hover sortabletable dataTable no-footer" id="user-table" role="grid"
+                  aria-describedby="user-table_info">
+                  <thead>
+                    <tr role="row">
+                      <th class="sorting_asc" tabindex="0" aria-controls="user-table" rowspan="1" colspan="1"
+                        aria-sort="ascending" aria-label="ID: activate to sort column descending">
+                        ID
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="user-table" rowspan="1" colspan="1"
+                        aria-label="ユーザー名: activate to sort column ascending">
+                        ユーザー名
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="user-table" rowspan="1" colspan="1"
+                        aria-label="種別: activate to sort column ascending">
+                        種別
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="user-table" rowspan="1" colspan="1"
+                        aria-label="途中退校日: activate to sort column ascending">
+                        途中退校日
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="user-table" rowspan="1" colspan="1"
+                        aria-label="コース名: activate to sort column ascending">
+                        コース名
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="user-table" rowspan="1" colspan="1"
+                        aria-label="企業名: activate to sort column ascending">
+                        企業名
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="user-table" rowspan="1" colspan="1"
+                        aria-label="会場: activate to sort column ascending">
+                        会場
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="user-table" rowspan="1" colspan="1"
+                        aria-label="詳細: activate to sort column ascending">
+                        詳細
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="user-table" rowspan="1" colspan="1"
+                        aria-label="勤怠: activate to sort column ascending">
+                        勤怠
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="odd" role="row">
+                      <td class="sorting_1">9758</td>
+                      <td>デモ受講生A</td>
+                      <td>受講生</td>
+                      <td align="center">2020年4月3日</td>
+                      <td>新人研修Aコース</td>
+                      <td>エントリー企業A</td>
+                      <td>会場A（新人研修$402教室$）<br />東京都台東区台東1-1-1 カイジョウビル 6F</td>
+                      <td>
+                        <form name="user_detailActionForm" method="post" action="../user/detail.html">
+                          <input type="hidden" name="lmsUserId" value="9754" />
+                          <input type="submit" value="詳細" class="btn btn-default" />
+                        </form>
+                      </td>
+                      <td>
+                        <form name="user_detailActionForm" method="post" action="../attendance/list.html">
+                          <input type="hidden" name="lmsUserId" value="1" />
+                          <input type="hidden" name="userName" value="デモ受講生A" />
+                          <input type="submit" value="勤怠確認" class="btn btn-default" />
+                        </form>
+                      </td>
+                    </tr>
+                    <tr class="even" role="row">
+                      <td class="sorting_1">9762</td>
+                      <td>デモ受講生B</td>
+                      <td>受講生</td>
+                      <td align="center">-</td>
+                      <td>新人研修Bコース</td>
+                      <td>エントリー企業B</td>
+                      <td>会場A（新人研修$402教室$）<br />東京都台東区台東1-1-1 カイジョウビル 6F</td>
+                      <td>
+                        <form name="user_detailActionForm" method="post" action="../user/detail.html">
+                          <input type="hidden" name="lmsUserId" value="9758" />
+                          <input type="submit" value="詳細" class="btn btn-default" />
+                        </form>
+                      </td>
+                      <td>
+                        <form name="user_detailActionForm" method="post" action="../attendance/list.html">
+                          <input type="hidden" name="lmsUserId" value="2" />
+                          <input type="hidden" name="userName" value="デモ受講生B" />
+                          <input type="submit" value="勤怠確認" class="btn btn-default" />
+                        </form>
+                      </td>
+                    </tr>
+                    <tr class="odd" role="row">
+                      <td class="sorting_1">24552</td>
+                      <td>デモ受講生C</td>
+                      <td>受講生</td>
+                      <td align="center">-</td>
+                      <td>体験型研修コース</td>
+                      <td>エントリー企業C</td>
+                      <td>会場A（新人研修$402教室$）<br />東京都台東区台東1-1-1 カイジョウビル 6F</td>
+                      <td>
+                        <form name="user_detailActionForm" method="post" action="../user/detail.html">
+                          <input type="hidden" name="lmsUserId" value="24546" />
+                          <input type="submit" value="詳細" class="btn btn-default" />
+                        </form>
+                      </td>
+                      <td>
+                        <form name="user_detailActionForm" method="post" action="../attendance/list.html">
+                          <input type="hidden" name="lmsUserId" value="3" />
+                          <input type="hidden" name="userName" value="デモ受講生C" />
+                          <input type="submit" value="勤怠確認" class="btn btn-default" />
+                        </form>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-5"></div>
+              <div class="col-sm-7">
+                <div class="dataTables_paginate paging_simple_numbers" id="user-table_paginate"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--#main-->
+      </div>
+      <!--#contents-->
+      <form id="screenTransForm" name="screenTransForm" method="post"></form>
+      <div id="push"></div>
+    </div>
+  </div>
+  <div id="footer">
+    <div class="container">
+      <p class="muted credit">
+        Copyright(C) 2015 System Shared co., ltd, ALL Rights Reserved
+      </p>
+    </div>
+  </div>
+  <!--#container-->
+
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="./ユーザー一覧 _ LMS_files/bootstrap.min.js.ダウンロード"></script>
+</body>
+
+</html>

@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ユーザー一覧 | LMS</title>
+
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/lms.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/jstree.css" />
+  <link rel="shortcut icon" href="../../img/favicon.ico" />
+
+  <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+  <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+  <script type="text/javascript" src="../../js/lms_common.js"></script>
+  <script type="text/javascript" src="../../js/jstree.min.js"></script>
+  <script type="text/javascript" src="../../js/currency.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+
+  <script>
+    $(function () {
+      $("#bulk-delete").click(function () {
+        var targetDiv = $($(this).attr("data-target") + " .modal-dialog .modal-content");
+        var chkRec = $("input[name=check]:checked").parents("tr");
+        if (chkRec.length <= 0) {
+          targetDiv.children(".modal-footer").hide();
+          targetDiv.children(".modal-body").html('<span class="help-inline error">ユーザーを選択してください</span>');
+        } else {
+          targetDiv.children(".modal-footer").show();
+
+          var html = "以下のユーザーが削除されます。";
+          html = html + '<table class="table">';
+          html = html + "<thead>";
+          html = html + "<tr>";
+
+          html = html + "<th>";
+          html = html + "ユーザー";
+          html = html + "</th>";
+
+          html = html + "<th>";
+          html = html + "コース";
+          html = html + "</th>";
+
+          html = html + "<th>";
+          html = html + "企業";
+          html = html + "</th>";
+
+          html = html + "<th>";
+          html = html + "会場";
+          html = html + "</th>";
+
+          html = html + "</tr>";
+          html = html + "</thead>";
+
+          html = html + "<tbody>";
+          for (i = chkRec.length - 1; i >= 0; i--) {
+            var lmsUserId = $(chkRec[i]).children("td").children(":hidden[name=lmsUserId]").val();
+            var userName = $(chkRec[i]).children("td").children(":hidden[name=userName]").val();
+            var courseName = $(chkRec[i]).children("td").children(":hidden[name=courseName]").val();
+            courseName = courseName == "" ? "<small>(なし)</small>" : courseName;
+            var companyName = $(chkRec[i]).children("td").children(":hidden[name=companyName]").val();
+            companyName = companyName == "" ? "<small>(なし)</small>" : companyName;
+            var placeName = $(chkRec[i]).children("td").children(":hidden[name=placeName]").val();
+            placeName = placeName == "" ? "<small>(なし)</small>" : placeName;
+            var placeNote = $(chkRec[i]).children("td").children(":hidden[name=placeNote]").val();
+            placeName = placeNote == "" ? placeName : placeName + "<small>(" + placeNote + ")</small>";
+
+            html = html + "<tr>";
+
+            html = html + "<td>";
+            html = html + userName;
+            html = html + '<input type="hidden" name="lmsUserIdArr[' + i + ']" value="' + lmsUserId + '">';
+            html = html + "</td>";
+
+            html = html + "<td>";
+            html = html + courseName;
+            html = html + "</td>";
+
+            html = html + "<td>";
+            html = html + companyName;
+            html = html + "</td>";
+
+            html = html + "<td>";
+            html = html + placeName;
+            html = html + "</td>";
+
+            html = html + "</tr>";
+          }
+          html = html + "</tbody>";
+          html = html + "</table>";
+          targetDiv.children(".modal-body").html(html);
+        }
+      });
+
+      $("#checkbox-all").click(function () {
+        allCheck("#user-table", this);
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <div id="wrap">
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../course/list.html" class="navbar-brand">LMS 学習管理システム</a>
+
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-content">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="nav-content" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">事務<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../mail/templateList.html">メールテンプレート管理</a></li>
+                <li><a href="../mail/sendList.html">メール一斉送信</a></li>
+                <li><a href="../company/list.html">企業管理</a></li>
+                <li><a href="../user/list.html">ユーザー管理</a></li>
+                <li><a href="../contract/list.html">契約履歴</a></li>
+                <li><a href="../takeOver/candidateList.html">引継面談／会場見学 スケジュール</a></li>
+                <li><a href="../takeOver/list.html">引継面談／会場見学 実施予定</a></li>
+                <li><a href="../schedule/presentationList.html">成果報告会スケジュール</a></li>
+                <li><a href="../presentation/teamList.html">成果報告会チーム確定</a></li>
+                <li><a href="../presentation/list.html">成果報告会実施予定</a></li>
+                <li><a href="../estimate/list.html">請求情報ダウンロード</a></li>
+                <li><a href="../evReport/resultList.html">評価レポート公開</a></li>
+                <li><a href="../estimate/productList.html">見積もり品マスタ管理</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">営業<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../entry/list.html">エントリー情報確定</a></li>
+                <li><a href="../assign/spreadsheet.html">会場アサイン</a></li>
+                <li><a href="../takeOver/list.html">引継面談／会場見学 実施予定</a></li>
+                <li><a href="../presentation/reserveList.html">成果報告会実施予定</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">運営<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../place/list.html">会場管理</a></li>
+                <li><a href="../genre/list.html">試験カテゴリー管理</a></li>
+                <li><a href="../exam/list.html">試験内容管理</a></li>
+                <li><a href="../dailyReport/list.html">日報管理</a></li>
+                <li><a href="../deliverables/manageList.html">成果物管理</a></li>
+                <li><a href="../evReport/list.html">評価レポート管理</a></li>
+                <li><a href="../meeting/fileList.html">面談ファイル管理</a></li>
+                <li><a href="../holiday/list.html">休暇日設定</a></li>
+                <li><a href="../course/list.html">コース管理</a></li>
+                <li><a href="../movie/categoryList.html">動画管理</a></li>
+                <li><a href="../mail/sendList.html">メール一斉送信</a></li>
+                <li><a href="../user/list.html">ユーザー管理</a></li>
+                <li><a href="../displayControl/list.html">データの表示制御</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">助成金<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../subsidy/companyList.html">企業情報</a></li>
+                <li><a href="../subsidy/templateList.html">テンプレート管理</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">受講生情報<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../exam/list.html">試験</a></li>
+                <li><a href="../dailyReport/dailyList.html">レポート</a></li>
+                <li><a href="../deliverables/list.html">成果物</a></li>
+                <li><a href="../evReport/scoringConfirmation.html">評価レポート採点確認</a></li>
+                <li><a href="../attendance/list.html">勤怠</a></li>
+                <li><a href="../attendance/bulkRegistList.html">勤怠一括登録</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">その他<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../fileshare/index.html">ファイル共有</a></li>
+                <li><a href="../course/csv.html">CSV出力</a></li>
+                <li><a href="../faq/categoryList.html">FAQ管理</a></li>
+                <li><a href="../contract/list.html">契約内容変更</a></li>
+                <li><a href="../info/latest.html">お知らせ設定</a></li>
+                <li><a href="../repair/list.html">改修履歴設定</a></li>
+                <li><a href="../help/index.html">ヘルプ</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="text-center">
+              <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom"
+              title="お知らせ" data-content="お知らせ内容" data-html="true"></span>
+            </li>
+            <li>
+              <a><small>ようこそ管理者さん</small></a>
+            </li>
+            <li>
+              <button type="button" class="btn btn-default navbar-btn" onclick="location.href='../../index.html'">
+                <a href="../../index.html" class="glyphicon glyphicon-log-out">　ログアウト</a>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div id="contents" class="clearfix">
+        <div id="main" class="main2clm">
+          <form name="user_deleteActionForm" method="post" action="list.html">
+            <input type="hidden" name="courseId" value="" />
+            <input type="hidden" name="placeId" value="" />
+            <input type="hidden" name="companyId" value="" />
+            <input type="hidden" name="userName" value="" />
+            <input type="hidden" name="role" value="" />
+
+            <div class="modal fade" id="bulk-del-modal">
+              <div class="modal-dialog modal-dialog-center">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="modal-label">一括削除</h4>
+                  </div>
+                  <div class="modal-body"></div>
+                  <div class="modal-footer">
+                    <input type="submit" value="削除する" class="btn btn-primary" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <h2>ユーザー一覧</h2>
+
+          <div class="well bs-component">
+            <fieldset>
+              <legend>ユーザー追加</legend>
+              <div class="form-group">
+                <a href="registMenu.html" class="btn btn-default">新規登録</a>
+              </div>
+
+              <form name="user_listActionForm" method="post" action="list.html" class="form-horizontal">
+                <legend>検索</legend>
+
+                <div class="form-group">
+                  <label for="courseName" class="col-lg-2 control-label">コース名</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="courseName" value="" id="courseName" class="form-control" list="courselist" />
+                    <datalist id="courselist">
+                      <option value="新人研修Aコース"></option>
+                      <option value="新人研修Bコース"></option>
+                      <option value="体験型研修コース"></option>
+                    </datalist>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="placeName" class="col-lg-2 control-label">会場名</label>
+                  <div class="col-lg-10">
+                    <select name="placeId" id="placeId" class="form-control">
+                      <option value=""></option>
+                      <option value="309">デモ会場A（新人研修$402教室$）</option>
+                      <option value="311">デモ会場B</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="companyName" class="col-lg-2 control-label">企業名</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="companyName" value="" id="companyName" class="form-control" list="companylist" />
+                    <datalist id="companylist">
+                      <option value="デモ企業A"></option>
+                      <option value="デモ企業B$東京都港区芝公園4丁目2-8"></option>
+                      <option value="デモ企業C"></option>
+                    </datalist>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="userName" class="col-lg-2 control-label">ユーザー名</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="userName" value="" id="userName" class="form-control" />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="role" class="col-lg-2 control-label">権限</label>
+                  <div class="col-lg-10">
+                    <select name="role" id="role" class="form-control">
+                      <option value="" selected="selected"></option>
+                      <option value="0001">受講生</option>
+                      <option value="0002">講師</option>
+                      <option value="0003">企業担当者</option>
+                      <option value="0004">管理者</option>
+                      <option value="0005">育成担当者</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-lg-2"></div>
+                  <div class="col-lg-10">
+                    <input type="checkbox" name="leaveFlg" value="1" id="leaveFlg" class="icon-checkbox" />
+                    <label for="leaveFlg" class="text-info">
+                      <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                      <span class="glyphicon glyphicon-check checked"></span>
+                    </label>
+                    <label for="leaveFlg" class="control-label">途中退校者</label><label
+                      class="text-danger">　※途中退校者のみを検索します</label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-lg-2"></div>
+                  <div class="col-lg-10">
+                    <input type="checkbox" name="pastFlg" value="1" id="pastFlg" class="icon-checkbox" />
+                    <label for="pastFlg" class="text-info">
+                      <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                      <span class="glyphicon glyphicon-check checked"></span>
+                    </label>
+                    <label for="pastFlg" class="control-label">コース終了後 6ヵ月 を経過した受講生</label><label
+                      class="text-danger">　※コース終了後 6ヵ月 を経過した受講生を含めて検索します</label>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-lg-10 col-lg-offset-2">
+                    <input type="submit" name="search" value="検索" class="btn btn-primary" />
+                  </div>
+                </div>
+              </form>
+
+              <legend>一括操作</legend>
+              <a href="list.html" class="btn btn-default" id="bulk-delete" data-toggle="modal"
+                data-target="#bulk-del-modal">一括削除</a>
+              <label class="text-danger">　※一括削除は事務局のみ使用してください。</label>
+            </fieldset>
+          </div>
+
+          <div id="user-table_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+            <div class="row">
+              <div class="col-sm-12">
+                <table class="table table-hover sortabletablecheckbox dataTable no-footer" id="user-table" role="grid"
+                  aria-describedby="user-table_info">
+                  <thead>
+                    <tr role="row">
+                      <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="">
+                        <input id="checkbox-all" class="icon-checkbox" type="checkbox" />
+                        <label for="checkbox-all" class="text-info">
+                          <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                          <span class="glyphicon glyphicon-check checked"></span>
+                        </label>
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="user-table" rowspan="1" colspan="1"
+                        aria-label="ID: activate to sort column ascending">ID</th>
+                      <th class="sorting" tabindex="0" aria-controls="user-table" rowspan="1" colspan="1"
+                        aria-label="ユーザー名: activate to sort column ascending">ユーザー名</th>
+                      <th class="sorting" tabindex="0" aria-controls="user-table" rowspan="1" colspan="1"
+                        aria-label="種別: activate to sort column descending">種別</th>
+                      <th class="sorting" tabindex="0" aria-controls="user-table" rowspan="1" colspan="1"
+                        aria-label="途中退校日: activate to sort column ascending">途中退校日</th>
+                      <th class="sorting" tabindex="0" aria-controls="user-table" rowspan="1" colspan="1"
+                        aria-label="コース名: activate to sort column ascending">コース名</th>
+                      <th class="sorting" tabindex="0" aria-controls="user-table" rowspan="1" colspan="1"
+                        aria-label="企業名: activate to sort column ascending">企業名</th>
+                      <th class="sorting" tabindex="0" aria-controls="user-table" rowspan="1" colspan="1"
+                        aria-label="会場: activate to sort column ascending">会場</th>
+                      <th class="sorting" tabindex="0" aria-controls="user-table" rowspan="1" colspan="1"
+                        aria-label="詳細: activate to sort column ascending">詳細</th>
+                      <th class="sorting" tabindex="0" aria-controls="user-table" rowspan="1" colspan="1"
+                        aria-label="編集: activate to sort column ascending">編集</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="odd" role="row">
+                      <td>
+                        <input name="check" id="checkbox[6]" class="icon-checkbox" type="checkbox" />
+                        <label for="checkbox[6]" class="text-info">
+                          <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                          <span class="glyphicon glyphicon-check checked"></span>
+                        </label>
+                        <input type="hidden" name="lmsUserId" value="1" />
+                        <input type="hidden" name="userName" value="テスト受講生" />
+                        <input type="hidden" name="courseName" value="デモコースA" />
+                        <input type="hidden" name="companyName" value="デモ企業A" />
+                        <input type="hidden" name="placeName" value="デモ会場A" />
+                        <input type="hidden" name="placeNote" value="$$" />
+                      </td>
+
+                      <td class="">1</td>
+                      <td>テスト受講生</td>
+                      <td class="sorting_1">受講生</td>
+                      <td align="center">2021年2月24日</td>
+                      <td>デモコースA</td>
+                      <td>デモ企業A</td>
+                      <td>デモ会場A（新人研修$402教室$）<br />東京都台東区台東1-1-1 カイジョウビル 6F</td>
+                      <td>
+                        <form name="user_detailActionForm" method="post" action="detailRole0001.html">
+                          <input type="hidden" name="lmsUserId" value="1" />
+                          <input type="submit" value="詳細" class="btn btn-default" />
+                        </form>
+                      </td>
+
+                      <td>
+                        <form name="user_updateActionForm" method="post" action="updateRole0001.html">
+                          <input type="hidden" name="lmsUserId" value="1" />
+                          <input type="submit" value="変更" class="btn btn-default" />
+                        </form>
+                        <form name="user_deleteActionForm" method="post" action="list.html"
+                          onsubmit="return delcheck()">
+                          <input type="hidden" name="lmsUserId" value="" />
+                          <input type="hidden" name="courseId" value="" />
+                          <input type="hidden" name="placeId" value="" />
+                          <input type="hidden" name="companyId" value="" />
+                          <input type="hidden" name="userName" value="" />
+                          <input type="hidden" name="role" value="" />
+
+                          <input type="submit" value="削除" class="btn btn-default" />
+                        </form>
+                      </td>
+                    </tr>
+                    <tr class="even" role="row">
+                      <td>
+                        <input name="check" id="checkbox[0]" class="icon-checkbox" type="checkbox" />
+                        <label for="checkbox[0]" class="text-info">
+                          <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                          <span class="glyphicon glyphicon-check checked"></span>
+                        </label>
+                        <input type="hidden" name="lmsUserId" value="1" />
+                        <input type="hidden" name="userName" value="テスト講師" />
+                        <input type="hidden" name="courseName" value="デモコース１" />
+                        <input type="hidden" name="companyName" value="デモ企業A" />
+                        <input type="hidden" name="placeName" value="デモ会場A" />
+                        <input type="hidden" name="placeNote" value="$$" />
+                      </td>
+
+                      <td class="">2</td>
+                      <td>テスト講師</td>
+                      <td class="sorting_1">講師</td>
+                      <td align="center">-</td>
+                      <td></td>
+                      <td></td>
+                      <td>デモ会場A（新人研修$402教室$）<br />東京都台東区台東1-1-1 カイジョウビル 6F</td>
+                      <td>
+                        <form name="user_detailActionForm" method="post" action="detailRole0002.html" .html">
+                          <input type="hidden" name="lmsUserId" value="2" />
+                          <input type="submit" value="詳細" class="btn btn-default" />
+                        </form>
+                      </td>
+
+                      <td>
+                        <form name="user_updateActionForm" method="post" action="updateRole0002.html">
+                          <input type="hidden" name="lmsUserId" value="2" />
+                          <input type="submit" value="変更" class="btn btn-default" />
+                        </form>
+                        <form name="user_deleteActionForm" method="post" action="list.html"
+                          onsubmit="return delcheck()">
+                          <input type="hidden" name="lmsUserId" value="" />
+                          <input type="hidden" name="courseId" value="" />
+                          <input type="hidden" name="placeId" value="" />
+                          <input type="hidden" name="companyId" value="" />
+                          <input type="hidden" name="userName" value="" />
+                          <input type="hidden" name="role" value="0002" />
+                          <input type="submit" value="削除" class="btn btn-default" />
+                        </form>
+                      </td>
+                    </tr>
+                    <tr class="odd" role="row">
+                      <td>
+                        <input name="check" id="checkbox[1]" class="icon-checkbox" type="checkbox" />
+                        <label for="checkbox[1]" class="text-info">
+                          <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                          <span class="glyphicon glyphicon-check checked"></span>
+                        </label>
+                        <input type="hidden" name="lmsUserId" value="2" />
+                        <input type="hidden" name="userName" value="テスト企業担当者" />
+                        <input type="hidden" name="courseName" value="" />
+                        <input type="hidden" name="companyName" value="デモ企業B" />
+                        <input type="hidden" name="placeName" value="" />
+                        <input type="hidden" name="placeNote" value="" />
+                      </td>
+
+                      <td class="">3</td>
+                      <td>テスト企業担当者</td>
+                      <td class="sorting_1">企業担当者</td>
+                      <td align="center">-</td>
+                      <td></td>
+                      <td>デモ企業A</td>
+                      <td><br /></td>
+                      <td>
+                        <form name="user_detailActionForm" method="post" action="detailRole0003.html">
+                          <input type="hidden" name="lmsUserId" value="3" />
+                          <input type="submit" value="詳細" class="btn btn-default" />
+                        </form>
+                      </td>
+
+                      <td>
+                        <form name="user_updateActionForm" method="post" action="updateRole0003.html">
+                          <input type="hidden" name="lmsUserId" value="24460" />
+                          <input type="submit" value="変更" class="btn btn-default" />
+                        </form>
+                        <form name="user_deleteActionForm" method="post" action="list.html"
+                          onsubmit="return delcheck()">
+                          <input type="hidden" name="lmsUserId" value="" />
+                          <input type="hidden" name="courseId" value="" />
+                          <input type="hidden" name="placeId" value="" />
+                          <input type="hidden" name="companyId" value="" />
+                          <input type="hidden" name="userName" value="" />
+                          <input type="hidden" name="role" value="0003" />
+                          <input type="submit" value="削除" class="btn btn-default" />
+                        </form>
+                      </td>
+                    </tr>
+                    <tr class="even" role="row">
+                      <td>
+                        <input name="check" id="checkbox[2]" class="icon-checkbox" type="checkbox" />
+                        <label for="checkbox[2]" class="text-info">
+                          <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                          <span class="glyphicon glyphicon-check checked"></span>
+                        </label>
+                        <input type="hidden" name="lmsUserId" value="4" />
+                        <input type="hidden" name="userName" value="テスト管理者" />
+                        <input type="hidden" name="courseName" value="" />
+                        <input type="hidden" name="companyName" value="" />
+                        <input type="hidden" name="placeName" value="" />
+                        <input type="hidden" name="placeNote" value="" />
+                      </td>
+
+                      <td class="">4</td>
+                      <td>テスト管理者</td>
+                      <td class="sorting_1">管理者</td>
+                      <td align="center">-</td>
+                      <td></td>
+                      <td></td>
+                      <td><br /></td>
+                      <td>
+                        <form name="user_detailActionForm" method="post" action="detailRole0004.html">
+                          <input type="hidden" name="lmsUserId" value="4" />
+                          <input type="submit" value="詳細" class="btn btn-default" />
+                        </form>
+                      </td>
+
+                      <td>
+                        <form name="user_updateActionForm" method="post" action="updateRole0004.html">
+                          <input type="hidden" name="lmsUserId" value="4" />
+                          <input type="submit" value="変更" class="btn btn-default" />
+                        </form>
+                        <form name="user_deleteActionForm" method="post" action="list.html"
+                          onsubmit="return delcheck()">
+                          <input type="hidden" name="lmsUserId" value="" />
+                          <input type="hidden" name="courseId" value="" />
+                          <input type="hidden" name="placeId" value="" />
+                          <input type="hidden" name="companyId" value="" />
+                          <input type="hidden" name="userName" value="" />
+                          <input type="hidden" name="role" value="0004" />
+
+                          <input type="submit" value="削除" class="btn btn-default" />
+                        </form>
+                      </td>
+                    </tr>
+                    <tr class="even" role="row">
+                      <td>
+                        <input name="check" id="checkbox[2]" class="icon-checkbox" type="checkbox" />
+                        <label for="checkbox[2]" class="text-info">
+                          <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                          <span class="glyphicon glyphicon-check checked"></span>
+                        </label>
+                        <input type="hidden" name="lmsUserId" value="4" />
+                        <input type="hidden" name="userName" value="テスト管理者" />
+                        <input type="hidden" name="courseName" value="" />
+                        <input type="hidden" name="companyName" value="" />
+                        <input type="hidden" name="placeName" value="" />
+                        <input type="hidden" name="placeNote" value="" />
+                      </td>
+
+                      <td class="">5</td>
+                      <td>テスト育成担当者</td>
+                      <td class="sorting_1">育成担当者</td>
+                      <td align="center">-</td>
+                      <td></td>
+                      <td>デモ企業A</td>
+                      <td><br /></td>
+                      <td>
+                        <form name="user_detailActionForm" method="post" action="detailRole0005.html">
+                          <input type="hidden" name="lmsUserId" value="5" />
+                          <input type="submit" value="詳細" class="btn btn-default" />
+                        </form>
+                      </td>
+
+                      <td>
+                        <form name="user_updateActionForm" method="post" action="updateRole0005.html">
+                          <input type="hidden" name="lmsUserId" value="4" />
+                          <input type="submit" value="変更" class="btn btn-default" />
+                        </form>
+                        <form name="user_deleteActionForm" method="post" action="list.html"
+                          onsubmit="return delcheck()">
+                          <input type="hidden" name="lmsUserId" value="" />
+                          <input type="hidden" name="courseId" value="" />
+                          <input type="hidden" name="placeId" value="" />
+                          <input type="hidden" name="companyId" value="" />
+                          <input type="hidden" name="userName" value="" />
+                          <input type="hidden" name="role" value="0005" />
+
+                          <input type="submit" value="削除" class="btn btn-default" />
+                        </form>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-7">
+                <div class="dataTables_paginate paging_simple_numbers" id="user-table_paginate"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--#main-->
+      </div>
+      <!--#contents-->
+      <form id="screenTransForm" name="screenTransForm" method="post"></form>
+      <div id="push"></div>
+    </div>
+  </div>
+  <div id="footer">
+    <div class="container">
+      <p class="muted credit">Copyright(C) 2015 System Shared co., ltd, ALL Rights Reserved</p>
+    </div>
+  </div>
+  <!--#container-->
+</body>
+
+</html>

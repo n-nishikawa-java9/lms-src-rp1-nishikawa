@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>試験結果詳細 | LMS</title>
+
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/lms.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/jstree.css" />
+    <link rel="shortcut icon" href="../../img/favicon.ico" />
+
+    <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+    <script type="text/javascript" src="../../js/lms_common.js"></script>
+    <script type="text/javascript" src="../../js/jstree.min.js"></script>
+    <script type="text/javascript" src="../../js/currency.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+
+    <style>
+      .question {
+        font-family: "ＭＳ ゴシック", sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <nav class="navbar navbar-default">
+        <script>
+          $(function () {
+            $("#question").click(function (e) {
+              e.preventDefault();
+              $("#check-modal").modal("show");
+            });
+          });
+        </script>
+        <div class="container">
+          <div class="navbar-header">
+            <a href="../course/list.html" class="navbar-brand">LMS 学習管理システム</a>
+
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-content">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div id="nav-content" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">事務<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="../mail/templateList.html">メールテンプレート管理</a></li>
+                  <li><a href="../mail/sendList.html">メール一斉送信</a></li>
+                  <li><a href="../company/list.html">企業管理</a></li>
+                  <li><a href="../user/list.html">ユーザー管理</a></li>
+                  <li><a href="../contract/list.html">契約履歴</a></li>
+
+                  <li><a href="../schedule/meetingList.html">引継面談／会場見学 スケジュール</a></li>
+                  <li>
+                    <a href="../schedule/reserveList.html">引継面談／会場見学 実施予定</a>
+                  </li>
+                  <li><a href="../schedule/presentationList.html">成果報告会スケジュール</a></li>
+                  <li><a href="../presentation/teamList.html">成果報告会チーム確定</a></li>
+                  <li><a href="../presentation/reserveList.html">成果報告会実施予定</a></li>
+                  <li><a href="../estimate/list.html">請求情報ダウンロード</a></li>
+                  <li><a href="../evReport/resultList.html">評価レポート公開</a></li>
+                  <li><a href="../estimate/productList.html">見積もり品マスタ管理</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">営業<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="../entry/list.html">エントリー情報確定</a></li>
+                  <li><a href="../assign/spreadsheet.html">会場アサイン</a></li>
+                  <li>
+                    <a href="../schedule/reserveList.html">引継面談／会場見学 実施予定</a>
+                  </li>
+                  <li><a href="../schedule/presentationReserveList.html">成果報告会実施予定</a></li>
+                </ul>
+              </li>
+
+              <li class="dropdown">
+                <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">運営<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="../place/list.html">会場管理</a></li>
+                  <li><a href="../genre/list.html">試験カテゴリー管理</a></li>
+                  <li><a href="../exam/list.html">試験内容管理</a></li>
+                  <li><a href="../dailyReport/list.html">日報管理</a></li>
+                  <li><a href="../deliverables/manageList.html">成果物管理</a></li>
+                  <li><a href="../evReport/list.html">評価レポート管理</a></li>
+                  <li><a href="../meeting/fileList.html">面談ファイル管理</a></li>
+                  <li><a href="../holiday/list.html">休暇日設定</a></li>
+                  <li><a href="../course/list.html">コース管理</a></li>
+                  <li><a href="../movie/categoryList.html">動画管理</a></li>
+                  <li><a href="../mail/sendList.html">メール一斉送信</a></li>
+                  <li><a href="../user/list.html">ユーザー管理</a></li>
+                  <li><a href="../displayControl/list.html">データの表示制御</a></li>
+                </ul>
+              </li>
+
+              <li class="dropdown">
+                <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">助成金<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="../subsidy/companyList.html">企業情報</a></li>
+                  <li><a href="../subsidy/templateList.html">テンプレート管理</a></li>
+                </ul>
+              </li>
+
+              <li class="dropdown">
+                <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">受講生情報<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="../exam/list.html">試験</a></li>
+                  <li><a href="../dailyReport/dailyList.html">レポート</a></li>
+                  <li><a href="../deliverables/list.html">成果物</a></li>
+                  <li><a href="../evReport/scoringConfirmation.html">評価レポート採点確認</a></li>
+                  <li><a href="../attendance/list.html">勤怠</a></li>
+                  <li><a href="../attendance/bulkRegistList.html">勤怠一括登録</a></li>
+                </ul>
+              </li>
+
+              <li class="dropdown">
+                <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">その他<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="../fileshare/index.html">ファイル共有</a></li>
+                  <li><a href="../course/csv.html">CSV出力</a></li>
+                  <li><a href="../faq/categoryList.html">FAQ管理</a></li>
+                  <li><a href="../contract/list.html">契約内容変更</a></li>
+                  <li><a href="../info/update.html">お知らせ設定</a></li>
+                  <li><a href="../repair/list.html">改修履歴設定</a></li>
+                  <li><a href="../help/index.html">ヘルプ</a></li>
+                </ul>
+              </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li class="text-center">
+                <a href="../course/list/#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+                <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom" title="" data-content="" data-html="true" data-original-title="お知らせ"></span>
+              </li>
+              <li>
+                <a><small>ようこそ管理者さん</small></a>
+              </li>
+              <li>
+                <button type="button" class="btn btn-default navbar-btn" onclick="location.href='../../index.html'">
+                  <a href="../../index.html" class="glyphicon glyphicon-log-out">　ログアウト</a>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <div id="contents" class="clearfix">
+          <div id="main" class="main2clm">
+            <div id="examBeing">
+              <h2>Struts_総合&nbsp;<small>あなたのスコア：16.7点</small></h2>
+
+              <div class="panel panel-default">
+                <div class="panel-heading">第1問&nbsp;【Struts】</div>
+                <div class="panel-body">
+                  <p class="question marginB5">Strutsが採用する設計、開発手法のモデルとして正しいものは次のうちどれか。</p>
+                  <h6>回答</h6>
+                  <ul class="list-group">
+                    <li class="list-group-item list-group-item-danger">1.　　<span class="ib question">APCモデル</span></li>
+
+                    <li class="list-group-item">2.　　<span class="ib question">MVCモデル</span></li>
+
+                    <li class="list-group-item">3.　　<span class="ib question">OSIモデル</span></li>
+
+                    <li class="list-group-item">4.　　<span class="ib question">MIWモデル</span></li>
+                  </ul>
+                  <p></p>
+                  <h3>【不正解】　<small>正解は 2 です</small></h3>
+                  <ul class="list-group">
+                    <li class="list-group-item">参照：01_Strutsの概要と動作.pdf P3</li>
+                  </ul>
+
+                  <p></p>
+                </div>
+              </div>
+
+              <div class="panel panel-default">
+                <div class="panel-heading">第2問&nbsp;【Struts】</div>
+                <div class="panel-body">
+                  <p class="question marginB5">ActionFormの取得やリクエス卜パラメ一タ値の格納など、コントローラとしての処理のほとんどを担っているクラスは次のうちどれか。</p>
+                  <h6>回答</h6>
+                  <ul class="list-group">
+                    <li class="list-group-item list-group-item-danger">1.　　<span class="ib question">ActionServlet</span></li>
+
+                    <li class="list-group-item">2.　　<span class="ib question">Struts設定ファイル</span></li>
+
+                    <li class="list-group-item">3.　　<span class="ib question">RequestProcessor</span></li>
+
+                    <li class="list-group-item">4.　　<span class="ib question">ActionForm</span></li>
+                  </ul>
+                  <p></p>
+                  <h3>【不正解】　<small>正解は 3 です</small></h3>
+                  <ul class="list-group">
+                    <li class="list-group-item">参照：01_Strutsの概要と動作.pdf P4</li>
+                  </ul>
+
+                  <p></p>
+                </div>
+              </div>
+
+              <div class="panel panel-default">
+                <div class="panel-heading">第3問&nbsp;【Struts】</div>
+                <div class="panel-body">
+                  <p class="question marginB5">プロジェクトを作成した際に、デフォルトでStruts設定ファイルとなるものは次のうちどれか。</p>
+                  <h6>回答</h6>
+                  <ul class="list-group">
+                    <li class="list-group-item list-group-item-info">1.　　<span class="ib question">struts-config.xml</span></li>
+
+                    <li class="list-group-item">2.　　<span class="ib question">web.xml</span></li>
+
+                    <li class="list-group-item">3.　　<span class="ib question">struts-html.tld</span></li>
+
+                    <li class="list-group-item">4.　　<span class="ib question">index.html</span></li>
+                  </ul>
+                  <p></p>
+                  <h3>【正解】</h3>
+
+                  <p></p>
+                </div>
+              </div>
+
+              <div class="panel panel-default">
+                <div class="panel-heading">第4問&nbsp;【Struts】</div>
+                <div class="panel-body">
+                  <p class="question marginB5">Struts設定ファイルのタグについて、ActionFormのクラス名とインスタンス名を関連付けるものは次のうちどれか。</p>
+                  <h6>回答</h6>
+                  <ul class="list-group">
+                    <li class="list-group-item list-group-item-danger">1.　　<span class="ib question">forwardタグ</span></li>
+
+                    <li class="list-group-item">2.　　<span class="ib question">actionタグ</span></li>
+
+                    <li class="list-group-item">3.　　<span class="ib question">controllerタグ</span></li>
+
+                    <li class="list-group-item">4.　　<span class="ib question">form-beanタグ</span></li>
+                  </ul>
+                  <p></p>
+                  <h3>【不正解】　<small>正解は 4 です</small></h3>
+                  <ul class="list-group">
+                    <li class="list-group-item">参照：02_Actionと設定ファイル.pdf P10</li>
+                  </ul>
+
+                  <p></p>
+                </div>
+              </div>
+
+              <div class="panel panel-default">
+                <div class="panel-heading">第5問&nbsp;【Struts】</div>
+                <div class="panel-body">
+                  <p class="question marginB5">
+                    コンテキストルート以下のパスが"/lesson"から始まるURLにリクエストした際に実行されるActionクラスに関して、Struts設定ファイルの設定として正しいものは次のうちどれか。
+                  </p>
+                  <h6>回答</h6>
+                  <ul class="list-group">
+                    <li class="list-group-item list-group-item-danger">
+                      1.　　<span class="ib question"
+                        >&lt;action&nbsp;path="/lesson"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type="jp.co.sss.test.LessonAction"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name="○○"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scope="request"&gt;&nbsp;<br />&lt;/action&gt;&nbsp;</span
+                      >
+                    </li>
+
+                    <li class="list-group-item">
+                      2.　　<span class="ib question"
+                        >&lt;action&nbsp;path="/lessonAction"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type="jp.co.sss.test.LessonAction"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name="○○"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scope="request"&gt;&nbsp;<br />&lt;/action&gt;&nbsp;</span
+                      >
+                    </li>
+
+                    <li class="list-group-item">
+                      3.　　<span class="ib question"
+                        >&lt;action&nbsp;path="/lessonAction*"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type="jp.co.sss.test.LessonAction"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name="○○"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scope="request"&gt;&nbsp;<br />&lt;/action&gt;&nbsp;</span
+                      >
+                    </li>
+
+                    <li class="list-group-item">
+                      4.　　<span class="ib question"
+                        >&lt;action&nbsp;path="/lesson*"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type="jp.co.sss.test.LessonAction"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;name="○○"<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;scope="request"&gt;&nbsp;<br />&lt;/action&gt;&nbsp;</span
+                      >
+                    </li>
+                  </ul>
+                  <p></p>
+                  <h3>【不正解】　<small>正解は 4 です</small></h3>
+                  <ul class="list-group">
+                    <li class="list-group-item">参照：02_Actionと設定ファイル.pdf P13</li>
+                  </ul>
+
+                  <p></p>
+                </div>
+              </div>
+
+              <div class="panel panel-default">
+                <div class="panel-heading">第6問&nbsp;【Struts】</div>
+                <div class="panel-body">
+                  <p class="question marginB5">
+                    LookupDispatchActionを利用して、「買う」と表記されたボタンを押した場合はメソッド"buyItem"を、「売る」と表記されたボタンを押した場合はメソッド"sellItem"を実行する処理を実装したい。<br />この時、getKeyMethodMap()メソッドの処理として正しいものは次のうちどれか。<br />なお、「買う」及び「売る」という文言はメッセージリソース内で下記のように定義されているものとする。<br /><br />button.buy=買う<br />button.sell=売る
+                  </p>
+                  <h6>回答</h6>
+                  <ul class="list-group">
+                    <li class="list-group-item list-group-item-danger">
+                      1.　　<span class="ib question"
+                        >protected&nbsp;Map&nbsp;getKeyMethodMap()&nbsp;{&nbsp;<br />&nbsp;&nbsp;Map&nbsp;map&nbsp;=&nbsp;new&nbsp;HashMap();<br />&nbsp;&nbsp;map.put("買う",&nbsp;"buyItem");<br />&nbsp;&nbsp;map.put("売る",&nbsp;"sellItem");<br />&nbsp;&nbsp;return&nbsp;map;<br />}&nbsp;</span
+                      >
+                    </li>
+
+                    <li class="list-group-item">
+                      2.　　<span class="ib question"
+                        >protected&nbsp;Map&nbsp;getKeyMethodMap()&nbsp;{&nbsp;<br />&nbsp;&nbsp;Map&nbsp;map&nbsp;=&nbsp;new&nbsp;HashMap();<br />&nbsp;&nbsp;map.put("買う",&nbsp;"button.buy");<br />&nbsp;&nbsp;map.put("売る",&nbsp;"button.sell");<br />&nbsp;&nbsp;return&nbsp;map;<br />}&nbsp;</span
+                      >
+                    </li>
+
+                    <li class="list-group-item">
+                      3.　　<span class="ib question"
+                        >protected&nbsp;Map&nbsp;getKeyMethodMap()&nbsp;{&nbsp;<br />&nbsp;&nbsp;Map&nbsp;map&nbsp;=&nbsp;new&nbsp;HashMap();<br />&nbsp;&nbsp;map.put("buyItem",&nbsp;"button.buy");<br />&nbsp;&nbsp;map.put("sellItem",&nbsp;"button.sell");<br />&nbsp;&nbsp;return&nbsp;map;<br />}&nbsp;</span
+                      >
+                    </li>
+
+                    <li class="list-group-item">
+                      4.　　<span class="ib question"
+                        >protected&nbsp;Map&nbsp;getKeyMethodMap()&nbsp;{&nbsp;<br />&nbsp;&nbsp;Map&nbsp;map&nbsp;=&nbsp;new&nbsp;HashMap();<br />&nbsp;&nbsp;map.put("button.buy",&nbsp;"buyItem");<br />&nbsp;&nbsp;map.put("button.sell",&nbsp;"sellItem");<br />&nbsp;&nbsp;return&nbsp;map;<br />}&nbsp;</span
+                      >
+                    </li>
+                  </ul>
+                  <p></p>
+                  <h3>【不正解】　<small>正解は 4 です</small></h3>
+                  <ul class="list-group">
+                    <li class="list-group-item">参照：06_Strutsが提供するAction.pdf P9、P11</li>
+                  </ul>
+
+                  <p></p>
+                </div>
+              </div>
+
+              <div class="panel panel-default">
+                <div class="panel-heading">第7問&nbsp;【Struts】</div>
+                <div class="panel-body">
+                  <p class="question marginB5">入力フォームに入力された値が文字化けした際の対処方法として正しいものを選べ。</p>
+                  <h6>回答</h6>
+                  <ul class="list-group">
+                    <li class="list-group-item list-group-item-danger">1.　　<span class="ib question">別のWebブラウザを使用して対処する</span></li>
+
+                    <li class="list-group-item">2.　　<span class="ib question">マルチバイト文字列の文字化けは対処できないため、半角英数字を使用する</span></li>
+
+                    <li class="list-group-item">3.　　<span class="ib question">setCharacterEncoding()メソッドを実行するフィルタを設定する</span></li>
+
+                    <li class="list-group-item">4.　　<span class="ib question">Javaファイルの文字コードをShift-JISに変更する</span></li>
+                  </ul>
+                  <p></p>
+                  <h3>【不正解】　<small>正解は 3 です</small></h3>
+                  <ul class="list-group">
+                    <li class="list-group-item">参照：03_ActionForm.pdf P6</li>
+                  </ul>
+
+                  <p></p>
+                </div>
+              </div>
+
+              <div class="panel panel-default">
+                <div class="panel-heading">第8問&nbsp;【Struts】</div>
+                <div class="panel-body">
+                  <p class="question marginB5">DynaActionFormの特徴として正しいものは次のうちどれか。</p>
+                  <h6>回答</h6>
+                  <ul class="list-group">
+                    <li class="list-group-item list-group-item-danger">1.　　<span class="ib question">JSPファイルに記述できる</span></li>
+
+                    <li class="list-group-item">2.　　<span class="ib question">Struts設定ファイルへの定義が不要</span></li>
+
+                    <li class="list-group-item">3.　　<span class="ib question">ActionとViewを含めた機能が実装できる</span></li>
+
+                    <li class="list-group-item">4.　　<span class="ib question">getter/setterメソッドの実装が不要</span></li>
+                  </ul>
+                  <p></p>
+                  <h3>【不正解】　<small>正解は 4 です</small></h3>
+                  <ul class="list-group">
+                    <li class="list-group-item">参照：03_ActionForm.pdf P10</li>
+                  </ul>
+
+                  <p></p>
+                </div>
+              </div>
+
+              <div class="panel panel-default">
+                <div class="panel-heading">第9問&nbsp;【Struts】</div>
+                <div class="panel-body">
+                  <p class="question marginB5">整数型の配列であるプロパティを持つDynaActionFormの設定として正しいものは次のうちどれか</p>
+                  <h6>回答</h6>
+                  <ul class="list-group">
+                    <li class="list-group-item list-group-item-danger">
+                      1.　　<span class="ib question"
+                        >&lt;form-bean&nbsp;name="○○"&nbsp;type="org.apache.struts.action.DynaActionForm"&gt;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;form-property&nbsp;name="testProperty"&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type="int[]"&nbsp;length="4"/&gt;&nbsp;<br />&lt;/form-bean&gt;</span
+                      >
+                    </li>
+
+                    <li class="list-group-item">
+                      2.　　<span class="ib question"
+                        >&lt;form-bean&nbsp;name="○○"&nbsp;type="org.apache.struts.action.DynaActionForm"&gt;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;form-property&nbsp;name="testProperty"&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type="int[]"&nbsp;size="4"/&gt;&nbsp;<br />&lt;/form-bean&gt;</span
+                      >
+                    </li>
+
+                    <li class="list-group-item">
+                      3.　　<span class="ib question"
+                        >&lt;form-bean&nbsp;name="○○"&nbsp;type="org.apache.struts.action.DynaActionForm"&gt;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;form-property&nbsp;name="testProperty"&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type="java.lang.Integer[]"&nbsp;length="4"/&gt;&nbsp;<br />&lt;/form-bean&gt;</span
+                      >
+                    </li>
+
+                    <li class="list-group-item">
+                      4.　　<span class="ib question"
+                        >&lt;form-bean&nbsp;name="○○"&nbsp;type="org.apache.struts.action.DynaActionForm"&gt;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;form-property&nbsp;name="testProperty"&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;type="java.lang.Integer[]"&nbsp;size="4"/&gt;&nbsp;<br />&lt;/form-bean&gt;</span
+                      >
+                    </li>
+                  </ul>
+                  <p></p>
+                  <h3>【不正解】　<small>正解は 4 です</small></h3>
+                  <ul class="list-group">
+                    <li class="list-group-item">参照：03_ActionForm.pdf P15</li>
+                  </ul>
+
+                  <p></p>
+                </div>
+              </div>
+
+              <div class="panel panel-default">
+                <div class="panel-heading">第10問&nbsp;【Struts】</div>
+                <div class="panel-body">
+                  <p class="question marginB5">スタイルシート内のクラスセレクタtestで参照できる入力フォームは次のうちどれか。<br />なお、HTMLタグライブラリのprefix値はhtmlとする。</p>
+                  <h6>回答</h6>
+                  <ul class="list-group">
+                    <li class="list-group-item list-group-item-info">1.　　<span class="ib question">&lt;html:text&nbsp;property="userName"&nbsp;styleClass="test"&gt;&lt;/html:text&gt;</span></li>
+
+                    <li class="list-group-item">2.　　<span class="ib question">&lt;html:text&nbsp;property="userName"&nbsp;formClass="test"&gt;&lt;/html:text&gt;</span></li>
+
+                    <li class="list-group-item">3.　　<span class="ib question">&lt;html:text&nbsp;property="userName"&nbsp;class="test"&gt;&lt;/html:text&gt;</span></li>
+
+                    <li class="list-group-item">4.　　<span class="ib question">&lt;html:text&nbsp;property="userName"&nbsp;cssClass="test"&gt;&lt;/html:text&gt;</span></li>
+                  </ul>
+                  <p></p>
+                  <h3>【正解】</h3>
+
+                  <p></p>
+                </div>
+              </div>
+
+              <div class="panel panel-default">
+                <div class="panel-heading">第11問&nbsp;【Struts】</div>
+                <div class="panel-body">
+                  <p class="question marginB5">
+                    メッセージリソースに登録されたメッセージを表示する処理として正しいものは次のうちどれか。<br />なお、Beanタグライブラリのprefix値はbeanとする。<br />また、表示対象のメッセージは下記の通り登録されているものとする。<br /><br />hello=こんにちは
+                  </p>
+                  <h6>回答</h6>
+                  <ul class="list-group">
+                    <li class="list-group-item list-group-item-danger">1.　　<span class="ib question">&lt;bean:message&nbsp;value="こんにちは"&nbsp;/&gt;</span></li>
+
+                    <li class="list-group-item">2.　　<span class="ib question">&lt;bean:message&nbsp;key="hello"&nbsp;/&gt;</span></li>
+
+                    <li class="list-group-item">3.　　<span class="ib question">&lt;bean:message&nbsp;message="hello=こんにちは"&nbsp;/&gt;</span></li>
+
+                    <li class="list-group-item">4.　　<span class="ib question">&lt;bean:message&nbsp;key="こんにちは"&nbsp;/&gt;</span></li>
+                  </ul>
+                  <p></p>
+                  <h3>【不正解】　<small>正解は 2 です</small></h3>
+                  <ul class="list-group">
+                    <li class="list-group-item">参照：04_Strutsタグライブラリ.pdf P15、P18</li>
+                  </ul>
+
+                  <p></p>
+                </div>
+              </div>
+
+              <div class="panel panel-default">
+                <div class="panel-heading">第12問&nbsp;【Struts】</div>
+                <div class="panel-body">
+                  <p class="question marginB5">JSP内で繰り返し処理を行うために記述するタグは次のうちどれか。<br />なお、Logicタグライブラリのprefix値はlogicとする。</p>
+                  <h6>回答</h6>
+                  <ul class="list-group">
+                    <li class="list-group-item list-group-item-danger">1.　　<span class="ib question">logic:for</span></li>
+
+                    <li class="list-group-item">2.　　<span class="ib question">logic:iterate</span></li>
+
+                    <li class="list-group-item">3.　　<span class="ib question">logic:while</span></li>
+
+                    <li class="list-group-item">4.　　<span class="ib question">logic:forEach</span></li>
+                  </ul>
+                  <p></p>
+                  <h3>【不正解】　<small>正解は 2 です</small></h3>
+                  <ul class="list-group">
+                    <li class="list-group-item">参照：04_Strutsタグライブラリ.pdf P21</li>
+                  </ul>
+
+                  <p></p>
+                </div>
+              </div>
+
+              <div class="panel panel-default">
+                <div class="panel-heading">第13問&nbsp;【Struts】</div>
+                <div class="panel-body">
+                  <p class="question marginB5">validate()メソッドの説明として正しいものは次のうちどれか。</p>
+                  <h6>回答</h6>
+                  <ul class="list-group">
+                    <li class="list-group-item list-group-item-danger">1.　　<span class="ib question">validate()メソッドはActionクラス内に記述する。</span></li>
+
+                    <li class="list-group-item">2.　　<span class="ib question">validate()メソッドの戻り値がnullまたは空の場合、エラーとして扱われる。</span></li>
+
+                    <li class="list-group-item">3.　　<span class="ib question">validate()メソッドはHttpServletRequestクラスとHttpServletResponseクラスのインスタンスを引数として取る。</span></li>
+
+                    <li class="list-group-item">4.　　<span class="ib question">validate()メソッド内では、エラーメッセージはActionErrorsクラスのインスタンスに追加される。</span></li>
+                  </ul>
+                  <p></p>
+                  <h3>【不正解】　<small>正解は 4 です</small></h3>
+                  <ul class="list-group">
+                    <li class="list-group-item">参照：05_Validator.pdf P1～P2</li>
+                  </ul>
+
+                  <p></p>
+                </div>
+              </div>
+
+              <div class="panel panel-default">
+                <div class="panel-heading">第14問&nbsp;【Struts】</div>
+                <div class="panel-body">
+                  <p class="question marginB5">JSP内でエラーメッセージを表示する処理は次の内どれか。<br />なお、HTMLタグライブラリのprefix値はhtmlとする。</p>
+                  <h6>回答</h6>
+                  <ul class="list-group">
+                    <li class="list-group-item list-group-item-danger">1.　　<span class="ib question">&lt;html:error&nbsp;property="○○"&nbsp;/&gt;</span></li>
+
+                    <li class="list-group-item">2.　　<span class="ib question">&lt;html:error&nbsp;key="○○"&nbsp;/&gt;</span></li>
+
+                    <li class="list-group-item">3.　　<span class="ib question">&lt;html:errors&nbsp;property="○○"&nbsp;/&gt;</span></li>
+
+                    <li class="list-group-item">4.　　<span class="ib question">&lt;html:message&nbsp;key="○○"&nbsp;/&gt;</span></li>
+                  </ul>
+                  <p></p>
+                  <h3>【不正解】　<small>正解は 3 です</small></h3>
+                  <ul class="list-group">
+                    <li class="list-group-item">参照：05_Validator.pdf P5～P6</li>
+                  </ul>
+
+                  <p></p>
+                </div>
+              </div>
+
+              <div class="panel panel-default">
+                <div class="panel-heading">第15問&nbsp;【Struts】</div>
+                <div class="panel-body">
+                  <p class="question marginB5">
+                    Validatorを利用して、2つのテキストボックスに入力された値が一致しているかを判定したい。<br />この処理を実現する下記の設定に関して、○○○に記述する内容は次のうちどれか。<br />なお、2つのテキストボックスのプロパティ名はnumber及びnumberCheckとする。<br /><br />&lt;form&nbsp;name="testValidwhenForm"&gt;&nbsp;<br />&nbsp;&nbsp;&lt;field&nbsp;property="number"&nbsp;depends="validwhen"&gt;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;var&gt;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;var-name&gt;test&lt;/var-name&gt;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;var-value&gt;○○○<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/var-value&gt;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&lt;/var&gt;&nbsp;<br />&nbsp;&nbsp;&lt;/field&gt;&nbsp;<br />&lt;/form&gt;
+                  </p>
+                  <h6>回答</h6>
+                  <ul class="list-group">
+                    <li class="list-group-item list-group-item-danger">1.　　<span class="ib question">(number&nbsp;==&nbsp;numberCheck)</span></li>
+
+                    <li class="list-group-item">2.　　<span class="ib question">(this&nbsp;==&nbsp;numberCheck)</span></li>
+
+                    <li class="list-group-item">3.　　<span class="ib question">(*this*&nbsp;==&nbsp;numberCheck)</span></li>
+
+                    <li class="list-group-item">4.　　<span class="ib question">(*this*&nbsp;==&nbsp;number)</span></li>
+                  </ul>
+                  <p></p>
+                  <h3>【不正解】　<small>正解は 3 です</small></h3>
+                  <ul class="list-group">
+                    <li class="list-group-item">参照：05_Validator.pdf P21</li>
+                  </ul>
+
+                  <p></p>
+                </div>
+              </div>
+
+              <div class="panel panel-default">
+                <div class="panel-heading">第16問&nbsp;【Struts】</div>
+                <div class="panel-body">
+                  <p class="question marginB5">
+                    Tilesを利用してヘッダ、メニュー、ボディ、フッタの4つのJSPファイルをインクルードした画面を表示したい。<br />この時、1画面を表示させる際に必要なJSPファイルの数として正しいものは次のうちどれか。
+                  </p>
+                  <h6>回答</h6>
+                  <ul class="list-group">
+                    <li class="list-group-item list-group-item-danger">1.　　<span class="ib question">4個</span></li>
+
+                    <li class="list-group-item">2.　　<span class="ib question">5個</span></li>
+
+                    <li class="list-group-item">3.　　<span class="ib question">6個</span></li>
+
+                    <li class="list-group-item">4.　　<span class="ib question">8個</span></li>
+                  </ul>
+                  <p></p>
+                  <h3>【不正解】　<small>正解は 2 です</small></h3>
+                  <ul class="list-group">
+                    <li class="list-group-item">参照：07_テンプレートフレームワーク.pdf P1</li>
+                  </ul>
+
+                  <p></p>
+                </div>
+              </div>
+
+              <div class="panel panel-default">
+                <div class="panel-heading">第17問&nbsp;【Struts】</div>
+                <div class="panel-body">
+                  <p class="question marginB5">JSPファイル内でページタイトルをTiles設定ファイルで指定された文言に変更する記述として正しいものは次のうちどれか。</p>
+                  <h6>回答</h6>
+                  <ul class="list-group">
+                    <li class="list-group-item list-group-item-info">1.　　<span class="ib question">&lt;tiles:getAsString&nbsp;name="○○"&nbsp;/&gt;</span></li>
+
+                    <li class="list-group-item">2.　　<span class="ib question">&lt;tiles:getAsTitle&nbsp;name="○○"&nbsp;/&gt;</span></li>
+
+                    <li class="list-group-item">3.　　<span class="ib question">&lt;tiles:getAsName&nbsp;name="○○"&nbsp;/&gt;</span></li>
+
+                    <li class="list-group-item">4.　　<span class="ib question">&lt;tiles:setAsPageTitle&nbsp;name="○○"&nbsp;/&gt;</span></li>
+                  </ul>
+                  <p></p>
+                  <h3>【正解】</h3>
+
+                  <p></p>
+                </div>
+              </div>
+
+              <div class="panel panel-default">
+                <div class="panel-heading">第18問&nbsp;【Struts】</div>
+                <div class="panel-body">
+                  <p class="question marginB5">
+                    下記のようなTilesの設定で作成される画面にフォワードさせたい。<br />この場合、Struts設定ファイルのforwardタグの記述として正しいものは次のうちどれか。<br /><br />&lt;definition&nbsp;name="testLayout"&nbsp;path="/WEB-INF/jsp/layout.jsp"&gt;&nbsp;&nbsp;<br />&nbsp;&nbsp;・・・<br />&lt;/definition&gt;&nbsp;
+                  </p>
+                  <h6>回答</h6>
+                  <ul class="list-group">
+                    <li class="list-group-item list-group-item-danger">1.　　<span class="ib question">&lt;forward&nbsp;name="○○"&nbsp;path="/WEB-INF/jsp/layout.jsp"/&gt;&nbsp;</span></li>
+
+                    <li class="list-group-item">2.　　<span class="ib question">&lt;forward&nbsp;name="○○"&nbsp;path="/WEB-INF/jsp/testLayout"/&gt;&nbsp;</span></li>
+
+                    <li class="list-group-item">3.　　<span class="ib question">&lt;forward&nbsp;name="○○"&nbsp;path="testLayout"/&gt;&nbsp;</span></li>
+
+                    <li class="list-group-item">4.　　<span class="ib question">&lt;forward&nbsp;name="○○"&nbsp;path="layout.jsp"/&gt;&nbsp;</span></li>
+                  </ul>
+                  <p></p>
+                  <h3>【不正解】　<small>正解は 3 です</small></h3>
+                  <ul class="list-group">
+                    <li class="list-group-item">参照：07_テンプレートフレームワーク.pdf P6</li>
+                  </ul>
+
+                  <p></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--#main-->
+        </div>
+        <!--#contents-->
+        <form id="screenTransForm" name="screenTransForm" method="post"></form>
+        <div id="push"></div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">Copyright(C) 2015 System Shared co., ltd, ALL Rights Reserved</p>
+      </div>
+    </div>
+    <!--#container-->
+  </body>
+</html>

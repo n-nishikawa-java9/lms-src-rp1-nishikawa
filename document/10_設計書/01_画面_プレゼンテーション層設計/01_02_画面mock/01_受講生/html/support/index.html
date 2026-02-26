@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>サポートセンター問い合わせ | LMS</title>
+
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/lms.css" />
+    <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <link href="https://use.fontawesome.com/releases/v5.6.4/css/all.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+    <script type="text/javascript" src="../../js/lms_common.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+
+    <script>
+      $(function () {
+        var url = "";
+        $(".support-link").click(function () {
+          url = $(this).parents('div').children('input[name=url]').val();
+          $("#modal").modal("show");
+        });
+        $("#support-submit").click(function () {
+          window.open(url, "_blank");
+          $("#modal").modal("hide");
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <a href="../course/detail.html" class="navbar-brand">LMS 学習管理システム</a>
+          </div>
+          <div id="nav-content" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li>
+                <a href="../course/detail.html">マイコース</a>
+              </li>
+              <li>
+                <a href="../download/teachingMaterialList.html">教材ダウンロード</a>
+              </li>
+              <li>
+                <a href="../attendance/detail.html">勤怠</a>
+              </li>
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> 機能<span class="caret"></span> </a>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <a href="../fileshare/list.html" class="form-horizontal">ファイル共有</a>
+                  </li>
+                  <li>
+                    <a href="../movie/index.html" class="form-horizontal">動画視聴</a>
+                  </li>
+                  <li>
+                    <a href="../support/index.html" class="form-horizontal">サポートセンター</a>
+                  </li>
+                  <li>
+                    <a href="../help/index.html" class="form-horizontal">ヘルプ</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="text-center">
+                <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+                <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom" title="お知らせ" data-content="" data-html="true"></span>
+              </li>
+              <li>
+                <a href="../user/detail.html"><small>ようこそ受講生さん</small></a>
+              </li>
+              <li>
+                <button type="button" class="btn btn-default navbar-btn" onclick="location.href='${logout}'">
+                  <a href="../../index.html" class="glyphicon glyphicon-log-out"> ログアウト</a>
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="container">
+        <div id="contents" class="clearfix">
+          <div id="main" class="main2clm">
+            <div class="modal fade" id="modal" aria-hidden="true" style="display: none">
+              <a href="https://tis.shared.jp/lms/support/#" data-toggle="modal" data-target="#modal" id="modal-link"></a>
+              <div class="modal-dialog modal-dialog-center">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="modal-label">メッセージ</h4>
+                  </div>
+
+                  <div class="modal-body">
+                    <input type="hidden" />
+                    <div class="form-group">
+                      <strong>お問い合わせいただく前に以下の内容をご確認ください。</strong>
+                      <ul>
+                        <li>
+                          初めてご利用になる方は<strong
+                            ><a href="https://tis.shared.jp/lms/pdf/guide_support_001.pdf" target="_blank" style="text-decoration: underline">サポートセンター利用ガイド</a></strong
+                          >をご一読ください。
+                        </li>
+                        <li>質問の内容はまとめられていますか。</li>
+                        <li>ヘッドセットは用意できていますか。</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="support-submit">はい</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">いいえ</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h2>サポートセンター問い合わせ</h2>
+            <div class="alert alert-info">
+              東京ITスクールサポートセンターへのテレビ通話を行います。
+              <ul>
+                <li>
+                  初めてご利用になる方は<a href="https://tis.shared.jp/lms/pdf/guide_support_001.pdf" target="_blank" style="text-decoration: underline">サポートセンター利用ガイド</a
+                  >をご一読ください。
+                </li>
+                <li>カメラとヘッドセットをご用意ください。</li>
+              </ul>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">単元別問い合わせ</div>
+              <div class="panel-body">
+                <div class="form-group col-md-6">
+                  <a class="btn btn-info btn-lg btn-block support-link">通常</a>
+                  <input type="hidden" name="url" value="../course/detail.html" />
+                </div>
+
+                <div class="form-group col-md-6">
+                  <a class="btn btn-info btn-lg btn-block support-link">カメラなし</a>
+                  <input type="hidden" name="url" value="../course/detail.html" />
+                </div>
+
+                <div class="form-group col-md-6">
+                  <a class="btn btn-info btn-lg btn-block support-link">チャットのみ</a>
+                  <input type="hidden" name="url" value="../course/detail.html" />
+                </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-heading">オペレーター直接問い合わせ</div>
+              <div class="panel-body">
+                <div class="form-group col-md-12">
+                  ※オペレーター直接問い合わせは回線切断などのトラブルにより特定のオペレーターに対し再接続を行いたい場合を除きオペレーターから指示がない限りは使用しないでください。
+                </div>
+
+                <div class="form-group col-md-3">
+                  <a class="btn btn-default btn-block support-link">河野聖也</a>
+                  <input type="hidden" name="url" value="../course/detail.html" />
+                </div>
+
+                <div class="form-group col-md-3">
+                  <a class="btn btn-default btn-block support-link">藤田秀馬</a>
+                  <input type="hidden" name="url" value="../course/detail.html" />
+                </div>
+
+                <div class="form-group col-md-3">
+                  <a class="btn btn-default btn-block support-link">その他</a>
+                  <input type="hidden" name="url" value="../course/detail.html" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--#main-->
+        </div>
+        <!--#contents-->
+        <form id="screenTransForm" name="screenTransForm" method="post"></form>
+        <div id="push"></div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">Copyright&copy; 2021 System Shared co., ltd, ALL Rights Reserved</p>
+      </div>
+      <div id="page_top"><a href="#"></a></div>
+    </div>
+    <script>
+      $("#page_top").hide();
+      $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
+          $("#page_top").fadeIn();
+        } else {
+          $("#page_top").fadeOut();
+        }
+      });
+
+      $("#page_top").click(function () {
+        $("body,html").animate(
+          {
+            scrollTop: 0,
+          },
+          700
+        );
+        return false;
+      });
+    </script>
+    <!--#container-->
+  </body>
+</html>

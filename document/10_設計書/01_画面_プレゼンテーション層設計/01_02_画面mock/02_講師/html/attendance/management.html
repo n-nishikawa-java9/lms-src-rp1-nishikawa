@@ -1,0 +1,3188 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)../lms/attendance/update/indexCompany -->
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>勤怠情報変更 | LMS</title>
+
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/lms.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/jstree.css" />
+  <link rel="shortcut icon" href="../../img/favicon.ico" />
+
+  <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+  <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+  <script type="text/javascript" src="../../js/lms_common.js"></script>
+  <script type="text/javascript" src="../../js/jstree.min.js"></script>
+  <script type="text/javascript" src="../../js/currency.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+
+  <script type="text/javascript" src="../../js/companyAttendance.js"></script>
+
+  <script type="text/javascript">
+    var onChangeCount = 0;
+    function changeLeaveDate() {
+      if (onChangeCount == 0) {
+        onChangeCount++;
+        return;
+      }
+      var leaveDate = document.getElementsByName("leaveDate")[0].value;
+      var i = 0;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+
+      var trainingDate = document.getElementsByName(
+        "attendanceList[" + i + "].trainingDate"
+      )[0].value;
+      var status = document.getElementsByName(
+        "attendanceList[" + i + "].statusDispName"
+      )[0].value;
+      if (leaveDate == "") {
+        if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      } else {
+        if (leaveDate <= trainingDate) {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = true;
+        } else if (status != "欠席") {
+          document.getElementsByName(
+            "attendanceList[" + i + "].isAbsent"
+          )[0].checked = false;
+        }
+      }
+      i++;
+    }
+    function clearLeaveDate() {
+      document.getElementsByName("leaveDate")[0].value = "";
+      changeLeaveDate();
+    }
+    function checkUpdate() {
+      var ret = true;
+      var leaveDate = document.getElementsByName("leaveDate")[0].value;
+      if (leaveDate != "") {
+        var isConfirm = false;
+        var i = 0;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        var trainingDate = document.getElementsByName(
+          "attendanceList[" + i + "].trainingDate"
+        )[0].value;
+        var isAbsent = document.getElementsByName(
+          "attendanceList[" + i + "].isAbsent"
+        )[0].checked;
+        if (leaveDate <= trainingDate && !isAbsent) {
+          isConfirm = true;
+        }
+        i++;
+
+        if (isConfirm) {
+          ret = window.confirm(
+            "途中退校日以降の日付が欠席となっていませんが、よろしいですか？"
+          );
+        }
+      }
+      return ret;
+    }
+  </script>
+</head>
+
+<body>
+  <div id="wrap">
+    <nav class="navbar navbar-default">
+      <script>
+        $(function () {
+          $("#question").click(function (e) {
+            e.preventDefault();
+            $("#check-modal").modal("show");
+          });
+          $("#check-confirm-btn").click(function () {
+            window.open("", "_blank");
+            $("#check-modal").remove();
+            location.reload();
+          });
+        });
+      </script>
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../course/list.html" class="navbar-brand">LMS 学習管理システム</a>
+
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-content">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="nav-content" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="../course/detail/?courseId=602#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">研修管理<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../course/list.html">コース</a></li>
+                <li><a href="../user/list.html">受講生</a></li>
+                <li><a href="../dailyReport/dailyList.html">日報</a></li>
+                <li><a href="../exam/list.html">試験結果</a></li>
+                <li><a href="../deliverables/list.html">成果物</a></li>
+                <li><a href="../attendance/list.html">勤怠確認</a></li>
+                <li>
+                  <a href="../attendance/bulkRegist.html">勤怠一括登録</a>
+                </li>
+                <li>
+                  <a href="../evReport/scoringConfirmation.html">評価レポート採点確認</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="../course/detail/?courseId=602#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">面談・報告会<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a href="../takeOver/list.html">引継面談／会場見学 実施予定</a>
+                </li>
+                <li>
+                  <a href="../presentation/list.html">チーム編成</a>
+                </li>
+                <li>
+                  <a href="../presentation/list.html">成果報告会実施予定</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="../course/detail/?courseId=602#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">その他<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+
+                <li>
+                  <a href="../fileshare/list.html" class="form-horizontal">ファイル共有</a>
+                </li>
+                <li>
+                  <a href="../movie/index.html" class="form-horizontal">動画視聴</a>
+                </li>
+
+                <li>
+                  <a href="../help/index.html" class="form-horizontal">ヘルプ</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="text-center">
+              <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom"
+                title="お知らせ" data-content="" data-html="true"></span>
+            </li>
+            <li><a href="../user/myAccount.html"><small>ようこそ講師さん</small></a></li>
+            <li>
+              <c:url var="logout" value="../../index.html"></c:url>
+              <button type="button" class="btn btn-default navbar-btn" onclick="location.href='../../index.html'">
+                <a href="../../index.html" class="glyphicon glyphicon-log-out"> ログアウト</a>
+              </button>
+            </li>
+          </ul>
+        </div>
+    </nav>
+    <div class="container">
+      <div id="contents" class="clearfix">
+        <div id="main" class="main2clm">
+          <h2>勤怠管理 <small>( テスト受講生 )</small></h2>
+          <div class="alert alert-info alert-dismissible fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            様式8号を出力するための勤怠時刻を入力してください。
+          </div>
+
+
+          <div>
+            <input type="hidden" name="org.apache.struts.taglib.html.TOKEN" value="ae8588c0be713021314fcbee28906b4c" />
+          </div>
+          <div class="row">
+            <div class="bs-component col-sm-12">
+              <!-- 生徒の勤怠情報を直接編集するリンク -->
+              <form name="attendance_updateActionForm" method="POST" action="../attendance/update.html">
+                <div class="well well-lg">
+                  <button id="copyAttendance" type="button" class="btn btn-default">
+                    受講生が入力した時刻をコピーする
+                  </button>
+
+                  <input type="submit" name="index" class="btn btn-default" value="受講生の勤怠情報を直接編集する" />
+                </div>
+              </form>
+              <div class="alert alert-info alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+                <ul>
+                  <li>コピー時、時刻は15分刻みで丸め処理が行われます。</li>
+                  <li>
+                    貴社業務時間外、講義がない時間帯についても丸め処理が行われます。
+                  </li>
+                  <li>
+                    貴社業務時間外、講義がない時間帯については助成金対象外となります。
+                  </li>
+                </ul>
+              </div>
+              <form name="attendance_updateActionForm" method="POST" action="../attendance/list.html">
+                <table class="table table-hover dataTable no-footer">
+                  <thead>
+                    <tr>
+                      <th style="width: 160px">日付</th>
+                      <th>コース内容</th>
+                      <th style="width: 70px">出勤</th>
+                      <th style="width: 70px">退勤</th>
+                      <th style="width: 120px">中抜け時間</th>
+                      <th style="width: 120px">ステータス</th>
+                      <th>備考</th>
+                      <th style="width: 90px">開始</th>
+                      <th style="width: 90px">終了</th>
+                      <th style="width: 50px">欠席</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[0].attendanceId" value="140053" />
+                      <input type="hidden" name="attendanceList[0].trainingDate" value="2021-02-01" />
+                      <input type="hidden" name="attendanceList[0].dispTrainingDate" value="2021年2月1日(Mon)" />
+                      <input type="hidden" name="attendanceList[0].sectionName" value="Java基礎 1日目" />
+                      <input type="hidden" name="attendanceList[0].statusDispName" value="" />
+                      <input type="hidden" name="attendanceList[0].trainingStartTimeRaw" value="08:26" />
+                      <input type="hidden" name="attendanceList[0].trainingStartTimeRounded" value="09:00"
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[0].trainingEndTimeRaw" value="18:05" />
+                      <input type="hidden" name="attendanceList[0].trainingEndTimeRounded" value="18:00"
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[0].noteRaw" value="" />
+                      <td>2021年2月1日(Mon)</td>
+                      <td>Java基礎 1日目</td>
+                      <td>08:26</td>
+                      <td>18:05</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[0].trainingStartTime" value="08:55"
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[0].trainingEndTime" value="18:00"
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[0].isAbsent" value="on"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[1].attendanceId" value="140054" />
+                      <input type="hidden" name="attendanceList[1].trainingDate" value="2021-02-02" />
+                      <input type="hidden" name="attendanceList[1].dispTrainingDate" value="2021年2月2日(Tue)" />
+                      <input type="hidden" name="attendanceList[1].sectionName" value="Java基礎 2日目" />
+                      <input type="hidden" name="attendanceList[1].statusDispName" value="" />
+                      <input type="hidden" name="attendanceList[1].trainingStartTimeRaw" value="09:00" />
+                      <input type="hidden" name="attendanceList[1].trainingStartTimeRounded" value="09:00"
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[1].trainingEndTimeRaw" value="18:05" />
+                      <input type="hidden" name="attendanceList[1].trainingEndTimeRounded" value="18:00"
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[1].noteRaw" value="" />
+                      <td>2021年2月2日(Tue)</td>
+                      <td>Java基礎 2日目</td>
+                      <td>09:00</td>
+                      <td>18:05</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[1].trainingStartTime" value="09:00"
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[1].trainingEndTime" value="18:00"
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[1].isAbsent" value="on"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[2].attendanceId" value="140055" />
+                      <input type="hidden" name="attendanceList[2].trainingDate" value="2021-02-03" />
+                      <input type="hidden" name="attendanceList[2].dispTrainingDate" value="2021年2月3日(Wed)" />
+                      <input type="hidden" name="attendanceList[2].sectionName" value="Java基礎 3日目" />
+                      <input type="hidden" name="attendanceList[2].statusDispName" value="" />
+                      <input type="hidden" name="attendanceList[2].trainingStartTimeRaw" value="08:26" />
+                      <input type="hidden" name="attendanceList[2].trainingStartTimeRounded" value="09:00"
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[2].trainingEndTimeRaw" value="18:05" />
+                      <input type="hidden" name="attendanceList[2].trainingEndTimeRounded" value="18:00"
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[2].noteRaw" value="" />
+                      <td>2021年2月3日(Wed)</td>
+                      <td>Java基礎 3日目</td>
+                      <td>08:26</td>
+                      <td>18:05</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[2].trainingStartTime" value="09:00"
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[2].trainingEndTime" value="18:00"
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[2].isAbsent" value="on"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[3].attendanceId" value="140056" />
+                      <input type="hidden" name="attendanceList[3].trainingDate" value="2021-02-04" />
+                      <input type="hidden" name="attendanceList[3].dispTrainingDate" value="2021年2月4日(Thu)" />
+                      <input type="hidden" name="attendanceList[3].sectionName" value="Java基礎 4日目" />
+                      <input type="hidden" name="attendanceList[3].statusDispName" value="" />
+                      <input type="hidden" name="attendanceList[3].trainingStartTimeRaw" value="08:26" />
+                      <input type="hidden" name="attendanceList[3].trainingStartTimeRounded" value="09:00"
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[3].trainingEndTimeRaw" value="18:05" />
+                      <input type="hidden" name="attendanceList[3].trainingEndTimeRounded" value="18:00"
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[3].noteRaw" value="" />
+                      <td>2021年2月4日(Thu)</td>
+                      <td>Java基礎 4日目</td>
+                      <td>08:26</td>
+                      <td>18:05</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[3].trainingStartTime" value="09:00"
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[3].trainingEndTime" value="18:00"
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[3].isAbsent" value="on"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[4].attendanceId" value="140057" />
+                      <input type="hidden" name="attendanceList[4].trainingDate" value="2021-02-05" />
+                      <input type="hidden" name="attendanceList[4].dispTrainingDate" value="2021年2月5日(Fri)" />
+                      <input type="hidden" name="attendanceList[4].sectionName" value="Java基礎 5日目" />
+                      <input type="hidden" name="attendanceList[4].statusDispName" value="" />
+                      <input type="hidden" name="attendanceList[4].trainingStartTimeRaw" value="08:26" />
+                      <input type="hidden" name="attendanceList[4].trainingStartTimeRounded" value="09:00"
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[4].trainingEndTimeRaw" value="18:05" />
+                      <input type="hidden" name="attendanceList[4].trainingEndTimeRounded" value="18:00"
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[4].noteRaw" value="" />
+                      <td>2021年2月5日(Fri)</td>
+                      <td>Java基礎 5日目</td>
+                      <td>08:26</td>
+                      <td>18:05</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[4].trainingStartTime" value="09:00"
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[4].trainingEndTime" value="18:00"
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[4].isAbsent" value="on"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[5].attendanceId" value="140060" />
+                      <input type="hidden" name="attendanceList[5].trainingDate" value="2021-02-08" />
+                      <input type="hidden" name="attendanceList[5].dispTrainingDate" value="2021年2月8日(Mon)" />
+                      <input type="hidden" name="attendanceList[5].sectionName" value="Java基礎 6日目" />
+                      <input type="hidden" name="attendanceList[5].statusDispName" value="" />
+                      <input type="hidden" name="attendanceList[5].trainingStartTimeRaw" value="09:00" />
+                      <input type="hidden" name="attendanceList[5].trainingStartTimeRounded" value="09:00"
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[5].trainingEndTimeRaw" value="18:05" />
+                      <input type="hidden" name="attendanceList[5].trainingEndTimeRounded" value="18:00"
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[5].noteRaw" value="" />
+                      <td>2021年2月8日(Mon)</td>
+                      <td>Java基礎 6日目</td>
+                      <td>09:00</td>
+                      <td>18:05</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[5].trainingStartTime" value="09:00"
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[5].trainingEndTime" value="18:00"
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[5].isAbsent" value="on"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[6].attendanceId" value="140061" />
+                      <input type="hidden" name="attendanceList[6].trainingDate" value="2021-02-09" />
+                      <input type="hidden" name="attendanceList[6].dispTrainingDate" value="2021年2月9日(Tue)" />
+                      <input type="hidden" name="attendanceList[6].sectionName" value="Java基礎 7日目" />
+                      <input type="hidden" name="attendanceList[6].statusDispName" value="" />
+                      <input type="hidden" name="attendanceList[6].trainingStartTimeRaw" value="09:00" />
+                      <input type="hidden" name="attendanceList[6].trainingStartTimeRounded" value="09:00"
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[6].trainingEndTimeRaw" value="18:05" />
+                      <input type="hidden" name="attendanceList[6].trainingEndTimeRounded" value="18:00"
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[6].noteRaw" value="" />
+                      <td>2021年2月9日(Tue)</td>
+                      <td>Java基礎 7日目</td>
+                      <td>09:00</td>
+                      <td>18:05</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[6].trainingStartTime" value="09:00"
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[6].trainingEndTime" value="18:00"
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[6].isAbsent" value="on"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[7].attendanceId" value="140063" />
+                      <input type="hidden" name="attendanceList[7].trainingDate" value="2021-02-11" />
+                      <input type="hidden" name="attendanceList[7].dispTrainingDate" value="2021年2月11日(Thu)" />
+                      <input type="hidden" name="attendanceList[7].sectionName" value="Java基礎 8日目" />
+                      <input type="hidden" name="attendanceList[7].statusDispName" value="" />
+                      <input type="hidden" name="attendanceList[7].trainingStartTimeRaw" value="09:00" />
+                      <input type="hidden" name="attendanceList[7].trainingStartTimeRounded" value="09:00"
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[7].trainingEndTimeRaw" value="18:00" />
+                      <input type="hidden" name="attendanceList[7].trainingEndTimeRounded" value="18:00"
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[7].noteRaw" value="" />
+                      <td>2021年2月11日(Thu)</td>
+                      <td>Java基礎 8日目</td>
+                      <td>09:00</td>
+                      <td>18:00</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[7].trainingStartTime" value="09:00"
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[7].trainingEndTime" value="18:00"
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[7].isAbsent" value="on"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[8].attendanceId" value="140066" />
+                      <input type="hidden" name="attendanceList[8].trainingDate" value="2021-02-14" />
+                      <input type="hidden" name="attendanceList[8].dispTrainingDate" value="2021年2月14日(Sun)" />
+                      <input type="hidden" name="attendanceList[8].sectionName" value="Java基礎 9日目" />
+                      <input type="hidden" name="attendanceList[8].statusDispName" value="" />
+                      <input type="hidden" name="attendanceList[8].trainingStartTimeRaw" value="09:00" />
+                      <input type="hidden" name="attendanceList[8].trainingStartTimeRounded" value="09:00"
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[8].trainingEndTimeRaw" value="18:00" />
+                      <input type="hidden" name="attendanceList[8].trainingEndTimeRounded" value="18:00"
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[8].noteRaw" value="" />
+                      <td>2021年2月14日(Sun)</td>
+                      <td>Java基礎 9日目</td>
+                      <td>09:00</td>
+                      <td>18:00</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[8].trainingStartTime" value="09:00"
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[8].trainingEndTime" value="18:00"
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[8].isAbsent" value="on"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[9].attendanceId" value="140067" />
+                      <input type="hidden" name="attendanceList[9].trainingDate" value="2021-02-15" />
+                      <input type="hidden" name="attendanceList[9].dispTrainingDate" value="2021年2月15日(Mon)" />
+                      <input type="hidden" name="attendanceList[9].sectionName" value="Oracle基礎 1日目" />
+                      <input type="hidden" name="attendanceList[9].statusDispName" value="" />
+                      <input type="hidden" name="attendanceList[9].trainingStartTimeRaw" value="09:00" />
+                      <input type="hidden" name="attendanceList[9].trainingStartTimeRounded" value="09:00"
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[9].trainingEndTimeRaw" value="18:00" />
+                      <input type="hidden" name="attendanceList[9].trainingEndTimeRounded" value="18:00"
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[9].noteRaw" value="" />
+                      <td>2021年2月15日(Mon)</td>
+                      <td>Oracle基礎 1日目</td>
+                      <td>09:00</td>
+                      <td>18:00</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[9].trainingStartTime" value="09:00"
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[9].trainingEndTime" value="18:00"
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[9].isAbsent" value="on"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[10].attendanceId" value="140068" />
+                      <input type="hidden" name="attendanceList[10].trainingDate" value="2021-02-16" />
+                      <input type="hidden" name="attendanceList[10].dispTrainingDate" value="2021年2月16日(Tue)" />
+                      <input type="hidden" name="attendanceList[10].sectionName" value="Oracle基礎 2日目" />
+                      <input type="hidden" name="attendanceList[10].statusDispName" value="" />
+                      <input type="hidden" name="attendanceList[10].trainingStartTimeRaw" value="09:00" />
+                      <input type="hidden" name="attendanceList[10].trainingStartTimeRounded" value="09:00"
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[10].trainingEndTimeRaw" value="18:00" />
+                      <input type="hidden" name="attendanceList[10].trainingEndTimeRounded" value="18:00"
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[10].noteRaw" value="" />
+                      <td>2021年2月16日(Tue)</td>
+                      <td>Oracle基礎 2日目</td>
+                      <td>09:00</td>
+                      <td>18:00</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[10].trainingStartTime" value="09:00"
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[10].trainingEndTime" value="18:00"
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[10].isAbsent" value="on"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[11].attendanceId" value="140069" />
+                      <input type="hidden" name="attendanceList[11].trainingDate" value="2021-02-17" />
+                      <input type="hidden" name="attendanceList[11].dispTrainingDate" value="2021年2月17日(Wed)" />
+                      <input type="hidden" name="attendanceList[11].sectionName" value="HTML/CSS基礎 1日目" />
+                      <input type="hidden" name="attendanceList[11].statusDispName" value="" />
+                      <input type="hidden" name="attendanceList[11].trainingStartTimeRaw" value="09:00" />
+                      <input type="hidden" name="attendanceList[11].trainingStartTimeRounded" value="09:00"
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[11].trainingEndTimeRaw" value="18:00" />
+                      <input type="hidden" name="attendanceList[11].trainingEndTimeRounded" value="18:00"
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[11].noteRaw" value="" />
+                      <td>2021年2月17日(Wed)</td>
+                      <td>HTML/CSS基礎 1日目</td>
+                      <td>09:00</td>
+                      <td>18:00</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[11].trainingStartTime" value="09:00"
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[11].trainingEndTime" value="18:00"
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[11].isAbsent" value="on"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[12].attendanceId" value="140070" />
+                      <input type="hidden" name="attendanceList[12].trainingDate" value="2021-02-18" />
+                      <input type="hidden" name="attendanceList[12].dispTrainingDate" value="2021年2月18日(Thu)" />
+                      <input type="hidden" name="attendanceList[12].sectionName" value="Servler/JSP基礎 1日目" />
+                      <input type="hidden" name="attendanceList[12].statusDispName" value="" />
+                      <input type="hidden" name="attendanceList[12].trainingStartTimeRaw" value="09:00" />
+                      <input type="hidden" name="attendanceList[12].trainingStartTimeRounded" value="09:00"
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[12].trainingEndTimeRaw" value="18:00" />
+                      <input type="hidden" name="attendanceList[12].trainingEndTimeRounded" value="18:00"
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[12].noteRaw" value="" />
+                      <td>2021年2月18日(Thu)</td>
+                      <td>Servler/JSP基礎 1日目</td>
+                      <td>09:00</td>
+                      <td>18:00</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[12].trainingStartTime" value="09:00"
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[12].trainingEndTime" value="18:00"
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[12].isAbsent" value="on"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[13].attendanceId" value="140073" />
+                      <input type="hidden" name="attendanceList[13].trainingDate" value="2021-02-21" />
+                      <input type="hidden" name="attendanceList[13].dispTrainingDate" value="2021年2月21日(Sun)" />
+                      <input type="hidden" name="attendanceList[13].sectionName" value="Servler/JSP基礎 2日目" />
+                      <input type="hidden" name="attendanceList[13].statusDispName" value="" />
+                      <input type="hidden" name="attendanceList[13].trainingStartTimeRaw" value="09:00" />
+                      <input type="hidden" name="attendanceList[13].trainingStartTimeRounded" value="09:00"
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[13].trainingEndTimeRaw" value="18:00" />
+                      <input type="hidden" name="attendanceList[13].trainingEndTimeRounded" value="18:00"
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[13].noteRaw" value="" />
+                      <td>2021年2月21日(Sun)</td>
+                      <td>Servler/JSP基礎 2日目</td>
+                      <td>09:00</td>
+                      <td>18:00</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[13].trainingStartTime" value="09:00"
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[13].trainingEndTime" value="18:00"
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[13].isAbsent" value="on"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[14].attendanceId" value="140074" />
+                      <input type="hidden" name="attendanceList[14].trainingDate" value="2021-02-22" />
+                      <input type="hidden" name="attendanceList[14].dispTrainingDate" value="2021年2月22日(Mon)" />
+                      <input type="hidden" name="attendanceList[14].sectionName" value="Servler/JSP基礎 3日目" />
+                      <input type="hidden" name="attendanceList[14].statusDispName" value="遅刻" />
+                      <input type="hidden" name="attendanceList[14].trainingStartTimeRaw" value="13:05" />
+                      <input type="hidden" name="attendanceList[14].trainingStartTimeRounded" value="13:15"
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[14].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[14].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[14].noteRaw" value="" />
+                      <td>2021年2月22日(Mon)</td>
+                      <td>Servler/JSP基礎 3日目</td>
+                      <td>13:05</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>遅刻</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[14].trainingStartTime" value="13:15"
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[14].trainingEndTime" value="18:00"
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[14].isAbsent" value="on"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[15].attendanceId" value="140075" />
+                      <input type="hidden" name="attendanceList[15].trainingDate" value="2021-02-23" />
+                      <input type="hidden" name="attendanceList[15].dispTrainingDate" value="2021年2月23日(Tue)" />
+                      <input type="hidden" name="attendanceList[15].sectionName" value="Servler/JSP基礎 4日目" />
+                      <input type="hidden" name="attendanceList[15].statusDispName" value="" />
+                      <input type="hidden" name="attendanceList[15].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[15].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[15].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[15].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[15].noteRaw" value="" />
+                      <td>2021年2月23日(Tue)</td>
+                      <td>Servler/JSP基礎 4日目</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[15].trainingStartTime" value="09:00"
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[15].trainingEndTime" value="18:00"
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[15].isAbsent" value="on"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[16].attendanceId" value="140076" />
+                      <input type="hidden" name="attendanceList[16].trainingDate" value="2021-02-24" />
+                      <input type="hidden" name="attendanceList[16].dispTrainingDate" value="2021年2月24日(Wed)" />
+                      <input type="hidden" name="attendanceList[16].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[16].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[16].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[16].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[16].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[16].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[16].noteRaw" value="" />
+                      <td>2021年2月24日(Wed)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[16].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[16].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[16].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[17].attendanceId" value="140077" />
+                      <input type="hidden" name="attendanceList[17].trainingDate" value="2021-02-25" />
+                      <input type="hidden" name="attendanceList[17].dispTrainingDate" value="2021年2月25日(Thu)" />
+                      <input type="hidden" name="attendanceList[17].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[17].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[17].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[17].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[17].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[17].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[17].noteRaw" value="" />
+                      <td>2021年2月25日(Thu)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[17].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[17].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[17].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[18].attendanceId" value="140081" />
+                      <input type="hidden" name="attendanceList[18].trainingDate" value="2021-02-28" />
+                      <input type="hidden" name="attendanceList[18].dispTrainingDate" value="2021年2月28日(Sun)" />
+                      <input type="hidden" name="attendanceList[18].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[18].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[18].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[18].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[18].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[18].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[18].noteRaw" value="" />
+                      <td>2021年2月28日(Sun)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[18].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[18].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[18].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[19].attendanceId" value="140082" />
+                      <input type="hidden" name="attendanceList[19].trainingDate" value="2021-03-01" />
+                      <input type="hidden" name="attendanceList[19].dispTrainingDate" value="2021年3月1日(Mon)" />
+                      <input type="hidden" name="attendanceList[19].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[19].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[19].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[19].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[19].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[19].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[19].noteRaw" value="" />
+                      <td>2021年3月1日(Mon)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[19].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[19].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[19].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[20].attendanceId" value="140083" />
+                      <input type="hidden" name="attendanceList[20].trainingDate" value="2021-03-02" />
+                      <input type="hidden" name="attendanceList[20].dispTrainingDate" value="2021年3月2日(Tue)" />
+                      <input type="hidden" name="attendanceList[20].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[20].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[20].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[20].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[20].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[20].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[20].noteRaw" value="" />
+                      <td>2021年3月2日(Tue)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[20].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[20].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[20].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[21].attendanceId" value="140084" />
+                      <input type="hidden" name="attendanceList[21].trainingDate" value="2021-03-03" />
+                      <input type="hidden" name="attendanceList[21].dispTrainingDate" value="2021年3月3日(Wed)" />
+                      <input type="hidden" name="attendanceList[21].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[21].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[21].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[21].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[21].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[21].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[21].noteRaw" value="" />
+                      <td>2021年3月3日(Wed)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[21].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[21].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[21].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[22].attendanceId" value="140085" />
+                      <input type="hidden" name="attendanceList[22].trainingDate" value="2021-03-04" />
+                      <input type="hidden" name="attendanceList[22].dispTrainingDate" value="2021年3月4日(Thu)" />
+                      <input type="hidden" name="attendanceList[22].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[22].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[22].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[22].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[22].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[22].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[22].noteRaw" value="" />
+                      <td>2021年3月4日(Thu)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[22].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[22].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[22].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[23].attendanceId" value="140086" />
+                      <input type="hidden" name="attendanceList[23].trainingDate" value="2021-03-05" />
+                      <input type="hidden" name="attendanceList[23].dispTrainingDate" value="2021年3月5日(Fri)" />
+                      <input type="hidden" name="attendanceList[23].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[23].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[23].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[23].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[23].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[23].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[23].noteRaw" value="" />
+                      <td>2021年3月5日(Fri)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[23].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[23].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[23].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[24].attendanceId" value="140087" />
+                      <input type="hidden" name="attendanceList[24].trainingDate" value="2021-03-08" />
+                      <input type="hidden" name="attendanceList[24].dispTrainingDate" value="2021年3月8日(Mon)" />
+                      <input type="hidden" name="attendanceList[24].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[24].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[24].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[24].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[24].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[24].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[24].noteRaw" value="" />
+                      <td>2021年3月8日(Mon)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[24].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[24].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[24].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[25].attendanceId" value="140088" />
+                      <input type="hidden" name="attendanceList[25].trainingDate" value="2021-03-09" />
+                      <input type="hidden" name="attendanceList[25].dispTrainingDate" value="2021年3月9日(Tue)" />
+                      <input type="hidden" name="attendanceList[25].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[25].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[25].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[25].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[25].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[25].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[25].noteRaw" value="" />
+                      <td>2021年3月9日(Tue)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[25].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[25].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[25].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[26].attendanceId" value="140089" />
+                      <input type="hidden" name="attendanceList[26].trainingDate" value="2021-03-10" />
+                      <input type="hidden" name="attendanceList[26].dispTrainingDate" value="2021年3月10日(Wed)" />
+                      <input type="hidden" name="attendanceList[26].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[26].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[26].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[26].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[26].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[26].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[26].noteRaw" value="" />
+                      <td>2021年3月10日(Wed)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[26].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[26].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[26].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[27].attendanceId" value="140090" />
+                      <input type="hidden" name="attendanceList[27].trainingDate" value="2021-03-11" />
+                      <input type="hidden" name="attendanceList[27].dispTrainingDate" value="2021年3月11日(Thu)" />
+                      <input type="hidden" name="attendanceList[27].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[27].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[27].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[27].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[27].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[27].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[27].noteRaw" value="" />
+                      <td>2021年3月11日(Thu)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[27].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[27].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[27].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[28].attendanceId" value="140091" />
+                      <input type="hidden" name="attendanceList[28].trainingDate" value="2021-03-12" />
+                      <input type="hidden" name="attendanceList[28].dispTrainingDate" value="2021年3月12日(Fri)" />
+                      <input type="hidden" name="attendanceList[28].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[28].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[28].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[28].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[28].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[28].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[28].noteRaw" value="" />
+                      <td>2021年3月12日(Fri)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[28].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[28].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[28].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[29].attendanceId" value="140092" />
+                      <input type="hidden" name="attendanceList[29].trainingDate" value="2021-03-15" />
+                      <input type="hidden" name="attendanceList[29].dispTrainingDate" value="2021年3月15日(Mon)" />
+                      <input type="hidden" name="attendanceList[29].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[29].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[29].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[29].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[29].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[29].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[29].noteRaw" value="" />
+                      <td>2021年3月15日(Mon)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[29].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[29].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[29].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[30].attendanceId" value="140093" />
+                      <input type="hidden" name="attendanceList[30].trainingDate" value="2021-03-16" />
+                      <input type="hidden" name="attendanceList[30].dispTrainingDate" value="2021年3月16日(Tue)" />
+                      <input type="hidden" name="attendanceList[30].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[30].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[30].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[30].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[30].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[30].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[30].noteRaw" value="" />
+                      <td>2021年3月16日(Tue)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[30].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[30].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[30].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[31].attendanceId" value="140094" />
+                      <input type="hidden" name="attendanceList[31].trainingDate" value="2021-03-17" />
+                      <input type="hidden" name="attendanceList[31].dispTrainingDate" value="2021年3月17日(Wed)" />
+                      <input type="hidden" name="attendanceList[31].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[31].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[31].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[31].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[31].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[31].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[31].noteRaw" value="" />
+                      <td>2021年3月17日(Wed)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[31].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[31].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[31].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[32].attendanceId" value="140095" />
+                      <input type="hidden" name="attendanceList[32].trainingDate" value="2021-03-18" />
+                      <input type="hidden" name="attendanceList[32].dispTrainingDate" value="2021年3月18日(Thu)" />
+                      <input type="hidden" name="attendanceList[32].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[32].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[32].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[32].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[32].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[32].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[32].noteRaw" value="" />
+                      <td>2021年3月18日(Thu)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[32].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[32].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[32].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[33].attendanceId" value="140096" />
+                      <input type="hidden" name="attendanceList[33].trainingDate" value="2021-03-19" />
+                      <input type="hidden" name="attendanceList[33].dispTrainingDate" value="2021年3月19日(Fri)" />
+                      <input type="hidden" name="attendanceList[33].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[33].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[33].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[33].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[33].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[33].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[33].noteRaw" value="" />
+                      <td>2021年3月19日(Fri)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[33].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[33].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[33].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[34].attendanceId" value="140097" />
+                      <input type="hidden" name="attendanceList[34].trainingDate" value="2021-03-22" />
+                      <input type="hidden" name="attendanceList[34].dispTrainingDate" value="2021年3月22日(Mon)" />
+                      <input type="hidden" name="attendanceList[34].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[34].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[34].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[34].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[34].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[34].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[34].noteRaw" value="" />
+                      <td>2021年3月22日(Mon)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[34].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[34].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[34].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[35].attendanceId" value="140098" />
+                      <input type="hidden" name="attendanceList[35].trainingDate" value="2021-03-23" />
+                      <input type="hidden" name="attendanceList[35].dispTrainingDate" value="2021年3月23日(Tue)" />
+                      <input type="hidden" name="attendanceList[35].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[35].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[35].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[35].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[35].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[35].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[35].noteRaw" value="" />
+                      <td>2021年3月23日(Tue)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[35].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[35].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[35].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[36].attendanceId" value="140099" />
+                      <input type="hidden" name="attendanceList[36].trainingDate" value="2021-03-24" />
+                      <input type="hidden" name="attendanceList[36].dispTrainingDate" value="2021年3月24日(Wed)" />
+                      <input type="hidden" name="attendanceList[36].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[36].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[36].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[36].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[36].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[36].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[36].noteRaw" value="" />
+                      <td>2021年3月24日(Wed)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[36].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[36].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[36].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[37].attendanceId" value="140100" />
+                      <input type="hidden" name="attendanceList[37].trainingDate" value="2021-03-25" />
+                      <input type="hidden" name="attendanceList[37].dispTrainingDate" value="2021年3月25日(Thu)" />
+                      <input type="hidden" name="attendanceList[37].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[37].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[37].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[37].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[37].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[37].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[37].noteRaw" value="" />
+                      <td>2021年3月25日(Thu)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[37].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[37].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[37].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[38].attendanceId" value="140101" />
+                      <input type="hidden" name="attendanceList[38].trainingDate" value="2021-03-26" />
+                      <input type="hidden" name="attendanceList[38].dispTrainingDate" value="2021年3月26日(Fri)" />
+                      <input type="hidden" name="attendanceList[38].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[38].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[38].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[38].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[38].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[38].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[38].noteRaw" value="" />
+                      <td>2021年3月26日(Fri)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[38].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[38].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[38].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[39].attendanceId" value="140102" />
+                      <input type="hidden" name="attendanceList[39].trainingDate" value="2021-03-29" />
+                      <input type="hidden" name="attendanceList[39].dispTrainingDate" value="2021年3月29日(Mon)" />
+                      <input type="hidden" name="attendanceList[39].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[39].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[39].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[39].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[39].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[39].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[39].noteRaw" value="" />
+                      <td>2021年3月29日(Mon)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[39].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[39].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[39].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[40].attendanceId" value="140103" />
+                      <input type="hidden" name="attendanceList[40].trainingDate" value="2021-03-30" />
+                      <input type="hidden" name="attendanceList[40].dispTrainingDate" value="2021年3月30日(Tue)" />
+                      <input type="hidden" name="attendanceList[40].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[40].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[40].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[40].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[40].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[40].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[40].noteRaw" value="" />
+                      <td>2021年3月30日(Tue)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[40].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[40].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[40].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+
+                    <tr class="">
+                      <input type="hidden" name="attendanceList[41].attendanceId" value="140104" />
+                      <input type="hidden" name="attendanceList[41].trainingDate" value="2021-03-31" />
+                      <input type="hidden" name="attendanceList[41].dispTrainingDate" value="2021年3月31日(Wed)" />
+                      <input type="hidden" name="attendanceList[41].sectionName" value="セクション" />
+                      <input type="hidden" name="attendanceList[41].statusDispName" value="欠席" />
+                      <input type="hidden" name="attendanceList[41].trainingStartTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[41].trainingStartTimeRounded" value=""
+                        class="startTimeRounded" />
+                      <input type="hidden" name="attendanceList[41].trainingEndTimeRaw" value="[未入力]" />
+                      <input type="hidden" name="attendanceList[41].trainingEndTimeRounded" value=""
+                        class="endTimeRounded" />
+                      <input type="hidden" name="attendanceList[41].noteRaw" value="" />
+                      <td>2021年3月31日(Wed)</td>
+                      <td>セクション</td>
+                      <td>[未入力]</td>
+                      <td>[未入力]</td>
+                      <td></td>
+                      <td>欠席</td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList[41].trainingStartTime" value=""
+                          class="form-control startTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="text" name="attendanceList[41].trainingEndTime" value=""
+                          class="form-control endTime attendanceFormControl" />
+                      </td>
+                      <td>
+                        <input type="checkbox" name="attendanceList[41].isAbsent" value="on" checked="checked"
+                          class="attendanceFormControl" />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <input type="hidden" name="lmsUserId" value="24546" />
+                <input type="hidden" name="userName" value="テスト受講生" />
+                <div class="form-group">
+                  <a href="../attendance/list.html" class="btn btn-default">戻る</a>
+                  <input type="submit" name="completeCompany" class="btn btn-info" value="更新"
+                    onclick="return checkUpdate()" />
+                </div>
+            </div>
+          </div>
+          </form>
+        </div>
+        <!--#main-->
+      </div>
+      <!--#contents-->
+      <form id="screenTransForm" name="screenTransForm" method="post"></form>
+      <div id="push"></div>
+    </div>
+  </div>
+  <div id="footer">
+    <div class="container">
+      <p class="muted credit">
+        Copyright(C) 2015 System Shared co., ltd, ALL Rights Reserved
+      </p>
+    </div>
+  </div>
+  <!--#container-->
+
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="./勤怠情報変更 _ LMS_files/bootstrap.min.js.ダウンロード"></script>
+</body>
+
+</html>

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>セクション詳細 | LMS</title>
+
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/lms.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/jstree.css" />
+  <link rel="shortcut icon" href="../../img/favicon.ico" />
+
+  <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+  <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+  <script type="text/javascript" src="../../js/lms_common.js"></script>
+  <script type="text/javascript" src="../../js/jstree.min.js"></script>
+  <script type="text/javascript" src="../../js/currency.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div id="wrap">
+    <nav class="navbar navbar-default">
+      <script>
+        $(function () {
+          $("#question").click(function (e) {
+            e.preventDefault();
+            $("#check-modal").modal("show");
+          });
+        });
+      </script>
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../course/list.html" class="navbar-brand">LMS 学習管理システム</a>
+
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-content">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="nav-content" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">事務<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../mail/templateList.html">メールテンプレート管理</a></li>
+                <li><a href="../mail/sendList.html">メール一斉送信</a></li>
+                <li><a href="../company/list.html">企業管理</a></li>
+                <li><a href="../user/list.html">ユーザー管理</a></li>
+                <li><a href="../contract/list.html">契約履歴</a></li>
+                <li><a href="../takeOver/candidateList.html">引継面談／会場見学 スケジュール</a></li>
+                <li><a href="../takeOver/list.html">引継面談／会場見学 実施予定</a></li>
+                <li><a href="../schedule/presentationList.html">成果報告会スケジュール</a></li>
+                <li><a href="../presentation/teamList.html">成果報告会チーム確定</a></li>
+                <li><a href="../presentation/list.html">成果報告会実施予定</a></li>
+                <li><a href="../estimate/list.html">請求情報ダウンロード</a></li>
+                <li><a href="../evReport/resultList.html">評価レポート公開</a></li>
+                <li><a href="../estimate/productList.html">見積もり品マスタ管理</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">営業<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../entry/list.html">エントリー情報確定</a></li>
+                <li><a href="../assign/spreadsheet.html">会場アサイン</a></li>
+                <li><a href="../takeOver/list.html">引継面談／会場見学 実施予定</a></li>
+                <li><a href="../presentation/reserveList.html">成果報告会実施予定</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">運営<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../place/list.html">会場管理</a></li>
+                <li><a href="../genre/list.html">試験カテゴリー管理</a></li>
+                <li><a href="../exam/list.html">試験内容管理</a></li>
+                <li><a href="../dailyReport/list.html">日報管理</a></li>
+                <li><a href="../deliverables/manageList.html">成果物管理</a></li>
+                <li><a href="../evReport/list.html">評価レポート管理</a></li>
+                <li><a href="../meeting/fileList.html">面談ファイル管理</a></li>
+                <li><a href="../holiday/list.html">休暇日設定</a></li>
+                <li><a href="../course/list.html">コース管理</a></li>
+                <li><a href="../movie/categoryList.html">動画管理</a></li>
+                <li><a href="../mail/sendList.html">メール一斉送信</a></li>
+                <li><a href="../user/list.html">ユーザー管理</a></li>
+                <li><a href="../displayControl/list.html">データの表示制御</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">助成金<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../subsidy/companyList.html">企業情報</a></li>
+                <li><a href="../subsidy/templateList.html">テンプレート管理</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">受講生情報<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../exam/list.html">試験</a></li>
+                <li><a href="../dailyReport/dailyList.html">レポート</a></li>
+                <li><a href="../deliverables/list.html">成果物</a></li>
+                <li><a href="../evReport/scoringConfirmation.html">評価レポート採点確認</a></li>
+                <li><a href="../attendance/list.html">勤怠</a></li>
+                <li><a href="../attendance/bulkRegistList.html">勤怠一括登録</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">その他<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../fileshare/index.html">ファイル共有</a></li>
+                <li><a href="../course/csv.html">CSV出力</a></li>
+                <li><a href="../faq/categoryList.html">FAQ管理</a></li>
+                <li><a href="../contract/list.html">契約内容変更</a></li>
+                <li><a href="../info/latest.html">お知らせ設定</a></li>
+                <li><a href="../repair/list.html">改修履歴設定</a></li>
+                <li><a href="../help/index.html">ヘルプ</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="text-center">
+              <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom"
+              title="お知らせ" data-content="お知らせ内容" data-html="true"></span>
+            </li>
+            <li>
+              <a><small>ようこそ管理者さん</small></a>
+            </li>
+            <li>
+              <button type="button" class="btn btn-default navbar-btn" onclick="location.href='../../index.html'">
+                <a href="../../index.html" class="glyphicon glyphicon-log-out">　ログアウト</a>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div id="contents" class="clearfix">
+        <div id="main" class="main2clm">
+
+          <ol class="breadcrumb">
+            <li><a href="../course/detail.html">コース詳細</a></li>
+            <li class="active">セクション詳細</li>
+          </ol>
+
+		  <div id="section" th:object="${sectionServiceSectionDto}">
+			 <div id="sectionDetail">
+
+				<h2>Java基礎 1日目 <small> 2021年2月1日 </small></h2>
+				<h3>本日の内容</h3>
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<span>概要、基本構文、コーディング規約、練習問題、確認試験、総括(研修状況進捗の確認、理解度確認、目標確認)</span>
+					</div>
+				</div>
+
+				<h3>本日の資料</h3>
+				<table class="table">
+					<tr>
+						<th>資料</th>
+					</tr>
+					<tr th:each="sectionServiceFileDto: *{fileDtoList}">
+						<td>
+							<a href="../../sample1.txt" download="sample1">sample1.txt</a>
+						</td>
+					</tr>
+				</table>
+
+				<h3>本日の試験</h3>
+				<table class="table">
+					<tr>
+						<th>試験</th>
+						<th>試験結果</th>
+						<th>管理</th>
+					</tr>
+
+					<tr>
+						<td>Java_確認_01</td>
+						<td>
+							<form action="../exam/resultList.html" method="post">
+								<input type="submit" value="結果一覧" class="btn btn-default" />
+							</form>
+						</td>
+						<td>
+							<form action="../exam/preview.html" method="post">
+								<input type="submit" value="プレビュー" class="btn btn-default" />
+								<input type="hidden" name="examId" value="230" />
+							</form>
+							<form action="" method="post">
+								<input type="submit" name="delExam" value="削除" class="btn btn-default" />
+								<input type="hidden" name="sectionId" value="2" />
+								<input type="hidden" name="examId" value="1" />
+							</form>
+						</td>
+					</tr>
+				</table>
+
+				<h3>本日のレポート</h3>
+				<table class="table">
+					<tr>
+						<th>レポート</th>
+						<th>管理</th>
+					</tr>
+					<tr>
+						<td>日報【デモ】</td>
+						<td></td>
+					</tr>
+					<tr>
+						<td>週報【デモ】</td>
+						<td>
+							<form action="" method="post">
+								<input type="submit" name="delReport" value="削除" class="btn btn-default" />
+								<input type="hidden" name="sectionId" value="2" />
+								<input type="hidden" name="dailyReportId" value="2" />
+							</form>
+						</td>
+					</tr>
+				</table>
+
+				<h3>本日の成果物</h3>
+				<table class="table">
+					<tr>
+						<th>成果物 <strong class="text-danger">※提出は一度のみ可能です。</strong></th>
+						<th></th>
+					</tr>
+					<tr>
+						<td>
+							<a href="../deliverables/list.html">成果物1</a>（18:00期限）
+						</td>
+					</tr>
+				</table>
+
+				<!-- 成果物アップロードモーダル -->
+				<form method="post" action="../deliverables/upload" enctype="multipart/form-data">
+					<div class="modal" id="modal-upd">
+						<div class="modal-dialog modal-dialog-center">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class="modal-title" id="modal-label">成果物アップロード</h4>
+								</div>
+								<div class="modal-body">
+									<input type="file" name="uploadFile" id="file-input" style="display: none;" />
+									<div style="width: 100%; margin-right: 10px;" class="input-group">
+										<span class="input-group-btn">
+											<button type="button" class="btn btn-default" onclick="$('#file-input').click();">
+												<i class="glyphicon glyphicon-folder-open"></i>
+											</button>
+										</span>
+										<input id="file-input-dummy" type="text" class="form-control" placeholder="ファイルを選択してください" disabled>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<input type="hidden" name="sectionId" value="11" />
+									<input type="hidden" name="deliverablesSectionId" value="22" />
+									<input type="submit" class="btn btn-primary" value="アップロード" id="file-upload" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+
+			    <div class="panel panel-default mt35">
+			        <div class="panel-heading">管理者機能</div>
+			        <div class="panel-body">
+						<form action="detail.html" method="post" class="form-horizontal">
+						   <input type="hidden" name="sectionId" value="234" />
+						   <fieldset>
+						
+								<legend>セクション詳細を編集</legend>
+								<div class="form-group">
+									<div class="col-lg-12">
+										<label for="sectionDescription" class="col-lg-3 control-label">セクション詳細</label>
+										<div class="col-lg-7 input-group">
+											<input type="text" id="sectionDescription" name="sectionDescription" value="" class="form-control">
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-lg-12">
+										<div class="col-lg-offset-3">
+											<input type="submit" name="updateDetail" value="変更する" class="btn btn-primary" />
+										</div>
+									</div>
+								</div>
+						
+								<br />
+								<legend>資料を追加する</legend>
+								<div class="form-group">
+									<div class="col-lg-12">
+										<label for="file-input" class="col-lg-3 control-label">資料名</label>
+										<div class="col-lg-7 input-group">
+											<input type="file" id="file-input" value="" style="display: none" />
+											<span class="input-group-btn">
+												<button class="btn btn-default" type="button" onclick="$(&#39;#file-input&#39;).click();">
+													<i class="glyphicon glyphicon-folder-open"></i>
+												</button>
+											</span>
+											<input type="text" id="file-input-dummy" class="form-control" placeholder="ファイルを選択してください" disabled />
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-lg-12">
+										<div class="col-lg-offset-3">
+											<input type="submit" name="addFile" value="登録する" class="btn btn-primary" />
+										</div>
+									</div>
+								</div>
+						
+								<br />
+								<legend>試験を追加する</legend>
+								<div class="form-group">
+									<div class="col-lg-12">
+										<label for="examName" class="col-lg-3 control-label">試験名</label>
+										<div class="col-lg-4 input-group">
+											<select id="examName" name="examId" class="form-control">
+												<option value=""></option>
+												<option value="1">試験1</option>
+												<option value="2">試験2</option>
+												<option value="3">試験3</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-lg-12">
+										<label for="publicDate" class="col-lg-3 control-label">公開時刻</label>
+										<div class="col-lg-2 input-group">
+											<input type="text" id="publicDate" name="publicDate" value="" class="form-control">
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-lg-12">
+										<div class="col-lg-offset-3">
+											<input type="submit" name="addExam" value="登録する" class="btn btn-primary" />
+										</div>
+									</div>
+								</div>
+					
+								<br />
+								<legend>レポートを追加する</legend>
+								<div class="form-group">
+									<div class="col-lg-12">
+										<label for="reportName" class="col-lg-3 control-label">レポート名</label>
+										<div class="col-lg-4 input-group">
+											<select id="reportName" name="reportId" class="form-control">
+												<option value=""></option>
+												<option value="1">レポート1</option>
+												<option value="2">レポート2</option>
+												<option value="3">レポート3</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-lg-12">
+										<div class="col-lg-offset-3">
+											<input type="submit" name="addReport" value="登録する" class="btn btn-primary" />
+										</div>
+									</div>
+								</div>
+						
+								<br />
+								<legend>成果物を追加する</legend>
+								<div class="form-group">
+									<div class="col-lg-12">
+										<label for="deliverablesName" class="col-lg-3 control-label">成果物名</label>
+										<div class="col-lg-4 input-group">
+											<select id="deliverablesName" name="deliverablesId" class="form-control">
+												<option value=""></option>
+												<option value="1">成果物1</option>
+												<option value="2">成果物2</option>
+												<option value="3">成果物3</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-lg-12">
+										<label for="submissionDeadline" class="col-lg-3 control-label">提出期限</label>
+										<div class="col-lg-2 input-group">
+											<input type="text" id="submissionDeadline" name="submissionDeadline" value="" class="form-control">
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-lg-12">
+										<div class="col-lg-offset-3">
+											<input type="submit" name="addDeliverables" value="登録する" class="btn btn-primary" />
+										</div>
+									</div>
+								</div>
+
+						   </fieldset>
+			          	</form>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<script>
+			$(function() {
+				$(document).on('click', '.modal-backdrop', function(e) {
+					$("#modal-window").fadeOut("fast", function() {
+						$("#videoPlayer").attr("src", "");
+						$("#modal-window").remove();
+					});
+				});
+				$(document).on('click', '.modal-close', function(e) {
+					$("#modal-window").fadeOut("fast", function() {
+						$("#videoPlayer").attr("src", "");
+						$("#modal-window").remove();
+					});
+				});
+				$('#modal-upd').on('show.bs.modal', function(e) {
+					var button = $(e.relatedTarget);
+					var id = button.data('id');
+					var modal = $(this);
+					modal.find('.deliverablesSectionId').val(id);
+				});
+			});
+		</script>
+
+        <!--#main-->
+      </div>
+      <!--#contents-->
+      <form id="screenTransForm" name="screenTransForm" method="post"></form>
+      <div id="push"></div>
+    </div>
+  </div>
+  <div id="footer">
+    <div class="container">
+      <p class="muted credit">Copyright(C) 2015 System Shared co., ltd, ALL Rights Reserved</p>
+    </div>
+  </div>
+  <!--#container-->
+</body>
+
+</html>

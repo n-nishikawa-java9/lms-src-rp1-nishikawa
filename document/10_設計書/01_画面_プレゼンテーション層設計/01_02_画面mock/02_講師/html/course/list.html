@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>コース一覧 | LMS</title>
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/lms.css">
+  <link rel="stylesheet" type="text/css" href="../../css/jstree.css">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+  <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+  <script type="text/javascript" src="../../js/lms_common.js"></script>
+  <script type="text/javascript" src="../../js/jstree.min.js"></script>
+  <script type="text/javascript" src="../../js/currency.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div id="wrap">
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../course/list.html" class="navbar-brand">LMS 学習管理システム</a>
+
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-content">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="nav-content" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="../course/detail/?courseId=602#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">研修管理<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../course/list.html">コース</a></li>
+                <li><a href="../user/list.html">受講生</a></li>
+                <li><a href="../dailyReport/dailyList.html">日報</a></li>
+                <li><a href="../exam/list.html">試験結果</a></li>
+                <li><a href="../deliverables/list.html">成果物</a></li>
+                <li><a href="../attendance/list.html">勤怠確認</a></li>
+                <li>
+                  <a href="../attendance/bulkRegist.html">勤怠一括登録</a>
+                </li>
+                <li>
+                  <a href="../evReport/scoringConfirmation.html">評価レポート採点確認</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="../course/detail/?courseId=602#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">面談・報告会<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a href="../takeOver/list.html">引継面談／会場見学 実施予定</a>
+                </li>
+                <li>
+                  <a href="../presentation/teamList.html">チーム編成</a>
+                </li>
+                <li>
+                  <a href="../presentation/list.html">成果報告会実施予定</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="../course/detail/?courseId=602#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">その他<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+
+                <li>
+                  <a href="../fileshare/list.html" class="form-horizontal">ファイル共有</a>
+                </li>
+                <li>
+                  <a href="../movie/index.html" class="form-horizontal">動画視聴</a>
+                </li>
+
+                <li>
+                  <a href="../help/index.html" class="form-horizontal">ヘルプ</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="text-center">
+              <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom"
+              title="お知らせ" data-content="お知らせ内容" data-html="true"></span>
+            </li>
+            <li><a href="../user/myAccount.html"><small>ようこそ講師さん</small></a></li>
+            <li>
+              <c:url var="logout" value="../../index.html"></c:url>
+              <button type="button" class="btn btn-default navbar-btn" onclick="location.href='../../index.html'">
+                <a href="../../index.html" class="glyphicon glyphicon-log-out"> ログアウト</a>
+              </button>
+            </li>
+          </ul>
+        </div>
+    </nav>
+    <div class="container">
+      <div id="contents" class="clearfix">
+        <div id="main" class="main2clm">
+          <script>
+            $(function () {
+              //全選択
+              $('#checkbox-all').click(function () {
+                allCheck('#course-table', this);
+              });
+              //コース・教材紐づけ：分類1選択変更時
+              $('.template-division-1-list').change(function () {
+                var selectedDivision1Folder = $('#templateDivision1').val();
+                $('select#templateDivision2 option').remove();
+                $.ajax({
+                  type: "POST",
+                  dataType: "text",
+                  data: "selectedTemplateDivision1Folder=" + selectedDivision1Folder,
+                  url: '/lms/course/download/list/division2List',
+                  success: function (division2FolderList) {
+                    $('select#templateDivision2').append($('<option>').val("").text(""));
+                    $.each($.parseJSON(division2FolderList), function (key, value) {
+                      $('select#templateDivision2').append($('<option>').val(value).text(value.split('/')[1]));
+                    });
+                  },
+                  fail: function (division2FolderList) {
+                    alert('通信に失敗しました。');
+                  }
+                });
+              });
+              //コース・教材紐づけ：テンプレートダウンロード時
+              $('#teachingMaterialsTemplate-download-form').submit(function () {
+                var selectedCourseIdList = [];
+                $("#course-table input[name='checkCourse[]']:checked").each(function (key, value) {
+                  selectedCourseIdList.push($(value).val());
+                });
+                // チェックされたコースIDをsubmitに乗せる
+                $('#selectedCourseIdList').val(selectedCourseIdList.join(','));
+              });
+              //教材ディレクトリ名変更　分類1選択変更時
+              $('.division-1-list').change(function () {
+                var selectedDivision1Folder = $('#changeDivision1').val();
+                $('select#changeDivision2 option').remove();
+                $('select#changeDivision3 option').remove();
+                $.ajax({
+                  type: "POST",
+                  dataType: "text",
+                  data: "selectedChangeDivision1Folder=" + selectedDivision1Folder,
+                  url: '/lms/course/directoryChange/list/division2List',
+                  success: function (division2FolderList) {
+                    $('select#changeDivision2').append($('<option>').val("").text(""));
+                    $.each($.parseJSON(division2FolderList), function (key, value) {
+                      $('select#changeDivision2').append($('<option>').val(value).text(value.split('/')[1]));
+                    });
+                  },
+                  fail: function (division2FolderList) {
+                    alert('通信に失敗しました。');
+                  }
+                });
+              });
+              //教材ディレクトリ名変更　分類2選択変更時
+              $('.division-2-list').change(function () {
+                var selectedDivision2Folder = $('#changeDivision2').val();
+                $('select#changeDivision3 option').remove();
+                $.ajax({
+                  type: "POST",
+                  dataType: "text",
+                  data: "selectedChangeDivision2Folder=" + selectedDivision2Folder,
+                  url: '/lms/course/directoryChange/list/division3List',
+                  success: function (division3FolderList) {
+                    $('select#changeDivision3').append($('<option>').val("").text(""));
+                    $.each($.parseJSON(division3FolderList), function (key, value) {
+                      $('select#changeDivision3').append($('<option>').val(value).text(value.split('/')[2]));
+                    });
+                  },
+                  fail: function (division3FolderList) {
+                    alert('通信に失敗しました。');
+                  }
+                });
+              });
+              //教材ディレクトリ削除 分類1選択変更時
+              $('.delete-division-1-list').change(function () {
+                var selectedDivision1Folder = $('#deleteDivision1').val();
+                $('select#deleteDivision2 option').remove();
+                $('select#deleteDivision3 option').remove();
+                $.ajax({
+                  type: "POST",
+                  dataType: "text",
+                  data: "selectedDeleteDivision1Folder=" + selectedDivision1Folder,
+                  url: '/lms/course/directoryDelete/list/division2List',
+                  success: function (division2FolderList) {
+                    $('select#deleteDivision2').append($('<option>').val("").text(""));
+                    $.each($.parseJSON(division2FolderList), function (key, value) {
+                      $('select#deleteDivision2').append($('<option>').val(value).text(value.split('/')[1]));
+                    });
+                  },
+                  fail: function (division2FolderList) {
+                    alert('通信に失敗しました。');
+                  }
+                });
+              });
+              //教材ディレクトリ削除　分類2選択変更時
+              $('.delete-division-2-list').change(function () {
+                var selectedDivision2Folder = $('#deleteDivision2').val();
+                $('select#deleteDivision3 option').remove();
+                $.ajax({
+                  type: "POST",
+                  dataType: "text",
+                  data: "selectedDeleteDivision2Folder=" + selectedDivision2Folder,
+                  url: '/lms/course/directoryDelete/list/division3List',
+                  success: function (division3FolderList) {
+                    $('select#deleteDivision3').append($('<option>').val("").text(""));
+                    $.each($.parseJSON(division3FolderList), function (key, value) {
+                      $('select#deleteDivision3').append($('<option>').val(value).text(value.split('/')[2]));
+                    });
+                  },
+                  fail: function (division3FolderList) {
+                    alert('通信に失敗しました。');
+                  }
+                });
+              });
+              //　教材ディレクトリ削除　削除ボタン押下時の挙動
+              $('#delete-btn').click(function () {
+                var selectedDivision3Folder = $('#deleteDivision3').val();
+                if (selectedDivision3Folder) {
+                  $.ajax({
+                    type: "POST",
+                    dataType: "text",
+                    data: "selectedDeleteDivision3Folder=" + selectedDivision3Folder,
+                    url: '/lms/course/directoryDelete/list/division4ObjectCount',
+                    success: function (division4Count) {
+                      if (division4Count > 1) {
+                        //　削除対象フォルダにファイルが存在する場合は確認モーダルを表示
+                        $('#div-modal').modal('show');
+                      } else {
+                        // 削除対象フォルダにファイルが1件も存在しない場合は、そのまま削除処理を実施(submit)
+                        $('#delete-form').submit();
+                      }
+                    },
+                    fail: function (division4Count) {
+                      alert('通信に失敗しました。');
+                    }
+                  });
+                } else {
+                  //分類３が未入力の場合は、そのままsubmitしサーバーサイドでバリテーションエラーを起こす
+                  $('#delete-form').submit();
+                }
+              });
+              //　教材ディレクトリ削除　確認モーダル　OKボタン押下時の挙動
+              $('#delete-confirm-btn').click(function () {
+                $('#delete-form').submit();
+              });
+            });
+          </script>
+          <h2>コース一覧</h2>
+          <div>
+
+          </div>
+          <div id="course-table_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="dataTables_length" id="course-table_length"></div>
+              </div>
+              <div class="col-sm-6">
+                <div id="course-table_filter" class="dataTables_filter"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <table class="table table-hover sortandsearchabletable dataTable no-footer" id="course-table"
+                  role="grid" aria-describedby="course-table_info">
+                  <thead>
+                    <tr role="row">
+                      <th class="sorting" tabindex="0" aria-controls="course-table" rowspan="1" colspan="1"
+                        aria-label="開講中: activate to sort column ascending">開講中</th>
+                      <th class="sorting_asc" tabindex="0" aria-controls="course-table" rowspan="1" colspan="1"
+                        aria-sort="ascending" aria-label="コース名: activate to sort column descending">コース名</th>
+                      <th class="sorting" tabindex="0" aria-controls="course-table" rowspan="1" colspan="1"
+                        aria-label="開講日: activate to sort column ascending">開講日</th>
+                      <th class="sorting" tabindex="0" aria-controls="course-table" rowspan="1" colspan="1"
+                        aria-label="閉講日: activate to sort column ascending">閉講日</th>
+                      <th class="sorting" tabindex="0" aria-controls="course-table" rowspan="1" colspan="1"
+                        aria-label="詳細: activate to sort column ascending">詳細</th>
+                      <th class="sorting" tabindex="0" aria-controls="course-table" rowspan="1" colspan="1"
+                        aria-label="ユーザー: activate to sort column ascending">ユーザー</th>
+                      <th class="sorting" tabindex="0" aria-controls="course-table" rowspan="1" colspan="1"
+                        aria-label="教材: activate to sort column ascending">教材</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    <tr role="row" class="odd">
+                      <td class="text-center">
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span><span
+                          style="display:none;">1</span>
+                      </td>
+                      <td class="sorting_1">11月対応456研修コース</td>
+                      <td>2020年4月1日</td>
+                      <td>2020年6月30日</td>
+                      <td>
+                        <a href="../course/detail.html" class="btn btn-default">詳細</a>
+                      </td>
+                      <td>
+                        <form name="user_listActionForm" method="post" action="../user/list.html">
+                          <div><input type="hidden" name="org.apache.struts.taglib.html.TOKEN"
+                              value="34a62cfff481da54cecf32f8d91b2d55"></div>
+                          <input type="hidden" name="courseId" value="518">
+                          <input type="hidden" name="courseName" value="11月対応456研修コース">
+                          <input type="submit" name="search" value="ユーザー一覧" class="btn btn-default">
+                        </form>
+                      <td>
+                        <div>
+                          <form name="course_download_teachingMaterialListActionForm" method="post"
+                            action="../course/teachingMaterialList.html">
+                            <div><input type="hidden" name="org.apache.struts.taglib.html.TOKEN"
+                                value="63eeb7d5294b33593b3e23c7b11f566b"></div>
+                            <input type="hidden" name="courseId" value="602">
+                            <input type="submit" value="教材ダウンロード" class="btn btn-default">
+                          </form>
+                        </div>
+                        <div>
+                        </div>
+                      </td>
+
+                      </td>
+                    </tr>
+                    <tr role="row" class="even">
+                      <td class="text-center">
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span><span
+                          style="display:none;">1</span>
+                      </td>
+                      <td class="sorting_1">11月対応567研修コース</td>
+                      <td>2020年5月1日</td>
+                      <td>2020年7月31日</td>
+                      <td>
+                        <a href="../course/detail.html" class="btn btn-default">詳細</a>
+                      </td>
+                      <td>
+                        <form name="user_listActionForm" method="post" action="../user/list.html">
+                          <div><input type="hidden" name="org.apache.struts.taglib.html.TOKEN"
+                              value="34a62cfff481da54cecf32f8d91b2d55"></div>
+                          <input type="hidden" name="courseId" value="519">
+                          <input type="hidden" name="courseName" value="11月対応567研修コース">
+                          <input type="submit" name="search" value="ユーザー一覧" class="btn btn-default">
+                        </form>
+                      </td>
+                      <td>
+                        <div>
+                        </div>
+                        <div>
+                        </div>
+                      </td>
+
+                    </tr>
+                    <tr role="row" class="odd">
+                      <td class="text-center">
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                      </td>
+                      <td class="sorting_1">11月対応会場毎出力研修コースビー</td>
+                      <td>2020年10月1日</td>
+                      <td>2020年12月31日</td>
+                      <td>
+                        <a href="../course/detail.html" class="btn btn-default">詳細</a>
+                      </td>
+                      <td>
+                        <form name="user_listActionForm" method="post" action="../user/list.html">
+                          <div><input type="hidden" name="org.apache.struts.taglib.html.TOKEN"
+                              value="34a62cfff481da54cecf32f8d91b2d55"></div>
+                          <input type="hidden" name="courseId" value="524">
+                          <input type="hidden" name="courseName" value="11月対応会場毎出力研修コースビー">
+                          <input type="submit" name="search" value="ユーザー一覧" class="btn btn-default">
+                        </form>
+                      </td>
+                      <td>
+                        <div>
+                        </div>
+                        <div>
+                        </div>
+                      </td>
+
+                    </tr>
+                    <tr role="row" class="even">
+                      <td class="text-center">
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span><span
+                          style="display:none;">1</span>
+                      </td>
+                      <td class="sorting_1">14期単体試験試験確認</td>
+                      <td>2020年10月26日</td>
+                      <td>2020年10月27日</td>
+                      <td>
+                        <a href="../course/detail.html" class="btn btn-default">詳細</a>
+                      </td>
+                      <td>
+                        <form name="user_listActionForm" method="post" action="../user/list.html">
+                          <div><input type="hidden" name="org.apache.struts.taglib.html.TOKEN"
+                              value="34a62cfff481da54cecf32f8d91b2d55"></div>
+                          <input type="hidden" name="courseId" value="601">
+                          <input type="hidden" name="courseName" value="14期単体試験試験確認">
+                          <input type="submit" name="search" value="ユーザー一覧" class="btn btn-default">
+                        </form>
+                      </td>
+                      <td>
+                        <div>
+                        </div>
+                        <div>
+                        </div>
+                      </td>
+
+                    </tr>
+                    <tr role="row" class="odd">
+                      <td class="text-center">
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span><span
+                          style="display:none;">1</span>
+                      </td>
+                      <td class="sorting_1">1か月コースB</td>
+                      <td>2019年10月1日</td>
+                      <td>2019年10月31日</td>
+                      <td>
+                        <a href="../course/detail.html" class="btn btn-default">詳細</a>
+                      </td>
+                      <td>
+                        <form name="user_listActionForm" method="post" action="../user/list.html">
+                          <div><input type="hidden" name="org.apache.struts.taglib.html.TOKEN"
+                              value="34a62cfff481da54cecf32f8d91b2d55"></div>
+                          <input type="hidden" name="courseId" value="507">
+                          <input type="hidden" name="courseName" value="1か月コースB">
+                          <input type="submit" name="search" value="ユーザー一覧" class="btn btn-default">
+                        </form>
+                      </td>
+                      <td>
+                        <div>
+                        </div>
+                        <div>
+                        </div>
+                      </td>
+
+                    </tr>
+                    <tr role="row" class="even">
+                      <td class="text-center">
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span><span
+                          style="display:none;">1</span>
+                      </td>
+                      <td class="sorting_1">1カ月コースC</td>
+                      <td>2019年11月1日</td>
+                      <td>2019年11月30日</td>
+                      <td>
+                        <a href="../course/detail.html" class="btn btn-default">詳細</a>
+                      </td>
+                      <td>
+                        <form name="user_listActionForm" method="post" action="../user/list.html">
+                          <div><input type="hidden" name="org.apache.struts.taglib.html.TOKEN"
+                              value="34a62cfff481da54cecf32f8d91b2d55"></div>
+                          <input type="hidden" name="courseId" value="509">
+                          <input type="hidden" name="courseName" value="1カ月コースC">
+                          <input type="submit" name="search" value="ユーザー一覧" class="btn btn-default">
+                        </form>
+                      </td>
+                      <td>
+                        <div>
+                        </div>
+                        <div>
+                        </div>
+                      </td>
+
+                    </tr>
+                    <tr role="row" class="odd">
+                      <td class="text-center">
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span><span
+                          style="display:none;">1</span>
+                      </td>
+                      <td class="sorting_1">1月単体評価CSVコース</td>
+                      <td>2020年1月6日</td>
+                      <td>2020年1月31日</td>
+                      <td>
+                        <a href="../course/detail.html" class="btn btn-default">詳細</a>
+                      </td>
+                      <td>
+                        <form name="user_listActionForm" method="post" action="../user/list.html">
+                          <div><input type="hidden" name="org.apache.struts.taglib.html.TOKEN"
+                              value="34a62cfff481da54cecf32f8d91b2d55"></div>
+                          <input type="hidden" name="courseId" value="562">
+                          <input type="hidden" name="courseName" value="1月単体評価CSVコース">
+                          <input type="submit" name="search" value="ユーザー一覧" class="btn btn-default">
+                        </form>
+                      </td>
+                      <td>
+                        <div>
+                        </div>
+                        <div>
+                        </div>
+                      </td>
+
+                    </tr>
+                    <tr role="row" class="even">
+                      <td class="text-center">
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span><span
+                          style="display:none;">1</span>
+                      </td>
+                      <td class="sorting_1">1月単体評価CSVコース2</td>
+                      <td>2020年1月6日</td>
+                      <td>2020年1月31日</td>
+                      <td>
+                        <a href="../course/detail.html" class="btn btn-default">詳細</a>
+                      </td>
+                      <td>
+                        <form name="user_listActionForm" method="post" action="../user/list.html">
+                          <div><input type="hidden" name="org.apache.struts.taglib.html.TOKEN"
+                              value="34a62cfff481da54cecf32f8d91b2d55"></div>
+                          <input type="hidden" name="courseId" value="563">
+                          <input type="hidden" name="courseName" value="1月単体評価CSVコース2">
+                          <input type="submit" name="search" value="ユーザー一覧" class="btn btn-default">
+                        </form>
+                      </td>
+                      <td>
+                        <div>
+                        </div>
+                        <div>
+                        </div>
+                      </td>
+
+                    </tr>
+                    <tr role="row" class="odd">
+                      <td class="text-center">
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span><span
+                          style="display:none;">1</span>
+                      </td>
+                      <td class="sorting_1">1月成果報告単体コース</td>
+                      <td>2020年4月1日</td>
+                      <td>2020年4月30日</td>
+                      <td>
+                        <a href="../course/detail.html" class="btn btn-default">詳細</a>
+                      </td>
+                      <td>
+                        <form name="user_listActionForm" method="post" action="../user/list.html">
+                          <div><input type="hidden" name="org.apache.struts.taglib.html.TOKEN"
+                              value="34a62cfff481da54cecf32f8d91b2d55"></div>
+                          <input type="hidden" name="courseId" value="559">
+                          <input type="hidden" name="courseName" value="1月成果報告単体コース">
+                          <input type="submit" name="search" value="ユーザー一覧" class="btn btn-default">
+                        </form>
+                      </td>
+                      <td>
+                        <div>
+                        </div>
+                        <div>
+                        </div>
+                      </td>
+
+                    </tr>
+                    <tr role="row" class="even">
+                      <td class="text-center">
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span><span
+                          style="display:none;">1</span>
+                      </td>
+                      <td class="sorting_1">2か月コースA</td>
+                      <td>2019年11月1日</td>
+                      <td>2019年12月31日</td>
+                      <td>
+                        <a href="../course/detail.html" class="btn btn-default">詳細</a>
+                      </td>
+                      <td>
+                        <form name="user_listActionForm" method="post" action="../user/list.html">
+                          <div><input type="hidden" name="org.apache.struts.taglib.html.TOKEN"
+                              value="34a62cfff481da54cecf32f8d91b2d55"></div>
+                          <input type="hidden" name="courseId" value="503">
+                          <input type="hidden" name="courseName" value="2か月コースA">
+                          <input type="submit" name="search" value="ユーザー一覧" class="btn btn-default">
+                        </form>
+                      </td>
+                      <td>
+                        <div>
+                        </div>
+                        <div>
+                        </div>
+                      </td>
+
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-5">
+
+              </div>
+              <div class="col-sm-7">
+
+                <ul class="pagination">
+
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <!--#main-->
+    </div>
+    <!--#contents-->
+    <form id="screenTransForm" name="screenTransForm" method="post">
+    </form>
+    <div id="push"></div>
+  </div>
+  </div>
+  <div id="footer">
+    <div class="container">
+      <p class="muted credit">Copyright(C) 2015 System Shared co., ltd, ALL Rights Reserved</p>
+    </div>
+  </div>
+  <!--#container-->
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="./コース一覧 _ LMS_files/bootstrap.min.js.ダウンロード"></script>
+</body>
+
+</html>

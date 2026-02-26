@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<!-- saved from url=(0051)../lms/exam/resultList/?examId=230 -->
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>試験結果一覧 | LMS</title>
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/lms.css">
+  <link rel="stylesheet" type="text/css" href="../../css/jstree.css">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+  <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+  <script type="text/javascript" src="../../js/lms_common.js"></script>
+  <script type="text/javascript" src="../../js/jstree.min.js"></script>
+  <script type="text/javascript" src="../../js/currency.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+  <div id="wrap">
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../course/list.html" class="navbar-brand">LMS 学習管理システム</a>
+
+          <button
+            type="button"
+            class="navbar-toggle"
+            data-toggle="collapse"
+            data-target="#nav-content"
+          >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="nav-content" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a
+                href="../course/detail/?courseId=602#"
+                class="dropdown-toggle"
+                data-toggle="dropdown"
+                role="button"
+                aria-expanded="false"
+                >研修管理<span class="caret"></span
+              ></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../course/list.html">コース</a></li>
+                <li><a href="../user/list.html">受講生</a></li>
+                <li><a href="../dailyReport/dailyList.html">日報</a></li>
+                <li><a href="../exam/list.html">試験結果</a></li>
+                <li><a href="../deliverables/list.html">成果物</a></li>
+                <li><a href="../attendance/list.html">勤怠確認</a></li>
+                <li>
+                  <a href="../attendance/bulkRegist.html"
+                    >勤怠一括登録</a
+                  >
+                </li>
+                <li>
+                  <a href="../evReport/scoringConfirmation.html"
+                    >評価レポート採点確認</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a
+                href="../course/detail/?courseId=602#"
+                class="dropdown-toggle"
+                data-toggle="dropdown"
+                role="button"
+                aria-expanded="false"
+                >面談・報告会<span class="caret"></span
+              ></a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a href="../takeOver/list.html"
+                    >引継面談／会場見学 実施予定</a
+                  >
+                </li>
+                <li>
+                  <a href="../presentation/teamList.html">チーム編成</a>
+                </li>
+                <li>
+               <a href="../presentation/list.html"
+                    >成果報告会実施予定</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a
+                href="../course/detail/?courseId=602#"
+                class="dropdown-toggle"
+                data-toggle="dropdown"
+                role="button"
+                aria-expanded="false"
+                >その他<span class="caret"></span
+              ></a>
+              <ul class="dropdown-menu" role="menu">
+                
+                <li>
+                  <a href="../fileshare/list.html" class="form-horizontal"
+                    >ファイル共有</a
+                  >
+                </li>
+                <li>
+                  <a href="../movie/index.html" class="form-horizontal">動画視聴</a>
+                </li>
+
+                <li>
+                  <a href="../help/index.html" class="form-horizontal">ヘルプ</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="text-center">
+              <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom"
+                title="お知らせ" data-content="" data-html="true"></span>
+            </li>
+            <li><a href="../user/myAccount.html"><small>ようこそ講師さん</small></a></li>
+            <li>
+              <c:url var="logout" value="../../index.html"></c:url>
+              <button type="button" class="btn btn-default navbar-btn" onclick="location.href='../../index.html'">
+                <a href="../../index.html" class="glyphicon glyphicon-log-out"> ログアウト</a>
+              </button>
+            </li>
+          </ul>
+      </div>
+    </nav>
+      <div class="container">
+
+      <div id="contents" class="clearfix">
+        <div id="main" class="main2clm">
+
+
+          <h2>Java_確認_01【デモ】</h2>
+
+          <h4>試験情報</h4>
+          <table class="table table-hover">
+            <tbody>
+              <tr>
+                <th class="wq">問題数</th>
+                <td>7問</td>
+              </tr>
+              <tr>
+                <th>制限時間</th>
+                <td>15分</td>
+              </tr>
+              <tr>
+                <th>平均点</th>
+                <td>77.3点</td>
+              </tr>
+            </tbody>
+          </table>
+
+
+
+
+          <div class="well bs-component">
+            <form name="exam_resultListActionForm" method="post" action="../exam/resultList.html"
+              class="form-horizontal">
+              <fieldset>
+                <legend>検索</legend>
+
+                <div class="form-group">
+                  <label for="date" class="col-lg-2 control-label">コース</label>
+                  <div class="col-lg-10">
+                    <select name="courseId" id="courseId" class="form-control">
+                      <option value=""></option>
+                      <option value="136">動作確認【デモ】</option>
+                      <option value="568">動作確認【デモ２】</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="date" class="col-lg-2 control-label">会場</label>
+                  <div class="col-lg-10">
+                   	<input type="text" name="" value="1月会場A（$$）" readonly="readonly" id="placeId" class="form-control">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="date" class="col-lg-2 control-label">企業</label>
+                  <div class="col-lg-10">
+                    <select name="companyId" id="companyId" class="form-control">
+                      <option value=""></option>
+                      <option value="1116">動作確認【デモ】 東京都台東区</option>
+                      <option value="1149">動作確認【デモ】 東京都江東区</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-lg-10 col-lg-offset-2">
+                    <input type="submit" value="検索" class="btn btn-primary">
+                  </div>
+                </div>
+              </fieldset>
+
+              <input type="hidden" name="examId" value="230">
+            </form>
+          </div>
+
+
+          <h4>試験結果一覧</h4>
+          <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+            <div class="row">
+              <div class="col-sm-12">
+                <table class="table table-hover currencysortabletable dataTable no-footer" id="DataTables_Table_0"
+                  role="grid" aria-describedby="DataTables_Table_0_info">
+                  <thead>
+                    <tr role="row">
+                      <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                        aria-sort="ascending" aria-label="ユーザー名: activate to sort column descending">ユーザー名</th>
+                      <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                        aria-label="コース名: activate to sort column ascending">コース名</th>
+                      <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                        aria-label="企業名: activate to sort column ascending">企業名</th>
+                      <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                        aria-label="会場: activate to sort column ascending">会場</th>
+                      <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                        aria-label="評点: activate to sort column ascending">評点</th>
+                      <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+                        aria-label="詳細: activate to sort column ascending">詳細</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+
+                    <tr role="row" class="odd">
+                      <td class="sorting_1">テスト受講生</td>
+                      <td>【削除不可】体験型Java研修用【デモ】</td>
+                      <td>動作確認【デモ】</td>
+                      <td>1月会場A<small>（$$）</small></td>
+                      <td>14.3点</td>
+                      <td>
+                        <form name="exam_resultDetailActionForm" method="post"
+                          action="../exam/detail.html">
+                          <input type="submit" value="詳細" class="btn btn-default">
+                          <input type="hidden" name="examSectionId" value="10178">
+                          <input type="hidden" name="lmsUserId" value="24546">
+                        </form>
+                        <form method="post" action="/lms/exam/resultList" onsubmit="return delcheck()">
+                          <input type="submit" value="削除" class="btn btn-default">
+                          <input type="hidden" name="examId" value="230">
+                          <input type="hidden" name="examSectionId" value="10178">
+                          <input type="hidden" name="lmsUserId" value="24546">
+                        </form>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-5">
+
+                <div class="col-sm-7">
+                  <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          <!--#main-->
+        </div>
+        <!--#contents-->
+        <form id="screenTransForm" name="screenTransForm" method="post">
+        </form>
+        <div id="push"></div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">Copyright(C) 2015 System Shared co., ltd, ALL Rights Reserved</p>
+      </div>
+    </div>
+    <!--#container-->
+</body>
+
+</html>

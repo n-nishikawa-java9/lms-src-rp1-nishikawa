@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ユーザー変更 | LMS</title>
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/lms.css">
+    <link rel="stylesheet" type="text/css" href="../../css/jstree.css">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+    <script type="text/javascript" src="../../js/lms_common.js"></script>
+    <script type="text/javascript" src="../../js/jstree.min.js"></script>
+    <script type="text/javascript" src="../../js/currency.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header"> <a class="navbar-brand">LMS 学習管理システム</a> <button type="button" class="navbar-toggle"
+            data-toggle="collapse" data-target="#nav-content"> <span class="icon-bar"></span> <span
+              class="icon-bar"></span> <span class="icon-bar"></span> </button> </div>
+        <div id="nav-content" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">研修管理<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../user/list/student.html">受講生一覧</a></li>
+                <li><a href="../dailyReport/dailyList.html">日報確認</a></li>
+                <li><a href="../attendance/list.html">勤怠情報確認</a></li>
+                <li><a href="../exam/list.html">試験結果確認</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="../user/list/student.html" class="dropdown-toggle" data-toggle="dropdown"
+                role="button" aria-expanded="false">予約<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../takeOver/list.html">引継面談／会場見学 予約</a></li>
+                <li><a href="../presentation/list.html">成果報告会出欠</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="../user/list/student.html" class="dropdown-toggle" data-toggle="dropdown"
+                role="button" aria-expanded="false">助成金<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../subsidy/company/detail.html">企業情報編集</a></li>
+                <li><a href="../subsidy/download/type.html">申請書類DL</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="../user/list/student.html" class="dropdown-toggle" data-toggle="dropdown"
+                role="button" aria-expanded="false">その他<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../user/list/company.html">受講生以外のユーザー</a></li>
+                <li><a href="../contract/history/list.html">契約内容確認</a></li>
+                <li><a href="../fileshare/list.html" class="form-horizontal">ファイル共有</a></li>
+                <li><a href="../help/index.html" class="form-horizontal">ヘルプ</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="text-center">
+              <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom"
+              title="お知らせ" data-content="お知らせ内容" data-html="true"></span>
+            </li>
+            <li><a href="../user/myAccount.html"><small>ようこそ企業担当者さん</small></a></li>
+            <li> <button type="button" class="btn btn-default navbar-btn" onclick="location.href='${logout}'">
+                <a href="../../index.html" class="glyphicon glyphicon-log-out">　ログアウト</a> </button> </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+        <div class="container">
+            <div id="contents" class="clearfix">
+                <div id="main" class="main2clm">
+                    <h2>ユーザー変更</h2>
+                    <div class="well bs-component">
+                        <form name="user_updateActionForm" method="post"
+                            action="../user/list/student.html" class="form-horizontal">
+                            <div><input type="hidden" name="org.apache.struts.taglib.html.TOKEN"
+                                    value="8070d59b8c492e7ae143837583ece9bb"></div>
+                            <fieldset>
+                                <legend> 受講生ユーザー </legend>
+                                <div class="form-group"> <label for="loginId"
+                                        class="col-lg-2 control-label">ログインID</label>
+                                    <div class="col-lg-10"> <input type="text" name="loginId" value="std0010_TEST"
+                                            readonly="readonly" id="loginId" class="form-control"> </div>
+                                </div>
+                                <div class="form-group"> <label for="userName"
+                                        class="col-lg-2 control-label">ユーザー名</label>
+                                    <div class="col-lg-10"> <input type="text" name="userName" value="デモ受講生テスト"
+                                            id="userName" class="form-control"> </div>
+                                </div>
+                                <div class="form-group"> <label for="kana" class="col-lg-2 control-label">よみがな</label>
+                                    <div class="col-lg-10"> <input type="text" name="kana" value="でもじゅこうせいてすと" id="kana"
+                                            class="form-control"> </div>
+                                </div>
+                                <div class="form-group"> <label for="courseId"
+                                        class="col-lg-2 control-label">コース</label>
+                                    <div class="col-lg-10"> <input type="text" name="" value="体験型Java研修用【デモ】"
+                                            readonly="readonly" id="courseId" class="form-control"> <input type="hidden"
+                                            name="courseId" value="1"> </div>
+                                </div>
+                                <div class="form-group"> <label for="placeId" class="col-lg-2 control-label">会場</label>
+                                    <div class="col-lg-10"> <input type="text" name="" value="動作確認" readonly="readonly"
+                                            id="placeId" class="form-control"> <input type="hidden" name="placeId"
+                                            value="1"> </div>
+                                </div>
+                                <div class="form-group"> <label for="companyId"
+                                        class="col-lg-2 control-label">企業</label>
+                                    <div class="col-lg-10"> <input type="text" name="" value="動作確認【デモ】"
+                                            readonly="readonly" id="companyId" class="form-control"> </div>
+                                </div>
+                                <div class="form-group"> <label for="subsidyCategoryName"
+                                        class="col-lg-2 control-label">使用する助成金</label>
+                                    <div class="col-lg-10"> <select name="subsidyCategoryId" id="subsidyCategoryId"
+                                            class="form-control">
+                                            <option value=""></option>
+                                            <option value="3">キャリア形成促進助成金</option>
+                                            <option value="4">キャリアアップ助成金－特定訓練コース</option>
+                                            <option value="5">キャリアアップ助成金－一般訓練コース</option>
+                                        </select> <strong class="text-role">※助成金を使用しない場合は、未選択で構いません。</strong> </div>
+                                </div>
+                                <div class="form-group"> <label for="hopeViaTraning"
+                                        class="col-lg-2 control-label">研修を通じてどのように<br>なってほしいか</label>
+                                    <div class="col-lg-10"> <textarea name="hopeViaTraning" id="hopeViaTraning"
+                                            class="form-control">技術力を身に付けて欲しい</textarea> </div>
+                                </div>
+                                <div class="form-group"> <label for="programmingExperience"
+                                        class="col-lg-2 control-label">プログラム経験</label>
+                                    <div class="col-lg-10"> <select name="programmingExperience"
+                                            id="programmingExperience" class="form-control">
+                                            <option value=""></option>
+                                            <option value="0">なし</option>
+                                            <option value="1" selected="selected">あり</option>
+                                        </select> </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-10 col-lg-offset-2"> <input type="submit" name="complete"
+                                            value="変更" class="btn btn-primary"> </div>
+                                </div>
+                            </fieldset> <input type="hidden" name="companyId" value="1"> <input type="hidden"
+                                name="lmsUserId" value="1"> <input type="hidden" name="role" value="0001">
+                        </form>
+                    </div>
+                </div>             
+            </div>
+            <form id="screenTransForm" name="screenTransForm" method="post"> </form>
+            <div id="push"></div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="container">
+            <p class="muted credit">Copyright(C) 2015 System Shared co., ltd, ALL Rights Reserved</p>
+        </div>
+    </div>
+</body>
+
+</html>

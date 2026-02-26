@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>セキュリティ規約 | LMS</title>
+
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/lms.css" />
+    <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <link href="https://use.fontawesome.com/releases/v5.6.4/css/all.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+    <script type="text/javascript" src="../../js/lms_common.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <div id="header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand">LMS 学習管理システム</a>
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a><small>ようこそ受講生さん</small></a>
+            </li>
+            <li>
+              <button type="button" class="btn btn-default navbar-btn" onclick="location.href='../../index.html'">
+                <a href="../../index.html" class="glyphicon glyphicon-log-out">　ログアウト</a>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div id="wrap">
+      <div class="container">
+        <div id="contents" class="clearfix">
+          <div id="main" class="main2clm">
+
+            <h2>利用規約</h2>
+
+            <p>この利用規約は、株式会社システムシェアード(以下、「当社」といいます。)がこのLMSで提供するサービス(以下、「本サービス」といいます。)の利用条件を定めるものです。</p>
+            <p>登録ユーザーの皆さま(以下、「ユーザー」といいます。)には、利用規約に従って、本サービスをご利用いただきます。</p>
+              <div class="well bs-component">
+              <div  style="overflow-y: auto;height: 200px;">
+              <fieldset>
+                <legend>第1条(ユーザーIDおよびパスワードの管理)</legend>
+                <div class="form-group">
+                  <p>ユーザーは、自己の責任において、本サービスのユーザーIDおよびパスワードを管理するものとします。</p>
+                  <p>ユーザーは、いかなる場合にも、ユーザーIDおよびパスワードを第三者に譲渡または貸与することはできません。</p>
+                  <p>当社は、ユーザーIDとパスワードの組み合わせが登録情報と一致してログインされた場合には、そのユーザーIDを登録しているユーザー自身による利用とみなします。</p>
+                </div>
+              </fieldset>
+              <fieldset>
+                <legend>第2条(禁止事項)</legend>
+                <div class="form-group">
+                  <p>ユーザーは、本サービスの利用にあたり、以下の行為をしてはなりません。</p>
+                  <p>(1)法令または公序良俗に違反する行為</p>
+                  <p>(2)犯罪行為に関連する行為</p>
+                  <p>(3)当社のサーバーまたはネットワークの機能を破壊したり、妨害したりする行為</p>
+                  <p>(4)当社のサービスの運営を妨害するおそれのある行為</p>
+                  <p>(5)他のユーザーに関する個人情報等を収集または蓄積する行為</p>
+                  <p>(6)他のユーザーに成りすます行為</p>
+                  <p>(7)その他、当社が不適切と判断する行為</p>
+                </div>
+              </fieldset>
+              <fieldset>
+                <legend>第3条(利用規約の変更)</legend>
+                <div class="form-group">
+                  <p>当社は、必要と判断した場合には、ユーザーに通知することなくいつでも利用規約を変更することができるものとします。</p>
+                </div>
+              </fieldset>
+            </div>
+            </div>
+            <div class="well bs-component">
+              <form action="./changePassword.html" class="form-horizontal">
+                <fieldset>
+                  <div class="form-group">
+                    <div class="col-lg-10">
+                      <div class="checkbox">
+                        <label> <input type="checkbox" name="securityAgreeFlg" value="1" /> 同意します </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                      <button type="submit" class="btn btn-primary">次へ</button>
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+          </div>
+        </div>
+        <form id="screenTransForm" name="screenTransForm" method="post"></form>
+        <div id="push"></div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">Copyright&copy; 2021 System Shared co., ltd, ALL Rights Reserved</p>
+      </div>
+      <div id="page_top"><a href="#"></a></div>
+    </div>
+    <script>
+      $("#page_top").hide();
+      $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
+          $("#page_top").fadeIn();
+        } else {
+          $("#page_top").fadeOut();
+        }
+      });
+
+      $("#page_top").click(function () {
+        $("body,html").animate(
+          {
+            scrollTop: 0,
+          },
+          700
+        );
+        return false;
+      });
+    </script>
+  </body>
+</html>

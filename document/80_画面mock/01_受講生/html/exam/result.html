@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CompTIA_PRO_確認試験1_01 | LMS</title>
+
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/lms.css">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <link href="https://use.fontawesome.com/releases/v5.6.4/css/all.css" rel="stylesheet">
+
+  <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+  <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+  <script type="text/javascript" src="../../js/lms_common.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+  <style>
+    .question {
+      font-family: "ＭＳ ゴシック", sans-serif;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="header">
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../course/detail.html" class="navbar-brand">LMS 学習管理システム</a>
+        </div>
+        <div id="nav-content" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="../course/detail.html">マイコース</a>
+            </li>
+            <li>
+              <a href="../download/teachingMaterialList.html">教材ダウンロード</a>
+            </li>
+            <li>
+              <a href="../attendance/detail.html">勤怠</a>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                機能<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a href="../fileshare/list.html" class="form-horizontal">ファイル共有</a>
+                </li>
+                <li>
+                  <a href="../movie/index.html" class="form-horizontal">動画視聴</a>
+                </li>
+                <li>
+                  <a href="../support/index.html" class="form-horizontal">サポートセンター</a>
+                </li>
+                <li>
+                  <a href="../help/index.html" class="form-horizontal">ヘルプ</a>
+                </li>
+
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="text-center">
+              <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom"
+                title="お知らせ" data-content="" data-html="true"></span>
+            </li>
+            <li><a href="../user/detail.html"><small>ようこそ受講生さん</small></a></li>
+            <li>
+              <c:url var="logout" value="../../index.html"></c:url>
+              <button type="button" class="btn btn-default navbar-btn" onclick="location.href='${logout}'">
+                <a href="../../index.html" class="glyphicon glyphicon-log-out"> ログアウト</a>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div id="wrap">
+    <div class="container">
+
+      <div id="examBeing">
+        <h2>
+          CompTIA_PRO_確認試験1_01&nbsp;<small>あなたのスコア：10.5点&nbsp;&nbsp;正答数：1/2</small>
+        </h2>
+        <form action="/exam/play/confirm">
+          <div class="panel panel-default">
+            <div class="panel-heading">第1問&nbsp;【カテゴリー】</div>
+            <div class="panel-body">
+              <p class="question mb10">問題文１</p>
+              <h6>回答</h6>
+              <ul class="list-group">
+
+                <li class="list-group-item list-group-item-info">
+                  1.　　<span class="ib question">回答１</span></li>
+                <li class="list-group-item">2.　　<span class="ib question">回答２</span></li>
+                <li class="list-group-item">3.　　<span class="ib question">回答３</span></li>
+                <li class="list-group-item">4.　　<span class="ib question">回答４</span></li>
+              </ul>
+              <p>
+              <h3>【正解】</h3>
+              <ul class="list-group">
+                <li class="list-group-item">
+                  解説</li>
+              </ul>
+              </p>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">第2問&nbsp;【カテゴリー】</div>
+            <div class="panel-body">
+              <p class="question mb10">問題文２</p>
+              <h6>回答</h6>
+              <ul class="list-group">
+                <li class="list-group-item">1.　　<span class="ib question">回答１</span></li>
+                <li class="list-group-item">2.　　<span class="ib question">回答２</span></li>
+                <li class="list-group-item list-group-item-danger">
+                  3.　　<span class="ib question">回答３</span></li>
+                <li class="list-group-item">4.　　<span class="ib question">回答４</span></li>
+              </ul>
+              <p>
+              <h3>【不正解】</h3>
+              <ul class="list-group">
+                <li class="list-group-item">
+                  参考：○○テキスト</li>
+              </ul>
+              </p>
+            </div>
+          </div>
+        </form>
+        <div class="well bs-component">
+          <fieldset>
+            <form action="./start.html" class="alignC">
+              <input type="submit" value="戻る" class="btn btn-primary" />
+            </form>
+          </fieldset>
+        </div>
+
+      </div>
+      <div id="push"></div>
+    </div>
+  </div>
+	<div id="footer">
+		<div class="container">
+			<p class="muted credit">Copyright&copy; 2021 System Shared co., ltd, ALL Rights Reserved</p>
+		</div>
+		<div id="page_top"><a href="#"></a></div>
+	</div>
+	<script>
+	$('#page_top').hide();
+	 $(window).scroll(function () {
+	  if ($(this).scrollTop() > 300) {
+	   $('#page_top').fadeIn();
+	  } else {
+	   $('#page_top').fadeOut();
+	  }
+	});
+	 
+	$('#page_top').click(function () {
+	 $('body,html').animate({
+	  scrollTop: 0
+	 }, 700);
+	 return false;
+	});
+	</script>
+</body>
+
+</html>

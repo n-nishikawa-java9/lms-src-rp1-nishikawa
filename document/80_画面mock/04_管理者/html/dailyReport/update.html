@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>レポートテンプレート変更 | LMS</title>
+
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/lms.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/jstree.css" />
+  <link rel="shortcut icon" href="../../img/favicon.ico" />
+
+  <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+  <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+  <script type="text/javascript" src="../../js/lms_common.js"></script>
+  <script type="text/javascript" src="../../js/jstree.min.js"></script>
+  <script type="text/javascript" src="../../js/currency.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+
+  <script>
+    $(function () {
+      $("#clmCompany").attr("placeholder", "例）A");
+      $("#clmUser").attr("placeholder", "例）A");
+      $("#clmDate").attr("placeholder", "例）A");
+      $("#clmIntelFld").attr("placeholder", "例）A");
+      $("#clmIntel").attr("placeholder", "例）A");
+    });
+  </script>
+</head>
+
+<body>
+  <div id="wrap">
+    <nav class="navbar navbar-default">
+      <script>
+        $(function () {
+          $("#question").click(function (e) {
+            e.preventDefault();
+            $("#check-modal").modal("show");
+          });
+        });
+      </script>
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../course/list.html" class="navbar-brand">LMS 学習管理システム</a>
+
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-content">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="nav-content" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">事務<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../mail/templateList.html">メールテンプレート管理</a></li>
+                <li><a href="../mail/sendList.html">メール一斉送信</a></li>
+                <li><a href="../company/list.html">企業管理</a></li>
+                <li><a href="../user/list.html">ユーザー管理</a></li>
+                <li><a href="../contract/list.html">契約履歴</a></li>
+                <li><a href="../takeOver/candidateList.html">引継面談／会場見学 スケジュール</a></li>
+                <li><a href="../takeOver/list.html">引継面談／会場見学 実施予定</a></li>
+                <li><a href="../schedule/presentationList.html">成果報告会スケジュール</a></li>
+                <li><a href="../presentation/teamList.html">成果報告会チーム確定</a></li>
+                <li><a href="../presentation/list.html">成果報告会実施予定</a></li>
+                <li><a href="../estimate/list.html">請求情報ダウンロード</a></li>
+                <li><a href="../evReport/resultList.html">評価レポート公開</a></li>
+                <li><a href="../estimate/productList.html">見積もり品マスタ管理</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">営業<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../entry/list.html">エントリー情報確定</a></li>
+                <li><a href="../assign/spreadsheet.html">会場アサイン</a></li>
+                <li><a href="../takeOver/list.html">引継面談／会場見学 実施予定</a></li>
+                <li><a href="../presentation/reserveList.html">成果報告会実施予定</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">運営<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../place/list.html">会場管理</a></li>
+                <li><a href="../genre/list.html">試験カテゴリー管理</a></li>
+                <li><a href="../exam/list.html">試験内容管理</a></li>
+                <li><a href="../dailyReport/list.html">日報管理</a></li>
+                <li><a href="../deliverables/manageList.html">成果物管理</a></li>
+                <li><a href="../evReport/list.html">評価レポート管理</a></li>
+                <li><a href="../meeting/fileList.html">面談ファイル管理</a></li>
+                <li><a href="../holiday/list.html">休暇日設定</a></li>
+                <li><a href="../course/list.html">コース管理</a></li>
+                <li><a href="../movie/categoryList.html">動画管理</a></li>
+                <li><a href="../mail/sendList.html">メール一斉送信</a></li>
+                <li><a href="../user/list.html">ユーザー管理</a></li>
+                <li><a href="../displayControl/list.html">データの表示制御</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">助成金<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../subsidy/companyList.html">企業情報</a></li>
+                <li><a href="../subsidy/templateList.html">テンプレート管理</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">受講生情報<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../exam/list.html">試験</a></li>
+                <li><a href="../dailyReport/dailyList.html">レポート</a></li>
+                <li><a href="../deliverables/list.html">成果物</a></li>
+                <li><a href="../evReport/scoringConfirmation.html">評価レポート採点確認</a></li>
+                <li><a href="../attendance/list.html">勤怠</a></li>
+                <li><a href="../attendance/bulkRegistList.html">勤怠一括登録</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">その他<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../fileshare/index.html">ファイル共有</a></li>
+                <li><a href="../course/csv.html">CSV出力</a></li>
+                <li><a href="../faq/categoryList.html">FAQ管理</a></li>
+                <li><a href="../contract/list.html">契約内容変更</a></li>
+                <li><a href="../info/latest.html">お知らせ設定</a></li>
+                <li><a href="../repair/list.html">改修履歴設定</a></li>
+                <li><a href="../help/index.html">ヘルプ</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="text-center">
+              <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom"
+              title="お知らせ" data-content="お知らせ内容" data-html="true"></span>
+            </li>
+            <li>
+              <a><small>ようこそ管理者さん</small></a>
+            </li>
+            <li>
+              <button type="button" class="btn btn-default navbar-btn" onclick="location.href='../../index.html'">
+                <a href="../../index.html" class="glyphicon glyphicon-log-out">　ログアウト</a>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div id="contents" class="clearfix">
+        <div id="main" class="main2clm">
+          <h2>レポートテンプレート変更</h2>
+
+          <form name="dailyReport_updateActionForm" method="post" action="list.html" class="form-horizontal"
+            enctype="multipart/form-data">
+            <div class="well bs-component">
+              <fieldset>
+                <legend>基本情報</legend>
+
+                <div class="form-group">
+                  <label for="reportName" class="col-lg-2 control-label">日報名</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="reportName" value="日報【デモ】" id="reportName" class="form-control" />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-lg-10 col-lg-offset-2">
+                    <strong class="text-info">※アップロードファイルのサイズ上限は　1.0 GB　です。</strong>
+                  </div>
+                  <div class="col-lg-10 col-lg-offset-2">
+                    <strong class="text-info">※アップロードするテンプレートファイルには「フィードバックコメント」のシートを必ず用意してください。</strong>
+                  </div>
+
+                  <label for="file" class="col-lg-2 control-label">テンプレートファイル</label>
+                  <div class="col-lg-10">
+                    <input type="file" name="file" value="" id="file-input" style="display: none" />
+                    <div class="input-group">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" onclick="$(&#39;#file-input&#39;).click();">
+                          <i class="glyphicon glyphicon-folder-open"></i>
+                        </button>
+                      </span>
+                      <input type="text" id="file-input-dummy" value="daily_report.xlsx" class="form-control"
+                        placeholder="ファイルを選択してください" disabled="" />
+                      <input type="hidden" name="fileName" value="daily_report.xlsx" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="col-lg-10 col-lg-offset-2">
+                    <strong class="text-info">※アップロードするテンプレートファイルに含まれているシート名と一致させてください。</strong>
+                  </div>
+                  <label for="sheetName" class="col-lg-2 control-label">シート名</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="sheetName" value="Sheet1" id="sheetName" class="form-control" />
+                  </div>
+                </div>
+
+                <hr />
+                <div>
+                  <strong>企業名出力セル</strong>
+                </div>
+                <div class="form-group">
+                  <label for="clmCompany" class="col-lg-2 control-label">列番号</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="clmCompany" value="AD" id="clmCompany" class="form-control"
+                      placeholder="例）A" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="rowCompany" class="col-lg-2 control-label">行番号</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="rowCompany" value="1" id="rowCompany" class="form-control" />
+                  </div>
+                </div>
+
+                <hr />
+                <div>
+                  <strong>ユーザー名出力セル</strong>
+                </div>
+                <div class="form-group">
+                  <label for="clmUser" class="col-lg-2 control-label">列番号</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="clmUser" value="AD" id="clmUser" class="form-control" placeholder="例）A" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="rowUser" class="col-lg-2 control-label">行番号</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="rowUser" value="1" id="rowUser" class="form-control" />
+                  </div>
+                </div>
+
+                <hr />
+                <div>
+                  <strong>日付出力セル</strong>
+                </div>
+                <div class="form-group">
+                  <label for="clmDate" class="col-lg-2 control-label">列番号</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="clmDate" value="K" id="clmDate" class="form-control" placeholder="例）A" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="rowDate" class="col-lg-2 control-label">行番号</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="rowDate" value="7" id="rowDate" class="form-control" />
+                  </div>
+                </div>
+
+                <legend>学習理解度</legend>
+                <div class="form-group">
+                  <label for="intelligibilityFlg" class="col-lg-2 control-label">学習理解度</label>
+                  <div class="col-lg-10">
+                    <select name="intelligibilityFlg" id="intelligibilityFlg" class="form-control">
+                      <option value=""></option>
+                      <option value="0" selected="selected">なし</option>
+                      <option value="1">あり</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="intelligibilityFieldNum" class="col-lg-2 control-label">学習理解度項目数</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="intelligibilityFieldNum" value="" id="intelligibilityFieldNum"
+                      class="form-control" disabled="" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="intelligibilityNum" class="col-lg-2 control-label">学習理解度数</label>
+                  <div class="col-lg-10">
+                    <select name="intelligibilityNum" id="intelligibilityNum" class="form-control" disabled="">
+                      <option value=""></option>
+                      <option value="3">3段階評価</option>
+                      <option value="4">4段階評価</option>
+                      <option value="5">5段階評価</option>
+                    </select>
+                  </div>
+                </div>
+
+                <hr />
+                <div>
+                  <strong>理解度項目出力開始セル</strong>
+                </div>
+                <div class="form-group">
+                  <label for="clmIntelFld" class="col-lg-2 control-label">列番号</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="clmIntelFld" value="" id="clmIntelFld" class="form-control"
+                      placeholder="例）A" disabled="" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="rowIntelFld" class="col-lg-2 control-label">行番号</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="rowIntelFld" value="" id="rowIntelFld" class="form-control" disabled="" />
+                  </div>
+                </div>
+
+                <hr />
+                <div>
+                  <strong>理解度出力開始セル</strong>
+                </div>
+                <div class="form-group">
+                  <label for="clmIntel" class="col-lg-2 control-label">列番号</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="clmIntel" value="" id="clmIntel" class="form-control" placeholder="例）A"
+                      disabled="" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="rowIntel" class="col-lg-2 control-label">行番号</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="rowIntel" value="" id="rowIntel" class="form-control" disabled="" />
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            <h3>日報項目</h3>
+            <div class="well bs-component">
+              <fieldset>
+                <script>
+                  $(function () {
+                    $("#clm_0").attr("placeholder", "例）A");
+                  });
+                </script>
+
+                <legend>項目1</legend>
+                <div class="form-group">
+                  <label for="fieldName_0" class="col-lg-2 control-label">項目名</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="fieldName[0]" maxlength="100" value="本日の目標" id="fieldName_0"
+                      class="form-control" />
+                  </div>
+                </div>
+
+                <hr />
+                <div>
+                  <strong>項目1　属性</strong>
+                </div>
+                <div class="form-group">
+                  <label for="requireCheck0" class="col-lg-2 control-label">必須チェック</label>
+                  <div class="col-lg-1">
+                    <input type="checkbox" name="requireCheck[0]" value="1" id="requireCheck0" class="icon-checkbox" />
+                    <label for="requireCheck0" class="text-info">
+                      <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                      <span class="glyphicon glyphicon-check checked"></span>
+                    </label>
+                    <input type="hidden" name="requireCheck[0]" value="0" />
+                  </div>
+
+                  <label for="type0" class="col-lg-1 control-label">型</label>
+                  <div class="col-lg-2">
+                    <input type="hidden" class="index" value="0" />
+                    <select name="type[0]" id="type0" class="form-control type">
+                      <option value=""></option>
+                      <option value="0">数値</option>
+                      <option value="1" selected="selected">文字列</option>
+                    </select>
+                  </div>
+
+                  <label for="rangeFrom0" class="col-lg-1 control-label">範囲</label>
+                  <div class="col-lg-2">
+                    <input type="text" name="rangeFrom[0]" value="" id="rangeFrom0" class="form-control"
+                      readonly="readonly" />
+                  </div>
+                  <div class="col-lg-1 text-center">
+                    <div>
+                      <strong>～</strong>
+                    </div>
+                  </div>
+                  <div class="col-lg-2">
+                    <input type="text" name="rangeTo[0]" value="" id="rangeTo0" class="form-control"
+                      readonly="readonly" />
+                  </div>
+                </div>
+
+                <hr />
+                <div>
+                  <strong>項目1　出力セル</strong>
+                </div>
+                <div class="form-group">
+                  <label for="clm_0" class="col-lg-2 control-label">列番号</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="clm[0]" value="K" id="clm_0" class="form-control" placeholder="例）A" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="row_0" class="col-lg-2 control-label">行番号</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="row[0]" value="11" id="row_0" class="form-control" />
+                  </div>
+                </div>
+
+                <script>
+                  $(function () {
+                    $("#clm_1").attr("placeholder", "例）A");
+                  });
+                </script>
+
+                <legend>項目2</legend>
+                <div class="form-group">
+                  <label for="fieldName_1" class="col-lg-2 control-label">項目名</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="fieldName[1]" maxlength="100" value="本日の目標に対する達成状況（達成率）" id="fieldName_1"
+                      class="form-control" />
+                  </div>
+                </div>
+
+                <hr />
+                <div>
+                  <strong>項目2　属性</strong>
+                </div>
+                <div class="form-group">
+                  <label for="requireCheck1" class="col-lg-2 control-label">必須チェック</label>
+                  <div class="col-lg-1">
+                    <input type="checkbox" name="requireCheck[1]" value="1" id="requireCheck1" class="icon-checkbox" />
+                    <label for="requireCheck1" class="text-info">
+                      <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                      <span class="glyphicon glyphicon-check checked"></span>
+                    </label>
+                    <input type="hidden" name="requireCheck[1]" value="0" />
+                  </div>
+
+                  <label for="type1" class="col-lg-1 control-label">型</label>
+                  <div class="col-lg-2">
+                    <input type="hidden" class="index" value="1" />
+                    <select name="type[1]" id="type1" class="form-control type">
+                      <option value=""></option>
+                      <option value="0">数値</option>
+                      <option value="1" selected="selected">文字列</option>
+                    </select>
+                  </div>
+
+                  <label for="rangeFrom1" class="col-lg-1 control-label">範囲</label>
+                  <div class="col-lg-2">
+                    <input type="text" name="rangeFrom[1]" value="" id="rangeFrom1" class="form-control"
+                      readonly="readonly" />
+                  </div>
+                  <div class="col-lg-1 text-center">
+                    <div>
+                      <strong>～</strong>
+                    </div>
+                  </div>
+                  <div class="col-lg-2">
+                    <input type="text" name="rangeTo[1]" value="" id="rangeTo1" class="form-control"
+                      readonly="readonly" />
+                  </div>
+                </div>
+
+                <hr />
+                <div>
+                  <strong>項目2　出力セル</strong>
+                </div>
+                <div class="form-group">
+                  <label for="clm_1" class="col-lg-2 control-label">列番号</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="clm[1]" value="K" id="clm_1" class="form-control" placeholder="例）A" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="row_1" class="col-lg-2 control-label">行番号</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="row[1]" value="17" id="row_1" class="form-control" />
+                  </div>
+                </div>
+
+                <script>
+                  $(function () {
+                    $("#clm_2").attr("placeholder", "例）A");
+                  });
+                </script>
+
+                <legend>項目3</legend>
+                <div class="form-group">
+                  <label for="fieldName_2" class="col-lg-2 control-label">項目名</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="fieldName[2]" maxlength="100" value="本日の目標に対する達成状況（内容）" id="fieldName_2"
+                      class="form-control" />
+                  </div>
+                </div>
+
+                <hr />
+                <div>
+                  <strong>項目3　属性</strong>
+                </div>
+                <div class="form-group">
+                  <label for="requireCheck2" class="col-lg-2 control-label">必須チェック</label>
+                  <div class="col-lg-1">
+                    <input type="checkbox" name="requireCheck[2]" value="1" checked="checked" id="requireCheck2"
+                      class="icon-checkbox" />
+                    <label for="requireCheck2" class="text-info">
+                      <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                      <span class="glyphicon glyphicon-check checked"></span>
+                    </label>
+                    <input type="hidden" name="requireCheck[2]" value="0" />
+                  </div>
+
+                  <label for="type2" class="col-lg-1 control-label">型</label>
+                  <div class="col-lg-2">
+                    <input type="hidden" class="index" value="2" />
+                    <select name="type[2]" id="type2" class="form-control type">
+                      <option value=""></option>
+                      <option value="0">数値</option>
+                      <option value="1" selected="selected">文字列</option>
+                    </select>
+                  </div>
+
+                  <label for="rangeFrom2" class="col-lg-1 control-label">範囲</label>
+                  <div class="col-lg-2">
+                    <input type="text" name="rangeFrom[2]" value="" id="rangeFrom2" class="form-control"
+                      readonly="readonly" />
+                  </div>
+                  <div class="col-lg-1 text-center">
+                    <div>
+                      <strong>～</strong>
+                    </div>
+                  </div>
+                  <div class="col-lg-2">
+                    <input type="text" name="rangeTo[2]" value="" id="rangeTo2" class="form-control"
+                      readonly="readonly" />
+                  </div>
+                </div>
+
+                <hr />
+                <div>
+                  <strong>項目3　出力セル</strong>
+                </div>
+                <div class="form-group">
+                  <label for="clm_2" class="col-lg-2 control-label">列番号</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="clm[2]" value="S" id="clm_2" class="form-control" placeholder="例）A" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="row_2" class="col-lg-2 control-label">行番号</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="row[2]" value="17" id="row_2" class="form-control" />
+                  </div>
+                </div>
+
+                <script>
+                  $(function () {
+                    $("#clm_3").attr("placeholder", "例）A");
+                  });
+                </script>
+
+                <legend>項目4</legend>
+                <div class="form-group">
+                  <label for="fieldName_3" class="col-lg-2 control-label">項目名</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="fieldName[3]" maxlength="100" value="理解出来たこと" id="fieldName_3"
+                      class="form-control" />
+                  </div>
+                </div>
+
+                <hr />
+                <div>
+                  <strong>項目4　属性</strong>
+                </div>
+                <div class="form-group">
+                  <label for="requireCheck3" class="col-lg-2 control-label">必須チェック</label>
+                  <div class="col-lg-1">
+                    <input type="checkbox" name="requireCheck[3]" value="1" id="requireCheck3" class="icon-checkbox" />
+                    <label for="requireCheck3" class="text-info">
+                      <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                      <span class="glyphicon glyphicon-check checked"></span>
+                    </label>
+                    <input type="hidden" name="requireCheck[3]" value="0" />
+                  </div>
+
+                  <label for="type3" class="col-lg-1 control-label">型</label>
+                  <div class="col-lg-2">
+                    <input type="hidden" class="index" value="3" />
+                    <select name="type[3]" id="type3" class="form-control type">
+                      <option value=""></option>
+                      <option value="0">数値</option>
+                      <option value="1" selected="selected">文字列</option>
+                    </select>
+                  </div>
+
+                  <label for="rangeFrom3" class="col-lg-1 control-label">範囲</label>
+                  <div class="col-lg-2">
+                    <input type="text" name="rangeFrom[3]" value="" id="rangeFrom3" class="form-control"
+                      readonly="readonly" />
+                  </div>
+                  <div class="col-lg-1 text-center">
+                    <div>
+                      <strong>～</strong>
+                    </div>
+                  </div>
+                  <div class="col-lg-2">
+                    <input type="text" name="rangeTo[3]" value="" id="rangeTo3" class="form-control"
+                      readonly="readonly" />
+                  </div>
+                </div>
+
+                <hr />
+                <div>
+                  <strong>項目4　出力セル</strong>
+                </div>
+                <div class="form-group">
+                  <label for="clm_3" class="col-lg-2 control-label">列番号</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="clm[3]" value="K" id="clm_3" class="form-control" placeholder="例）A" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="row_3" class="col-lg-2 control-label">行番号</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="row[3]" value="24" id="row_3" class="form-control" />
+                  </div>
+                </div>
+
+                <script>
+                  $(function () {
+                    $("#clm_4").attr("placeholder", "例）A");
+                  });
+                </script>
+
+                <legend>項目5</legend>
+                <div class="form-group">
+                  <label for="fieldName_4" class="col-lg-2 control-label">項目名</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="fieldName[4]" maxlength="100" value="理解出来なかったこと" id="fieldName_4"
+                      class="form-control" />
+                  </div>
+                </div>
+
+                <hr />
+                <div>
+                  <strong>項目5　属性</strong>
+                </div>
+                <div class="form-group">
+                  <label for="requireCheck4" class="col-lg-2 control-label">必須チェック</label>
+                  <div class="col-lg-1">
+                    <input type="checkbox" name="requireCheck[4]" value="1" id="requireCheck4" class="icon-checkbox" />
+                    <label for="requireCheck4" class="text-info">
+                      <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                      <span class="glyphicon glyphicon-check checked"></span>
+                    </label>
+                    <input type="hidden" name="requireCheck[4]" value="0" />
+                  </div>
+
+                  <label for="type4" class="col-lg-1 control-label">型</label>
+                  <div class="col-lg-2">
+                    <input type="hidden" class="index" value="4" />
+                    <select name="type[4]" id="type4" class="form-control type">
+                      <option value=""></option>
+                      <option value="0">数値</option>
+                      <option value="1" selected="selected">文字列</option>
+                    </select>
+                  </div>
+
+                  <label for="rangeFrom4" class="col-lg-1 control-label">範囲</label>
+                  <div class="col-lg-2">
+                    <input type="text" name="rangeFrom[4]" value="" id="rangeFrom4" class="form-control"
+                      readonly="readonly" />
+                  </div>
+                  <div class="col-lg-1 text-center">
+                    <div>
+                      <strong>～</strong>
+                    </div>
+                  </div>
+                  <div class="col-lg-2">
+                    <input type="text" name="rangeTo[4]" value="" id="rangeTo4" class="form-control"
+                      readonly="readonly" />
+                  </div>
+                </div>
+
+                <hr />
+                <div>
+                  <strong>項目5　出力セル</strong>
+                </div>
+                <div class="form-group">
+                  <label for="clm_4" class="col-lg-2 control-label">列番号</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="clm[4]" value="K" id="clm_4" class="form-control" placeholder="例）A" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="row_4" class="col-lg-2 control-label">行番号</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="row[4]" value="31" id="row_4" class="form-control" />
+                  </div>
+                </div>
+
+                <script>
+                  $(function () {
+                    $("#clm_5").attr("placeholder", "例）A");
+                  });
+                </script>
+
+                <legend>項目6</legend>
+                <div class="form-group">
+                  <label for="fieldName_5" class="col-lg-2 control-label">項目名</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="fieldName[5]" maxlength="100" value="明日の目標" id="fieldName_5"
+                      class="form-control" />
+                  </div>
+                </div>
+
+                <hr />
+                <div>
+                  <strong>項目6　属性</strong>
+                </div>
+                <div class="form-group">
+                  <label for="requireCheck5" class="col-lg-2 control-label">必須チェック</label>
+                  <div class="col-lg-1">
+                    <input type="checkbox" name="requireCheck[5]" value="1" id="requireCheck5" class="icon-checkbox" />
+                    <label for="requireCheck5" class="text-info">
+                      <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                      <span class="glyphicon glyphicon-check checked"></span>
+                    </label>
+                    <input type="hidden" name="requireCheck[5]" value="0" />
+                  </div>
+
+                  <label for="type5" class="col-lg-1 control-label">型</label>
+                  <div class="col-lg-2">
+                    <input type="hidden" class="index" value="5" />
+                    <select name="type[5]" id="type5" class="form-control type">
+                      <option value=""></option>
+                      <option value="0">数値</option>
+                      <option value="1" selected="selected">文字列</option>
+                    </select>
+                  </div>
+
+                  <label for="rangeFrom5" class="col-lg-1 control-label">範囲</label>
+                  <div class="col-lg-2">
+                    <input type="text" name="rangeFrom[5]" value="" id="rangeFrom5" class="form-control"
+                      readonly="readonly" />
+                  </div>
+                  <div class="col-lg-1 text-center">
+                    <div>
+                      <strong>～</strong>
+                    </div>
+                  </div>
+                  <div class="col-lg-2">
+                    <input type="text" name="rangeTo[5]" value="" id="rangeTo5" class="form-control"
+                      readonly="readonly" />
+                  </div>
+                </div>
+
+                <hr />
+                <div>
+                  <strong>項目6　出力セル</strong>
+                </div>
+                <div class="form-group">
+                  <label for="clm_5" class="col-lg-2 control-label">列番号</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="clm[5]" value="K" id="clm_5" class="form-control" placeholder="例）A" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="row_5" class="col-lg-2 control-label">行番号</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="row[5]" value="38" id="row_5" class="form-control" />
+                  </div>
+                </div>
+
+                <script>
+                  $(function () {
+                    $("#clm_6").attr("placeholder", "例）A");
+                  });
+                </script>
+
+                <legend>項目7</legend>
+                <div class="form-group">
+                  <label for="fieldName_6" class="col-lg-2 control-label">項目名</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="fieldName[6]" maxlength="100" value="所感" id="fieldName_6"
+                      class="form-control" />
+                  </div>
+                </div>
+
+                <hr />
+                <div>
+                  <strong>項目7　属性</strong>
+                </div>
+                <div class="form-group">
+                  <label for="requireCheck6" class="col-lg-2 control-label">必須チェック</label>
+                  <div class="col-lg-1">
+                    <input type="checkbox" name="requireCheck[6]" value="1" id="requireCheck6" class="icon-checkbox" />
+                    <label for="requireCheck6" class="text-info">
+                      <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                      <span class="glyphicon glyphicon-check checked"></span>
+                    </label>
+                    <input type="hidden" name="requireCheck[6]" value="0" />
+                  </div>
+
+                  <label for="type6" class="col-lg-1 control-label">型</label>
+                  <div class="col-lg-2">
+                    <input type="hidden" class="index" value="6" />
+                    <select name="type[6]" id="type6" class="form-control type">
+                      <option value=""></option>
+                      <option value="0">数値</option>
+                      <option value="1" selected="selected">文字列</option>
+                    </select>
+                  </div>
+
+                  <label for="rangeFrom6" class="col-lg-1 control-label">範囲</label>
+                  <div class="col-lg-2">
+                    <input type="text" name="rangeFrom[6]" value="" id="rangeFrom6" class="form-control"
+                      readonly="readonly" />
+                  </div>
+                  <div class="col-lg-1 text-center">
+                    <div>
+                      <strong>～</strong>
+                    </div>
+                  </div>
+                  <div class="col-lg-2">
+                    <input type="text" name="rangeTo[6]" value="" id="rangeTo6" class="form-control"
+                      readonly="readonly" />
+                  </div>
+                </div>
+
+                <hr />
+                <div>
+                  <strong>項目7　出力セル</strong>
+                </div>
+                <div class="form-group">
+                  <label for="clm_6" class="col-lg-2 control-label">列番号</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="clm[6]" value="K" id="clm_6" class="form-control" placeholder="例）A" />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="row_6" class="col-lg-2 control-label">行番号</label>
+                  <div class="col-lg-10">
+                    <input type="text" name="row[6]" value="44" id="row_6" class="form-control" />
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+            <input type="hidden" name="dailyReportId" value="1" />
+
+            <input type="hidden" name="dailyReportDetailSize" value="7" />
+            <div class="well bs-component">
+              <fieldset>
+                <legend>項目を追加／削除</legend>
+                <input type="button" name="addDetail" value="＋" id="addBtn" class="btn btn-default"
+                  onclick="location.href='update.html'" />
+                <input type="button" name="remDetail" value="－" id="addBtn" class="btn btn-default"
+                  onclick="location.href='update.html'" />
+              </fieldset>
+            </div>
+
+            <div class="well bs-component">
+              <fieldset>
+                <div class="form-group">
+                  <div class="col-lg-10 col-lg-offset-2">
+                    <input type="submit" name="complete" value="変更する" class="btn btn-primary" />
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+          </form>
+
+          <script>
+            $(function () {
+              function onIntelFlgChange() {
+                var flg = $("#intelligibilityFlg").val();
+                if (flg == 1) {
+                  $("#intelligibilityFieldNum").prop("disabled", false);
+                  $("#intelligibilityNum").prop("disabled", false);
+                  $("#clmIntelFld").prop("disabled", false);
+                  $("#rowIntelFld").prop("disabled", false);
+                  $("#clmIntel").prop("disabled", false);
+                  $("#rowIntel").prop("disabled", false);
+                } else {
+                  $("#intelligibilityFieldNum").prop("disabled", true);
+                  $("#intelligibilityNum").prop("disabled", true);
+                  $("#clmIntelFld").prop("disabled", true);
+                  $("#rowIntelFld").prop("disabled", true);
+                  $("#clmIntel").prop("disabled", true);
+                  $("#rowIntel").prop("disabled", true);
+                }
+              }
+              onIntelFlgChange();
+              $("#intelligibilityFlg").change(function () {
+                onIntelFlgChange();
+              });
+
+              $(".type").each(function () {
+                var index = $(this).parent().find(".index").val();
+                if ($(this).val() == "0") {
+                  $("#rangeFrom" + index).attr("readonly", false);
+                  $("#rangeTo" + index).attr("readonly", false);
+                } else if ($(this).val() == "1") {
+                  $("#rangeFrom" + index).attr("readonly", true);
+                  $("#rangeTo" + index).attr("readonly", true);
+                } else {
+                  $("#rangeFrom" + index).attr("readonly", true);
+                  $("#rangeTo" + index).attr("readonly", true);
+                }
+              });
+
+              $(".type").change(function () {
+                var index = $(this).parent().find(".index").val();
+                if ($(this).val() == "0") {
+                  $("#rangeFrom" + index).val("");
+                  $("#rangeFrom" + index).attr("readonly", false);
+                  $("#rangeTo" + index).val("");
+                  $("#rangeTo" + index).attr("readonly", false);
+                } else if ($(this).val() == "1") {
+                  $("#rangeFrom" + index).val("");
+                  $("#rangeFrom" + index).attr("readonly", true);
+                  $("#rangeTo" + index).val("");
+                  $("#rangeTo" + index).attr("readonly", true);
+                } else {
+                  $("#rangeFrom" + index).val("");
+                  $("#rangeFrom" + index).attr("readonly", true);
+                  $("#rangeTo" + index).val("");
+                  $("#rangeTo" + index).attr("readonly", true);
+                }
+              });
+            });
+          </script>
+        </div>
+        <!--#main-->
+      </div>
+      <!--#contents-->
+      <form id="screenTransForm" name="screenTransForm" method="post"></form>
+      <div id="push"></div>
+    </div>
+  </div>
+  <div id="footer">
+    <div class="container">
+      <p class="muted credit">Copyright(C) 2015 System Shared co., ltd, ALL Rights Reserved</p>
+    </div>
+  </div>
+  <!--#container-->
+</body>
+
+</html>

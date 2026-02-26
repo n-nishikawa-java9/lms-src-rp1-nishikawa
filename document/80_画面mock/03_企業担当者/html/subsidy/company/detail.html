@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>企業情報 | LMS</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/lms.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/jstree.css">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <script type="text/javascript" src="../../../js/jquery.2.1.1.min.js"></script>
+    <script type="text/javascript" src="../../../js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../../../js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="../../../js/bootstrap-datepicker.ja.min.js"></script>
+    <script type="text/javascript" src="../../../js/lms_common.js"></script>
+    <script type="text/javascript" src="../../../js/jstree.min.js"></script>
+    <script type="text/javascript" src="../../../js/currency.js"></script>
+    <script type="text/javascript" src="../../../js/bootstrap.min.js"></script>
+    <script>function subsidyInfoBlock() {
+            var disp = document.getElementById("subsidyInfo");
+            var rd1 = document.getElementById("rd1");
+            var rd2 = document.getElementById("rd2");
+
+            disp.style.display = "block";
+            rd1.style.display = "none";
+            rd2.style.display = "block";
+        }
+        function subsidyInfoNone() {
+            var disp = document.getElementById("subsidyInfo");
+            var rd1 = document.getElementById("rd1");
+            var rd2 = document.getElementById("rd2");
+
+            disp.style.display = "none";
+            rd1.style.display = "block";
+            rd2.style.display = "none";
+        }
+        function cancelCheck() {
+            return window.confirm('契約のキャンセルを行うと、契約書、会場アサイン、見積もり、受講生が削除されます。よろしいですか？');
+        }
+        $(document).on('click', '#rd3', function () {
+            $('#rd3').css('display', 'none');
+            $('#rd4').css('display', 'block');
+            $('#m1').css('display', 'none');
+            $('#recentStudent').toggle();
+            $('#pastStudent').toggle(true);
+        });
+        $(document).on('click', '#rd4', function () {
+            $('#rd3').css('display', 'block');
+            $('#rd4').css('display', 'none');
+            $('#m1').css('display', 'block');
+            $('#recentStudent').toggle(true);
+            $('#pastStudent').toggle();
+        });
+    </script>
+</head>
+
+<body>
+    <div id="wrap">
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header"> <a class="navbar-brand">LMS 学習管理システム</a> <button type="button"
+                        class="navbar-toggle" data-toggle="collapse" data-target="#nav-content"> <span
+                            class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    </button> </div>
+                <div id="nav-content" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-expanded="false">研修管理<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="../../user/list/student.html">受講生一覧</a></li>
+                                <li><a href="../../dailyReport/dailyList.html">日報確認</a></li>
+                                <li><a href="../../attendance/list.html">勤怠情報確認</a></li>
+                                <li><a href="../../exam/list.html">試験結果確認</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="../user/list/student.html" class="dropdown-toggle" data-toggle="dropdown"
+                                role="button" aria-expanded="false">予約<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="../../takeOver/list.html">引継面談／会場見学 予約</a></li>
+                                 <li><a href="../../presentation/list.html">成果報告会出欠</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="../user/list/student.html" class="dropdown-toggle" data-toggle="dropdown"
+                                role="button" aria-expanded="false">助成金<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="../../subsidy/company/detail.html">企業情報編集</a></li>
+                                <li><a href="../../subsidy/download/type.html">申請書類DL</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="../user/list/student.html" class="dropdown-toggle" data-toggle="dropdown"
+                                role="button" aria-expanded="false">その他<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="../../user/list/company.html">受講生以外のユーザー</a></li>
+                                <li><a href="../../contract/history/list.html">契約内容確認</a></li>
+                                <li><a href="../../fileshare/list.html" class="form-horizontal">ファイル共有</a></li>
+                                <li><a href="../../help/index.html" class="form-horizontal">ヘルプ</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="text-center">
+                          <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+                          <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom"
+                          title="お知らせ" data-content="お知らせ内容" data-html="true"></span>
+                        </li>
+                        <li><a><small>ようこそ企業担当者さん</small></a></li>
+                        <li> <button type="button" class="btn btn-default navbar-btn"
+                                onclick=""> <a href="../../../index.html"
+                                    class="glyphicon glyphicon-log-out">　ログアウト</a> </button> </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div id="contents" class="clearfix">
+                <div id="main" class="main2clm">
+                    <h2>企業情報</h2>
+                    <div class="col-lg-6">
+                        <h3>基本情報</h3>
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <th style="width:12em;">企業名</th>
+                                    <td> 動作確認【デモ】 </td>
+                                </tr>
+                                <tr>
+                                    <th style="width:12em;">企業名（カナ）</th>
+                                    <td> ドウサカクニン </td>
+                                </tr>
+                                <tr>
+                                    <th style="width:12em;">郵便番号</th>
+                                    <td> 000‐0000 </td>
+                                </tr>
+                                <tr>
+                                    <th style="width:12em;">企業所在地</th>
+                                    <td> 東京都台東区 </td>
+                                </tr>
+                                <tr>
+                                    <th style="width:12em;">電話番号</th>
+                                    <td> 000‐0000‐0000 </td>
+                                </tr>
+                                <tr>
+                                    <th style="width:12em;">代表者役職名</th>
+                                    <td> 代表取締 </td>
+                                </tr>
+                                <tr>
+                                    <th style="width:12em;">代表者氏名</th>
+                                    <td> 代表 </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <h3 class="accordion">助成金情報</h3>
+                                    </td>
+                                    <td> <a id="rd1" class="radiusCircle ml10 noLinkLine" onclick="subsidyInfoBlock()"
+                                            style="display: none;">＋</a>
+                                        <a id="rd2" class="radiusCircle ml10 noLinkLine" style="display: block;"
+                                            onclick="subsidyInfoNone()">－</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div style="display: block;" id="subsidyInfo">
+                            <table class="table table-hover">
+                                <tbody>
+                                    <tr>
+                                        <th style="width:12em;">資本額</th>
+                                        <td> 1000 万円 </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:12em;">社員数</th>
+                                        <td> 100 人 </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:12em;">始業時間</th>
+                                        <td> 09:00 </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:12em;">終業時間</th>
+                                        <td> 18:00 </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:12em;">休憩開始時間</th>
+                                        <td> 12:00 </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:12em;">休憩終了時間</th>
+                                        <td> 13:00 </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:12em;">休日</th>
+                                        <td> 週休2日 </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:12em;">申請担当者電話番号</th>
+                                        <td> 000‐0000‐0000 </td>
+                                    </tr>
+                                    <tr>
+                                        <th style="width:12em;">労働局都道府県</th>
+                                        <td> 東京 </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">基本情報・助成金情報を編集する</div>
+                            <div class="panel-body">
+                                <fieldset>
+                                    <form name="subsidy_company_updateActionForm" method="post"
+                                        action="../company/update.html" class="form-horizontal">
+                                        <div><input type="hidden" name="org.apache.struts.taglib.html.TOKEN"
+                                                value="58c49db4053c4778e6b28509ec6b43cb"></div>
+                                        <div class="form-group">
+                                            <div class="col-lg-12"> <input type="submit" value="基本情報・助成金情報編集"
+                                                    class="btn btn-default"> </div>
+                                        </div>
+                                    </form>
+                                </fieldset>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">送付状を出力する</div>
+                            <div class="panel-body">
+                                <fieldset>
+                                    <form name="subsidy_company_detailActionForm" method="post"
+                                        action="../company/detail.html"
+                                        class="form-horizontal">
+                                        <div><input type="hidden" name="org.apache.struts.taglib.html.TOKEN"
+                                                value="c28591d6a64a97967b9f64a9e91915d4"></div>
+                                        <div class="form-group">
+                                            <div class="col-lg-12">
+                                                <input type="submit" value="送付状出力" class="btn btn-default">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3>コース情報</h3>
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <th>コース名</th>
+                                    <th>開講日</th>
+                                    <th>閉講日</th>
+                                    <th>受講人数</th>
+                                </tr>
+                                <tr>
+                                    <td>テストサンプル１</td>
+                                    <td>2020年3月1日</td>
+                                    <td>2021年3月31日</td>
+                                    <td>1 人</td>
+                                </tr>
+                                <tr>
+                                    <td>体験型Java研修用【デモ1】</td>
+                                    <td>2021年3月1日</td>
+                                    <td>2021年3月31日</td>
+                                    <td>2 人</td>
+                                </tr>
+                                <tr>
+                                    <td>体験型Java研修用【デモ2】</td>
+                                    <td>2021年12月1日</td>
+                                    <td>2021年3月31日</td>
+                                    <td>2 人</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3>見積もり情報</h3>
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <td>テストサンプル１</td>
+                                    <td>2020年03月</td>
+                                    <td>1 円</td>
+                                    <td>1 円</td>
+                                </tr>
+                                <tr>
+                                    <th>コース名</th>
+                                    <th>請求月</th>
+                                    <th>見積もり額</th>
+                                    <th>見積もり額／人</th>
+                                </tr>
+                                <tr>
+                                    <td>体験型Java研修用【デモ1】</td>
+                                    <td>2021年03月</td>
+                                    <td>7,808 円</td>
+                                    <td>120 円</td>
+                                </tr>
+                                <tr>
+                                    <td>体験型Java研修用【デモ2】</td>
+                                    <td>2021年12月</td>
+                                    <td>7,808 円</td>
+                                    <td>120 円</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-lg-12">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <h3>受講生情報</h3>
+                                    </td>
+                                    <td> <a id="rd3" class="radiusCircle ml10 noLinkLine rd3"
+                                            style="display: none;">＋</a>
+                                        <a id="rd4" class="radiusCircle ml10 noLinkLine rd4"
+                                            style="display: block;">－</a>
+                                    </td>
+                                    <td> <span id="m1" style="display: none;">　コース終了後 6ヵ月 を経過した受講生を表示</span> </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-hover" id="user-table">
+                            <thead>
+                                <tr>
+                                    <th>受講生状態</th>
+                                    <th>途中退校日</th>
+                                    <th>コース名</th>
+                                    <th>受講生名</th>
+                                    <th>会場名</th>
+                                    <th>使用する助成金</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentStudent" style="display: none;">
+                                <tr>
+                                    <td><span class="text-muted">受講中</span></td>
+                                    <td align="center"> - </td>
+                                    <td>体験型Java研修用【デモ1】</td>
+                                    <td><a href="../../user/detail.html">デモ受講生1</a></td>
+                                    <td>動作確認（$$）</td>
+                                    <td>人材開発支援助成金－一般訓練コース </td>
+                                </tr>
+                                <tr>
+                                    <td><span class="text-success">研修受講前</span></td>
+                                    <td align="center"> - </td>
+                                    <td>体験型Java研修用【デモ2】</td>
+                                    <td><a href="../../user/detail.html">デモ受講生2</a></td>
+                                    <td>動作確認（$$）</td>
+                                    <td>人材開発支援助成金－一般訓練コース</td>
+                                </tr>
+                                <tr>
+                                    <td><span><strong class="text-info">研修終了</strong></span></td>
+                                    <td align="center"> - </td>
+                                    <td>テストサンプル１</td>
+                                    <td><a href="../../user/detail.html">デモ受講生3</a></td>
+                                    <td>動作確認（$$）</td>
+                                    <td>※登録されていません</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <form id="screenTransForm" name="screenTransForm" method="post"> </form>
+            <div id="push"></div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="container">
+            <p class="muted credit">Copyright(C) 2015 System Shared co., ltd, ALL Rights Reserved</p>
+        </div>
+    </div>
+</body>
+
+</html>

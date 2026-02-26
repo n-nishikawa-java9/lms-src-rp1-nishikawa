@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>受講生登録 | LMS</title>
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/lms.css">
+  <link rel="stylesheet" type="text/css" href="../../css/jstree.css">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+  <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+  <script type="text/javascript" src="../../js/lms_common.js"></script>
+  <script type="text/javascript" src="../../js/jstree.min.js"></script>
+  <script type="text/javascript" src="../../js/currency.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header"> <a class="navbar-brand">LMS 学習管理システム</a> <button type="button" class="navbar-toggle"
+            data-toggle="collapse" data-target="#nav-content"> <span class="icon-bar"></span> <span
+              class="icon-bar"></span> <span class="icon-bar"></span> </button> </div>
+        <div id="nav-content" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">研修管理<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../user/list/student.html">受講生一覧</a></li>
+                <li><a href="../dailyReport/dailyList.html">日報確認</a></li>
+                <li><a href="../attendance/list.html">勤怠情報確認</a></li>
+                <li><a href="../exam/list.html">試験結果確認</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="../user/list/student.html" class="dropdown-toggle" data-toggle="dropdown"
+                role="button" aria-expanded="false">予約<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../takeOver/list.html">引継面談／会場見学 予約</a></li>
+                <li><a href="../presentation/list.html">成果報告会出欠</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="../user/list/student.html" class="dropdown-toggle" data-toggle="dropdown"
+                role="button" aria-expanded="false">助成金<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../subsidy/company/detail.html">企業情報編集</a></li>
+                <li><a href="../subsidy/download/type.html">申請書類DL</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="../user/list/student.html" class="dropdown-toggle" data-toggle="dropdown"
+                role="button" aria-expanded="false">その他<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../user/list/company.html">受講生以外のユーザー</a></li>
+                <li><a href="../contract/history/list.html">契約内容確認</a></li>
+                <li><a href="../fileshare/list.html" class="form-horizontal">ファイル共有</a></li>
+                <li><a href="../help/index.html" class="form-horizontal">ヘルプ</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="text-center">
+              <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom"
+              title="お知らせ" data-content="お知らせ内容" data-html="true"></span>
+            </li>
+            <li><a href="../user/myAccount.html"><small>ようこそ企業担当者さん</small></a></li>
+            <li> <button type="button" class="btn btn-default navbar-btn" onclick="location.href='${logout}'">
+                <a href="../../index.html" class="glyphicon glyphicon-log-out">　ログアウト</a> </button> </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div id="contents" class="clearfix">
+        <div id="main" class="main2clm">
+
+          <h2>受講生登録</h2>
+          <div class="well bs-component">
+
+            <h3>初回確認コース</h3>
+            <form action="../user/list/student.html" method="post" class="form-horizontal">
+				<input type="hidden" id="companyId" name="companyId" value="2" />
+				<input type="hidden" id="companyCourseId" name="companyCourseId" value="2" />
+				<input type="hidden" id="courseId" name="courseId" value="2" />
+				<input type="hidden" id="courseName" name="courseName" value="初回確認コース" />
+
+              <h4>受講生情報（1人目）</h4>
+              <table class="table">
+                <thead>
+                  <tr>
+					<th>会場</th>
+					<th><label for="userName0">受講生名</label></th>
+					<th><label for="kana0">よみがな</label></th>
+					<th><label for="programmingExperience0">プログラム経験</label></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>会場A
+						<input type="hidden" name="studentDtoList[0].placeId" value="1" />
+						<input type="hidden" name="studentDtoList[0].placeName" value="会場A" />
+                    </td>
+                    <td>
+                      <input type="text" name="studentDtoList[0].userName" id="userName0" value="" class="form-control" />
+                    </td>
+                    <td>
+                      <input type="text" name="studentDtoList[0].kana" id="kana0" value="" class="form-control" />
+                    </td>
+                    <td>
+                      <select name="studentDtoList[0].programmingExperience" id="programmingExperience0" class="form-control">
+                        <option value=""></option>
+                        <option value="1">あり</option>
+                        <option value="0">なし</option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th colspan="5"><label for="subsidyCategoryId0">使用する助成金</label></th>
+                  </tr>
+                  <tr>
+                    <td colspan="5">
+                      <select name="studentDtoList[0].subsidyCategoryId" id="subsidyCategoryId0" class="form-control">
+                        <option value=""></option>
+                        <option value="1">キャリアアップ助成金</option>
+                        <option value="2">人材開発支援助成金</option>
+                      </select>
+                      <strong class="text-role">※使用する助成金は、ユーザー変更画面で変更することも可能です。
+                        <br />　助成金を使用しない場合は、未選択で構いません。</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th colspan="5">
+                      <label for="hopeViaTraning0">研修を通じてどのようになって欲しいか</label>
+                    </th>
+                  </tr>
+                  <tr>
+                    <td colspan="5">
+                      <textarea name="studentDtoList[0].hopeViaTraning" id="hopeViaTraning0" class="form-control"></textarea>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h4>受講生情報（2人目）</h4>
+              <table class="table">
+                <thead>
+                  <tr>
+					<th>会場</th>
+					<th><label for="userName1">受講生名</label></th>
+					<th><label for="kana1">よみがな</label></th>
+					<th><label for="programmingExperience1">プログラム経験</label></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+					<td>会場A
+						<input type="hidden" name="studentDtoList[1].placeId" value="1" />
+						<input type="hidden" name="studentDtoList[1].placeName" value="会場A" />
+					</td>
+                    <td>
+                      <input type="text" name="studentDtoList[1].userName" id="userName1" value="" class="form-control" />
+                    </td>
+                    <td>
+                      <input type="text" name="studentDtoList[1].kana" id="kana1" value="" class="form-control" />
+                    </td>
+                    <td>
+                      <select name="studentDtoList[1].programmingExperience" id="programmingExperience1" class="form-control">
+                        <option value=""></option>
+                        <option value="1">あり</option>
+                        <option value="0">なし</option>
+                      </select> </td>
+                  </tr>
+                  <tr>
+                    <th colspan="5"><label for="subsidyCategoryId1">使用する助成金</label></th>
+                  </tr>
+                  <tr>
+                    <td colspan="5">
+                      <select name="studentDtoList[1].subsidyCategoryId" id="subsidyCategoryId1" class="form-control">
+                        <option value=""></option>
+                        <option value="1">キャリアアップ助成金</option>
+                        <option value="2">人材開発支援助成金</option>
+                      </select>
+                      <strong class="text-role">※使用する助成金は、ユーザー変更画面で変更することも可能です。
+                        <br>　助成金を使用しない場合は、未選択で構いません。</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th colspan="5">
+                      <label for="hopeViaTraning1">研修を通じてどのようになって欲しいか</label>
+                    </th>
+                  </tr>
+                  <tr>
+                    <td colspan="5">
+                      <textarea name="studentDtoList[1].hopeViaTraning" id="hopeViaTraning1" class="form-control"></textarea>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <h4>受講生情報（3人目）</h4>
+              <table class="table">
+                <thead>
+                  <tr>
+					<th>会場</th>
+					<th><label for="userName2">受講生名</label></th>
+					<th><label for="kana2">よみがな</label></th>
+					<th><label for="programmingExperience2">プログラム経験</label></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+					<td>会場B
+						<input type="hidden" name="studentDtoList[2].placeId" value="2" />
+						<input type="hidden" name="studentDtoList[2].placeName" value="会場B" />
+					</td>
+                    <td>
+                      <input type="text" name="studentDtoList[2].userName" id="userName2" value="" class="form-control" />
+                    </td>
+                    <td>
+                      <input type="text" name="studentDtoList[2].kana" id="kana2" value="" class="form-control" />
+                    </td>
+                    <td>
+                      <select name="studentDtoList[2].programmingExperience" id="programmingExperience2" class="form-control">
+                        <option value=""></option>
+                        <option value="1">あり</option>
+                        <option value="0">なし</option>
+                      </select> </td>
+                  </tr>
+                  <tr>
+                    <th colspan="5"><label for="subsidyCategoryId2">使用する助成金</label></th>
+                  </tr>
+                  <tr>
+                    <td colspan="5">
+                      <select name="studentDtoList[2].subsidyCategoryId" id="subsidyCategoryId2" class="form-control">
+                        <option value=""></option>
+                        <option value="1">キャリアアップ助成金</option>
+                        <option value="2">人材開発支援助成金</option>
+                      </select>
+                      <strong class="text-role">※使用する助成金は、ユーザー変更画面で変更することも可能です。
+                        <br>　助成金を使用しない場合は、未選択で構いません。</strong>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th colspan="5">
+                      <label for="hopeViaTraning2">研修を通じてどのようになって欲しいか</label>
+                    </th>
+                  </tr>
+                  <tr>
+                    <td colspan="5">
+                      <textarea name="studentDtoList[2].hopeViaTraning" id="hopeViaTraning2" class="form-control"></textarea>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <input type="submit" value="登録" onclick="submitcheck();" style="margin-top: 10px;" class="btn btn-primary" />
+            </form>
+          </div>
+
+        </div>
+      </div>
+      <div id="push"></div>
+    </div>
+
+  </div>
+  <div id="footer">
+    <div class="container">
+      <p class="muted credit">Copyright(C) 2015 System Shared co., ltd, ALL Rights Reserved</p>
+    </div>
+  </div>
+
+</body>
+</html>

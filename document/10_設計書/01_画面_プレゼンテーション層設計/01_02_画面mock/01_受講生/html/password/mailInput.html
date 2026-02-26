@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>パスワード変更 | LMS</title>
+
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/lms.css" />
+    <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <link href="https://use.fontawesome.com/releases/v5.6.4/css/all.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+    <script type="text/javascript" src="../../js/lms_common.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <div id="header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand">LMS 学習管理システム</a>
+          </div>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a><small>ようこそ受講生ＡＡ１さん</small></a>
+            </li>
+            <li>
+              <button type="button" class="btn btn-default navbar-btn" onclick="location.href='${logout}'">
+                <a href="../../index.html" class="glyphicon glyphicon-log-out">　ログアウト</a>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+    <div id="wrap">
+      <div class="container">
+        <div id="contents" class="clearfix">
+          <div id="main" class="main2clm">
+            <h2>パスワード変更</h2>
+            <form action="../course/detail.html" class="form-horizontal" id="upd-form" method="post">
+              <div class="well bs-component">
+                <fieldset>
+                  <div class="form-group">
+                    <label for="currentPassword" class="col-lg-2 control-label">ログイン名</label>
+                    <div class="col-lg-10 form-control-static">受講生001</div>
+                    <input type="hidden" name="loginId" value="test001" />
+                  </div>
+                  <hr />
+                  <div class="form-group">
+                    <label for="password" class="col-lg-2 control-label">新しいパスワード</label>
+                    <div class="col-lg-10">
+                      <input type="password" class="form-control" id="password" name="password" value="" />
+                      <span class="help-inline">パスワードは英大文字、英小文字、数字の3文字種を混合させた8文字以上を入力してください。</span>
+                      <ul style="padding-left: 0; list-style: none">
+                        <li></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="passwordConfirm" class="col-lg-2 control-label">確認パスワード</label>
+                    <div class="col-lg-10">
+                      <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" value="" />
+                      <ul style="padding-left: 0; list-style: none">
+                        <li></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                      <button type="submit" class="btn btn-primary">変更</button>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+
+              <div class="modal fade" id="div-modal">
+                <div class="modal-dialog modal-dialog-center">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                      <h4 class="modal-title" id="modal-label">パスワード変更の確認</h4>
+                    </div>
+                    <div class="modal-body">
+                      <strong>※パスワードを変更する際は以下の点にご注意ください。</strong>
+                      <ul>
+                        <li>パスワードは大文字、小文字が区別されます。</li>
+                        <li>変更したパスワードを忘れると本システムにログインできなくなります。</li>
+                        <li>パスワードの管理は十分にご注意ください。</li>
+                      </ul>
+                      <div>パスワードを変更しますか？</div>
+                    </div>
+                    <div class="modal-footer">
+                      <input type="button" class="btn btn-primary" value="キャンセル" onclick="$('.modal').modal('hide');" />
+                      <button type="button" class="btn btn-primary" id="upd-btn">変更</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <script>
+              $(function () {
+                var btn = false;
+                $("#upd-form").submit(function () {
+                  if (btn) {
+                    return btn;
+                  } else {
+                    $(".modal").modal("show");
+                    return btn;
+                  }
+                });
+
+                $("#upd-btn").click(function () {
+                  btn = true;
+                  $("#upd-form").submit();
+                });
+              });
+            </script>
+            <div id="push"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">Copyright&copy; 2021 System Shared co., ltd, ALL Rights Reserved</p>
+      </div>
+      <div id="page_top"><a href="#"></a></div>
+    </div>
+    <script>
+      $("#page_top").hide();
+      $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
+          $("#page_top").fadeIn();
+        } else {
+          $("#page_top").fadeOut();
+        }
+      });
+
+      $("#page_top").click(function () {
+        $("body,html").animate(
+          {
+            scrollTop: 0,
+          },
+          700
+        );
+        return false;
+      });
+    </script>
+  </body>
+</html>

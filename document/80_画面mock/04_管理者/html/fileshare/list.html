@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ファイル一覧 | LMS</title>
+
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/lms.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/jstree.css" />
+  <link rel="shortcut icon" href="../../img/favicon.ico" />
+
+  <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+  <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+  <script type="text/javascript" src="../../js/lms_common.js"></script>
+  <script type="text/javascript" src="../../js/jstree.min.js"></script>
+  <script type="text/javascript" src="../../js/currency.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+
+  <script type="text/javascript" src="../../js/fileshare.js"></script>
+</head>
+
+<body>
+  <div id="wrap">
+    <nav class="navbar navbar-default">
+      <script>
+        $(function () {
+          $("#question").click(function (e) {
+            e.preventDefault();
+            $("#check-modal").modal("show");
+          });
+        });
+      </script>
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../course/list.html" class="navbar-brand">LMS 学習管理システム</a>
+
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-content">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="nav-content" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">事務<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../mail/templateList.html">メールテンプレート管理</a></li>
+                <li><a href="../mail/sendList.html">メール一斉送信</a></li>
+                <li><a href="../company/list.html">企業管理</a></li>
+                <li><a href="../user/list.html">ユーザー管理</a></li>
+                <li><a href="../contract/list.html">契約履歴</a></li>
+                <li><a href="../takeOver/candidateList.html">引継面談／会場見学 スケジュール</a></li>
+                <li><a href="../takeOver/list.html">引継面談／会場見学 実施予定</a></li>
+                <li><a href="../schedule/presentationList.html">成果報告会スケジュール</a></li>
+                <li><a href="../presentation/teamList.html">成果報告会チーム確定</a></li>
+                <li><a href="../presentation/list.html">成果報告会実施予定</a></li>
+                <li><a href="../estimate/list.html">請求情報ダウンロード</a></li>
+                <li><a href="../evReport/resultList.html">評価レポート公開</a></li>
+                <li><a href="../estimate/productList.html">見積もり品マスタ管理</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">営業<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../entry/list.html">エントリー情報確定</a></li>
+                <li><a href="../assign/spreadsheet.html">会場アサイン</a></li>
+                <li><a href="../takeOver/list.html">引継面談／会場見学 実施予定</a></li>
+                <li><a href="../presentation/reserveList.html">成果報告会実施予定</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">運営<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../place/list.html">会場管理</a></li>
+                <li><a href="../genre/list.html">試験カテゴリー管理</a></li>
+                <li><a href="../exam/list.html">試験内容管理</a></li>
+                <li><a href="../dailyReport/list.html">日報管理</a></li>
+                <li><a href="../deliverables/manageList.html">成果物管理</a></li>
+                <li><a href="../evReport/list.html">評価レポート管理</a></li>
+                <li><a href="../meeting/fileList.html">面談ファイル管理</a></li>
+                <li><a href="../holiday/list.html">休暇日設定</a></li>
+                <li><a href="../course/list.html">コース管理</a></li>
+                <li><a href="../movie/categoryList.html">動画管理</a></li>
+                <li><a href="../mail/sendList.html">メール一斉送信</a></li>
+                <li><a href="../user/list.html">ユーザー管理</a></li>
+                <li><a href="../displayControl/list.html">データの表示制御</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">助成金<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../subsidy/companyList.html">企業情報</a></li>
+                <li><a href="../subsidy/templateList.html">テンプレート管理</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">受講生情報<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../exam/list.html">試験</a></li>
+                <li><a href="../dailyReport/dailyList.html">レポート</a></li>
+                <li><a href="../deliverables/list.html">成果物</a></li>
+                <li><a href="../evReport/scoringConfirmation.html">評価レポート採点確認</a></li>
+                <li><a href="../attendance/list.html">勤怠</a></li>
+                <li><a href="../attendance/bulkRegistList.html">勤怠一括登録</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">その他<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../fileshare/index.html">ファイル共有</a></li>
+                <li><a href="../course/csv.html">CSV出力</a></li>
+                <li><a href="../faq/categoryList.html">FAQ管理</a></li>
+                <li><a href="../contract/list.html">契約内容変更</a></li>
+                <li><a href="../info/latest.html">お知らせ設定</a></li>
+                <li><a href="../repair/list.html">改修履歴設定</a></li>
+                <li><a href="../help/index.html">ヘルプ</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="text-center">
+              <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom"
+              title="お知らせ" data-content="お知らせ内容" data-html="true"></span>
+            </li>
+            <li>
+              <a><small>ようこそ管理者さん</small></a>
+            </li>
+            <li>
+              <button type="button" class="btn btn-default navbar-btn" onclick="location.href='../../index.html'">
+                <a href="../../index.html" class="glyphicon glyphicon-log-out">　ログアウト</a>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div id="contents" class="clearfix">
+        <div id="main" class="main2clm">
+          <nav class="navbar navbar-default navbar-inverse">
+            <div class="navbar-header" data-target="file-menu">
+              <a class="navbar-brand">マイフォルダ</a>
+            </div>
+            <div class="collapse navbar-collapse" id="nav-menu-4">
+              <ul class="nav navbar-nav navbar-left">
+                <li><a href="list.html" data-toggle="modal" data-target="#modal-upd"
+                    class="glyphicon glyphicon-upload">　アップロード</a></li>
+
+                <li><a href="list.html" id="del-link" data-toggle="modal" data-target="#modal-del"
+                    class="glyphicon glyphicon-trash">　削除</a></li>
+
+                <li class="dropdown">
+                  <a class="dropdown-toggle glyphicon glyphicon-share" data-toggle="dropdown" href="list.html">
+                    共有
+                    <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a href="list.html" data-toggle="modal" data-target="#modal-shr" id="shr-link">共有</a></li>
+
+                    <li><a href="list.html" data-toggle="modal" data-target="#modal-shr-release"
+                        id="shr-release-link">共有解除</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </nav>
+
+          <div class="modal fade" id="modal-errors">
+            <a href="list.html" data-toggle="modal" data-target="#modal-errors" id="error-trigger"></a>
+            <div class="modal-dialog modal-dialog-center">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                  <h4 class="modal-title" id="modal-label">エラー</h4>
+                </div>
+
+                <div class="modal-body">
+                  <div class="errors"></div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form name="fileshare_uploadActionForm" method="post" action="#" enctype="multipart/form-data">
+            <div class="modal" id="modal-upd">
+              <div class="modal-dialog modal-dialog-center">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="modal-label">アップロード</h4>
+                  </div>
+
+                  <div class="modal-body">
+                    <input type="file" name="uploadFile" value="" id="file-input" style="display: none" />
+                    <div style="width: 100%; margin-right: 10px" class="input-group">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" onclick="'#file-input'.click();">
+                          <i class="glyphicon glyphicon-folder-open"></i>
+                        </button>
+                      </span>
+                      <input id="file-input-dummy" type="text" class="form-control" placeholder="ファイルを選択してください"
+                        disabled="" />
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <input type="submit" value="アップロード" id="file-upload" class="btn btn-primary" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <form name="fileshare_shareActionForm" method="post" action="list.html">
+            <div class="modal" id="modal-shr">
+              <div class="modal-dialog modal-dialog-center">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="modal-label">共有</h4>
+                  </div>
+
+                  <div class="modal-body">
+                    <div class="messages"></div>
+
+                    <div id="shr-table-div" class="table">
+                      <h5>共有するユーザーを選んでください。</h5>
+                      <div id="shr-table_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                        <div class="row">
+                          <div class="col-sm-6"></div>
+                          <div class="col-sm-6">
+                            <div id="shr-table_filter" class="dataTables_filter"></div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-12">
+                            <table class="table dataTable no-footer" id="shr-table" role="grid"
+                              aria-describedby="shr-table_info">
+                              <thead>
+                                <tr class="shr-tr" role="row">
+                                  <th class="sorting_asc" rowspan="1" colspan="1" aria-label="">
+                                    <div style="font-size: x-small">
+                                      <input id="checkbox-shr-all" class="icon-checkbox" type="checkbox" />
+                                      <label for="checkbox-shr-all" class="text-info">
+                                        <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                                        <span class="glyphicon glyphicon-check checked"></span>
+                                      </label>
+                                    </div>
+                                  </th>
+                                  <th class="sorting" tabindex="0" aria-controls="shr-table" rowspan="1" colspan="1"
+                                    aria-label="グループ: activate to sort column ascending">グループ</th>
+                                  <th class="sorting" tabindex="0" aria-controls="shr-table" rowspan="1" colspan="1"
+                                    aria-label="ユーザー名: activate to sort column ascending">ユーザー名</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr class="shr-tr odd" role="row">
+                                  <td class="sorting_1">
+                                    <div style="font-size: x-small">
+                                      <input type="checkbox" name="shareUserId[0]" value="24036" id="checkbox-shr[0]"
+                                        class="icon-checkbox" />
+                                      <label for="checkbox-shr[0]" class="text-info">
+                                        <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                                        <span class="glyphicon glyphicon-check checked"></span>
+                                      </label>
+                                    </div>
+                                  </td>
+                                  <td>グループ5 | グループ1</td>
+                                  <td>テスト受講生</td>
+                                </tr>
+                                <tr class="shr-tr even" role="row">
+                                  <td class="sorting_1">
+                                    <div style="font-size: x-small">
+                                      <input type="checkbox" name="shareUserId[1]" value="119" id="checkbox-shr[1]"
+                                        class="icon-checkbox" />
+                                      <label for="checkbox-shr[1]" class="text-info">
+                                        <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                                        <span class="glyphicon glyphicon-check checked"></span>
+                                      </label>
+                                    </div>
+                                  </td>
+                                  <td>グループ5 | グループ2</td>
+                                  <td>共有者１</td>
+                                </tr>
+                                <tr class="shr-tr odd" role="row">
+                                  <td class="sorting_1">
+                                    <div style="font-size: x-small">
+                                      <input type="checkbox" name="shareUserId[2]" value="803" id="checkbox-shr[2]"
+                                        class="icon-checkbox" />
+                                      <label for="checkbox-shr[2]" class="text-info">
+                                        <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                                        <span class="glyphicon glyphicon-check checked"></span>
+                                      </label>
+                                    </div>
+                                  </td>
+                                  <td>グループ5 | グループ2</td>
+                                  <td>共有者２</td>
+                                </tr>
+                                <tr class="shr-tr even" role="row">
+                                  <td class="sorting_1">
+                                    <div style="font-size: x-small">
+                                      <input type="checkbox" name="shareUserId[3]" value="24037" id="checkbox-shr[3]"
+                                        class="icon-checkbox" />
+                                      <label for="checkbox-shr[3]" class="text-info">
+                                        <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                                        <span class="glyphicon glyphicon-check checked"></span>
+                                      </label>
+                                    </div>
+                                  </td>
+                                  <td>グループ5 |</td>
+                                  <td>共有者３</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-7">
+                            <div class="dataTables_paginate paging_simple_numbers" id="shr-table_paginate"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="modal-footer">
+                    <input type="submit" value="共有" class="btn btn-primary" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <form name="fileshare_shareReleaseActionForm" method="post" action="list.html">
+            <div class="modal" id="modal-shr-release">
+              <div class="modal-dialog modal-dialog-center">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="modal-label">共有解除</h4>
+                  </div>
+
+                  <div class="modal-body"></div>
+
+                  <div class="modal-footer">
+                    <input type="submit" value="共有解除" class="btn btn-primary" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <form name="fileshare_deleteActionForm" method="post" action="list.html">
+            <div class="modal" id="modal-del">
+              <div class="modal-dialog modal-dialog-center">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="modal-label">削除</h4>
+                  </div>
+
+                  <div class="modal-body">
+                    <div id="del-messages"></div>
+                  </div>
+
+                  <div class="modal-footer" id="del-footer">
+                    <input type="submit" value="削除" class="btn btn-primary" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <div id="file-table_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="dataTables_length" id="file-table_length"></div>
+              </div>
+              <div class="col-sm-6">
+                <div id="file-table_filter" class="dataTables_filter"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <table class="table table-hover tablesorter dataTable no-footer" id="file-table" role="grid"
+                  aria-describedby="file-table_info">
+                  <thead>
+                    <tr role="row">
+                      <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="">
+                        <input id="checkbox-all" class="icon-checkbox" type="checkbox" />
+                        <label for="checkbox-all" class="text-info">
+                          <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                          <span class="glyphicon glyphicon-check checked"></span>
+                        </label>
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="file-table" rowspan="1" colspan="1"
+                        aria-label="共有: activate to sort column ascending">共有</th>
+                      <th class="sorting" tabindex="0" aria-controls="file-table" rowspan="1" colspan="1"
+                        aria-label="ファイル名: activate to sort column ascending">ファイル名</th>
+                      <th class="sorting_desc" tabindex="0" aria-controls="file-table" rowspan="1" colspan="1"
+                        aria-sort="descending" aria-label="変更日: activate to sort column ascending">
+                        変更日
+                      </th>
+                      <th class="sorting" tabindex="0" aria-controls="file-table" rowspan="1" colspan="1"
+                        aria-label="ファイルタイプ: activate to sort column ascending">ファイルタイプ</th>
+                      <th class="sorting" tabindex="0" aria-controls="file-table" rowspan="1" colspan="1"
+                        aria-label="サイズ: activate to sort column ascending">サイズ</th>
+                      <th class="sorting" tabindex="0" aria-controls="file-table" rowspan="1" colspan="1"
+                        aria-label="所有者: activate to sort column ascending">所有者</th>
+                      <th class="sorting" tabindex="0" aria-controls="file-table" rowspan="1" colspan="1"
+                        aria-label="共有者: activate to sort column ascending">共有者</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr role="row" class="odd">
+                      <td>
+                        <input name="fileCheck" id="checkbox[0]" class="icon-checkbox" type="checkbox" />
+                        <label for="checkbox[0]" class="text-info">
+                          <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                          <span class="glyphicon glyphicon-check checked"></span>
+                        </label>
+                        <input type="hidden" name="fileId" value="62555" />
+                        <input type="hidden" name="fileName" value="test.txt" />
+                        <input type="hidden" name="sharePerson" value="" />
+                        <input type="hidden" name="sharedPerson" value="" />
+                      </td>
+                      <td>
+                        <span class="glyphicon glyphicon-minus">　</span>
+                      </td>
+                      <td>
+                        <a href="list.html">test.txt</a>
+                      </td>
+                      <td class="sorting_1">2020年10月09日 15:32</td>
+                      <td>txtファイル</td>
+                      <td>6 Byte</td>
+                      <td>管理者</td>
+                      <td>－</td>
+                    </tr>
+                    <tr role="row" class="even">
+                      <td>
+                        <input name="fileCheck" id="checkbox[2]" class="icon-checkbox" type="checkbox" />
+                        <label for="checkbox[2]" class="text-info">
+                          <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                          <span class="glyphicon glyphicon-check checked"></span>
+                        </label>
+                        <input type="hidden" name="fileId" value="62537" />
+                        <input type="hidden" name="fileName" value="共有ファイル.txt" />
+                        <input type="hidden" name="sharePerson" value="" />
+                        <input type="hidden" name="sharedPerson" value="テスト受講生" />
+                      </td>
+                      <td>
+                        <span class="glyphicon glyphicon-import" data-toggle="popover" data-placement="right"
+                          data-content="共有されている" data-trigger="hover" data-original-title="" title="">　</span>
+                      </td>
+                      <td>
+                        <a href="list.html">共有ファイル.txt</a>
+                      </td>
+                      <td class="sorting_1">2020年08月27日 11:02</td>
+                      <td>txtファイル</td>
+                      <td>14 Byte</td>
+                      <td>テスト受講生</td>
+                      <td>－</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <input name="fileCheck" id="checkbox[1]" class="icon-checkbox" type="checkbox" />
+                        <label for="checkbox[1]" class="text-info">
+                          <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                          <span class="glyphicon glyphicon-check checked"></span>
+                        </label>
+                        <input type="hidden" name="fileId" value="62571" />
+                        <input type="hidden" name="fileName" value="追加資料.txt" />
+                        <input type="hidden" name="sharePerson" value="テスト受講生" />
+                        <input type="hidden" name="sharedPerson" value="" />
+                      </td>
+                      <td>
+                        <span class="glyphicon glyphicon-export" data-toggle="popover" data-placement="right"
+                          data-content="共有している" data-trigger="hover">　</span>
+                      </td>
+                      <td>
+                        <a href="list.html">追加資料.txt</a>
+                      </td>
+                      <td>2020年05月25日 10:37</td>
+                      <td>txtファイル</td>
+                      <td>8 Byte</td>
+                      <td>管理者</td>
+                      <td>テスト受講生</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-7">
+                <div class="dataTables_paginate paging_simple_numbers" id="file-table_paginate"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--#main-->
+      </div>
+      <!--#contents-->
+      <form id="screenTransForm" name="screenTransForm" method="post"></form>
+      <div id="push"></div>
+    </div>
+  </div>
+  <div id="footer">
+    <div class="container">
+      <p class="muted credit">Copyright(C) 2015 System Shared co., ltd, ALL Rights Reserved</p>
+    </div>
+  </div>
+  <!--#container-->
+</body>
+
+</html>

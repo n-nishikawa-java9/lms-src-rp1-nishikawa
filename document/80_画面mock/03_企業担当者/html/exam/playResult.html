@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>試験結果詳細 | LMS</title>
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/lms.css">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+  <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+  <script type="text/javascript" src="../../js/lms_common.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div id="wrap">
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header"> <a class="navbar-brand">LMS 学習管理システム</a> <button type="button" class="navbar-toggle"
+            data-toggle="collapse" data-target="#nav-content"> <span class="icon-bar"></span> <span
+              class="icon-bar"></span> <span class="icon-bar"></span> </button> </div>
+        <div id="nav-content" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">研修管理<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                 <li><a href="../list/student.html">受講生一覧</a></li>
+                <li><a href="../dailyReport/dailyList.html">日報確認</a></li>
+                <li><a href="../attendance/list.html">勤怠情報確認</a></li>
+                <li><a href="../exam/list.html">試験結果確認</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="../user/list/student.html" class="dropdown-toggle" data-toggle="dropdown"
+                role="button" aria-expanded="false">予約<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../takeOver/list.html">引継面談／会場見学 予約</a></li>
+                <li><a href="../presentation/list.html">成果報告会出欠</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="../user/list/student.html" class="dropdown-toggle" data-toggle="dropdown"
+                role="button" aria-expanded="false">助成金<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../subsidy/company/detail.html">企業情報編集</a></li>
+                <li><a href="../subsidy/download/type.html">申請書類DL</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="../user/list/student.html" class="dropdown-toggle" data-toggle="dropdown"
+                role="button" aria-expanded="false">その他<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../user/list/company.html">受講生以外のユーザー</a></li>
+                <li><a href="../contract/history/list.html">契約内容確認</a></li>
+                <li><a href="../fileshare/list.html" class="form-horizontal">ファイル共有</a></li>
+                <li><a href="../help/index.html" class="form-horizontal">ヘルプ</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="text-center">
+              <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom"
+              title="お知らせ" data-content="お知らせ内容" data-html="true"></span>
+            </li>
+            <li><a><small>ようこそ企業担当者さん</small></a></li>
+            <li> <button type="button" class="btn btn-default navbar-btn" onclick="">
+                <a href="../../index.html" class="glyphicon glyphicon-log-out">　ログアウト</a> </button> </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div id="contents" class="clearfix">
+        <div id="main" class="main2clm">
+          <div id="examBeing">
+            <h2> Java_確認_01【デモ】&nbsp;<small>あなたのスコア：57.1点</small> </h2>
+            <div class="panel panel-default">
+              <div class="panel-heading">第1問&nbsp;【Java】</div>
+              <div class="panel-body">
+                <p class="question marginB5">
+                  下記の文中の（　）内にあてはまる単語の組み合わせとして、正しいものはどれか。<br><br>Javaでは、（&nbsp;①&nbsp;）というソフトウェアを使用して、ソースファイルからクラスファイルを作成する。そして、（&nbsp;②&nbsp;）というソフトウェアを使用して、クラスファイルの内容を機械語に変換し、プログラムを実行する。
+                </p>
+                <h6>回答</h6>
+                <ul class="list-group">
+                  <li class="list-group-item list-group-item-danger"> 1.　　<span
+                      class="ib question">①：ソースコード、②：バイトコード</span></li>
+                  <li class="list-group-item">2.　　<span class="ib question">①：バイトコード、②：ソースコード</span></li>
+                  <li class="list-group-item">3.　　<span class="ib question">①：コンパイラ、②：インタプリタ（Java仮想マシン）</span></li>
+                  <li class="list-group-item">4.　　<span class="ib question">①：インタプリタ（Java仮想マシン）、②：コンパイラ</span></li>
+                </ul>
+                <p> </p>
+                <h3>【不正解】　<small>正解は 3 です</small></h3>
+                <ul class="list-group">
+                  <li class="list-group-item"> 『やさしいJava 第6版』
+                    P3、8～10<br>大半のプログラミング言語ではコンパイラ、もしくはインタプリタのいずれかを使用してプログラムを実行します。<br>それに対して、Javaではコンパイラとインタプリタによる2段階での処理を通してプログラムが実行されます。<br>なお、Javaのインタプリタのことを「Java仮想マシン（Java
+                    Virtual Machine、またはJVM）」と呼びます。<br>以上のことから、選択肢3が正解です。</li>
+                </ul>
+                <p></p>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">第2問&nbsp;【Java】</div>
+              <div class="panel-body">
+                <p class="question marginB5">Javaのクラスファイルが持つメリットとして正しいものはどれか。</p>
+                <h6>回答</h6>
+                <ul class="list-group">
+                  <li class="list-group-item list-group-item-danger"> 1.　　<span
+                      class="ib question">Java以外の言語を実行させるためのソフトウェアでもJavaのプログラムを実行できる。</span></li>
+                  <li class="list-group-item">2.　　<span class="ib question">OS環境に依存せずプログラムを実行できる。</span></li>
+                  <li class="list-group-item">3.　　<span class="ib question">Windows環境でのみプログラムを実行できる。</span></li>
+                  <li class="list-group-item">4.　　<span class="ib question">Windows環境以外でのみプログラムを実行できる。</span></li>
+                </ul>
+                <p> </p>
+                <h3>【不正解】　<small>正解は 2 です</small></h3>
+                <ul class="list-group">
+                  <li class="list-group-item"> 『やさしいJava 第6版』
+                    P13～14<br>大半のプログラミング言語では、プログラムの開発環境と実行環境が一致していないと実行できません。。<br>それに対して、Javaのコンパイラによって作成されたクラスファイルは、Javaが実行可能であればどの環境でも実行可能です。環境に依存しない点はJavaの大きな強みでもあります。<br>以上のことから、選択肢2が正解です。
+                  </li>
+                </ul>
+                <p></p>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">第3問&nbsp;【Java】</div>
+              <div class="panel-body">
+                <p class="question marginB5">下記の文はどのような処理を行うためのものか。正しいものを選べ。<br><br>System.out.println()</p>
+                <h6>回答</h6>
+                <ul class="list-group">
+                  <li class="list-group-item">1.　　<span class="ib question">コンソール中で文字を入力できるようにする。</span></li>
+                  <li class="list-group-item list-group-item-info"> 2.　　<span
+                      class="ib question">コンソール上に文字列を出力する。</span></li>
+                  <li class="list-group-item">3.　　<span class="ib question">コンソール上に写真画像を表示する。</span></li>
+                  <li class="list-group-item">4.　　<span class="ib question">コンソール上を自動的に閉じる。</span></li>
+                </ul>
+                <p> </p>
+                <h3>【正解】</h3>
+                <p></p>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">第4問&nbsp;【Java】</div>
+              <div class="panel-body">
+                <p class="question marginB5">main()メソッドに関する説明として正しいものはどれか。</p>
+                <h6>回答</h6>
+                <ul class="list-group">
+                  <li class="list-group-item list-group-item-info"> 1.　　<span
+                      class="ib question">プログラム起動時にmain()メソッド内に記述した文が最初に実行される。</span></li>
+                  <li class="list-group-item">2.　　<span
+                      class="ib question">main()メソッドのブロックは、クラスブロックの外側に記述しなければならない。</span></li>
+                  <li class="list-group-item">3.　　<span
+                      class="ib question">main()メソッドのブロックは、"&nbsp;[&nbsp;"&nbsp;と&nbsp;"&nbsp;]&nbsp;"&nbsp;で囲むかたちで表記する。</span>
+                  </li>
+                  <li class="list-group-item">4.　　<span
+                      class="ib question">main()メソッドの記述は省略可能であり、実行したい文をクラスブロック内に直接記述することもできる。</span></li>
+                </ul>
+                <p> </p>
+                <h3>【正解】</h3>
+                <p></p>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">第5問&nbsp;【Java】</div>
+              <div class="panel-body">
+                <p class="question marginB5">エスケープシーケンスに関する説明として正しいものはどれか。</p>
+                <h6>回答</h6>
+                <ul class="list-group">
+                  <li class="list-group-item">1.　　<span
+                      class="ib question">$マークとアルファベット1文字を組み合わせて、1つの文字リテラルとして扱われる。</span></li>
+                  <li class="list-group-item list-group-item-info"> 2.　　<span
+                      class="ib question">改行や水平タブを特殊文字として文字列中に記述できる。</span></li>
+                  <li class="list-group-item">3.　　<span class="ib question">文字列を出力する際には、エスケープシーケンスも必ず記述しなければならない。</span>
+                  </li>
+                  <li class="list-group-item">4.　　<span
+                      class="ib question">エスケープシーケンスの表記に使用する記号は、文字として出力することができない。</span></li>
+                </ul>
+                <p> </p>
+                <h3>【正解】</h3>
+                <p></p>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">第6問&nbsp;【Java】</div>
+              <div class="panel-body">
+                <p class="question marginB5">Javaにおける変数に関する説明として正しいものはどれか。</p>
+                <h6>回答</h6>
+                <ul class="list-group">
+                  <li class="list-group-item">1.　　<span class="ib question">一度宣言した変数の型は処理の途中で自由に変更できる。</span></li>
+                  <li class="list-group-item">2.　　<span class="ib question">変数は、宣言の処理を省略しても使用できる。</span></li>
+                  <li class="list-group-item list-group-item-danger"> 3.　　<span
+                      class="ib question">1つの変数の中には、複数の値を保存できる。</span></li>
+                  <li class="list-group-item">4.　　<span class="ib question">変数は、何らかの値を保存するための入れ物として使用する。</span></li>
+                </ul>
+                <p> </p>
+                <h3>【不正解】　<small>正解は 4 です</small></h3>
+                <ul class="list-group">
+                  <li class="list-group-item"> 『やさしいJava 第6版』
+                    P44～51<br>プログラムは計算途中の情報をメモリ上に保存しないと、その情報を後で利用することができません。そして、メモリ上には複数の情報を保存できるため、それぞれの情報が何のことなのかを識別する必要があります。そこ情報を識別して保するために利用するのが変数です。そのため、選択肢4が正解です。<br>ちなみに、変数を利用するためには、事前にその変数を宣言しないといけません。そのため、選択肢2は不正解です。また、変数の型は1度宣言したら変更できないため、選択肢1は不正解です。<br>他のプログラミング言語でも同様ですが、1つの変数の中には1つの値しか保存できません。そんため、選択肢3は不正解です。
+                  </li>
+                </ul>
+                <p></p>
+              </div>
+            </div>
+            <div class="panel panel-default">
+              <div class="panel-heading">第7問&nbsp;【Java】</div>
+              <div class="panel-body">
+                <p class="question marginB5">
+                  以下の文はどのような処理を行っているか。正しいものを選べ。<br><br>int&nbsp;number;<br>number&nbsp;=&nbsp;10;</p>
+                <h6>回答</h6>
+                <ul class="list-group">
+                  <li class="list-group-item">1.　　<span
+                      class="ib question">1行目では、整数型（number）の変数intを宣言している。2行目では、number型の上限値を10に指定している。</span></li>
+                  <li class="list-group-item">2.　　<span
+                      class="ib question">1行目では、浮動小数点数型（int）の変数numberを宣言している。2行目では、変数numberに10という値を代入している。</span></li>
+                  <li class="list-group-item list-group-item-info"> 3.　　<span
+                      class="ib question">1行目では、整数型（int）の変数numberを宣言している。2行目では、変数numberに10という値を代入している。</span> </li>
+                  <li class="list-group-item">4.　　<span
+                      class="ib question">1行目では、整数型（int）の変数numberを宣言している。2行目では、変数numberの値が10と等しいかどうかを比較している。</span></li>
+                </ul>
+                <p> </p>
+                <h3>【正解】</h3>
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form id="screenTransForm" name="screenTransForm" method="post"> </form>
+      <div id="push"></div>
+    </div>
+  </div>
+  <div id="footer">
+    <div class="container">
+      <p class="muted credit">Copyright(C) 2015 System Shared co., ltd, ALL Rights Reserved</p>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<!-- saved from url=(0041)../lms/exam/play/confirm -->
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Java_確認_01【デモ】 | LMS</title>
+
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../css/dataTables.bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../../css/bootstrap-datepicker.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../../css/lms.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/jstree.css" />
+    <link rel="shortcut icon" href="../../img/favicon.ico" />
+
+    <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+    <script
+      type="text/javascript"
+      src="../../js/jquery.dataTables.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../../js/dataTables.bootstrap.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../../js/bootstrap-datepicker.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../../js/bootstrap-datepicker.ja.min.js"
+    ></script>
+    <script type="text/javascript" src="../../js/lms_common.js"></script>
+    <script type="text/javascript" src="../../js/jstree.min.js"></script>
+    <script type="text/javascript" src="../../js/currency.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+
+    <style>
+      .question {
+        font-family: "ＭＳ ゴシック", sans-serif;
+      }
+    </style>
+    <script>
+      var time = 7000;
+
+      function timeUp() {
+        alert("制限時間となりました。回答を送信します。");
+        $("#time02").val(15 * 60 * 1000);
+        $("#examPlayForm").submit();
+      }
+
+      function submitForm() {
+        $("#examPlayForm").submit();
+      }
+
+      function timeCount() {
+        time = time + 1000;
+        $("#time01").val(time);
+        $("#time02").val(time);
+      }
+
+      setTimeout("timeUp()", 15 * 60 * 1000 - time + 1);
+      setInterval("timeCount()", 1000);
+    </script>
+  </head>
+  <body>
+    <div id="wrap">
+      <nav class="navbar navbar-default">
+        <script>
+          $(function () {
+            $("#question").click(function (e) {
+              e.preventDefault();
+              $("#check-modal").modal("show");
+            });
+            $("#check-confirm-btn").click(function () {
+              window.open("", "_blank");
+              $("#check-modal").remove();
+              location.reload();
+            });
+          });
+        </script>
+        <div class="container">
+          <div class="navbar-header">
+            <a href="../course/list.html" class="navbar-brand">LMS 学習管理システム</a>
+
+            <button
+              type="button"
+              class="navbar-toggle"
+              data-toggle="collapse"
+              data-target="#nav-content"
+            >
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+          <div id="nav-content" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <a
+                  href="../course/detail/?courseId=602#"
+                  class="dropdown-toggle"
+                  data-toggle="dropdown"
+                  role="button"
+                  aria-expanded="false"
+                  >研修管理<span class="caret"></span
+                ></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="../course/list.html">コース</a></li>
+                  <li><a href="../user/list.html">受講生</a></li>
+                  <li><a href="../dailyReport/dailyList.html">日報</a></li>
+                  <li><a href="../exam/list.html">試験結果</a></li>
+                  <li><a href="../deliverables/list.html">成果物</a></li>
+                  <li><a href="../attendance/list.html">勤怠確認</a></li>
+                  <li>
+                    <a href="../attendance/bulkRegist.html"
+                      >勤怠一括登録</a
+                    >
+                  </li>
+                  <li>
+                    <a href="../evReport/scoringConfirmation.html"
+                      >評価レポート採点確認</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a
+                  href="../course/detail/?courseId=602#"
+                  class="dropdown-toggle"
+                  data-toggle="dropdown"
+                  role="button"
+                  aria-expanded="false"
+                  >面談・報告会<span class="caret"></span
+                ></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <a href="../takeOver/list.html"
+                      >引継面談／会場見学 実施予定</a
+                    >
+                  </li>
+                  <li>
+                    <a href="../presentation/teamList.html">チーム編成</a>
+                  </li>
+                  <li>
+                 <a href="../presentation/list.html"
+                      >成果報告会実施予定</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a
+                  href="../course/detail/?courseId=602#"
+                  class="dropdown-toggle"
+                  data-toggle="dropdown"
+                  role="button"
+                  aria-expanded="false"
+                  >その他<span class="caret"></span
+                ></a>
+                <ul class="dropdown-menu" role="menu">
+                  
+                  <li>
+                    <a href="../fileshare/list.html" class="form-horizontal"
+                      >ファイル共有</a
+                    >
+                  </li>
+                  <li>
+                    <a href="../movie/index.html" class="form-horizontal">動画視聴</a>
+                  </li>
+
+                  <li>
+                    <a href="../help/index.html" class="form-horizontal">ヘルプ</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="text-center">
+                <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+                <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom"
+                  title="お知らせ" data-content="" data-html="true"></span>
+              </li>
+              <li><a href="../user/myAccount.html"><small>ようこそ講師さん</small></a></li>
+              <li>
+                <c:url var="logout" value="../../index.html"></c:url>
+                <button type="button" class="btn btn-default navbar-btn" onclick="location.href='../../index.html'">
+                  <a href="../../index.html" class="glyphicon glyphicon-log-out"> ログアウト</a>
+                </button>
+              </li>
+            </ul>
+        </div>
+      </nav>
+      <div class="container">
+        <div id="contents" class="clearfix">
+          <div id="main" class="main2clm">
+            <div id="examBeing">
+              <h2>Java_確認_01【デモ】</h2>
+              <form
+                name="exam_playActionForm"
+                method="post"
+                action=""
+              >
+                <div>
+                  <input
+                    type="hidden"
+                    name="org.apache.struts.taglib.html.TOKEN"
+                    value="addf67ffbc1bc842702491210c3c0087"
+                  />
+                </div>
+
+                <div class="panel panel-default">
+                  <div class="panel-heading">第1問&nbsp;【Java】</div>
+
+                  <div class="panel-body">
+                    <p class="question">
+                      下記の文中の（　）内にあてはまる単語の組み合わせとして、正しいものはどれか。<br /><br />Javaでは、（&nbsp;①&nbsp;）というソフトウェアを使用して、ソースファイルからクラスファイルを作成する。そして、（&nbsp;②&nbsp;）というソフトウェアを使用して、クラスファイルの内容を機械語に変換し、プログラムを実行する。
+                    </p>
+                    <h6>あなたの回答</h6>
+                    <div>
+                      1.　　
+                      <span class="ib question"
+                        >①：ソースコード、②：バイトコード</span
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel panel-default">
+                  <div class="panel-heading">第2問&nbsp;【Java】</div>
+
+                  <div class="panel-body bg-warning">
+                    <p class="question">
+                      Javaのクラスファイルが持つメリットとして正しいものはどれか。
+                    </p>
+                    <h6>あなたの回答</h6>
+                    <div>
+                      <strong class="text-warning"
+                        >*&nbsp;回答が入力されていません。</strong
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel panel-default">
+                  <div class="panel-heading">第3問&nbsp;【Java】</div>
+
+                  <div class="panel-body bg-warning">
+                    <p class="question">
+                      下記の文はどのような処理を行うためのものか。正しいものを選べ。<br /><br />System.out.println()
+                    </p>
+                    <h6>あなたの回答</h6>
+                    <div>
+                      <strong class="text-warning"
+                        >*&nbsp;回答が入力されていません。</strong
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel panel-default">
+                  <div class="panel-heading">第4問&nbsp;【Java】</div>
+
+                  <div class="panel-body bg-warning">
+                    <p class="question">
+                      main()メソッドに関する説明として正しいものはどれか。
+                    </p>
+                    <h6>あなたの回答</h6>
+                    <div>
+                      <strong class="text-warning"
+                        >*&nbsp;回答が入力されていません。</strong
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel panel-default">
+                  <div class="panel-heading">第5問&nbsp;【Java】</div>
+
+                  <div class="panel-body bg-warning">
+                    <p class="question">
+                      エスケープシーケンスに関する説明として正しいものはどれか。
+                    </p>
+                    <h6>あなたの回答</h6>
+                    <div>
+                      <strong class="text-warning"
+                        >*&nbsp;回答が入力されていません。</strong
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel panel-default">
+                  <div class="panel-heading">第6問&nbsp;【Java】</div>
+
+                  <div class="panel-body bg-warning">
+                    <p class="question">
+                      Javaにおける変数に関する説明として正しいものはどれか。
+                    </p>
+                    <h6>あなたの回答</h6>
+                    <div>
+                      <strong class="text-warning"
+                        >*&nbsp;回答が入力されていません。</strong
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel panel-default">
+                  <div class="panel-heading">第7問&nbsp;【Java】</div>
+
+                  <div class="panel-body bg-warning">
+                    <p class="question">
+                      以下の文はどのような処理を行っているか。正しいものを選べ。<br /><br />int&nbsp;number;<br />number&nbsp;=&nbsp;10;
+                    </p>
+                    <h6>あなたの回答</h6>
+                    <div>
+                      <strong class="text-warning"
+                        >*&nbsp;回答が入力されていません。</strong
+                      >
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+              <div class="well bs-component">
+                <fieldset>
+                  <form
+                    name="exam_playActionForm"
+                    method="post"
+                    action="../exam/preview.html"
+                    class="ib"
+                  >
+                    <div>
+                      <input
+                        type="hidden"
+                        name="org.apache.struts.taglib.html.TOKEN"
+                        value="addf67ffbc1bc842702491210c3c0087"
+                      />
+                    </div>
+                    <input type="hidden" name="examId" value="230" />
+                    <input type="hidden" name="sectionId" value="" />
+                    <input type="hidden" name="examSectionId" value="10178" />
+
+                    <input type="hidden" name="answer[0]" value="1" />
+
+                    <input type="hidden" name="answer[1]" value="" />
+
+                    <input type="hidden" name="answer[2]" value="" />
+
+                    <input type="hidden" name="answer[3]" value="" />
+
+                    <input type="hidden" name="answer[4]" value="" />
+
+                    <input type="hidden" name="answer[5]" value="" />
+
+                    <input type="hidden" name="answer[6]" value="" />
+
+                    <input
+                      type="hidden"
+                      name="time"
+                      value="24000"
+                      id="time01"
+                    />
+                    <input type="submit" value="戻る" class="btn btn-primary" />
+                  </form>
+                  <form
+                    name="exam_playActionForm"
+                    id="examPlayForm"
+                    method="post"
+                    action="../exam/complete.html"
+                    class="ib ml10"
+                  >
+                    <div>
+                      <input
+                        type="hidden"
+                        name="org.apache.struts.taglib.html.TOKEN"
+                        value="addf67ffbc1bc842702491210c3c0087"
+                      />
+                    </div>
+                    <input type="hidden" name="examId" value="230" />
+                    <input type="hidden" name="sectionId" value="" />
+                    <input type="hidden" name="examSectionId" value="10178" />
+
+                    <input type="hidden" name="answer[0]" value="1" />
+
+                    <input type="hidden" name="answer[1]" value="" />
+
+                    <input type="hidden" name="answer[2]" value="" />
+
+                    <input type="hidden" name="answer[3]" value="" />
+
+                    <input type="hidden" name="answer[4]" value="" />
+
+                    <input type="hidden" name="answer[5]" value="" />
+
+                    <input type="hidden" name="answer[6]" value="" />
+
+                    <input
+                      type="hidden"
+                      name="time"
+                      value="24000"
+                      id="time02"
+                    />
+                    <input
+                      type="button"
+                      name=""
+                      value="回答を送信する"
+                      onclick="submitForm()"
+                      class="btn btn-primary"
+                    />
+                  </form>
+                </fieldset>
+              </div>
+            </div>
+          </div>
+          <!--#main-->
+        </div>
+        <!--#contents-->
+        <form id="screenTransForm" name="screenTransForm" method="post"></form>
+        <div id="push"></div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">
+          Copyright(C) 2015 System Shared co., ltd, ALL Rights Reserved
+        </p>
+      </div>
+    </div>
+    <!--#container-->
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="./Java_確認_01【デモ】 _ LMS_files/bootstrap.min.js.ダウンロード"></script>
+  </body>
+</html>

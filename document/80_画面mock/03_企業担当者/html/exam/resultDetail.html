@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>試験【Java_確認_01【デモ】】 | LMS</title>
+
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/lms.css">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+  <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+  <script type="text/javascript" src="../../js/lms_common.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+  <div id="wrap">
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header"> <a class="navbar-brand">LMS 学習管理システム</a> <button type="button" class="navbar-toggle"
+            data-toggle="collapse" data-target="#nav-content"> <span class="icon-bar"></span> <span
+              class="icon-bar"></span> <span class="icon-bar"></span> </button> </div>
+        <div id="nav-content" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">研修管理<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                 <li><a href="../list/student.html">受講生一覧</a></li>
+                <li><a href="../dailyReport/dailyList.html">日報確認</a></li>
+                <li><a href="../attendance/list.html">勤怠情報確認</a></li>
+                <li><a href="../exam/list.html">試験結果確認</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="../user/list/student.html" class="dropdown-toggle" data-toggle="dropdown"
+                role="button" aria-expanded="false">予約<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../takeOver/list.html">引継面談／会場見学 予約</a></li>
+                <li><a href="../presentation/list.html">成果報告会出欠</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="../user/list/student.html" class="dropdown-toggle" data-toggle="dropdown"
+                role="button" aria-expanded="false">助成金<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../subsidy/company/detail.html">企業情報編集</a></li>
+                <li><a href="../subsidy/download/type.html">申請書類DL</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="../user/list/student.html" class="dropdown-toggle" data-toggle="dropdown"
+                role="button" aria-expanded="false">その他<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../user/list/company.html">受講生以外のユーザー</a></li>
+                <li><a href="../contract/history/list.html">契約内容確認</a></li>
+                <li><a href="../fileshare/list.html" class="form-horizontal">ファイル共有</a></li>
+                <li><a href="../help/index.html" class="form-horizontal">ヘルプ</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="text-center">
+              <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom"
+              title="お知らせ" data-content="お知らせ内容" data-html="true"></span>
+            </li>
+            <li><a><small>ようこそ企業担当者さん</small></a></li>
+            <li> <button type="button" class="btn btn-default navbar-btn" onclick="">
+                <a href="../../index.html" class="glyphicon glyphicon-log-out">　ログアウト</a> </button> </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+
+      <div>
+        <h2>
+          Java_確認_01【デモ】&nbsp;<small>受講生名</small>
+        </h2>
+
+        <h4>試験情報</h4>
+        <table class="table table-hover">
+          <tr>
+            <th>問題数</th>
+            <td>7問</td>
+          </tr>
+          <tr>
+            <th>制限時間</th>
+            <td>20分</td>
+          </tr>
+          <tr>
+            <th>平均点</th>
+            <td>28.5点</td>
+          </tr>
+        </table>
+
+        <h4>試験結果</h4>
+        <table class="table table-hover">
+          <tr>
+            <th>回数</th>
+            <th>点数</th>
+            <th>実施日時</th>
+            <th>詳細</th>
+          </tr>
+          <tr>
+            <td>1回目</td>
+            <td>
+              57.1点</td>
+            <td>
+              2021年3月1日 14時35分20秒
+            </td>
+            <td>
+              <form action="./playResult.html">
+                <input type="submit" value="詳細" class="btn btn-default" />
+              </form>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <form id="screenTransForm" name="screenTransForm" method="post">
+      </form>
+      <div id="push"></div>
+    </div>
+  </div>
+  <div id="footer">
+    <div class="container">
+      <p class="muted credit">Copyright(C) 2015 System Shared co., ltd, ALL Rights Reserved</p>
+    </div>
+  </div>
+</body>
+
+</html>

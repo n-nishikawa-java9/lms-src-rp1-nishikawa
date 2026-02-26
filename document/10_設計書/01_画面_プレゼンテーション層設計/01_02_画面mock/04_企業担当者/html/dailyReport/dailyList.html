@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>レポート一覧 | LMS</title>
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/lms.css">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+    <script type="text/javascript" src="../../js/lms_common.js"></script>
+    <script type="text/javascript" src="../../js/jstree.min.js"></script>
+    <script type="text/javascript" src="../../js/currency.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../js/fileshare.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+        <nav class="navbar navbar-default">
+          <div class="container">
+            <div class="navbar-header"> <a class="navbar-brand">LMS 学習管理システム</a> <button type="button" class="navbar-toggle"
+                data-toggle="collapse" data-target="#nav-content"> <span class="icon-bar"></span> <span
+                  class="icon-bar"></span> <span class="icon-bar"></span> </button> </div>
+            <div id="nav-content" class="collapse navbar-collapse">
+              <ul class="nav navbar-nav">
+                <li class="dropdown"><a href="" class="dropdown-toggle"
+                    data-toggle="dropdown" role="button" aria-expanded="false">研修管理<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                     <li><a href="../user/list/student.html">受講生一覧</a></li>
+                    <li><a href="../dailyReport/dailyList.html">日報確認</a></li>
+                    <li><a href="../attendance/list.html">勤怠情報確認</a></li>
+                    <li><a href="../exam/list.html">試験結果確認</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a href="../user/list/student.html" class="dropdown-toggle"
+                    data-toggle="dropdown" role="button" aria-expanded="false">予約<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="../takeOver/list.html">引継面談／会場見学 予約</a></li>
+                    <li><a href="../presentation/list.html">成果報告会出欠</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a href="../user/list/student.html" class="dropdown-toggle"
+                    data-toggle="dropdown" role="button" aria-expanded="false">助成金<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="../subsidy/company/detail.html">企業情報編集</a></li>
+                    <li><a href="../subsidy/download/type.html">申請書類DL</a></li>
+                  </ul>
+                </li>
+                <li class="dropdown"><a href="../user/list/student.html" class="dropdown-toggle"
+                    data-toggle="dropdown" role="button" aria-expanded="false">その他<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="../user/list/company.html">受講生以外のユーザー</a></li>
+                    <li><a href="../contract/history/list.html">契約内容確認</a></li>
+                    <li><a href="../fileshare/list.html" class="form-horizontal">ファイル共有</a></li>
+                    <li><a href="../help/index.html" class="form-horizontal">ヘルプ</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="text-center">
+                  <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+                  <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom"
+                  title="お知らせ" data-content="お知らせ内容" data-html="true"></span>
+                </li>
+                <li><a href="../myAccount.html"><small>ようこそ企業担当者さん</small></a></li>
+                <li> <button type="button" class="btn btn-default navbar-btn" onclick="">
+                    <a href="../../index.html" class="glyphicon glyphicon-log-out">　ログアウト</a> </button> </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <div class="container">
+            <div id="contents" class="clearfix">
+                <div id="main" class="main2clm">
+                    <h2>レポート一覧</h2>
+                    <div class="well bs-component">
+                        <form name="dailyReport_dailyListActionForm" method="post"
+                            action="../dailyReport/dailyList.html" class="form-horizontal">
+                            <div><input type="hidden" name="org.apache.struts.taglib.html.TOKEN"
+                                    value="4ff9c47055f0c7a9addd63756cf99975"></div>
+                            <fieldset>
+                                <legend>検索</legend>
+                                <div class="form-group"> <label for="dateFrom"
+                                        class="col-lg-2 control-label">日付(From)</label>
+                                    <div class="col-lg-10"> <input type="text" name="dateFrom" value=""
+                                            class="form-control datepicker" id="dateFrom" placeholder="例）2010-01-01"
+                                            autocomplete="off"> </div>
+                                </div>
+                                <div class="form-group"> <label for="dateTo"
+                                        class="col-lg-2 control-label">日付(To)</label>
+                                    <div class="col-lg-10"> <input type="text" name="dateTo" value=""
+                                            class="form-control datepicker" id="dateTo" placeholder="例）2010-01-01"
+                                            autocomplete="off"> </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-2"> </div>
+                                    <div class="col-lg-10"> <input type="checkbox" name="pastFlg" value="1" id="pastFlg"
+                                            class="icon-checkbox"> <label for="pastFlg" class="text-info"> <span
+                                                class="glyphicon glyphicon-unchecked unchecked"></span> <span
+                                                class="glyphicon glyphicon-check checked"></span> </label> <label
+                                            for="pastFlg" class="control-label">コース終了後 6ヵ月 を経過した受講生</label><label
+                                            class="text-danger">　※コース終了後 6ヵ月 を経過した受講生を含めて検索します</label> </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-10 col-lg-offset-2"> <input type="submit" name="search"
+                                            value="検索" class="btn btn-primary"> </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="form-group">
+                        <form name="dailyReport_downloadActionForm" method="post"
+                            action="../dailyReport/dailyList.html">
+                            <div><input type="hidden" name="org.apache.struts.taglib.html.TOKEN"
+                                    value="4ff9c47055f0c7a9addd63756cf99975"></div>
+                            <div class="dailyList"></div> <input type="submit" value="チェックしたレポートをダウンロード"
+                                id="downloadCommit" class="hidden">
+                        </form> <input type="submit" value="チェックしたレポートをダウンロード" id="download" class="btn btn-default">
+                        <strong class="text-danger">　※1度に50件までダウンロードできます。</strong>
+                    </div>
+                    <div id="daily-table_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-hover sortandsearchableandeckboxtable dataTable no-footer"
+                                    id="daily-table" role="grid" aria-describedby="daily-table_info">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="sorting_disabled" rowspan="1" colspan="1"
+                                                aria-label="                                                                                                          ">
+                                                <input id="checkbox-all" class="icon-checkbox" type="checkbox"> <label
+                                                    for="checkbox-all" class="text-info"> <span
+                                                        class="glyphicon glyphicon-unchecked unchecked"></span> <span
+                                                        class="glyphicon glyphicon-check checked"></span> </label>
+                                            </th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="daily-table" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="ユーザー名: activate to sort column descending">ユーザー名</th>
+                                            <th class="sorting" tabindex="0" aria-controls="daily-table" rowspan="1"
+                                                colspan="1" aria-label="提出日: activate to sort column ascending">提出日</th>
+                                            <th class="sorting" tabindex="0" aria-controls="daily-table" rowspan="1"
+                                                colspan="1" aria-label="コース名: activate to sort column ascending">コース名
+                                            </th>
+                                            <th class="sorting" tabindex="0" aria-controls="daily-table" rowspan="1"
+                                                colspan="1" aria-label="企業名: activate to sort column ascending">企業名</th>
+                                            <th class="sorting" tabindex="0" aria-controls="daily-table" rowspan="1"
+                                                colspan="1" aria-label="会場: activate to sort column ascending">会場</th>
+                                            <th class="sorting" tabindex="0" aria-controls="daily-table" rowspan="1"
+                                                colspan="1" aria-label="レポート確認: activate to sort column ascending">
+                                                レポート確認</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr role="row" class="odd">
+                                            <td> <input name="check" id="checkbox[128]" class="icon-checkbox"
+                                                    type="checkbox"> <label for="checkbox[128]" class="text-info"> <span
+                                                        class="glyphicon glyphicon-unchecked unchecked"></span> <span
+                                                        class="glyphicon glyphicon-check checked"></span> </label>
+                                                <input type="hidden" name="dailyReportId" value="1"> <input
+                                                    type="hidden" name="dailyReportSubmitId" value="191792">
+                                            </td>
+                                            <td class="sorting_1">テスト受講生</td>
+                                            <td>2021/02/01</td>
+                                            <td>体験型Java研修用【デモ】</td>
+                                            <td>動作確認【デモ】</td>
+                                            <td>1月会場A<small>（$$）</small></td>
+                                            <td> <a href="../dailyReport/detail.html"
+                                                    class="btn btn-default">日報【デモ】 　<span class="badge">2</span>　</a>
+                                            </td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td> <span class="glyphicon glyphicon-minus" aria-hidden="true"></span><span
+                                                    style="display:none;">1</span> <input type="hidden"
+                                                    name="dailyReportId" value="1"> <input type="hidden"
+                                                    name="dailyReportSubmitId" value=""> </td>
+                                            <td class="sorting_1">テスト受講生</td>
+                                            <td>2021/02/02</td>
+                                            <td>体験型Java研修用【デモ】</td>
+                                            <td>動作確認【デモ】</td>
+                                            <td>1月会場A<small>（$$）</small></td>
+                                            <td> 未提出 </td>
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                            <td> <span class="glyphicon glyphicon-minus" aria-hidden="true"></span><span
+                                                    style="display:none;">1</span> <input type="hidden"
+                                                    name="dailyReportId" value="1"> <input type="hidden"
+                                                    name="dailyReportSubmitId" value=""> </td>
+                                            <td class="sorting_1">デモ受講生</td>
+                                            <td>2021/02/01</td>
+                                            <td>体験型Java研修用【デモ】</td>
+                                            <td>動作確認【デモ】</td>
+                                            <td>動作確認<small>（$$）</small></td>
+                                            <td> 未提出 </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </div>            
+            <form id="screenTransForm" name="screenTransForm" method="post"> </form>
+            <div id="push"></div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="container">
+            <p class="muted credit">Copyright(C) 2015 System Shared co., ltd, ALL Rights Reserved</p>
+        </div>
+    </div>
+</body>

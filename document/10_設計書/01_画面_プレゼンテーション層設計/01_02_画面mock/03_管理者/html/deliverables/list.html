@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>成果物一覧 | LMS</title>
+
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/lms.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/jstree.css" />
+  <link rel="shortcut icon" href="../../img/favicon.ico" />
+
+  <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+  <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+  <script type="text/javascript" src="../../js/lms_common.js"></script>
+  <script type="text/javascript" src="../../js/jstree.min.js"></script>
+  <script type="text/javascript" src="../../js/currency.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+</head>
+
+<body class="" style="">
+  <div id="wrap">
+    <nav class="navbar navbar-default">
+      <script>
+        $(function () {
+          $("#question").click(function (e) {
+            e.preventDefault();
+            $("#check-modal").modal("show");
+          });
+        });
+      </script>
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../course/list.html" class="navbar-brand">LMS 学習管理システム</a>
+
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-content">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="nav-content" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">事務<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../mail/templateList.html">メールテンプレート管理</a></li>
+                <li><a href="../mail/sendList.html">メール一斉送信</a></li>
+                <li><a href="../company/list.html">企業管理</a></li>
+                <li><a href="../user/list.html">ユーザー管理</a></li>
+                <li><a href="../contract/list.html">契約履歴</a></li>
+                <li><a href="../takeOver/candidateList.html">引継面談／会場見学 スケジュール</a></li>
+                <li><a href="../takeOver/list.html">引継面談／会場見学 実施予定</a></li>
+                <li><a href="../schedule/presentationList.html">成果報告会スケジュール</a></li>
+                <li><a href="../presentation/teamList.html">成果報告会チーム確定</a></li>
+                <li><a href="../presentation/list.html">成果報告会実施予定</a></li>
+                <li><a href="../estimate/list.html">請求情報ダウンロード</a></li>
+                <li><a href="../evReport/resultList.html">評価レポート公開</a></li>
+                <li><a href="../estimate/productList.html">見積もり品マスタ管理</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">営業<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../entry/list.html">エントリー情報確定</a></li>
+                <li><a href="../assign/spreadsheet.html">会場アサイン</a></li>
+                <li><a href="../takeOver/list.html">引継面談／会場見学 実施予定</a></li>
+                <li><a href="../presentation/reserveList.html">成果報告会実施予定</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">運営<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../place/list.html">会場管理</a></li>
+                <li><a href="../genre/list.html">試験カテゴリー管理</a></li>
+                <li><a href="../exam/list.html">試験内容管理</a></li>
+                <li><a href="../dailyReport/list.html">日報管理</a></li>
+                <li><a href="../deliverables/manageList.html">成果物管理</a></li>
+                <li><a href="../evReport/list.html">評価レポート管理</a></li>
+                <li><a href="../meeting/fileList.html">面談ファイル管理</a></li>
+                <li><a href="../holiday/list.html">休暇日設定</a></li>
+                <li><a href="../course/list.html">コース管理</a></li>
+                <li><a href="../movie/categoryList.html">動画管理</a></li>
+                <li><a href="../mail/sendList.html">メール一斉送信</a></li>
+                <li><a href="../user/list.html">ユーザー管理</a></li>
+                <li><a href="../displayControl/list.html">データの表示制御</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">助成金<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../subsidy/companyList.html">企業情報</a></li>
+                <li><a href="../subsidy/templateList.html">テンプレート管理</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">受講生情報<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../exam/list.html">試験</a></li>
+                <li><a href="../dailyReport/dailyList.html">レポート</a></li>
+                <li><a href="../deliverables/list.html">成果物</a></li>
+                <li><a href="../evReport/scoringConfirmation.html">評価レポート採点確認</a></li>
+                <li><a href="../attendance/list.html">勤怠</a></li>
+                <li><a href="../attendance/bulkRegistList.html">勤怠一括登録</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">その他<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../fileshare/index.html">ファイル共有</a></li>
+                <li><a href="../course/csv.html">CSV出力</a></li>
+                <li><a href="../faq/categoryList.html">FAQ管理</a></li>
+                <li><a href="../contract/list.html">契約内容変更</a></li>
+                <li><a href="../info/latest.html">お知らせ設定</a></li>
+                <li><a href="../repair/list.html">改修履歴設定</a></li>
+                <li><a href="../help/index.html">ヘルプ</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="text-center">
+              <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom"
+              title="お知らせ" data-content="お知らせ内容" data-html="true"></span>
+            </li>
+            <li>
+              <a><small>ようこそ管理者さん</small></a>
+            </li>
+            <li>
+              <button type="button" class="btn btn-default navbar-btn" onclick="location.href='../../index.html'">
+                <a href="../../index.html" class="glyphicon glyphicon-log-out">　ログアウト</a>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div id="contents" class="clearfix">
+        <div id="main" class="main2clm">
+          <script>
+            var recordId;
+            $(function () {
+              $("#checkbox-all").click(function () {
+                allCheck("#deliverables-table", this);
+              });
+              $("#modal-feedback").on("show.bs.modal", function (e) {
+                var button = $(e.relatedTarget);
+                recordId = button.data("id");
+                var modal = $(this);
+                var tbody = document.getElementById("modal-tbody");
+                var tr = document.getElementById("tr[" + recordId + "]");
+                tbody.textContent = null;
+                tbody.appendChild(tr.cloneNode(true));
+                var modalTr = tbody.firstElementChild;
+                modalTr.firstElementChild.classList.add("hidden");
+                modalTr.lastElementChild.classList.add("hidden");
+
+                var modalScore = document.getElementsByName("scoreArr[" + recordId + "]")[0];
+                var score = document.getElementsByName("scoreArr[" + recordId + "]")[1];
+                if (score != null) {
+                  copyScore(score, modalScore);
+                }
+
+                var modalFeedback = document.getElementById("modal-feedbackcomment");
+                var feedback = document.getElementsByName("feedbackArr[" + recordId + "]")[1];
+                modalFeedback.value = null;
+                modalFeedback.value = feedback.value;
+              });
+              $("#modal-submit").click(function () {
+                var modalScore = document.getElementsByName("scoreArr[" + recordId + "]")[0];
+                var score = document.getElementsByName("scoreArr[" + recordId + "]")[1];
+                if (score != null) {
+                  copyScore(modalScore, score);
+                }
+
+                var modalFeedback = document.getElementById("modal-feedbackcomment");
+                var feedback = document.getElementsByName("feedbackArr[" + recordId + "]")[1];
+                if (500 < modalFeedback.value.length) {
+                  alert("フィードバックコメントの長さが最大値(500)を超えています。");
+                  return;
+                }
+
+                feedback.value = modalFeedback.value;
+
+                setFeedbackBackground(feedback);
+
+                $("#modal-feedback").modal("hide");
+              });
+            });
+
+            // srcのスコア情報をdectにコピー
+            function copyScore(src, dect) {
+              var selectedIndex;
+              for (var i = 0; i < src.length; i++) {
+                if (src[i].selected) {
+                  selectedIndex = i;
+                }
+              }
+              dect[selectedIndex].selected = true;
+            }
+
+            // フィードバックコメントが空でない時、色をつける
+            function setFeedbackBackground(feedback) {
+              if (!feedback.value) {
+                feedback.parentNode.classList.remove("success");
+              } else {
+                feedback.parentNode.classList.add("success");
+              }
+            }
+
+            $(".sortabletablecheckbox").DataTable({
+              searching: false,
+              lengthMenu: [
+                [10, 20, 30, 40, 50, -1],
+                [10, 20, 30, 40, 50, "ALL"],
+              ],
+              autoWidth: false,
+              language: l,
+              order: [5, "desc"],
+              columnDefs: [
+                {
+                  targets: [0],
+                  orderable: false,
+                },
+              ],
+            });
+          </script>
+
+          <div class="modal" id="modal-feedback" aria-hidden="true" style="display: none">
+            <div class="modal-dialog modal-dialog-center">
+              <div class="modal-content modal-lg">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">
+                    <span>×</span>
+                  </button>
+                  <h4 class="modal-title" id="modal-label">フィードバックコメント</h4>
+                </div>
+
+                <div class="modal-body">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>ユーザー名</th>
+                        <th>コース名</th>
+                        <th>企業名</th>
+                        <th>会場</th>
+                        <th>成果物名</th>
+                        <th>提出時間</th>
+                        <th>採点</th>
+                      </tr>
+                    </thead>
+                    <tbody id="modal-tbody">
+                      <tr id="tr[59]" role="row" class="odd">
+                        <td class="hidden">
+                          <input type="checkbox" name="checkFlgArr[59]" value="on" id="checkFlgArr[59]"
+                            class="icon-checkbox" />
+                          <label for="checkFlgArr[59]" class="text-info">
+                            <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                            <span class="glyphicon glyphicon-check checked"></span>
+                          </label>
+                          <input type="hidden" name="deliverablesResultIdArr[59]" value="295" />
+                        </td>
+                        <td class="">デモ受講生テスト</td>
+                        <td>【削除不可】体験型Java研修用【デモ】</td>
+                        <td>動作確認【デモ】</td>
+                        <td>動作確認 （$$）</td>
+                        <td>成果物1</td>
+
+                        <td class="warning">14:27</td>
+
+                        <td>
+                          <select name="scoreArr[59]" class="form-control">
+                            <option value=""></option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                            <option value="32">32</option>
+                            <option value="33">33</option>
+                            <option value="34">34</option>
+                            <option value="35">35</option>
+                            <option value="36">36</option>
+                            <option value="37">37</option>
+                            <option value="38">38</option>
+                            <option value="39">39</option>
+                            <option value="40">40</option>
+                            <option value="41">41</option>
+                            <option value="42">42</option>
+                            <option value="43">43</option>
+                            <option value="44">44</option>
+                            <option value="45">45</option>
+                            <option value="46">46</option>
+                            <option value="47">47</option>
+                            <option value="48">48</option>
+                            <option value="49">49</option>
+                            <option value="50">50</option>
+                            <option value="51">51</option>
+                            <option value="52">52</option>
+                            <option value="53">53</option>
+                            <option value="54">54</option>
+                            <option value="55">55</option>
+                            <option value="56">56</option>
+                            <option value="57">57</option>
+                            <option value="58">58</option>
+                            <option value="59">59</option>
+                            <option value="60">60</option>
+                            <option value="61">61</option>
+                            <option value="62">62</option>
+                            <option value="63">63</option>
+                            <option value="64">64</option>
+                            <option value="65">65</option>
+                            <option value="66">66</option>
+                            <option value="67">67</option>
+                            <option value="68">68</option>
+                            <option value="69">69</option>
+                            <option value="70">70</option>
+                            <option value="71">71</option>
+                            <option value="72">72</option>
+                            <option value="73">73</option>
+                            <option value="74">74</option>
+                            <option value="75">75</option>
+                            <option value="76">76</option>
+                            <option value="77">77</option>
+                            <option value="78">78</option>
+                            <option value="79">79</option>
+                            <option value="80">80</option>
+                            <option value="81">81</option>
+                            <option value="82">82</option>
+                            <option value="83">83</option>
+                            <option value="84">84</option>
+                            <option value="85">85</option>
+                            <option value="86">86</option>
+                            <option value="87">87</option>
+                            <option value="88">88</option>
+                            <option value="89">89</option>
+                            <option value="90">90</option>
+                            <option value="91">91</option>
+                            <option value="92">92</option>
+                            <option value="93">93</option>
+                            <option value="94">94</option>
+                            <option value="95">95</option>
+                            <option value="96">96</option>
+                            <option value="97">97</option>
+                            <option value="98">98</option>
+                            <option value="99">99</option>
+                            <option value="100" selected="selected">100</option>
+                            <option value="-1">採点対象外</option>
+                          </select>
+                        </td>
+
+                        <td class="success sorting_1 hidden">
+                          <button type="button" class="btn btn-default" data-toggle="modal"
+                            data-target="#modal-feedback" data-id="59">入力</button>
+                          <input type="hidden" name="feedbackArr[59]" value="テストフィードバック内容" id="feedbackArr[59]" />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <span>フィードバックコメントを入力してください</span>
+                  <textarea id="modal-feedbackcomment" class="form-control" style="height: 300px"></textarea>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" id="modal-submit" class="btn btn-primary">完了</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <form name="deliverables_listActionForm" method="post" action="list.html" class="form-horizontal">
+            <div class="modal" id="modal-del">
+              <div class="modal-dialog modal-dialog-center">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                      <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="modal-label">削除確認</h4>
+                  </div>
+
+                  <div class="modal-body">チェックした成果物を削除します。よろしいですか？</div>
+
+                  <div class="modal-footer" id="del-footer">
+                    <input type="submit" name="delete" value="削除" class="btn btn-primary" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h2>成果物一覧</h2>
+            <div class="well bs-component">
+              <fieldset>
+                <legend>検索</legend>
+                <div class="form-group">
+                  <label for="date" class="col-lg-2 control-label">成果物名</label>
+                  <div class="col-lg-10">
+                    <select name="deliverablesId" id="deliverablesId" class="form-control">
+                      <option value=""></option>
+
+                      <option value="54">デモ成果物</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="date" class="col-lg-2 control-label">会場名</label>
+                  <div class="col-lg-10">
+                    <select name="placeId" id="placeId" class="form-control">
+                      <option value="" selected="selected"></option>
+
+                      <option value="309">デモ会場A （$$）</option>
+                      <option value="310">デモ会場B （$$）</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-lg-10 col-lg-offset-2">
+                    <input type="submit" name="search" value="検索" class="btn btn-primary" />
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="mb10">
+              <div class="row">
+                <div class="col-lg-4">
+                  <input type="submit" name="download" value="チェックした成果物を一括ダウンロード" class="btn btn-default" />
+                </div>
+                <div class="col-lg-4">
+                  <input type="submit" name="updateScore" value="表示している評価内容を反映" class="btn btn-default" />
+                </div>
+                <div class="col-lg-4 text-right">
+                  <button type="button" class="btn btn-default" data-toggle="modal"
+                    data-target="#modal-del">チェックした成果物を削除</button>
+                </div>
+              </div>
+              <div class="row"><span class="col-lg-4">※未提出、提出遅れは背景色を変更して表示しています</span></div>
+            </div>
+
+            <div id="deliverables-table_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="dataTables_length" id="deliverables-table_length"></div>
+                </div>
+                <div class="col-sm-6"></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <table class="table table-hover sortabletablecheckbox dataTable no-footer" id="deliverables-table"
+                    role="grid" aria-describedby="deliverables-table_info">
+                    <thead>
+                      <tr role="row">
+                        <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="">
+                          <input id="checkbox-all" class="icon-checkbox" type="checkbox" />
+                          <label for="checkbox-all" class="text-info">
+                            <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                            <span class="glyphicon glyphicon-check checked"></span>
+                          </label>
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="deliverables-table" rowspan="1" colspan="1"
+                          aria-label="ユーザー名: activate to sort column ascending">ユーザー名</th>
+                        <th class="sorting" tabindex="0" aria-controls="deliverables-table" rowspan="1" colspan="1"
+                          aria-label="コース名: activate to sort column ascending">コース名</th>
+                        <th class="sorting" tabindex="0" aria-controls="deliverables-table" rowspan="1" colspan="1"
+                          aria-label="企業名: activate to sort column ascending">企業名</th>
+                        <th class="sorting" tabindex="0" aria-controls="deliverables-table" rowspan="1" colspan="1"
+                          aria-label="会場: activate to sort column ascending">会場</th>
+                        <th class="sorting" tabindex="0" aria-controls="deliverables-table" rowspan="1" colspan="1"
+                          aria-label="成果物名: activate to sort column ascending">成果物名</th>
+                        <th class="sorting" tabindex="0" aria-controls="deliverables-table" rowspan="1" colspan="1"
+                          aria-label="提出時間: activate to sort column ascending">提出時間</th>
+                        <th class="sorting" tabindex="0" aria-controls="deliverables-table" rowspan="1" colspan="1"
+                          aria-label="採点: activate to sort column ascending">採点</th>
+                        <th class="sorting_asc" tabindex="0" aria-controls="deliverables-table" rowspan="1" colspan="1"
+                          aria-label="フィードバック: activate to sort column descending" aria-sort="ascending">
+                          フィードバック
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr id="tr[59]" role="row" class="odd">
+                        <td>
+                          <input type="checkbox" name="checkFlgArr[59]" value="on" id="checkFlgArr[59]"
+                            class="icon-checkbox" />
+                          <label for="checkFlgArr[59]" class="text-info">
+                            <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                            <span class="glyphicon glyphicon-check checked"></span>
+                          </label>
+                          <input type="hidden" name="deliverablesResultIdArr[59]" value="295" />
+                        </td>
+                        <td class="">デモ受講生テスト</td>
+                        <td>デモコース１</td>
+                        <td>デモ企業A</td>
+                        <td>デモ会場A （$$）</td>
+                        <td>デモ成果物</td>
+
+                        <td class="warning">16:00</td>
+
+                        <td>
+                          <select name="scoreArr[59]" class="form-control">
+                            <option value=""></option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                            <option value="32">32</option>
+                            <option value="33">33</option>
+                            <option value="34">34</option>
+                            <option value="35">35</option>
+                            <option value="36">36</option>
+                            <option value="37">37</option>
+                            <option value="38">38</option>
+                            <option value="39">39</option>
+                            <option value="40">40</option>
+                            <option value="41">41</option>
+                            <option value="42">42</option>
+                            <option value="43">43</option>
+                            <option value="44">44</option>
+                            <option value="45">45</option>
+                            <option value="46">46</option>
+                            <option value="47">47</option>
+                            <option value="48">48</option>
+                            <option value="49">49</option>
+                            <option value="50">50</option>
+                            <option value="51">51</option>
+                            <option value="52">52</option>
+                            <option value="53">53</option>
+                            <option value="54">54</option>
+                            <option value="55">55</option>
+                            <option value="56">56</option>
+                            <option value="57">57</option>
+                            <option value="58">58</option>
+                            <option value="59">59</option>
+                            <option value="60">60</option>
+                            <option value="61">61</option>
+                            <option value="62">62</option>
+                            <option value="63">63</option>
+                            <option value="64">64</option>
+                            <option value="65">65</option>
+                            <option value="66">66</option>
+                            <option value="67">67</option>
+                            <option value="68">68</option>
+                            <option value="69">69</option>
+                            <option value="70">70</option>
+                            <option value="71">71</option>
+                            <option value="72">72</option>
+                            <option value="73">73</option>
+                            <option value="74">74</option>
+                            <option value="75">75</option>
+                            <option value="76">76</option>
+                            <option value="77">77</option>
+                            <option value="78">78</option>
+                            <option value="79">79</option>
+                            <option value="80">80</option>
+                            <option value="81">81</option>
+                            <option value="82">82</option>
+                            <option value="83">83</option>
+                            <option value="84">84</option>
+                            <option value="85">85</option>
+                            <option value="86">86</option>
+                            <option value="87">87</option>
+                            <option value="88">88</option>
+                            <option value="89">89</option>
+                            <option value="90">90</option>
+                            <option value="91">91</option>
+                            <option value="92">92</option>
+                            <option value="93">93</option>
+                            <option value="94">94</option>
+                            <option value="95">95</option>
+                            <option value="96">96</option>
+                            <option value="97">97</option>
+                            <option value="98">98</option>
+                            <option value="99">99</option>
+                            <option value="100" selected="selected">100</option>
+                            <option value="-1">採点対象外</option>
+                          </select>
+                        </td>
+
+                        <td class="success sorting_1">
+                          <button type="button" class="btn btn-default" data-toggle="modal"
+                            data-target="#modal-feedback" data-id="59">入力</button>
+                          <input type="hidden" name="feedbackArr[59]" value="テストフィードバック内容" id="feedbackArr[59]" />
+                        </td>
+                      </tr>
+                      <tr id="tr[64]" role="row" class="even">
+                        <td>
+                          <input type="checkbox" name="checkFlgArr[64]" value="on" id="checkFlgArr[64]"
+                            class="icon-checkbox" />
+                          <label for="checkFlgArr[64]" class="text-info">
+                            <span class="glyphicon glyphicon-unchecked unchecked"></span>
+                            <span class="glyphicon glyphicon-check checked"></span>
+                          </label>
+                          <input type="hidden" name="deliverablesResultIdArr[64]" value="297" />
+                        </td>
+                        <td class="">デモ受講生</td>
+                        <td>デモコース２</td>
+                        <td>デモ企業B</td>
+                        <td>デモ会場B （$$）</td>
+                        <td>デモ成果物</td>
+
+                        <td class="warning">16:00</td>
+
+                        <td>
+                          <select name="scoreArr[64]" class="form-control">
+                            <option value="" selected="selected"></option>
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                            <option value="32">32</option>
+                            <option value="33">33</option>
+                            <option value="34">34</option>
+                            <option value="35">35</option>
+                            <option value="36">36</option>
+                            <option value="37">37</option>
+                            <option value="38">38</option>
+                            <option value="39">39</option>
+                            <option value="40">40</option>
+                            <option value="41">41</option>
+                            <option value="42">42</option>
+                            <option value="43">43</option>
+                            <option value="44">44</option>
+                            <option value="45">45</option>
+                            <option value="46">46</option>
+                            <option value="47">47</option>
+                            <option value="48">48</option>
+                            <option value="49">49</option>
+                            <option value="50">50</option>
+                            <option value="51">51</option>
+                            <option value="52">52</option>
+                            <option value="53">53</option>
+                            <option value="54">54</option>
+                            <option value="55">55</option>
+                            <option value="56">56</option>
+                            <option value="57">57</option>
+                            <option value="58">58</option>
+                            <option value="59">59</option>
+                            <option value="60">60</option>
+                            <option value="61">61</option>
+                            <option value="62">62</option>
+                            <option value="63">63</option>
+                            <option value="64">64</option>
+                            <option value="65">65</option>
+                            <option value="66">66</option>
+                            <option value="67">67</option>
+                            <option value="68">68</option>
+                            <option value="69">69</option>
+                            <option value="70">70</option>
+                            <option value="71">71</option>
+                            <option value="72">72</option>
+                            <option value="73">73</option>
+                            <option value="74">74</option>
+                            <option value="75">75</option>
+                            <option value="76">76</option>
+                            <option value="77">77</option>
+                            <option value="78">78</option>
+                            <option value="79">79</option>
+                            <option value="80">80</option>
+                            <option value="81">81</option>
+                            <option value="82">82</option>
+                            <option value="83">83</option>
+                            <option value="84">84</option>
+                            <option value="85">85</option>
+                            <option value="86">86</option>
+                            <option value="87">87</option>
+                            <option value="88">88</option>
+                            <option value="89">89</option>
+                            <option value="90">90</option>
+                            <option value="91">91</option>
+                            <option value="92">92</option>
+                            <option value="93">93</option>
+                            <option value="94">94</option>
+                            <option value="95">95</option>
+                            <option value="96">96</option>
+                            <option value="97">97</option>
+                            <option value="98">98</option>
+                            <option value="99">99</option>
+                            <option value="100">100</option>
+                            <option value="-1">採点対象外</option>
+                          </select>
+                        </td>
+
+                        <td class="sorting_1">
+                          <button type="button" class="btn btn-default" data-toggle="modal"
+                            data-target="#modal-feedback" data-id="64">入力</button>
+                          <input type="hidden" name="feedbackArr[64]" value="" id="feedbackArr[64]" />
+                        </td>
+                      </tr>
+                      <tr id="tr[0]" role="row" class="odd">
+                        <td><span class="glyphicon glyphicon-minus"></span><span style="display: none">1</span></td>
+                        <td class="">未提出受講生</td>
+                        <td>デモ</td>
+                        <td>動作確認</td>
+                        <td>動作確認 （$$）</td>
+                        <td>成果物1</td>
+                        <td></td>
+                        <td>未提出</td>
+                        <td class="sorting_1">未提出</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-7">
+                  <div class="dataTables_paginate paging_simple_numbers" id="deliverables-table_paginate"></div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!--#main-->
+      </div>
+      <!--#contents-->
+      <form id="screenTransForm" name="screenTransForm" method="post"></form>
+      <div id="push"></div>
+    </div>
+  </div>
+  <div id="footer">
+    <div class="container">
+      <p class="muted credit">Copyright(C) 2015 System Shared co., ltd, ALL Rights Reserved</p>
+    </div>
+  </div>
+  <!--#container-->
+</body>
+
+</html>

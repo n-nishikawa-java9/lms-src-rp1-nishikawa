@@ -1,0 +1,9 @@
+INSERT INTO t_mail_que VALUES (1,'only@test.co.jp',NULL,NULL,'テスト用1 cc無し','テスト用1',0,1,'2015/10/08 15:36:52.652',1,'2022/09/16 10:53:29.057');
+INSERT INTO t_mail_que VALUES (2,'multy@test.co.jp','cc@test.co.jp',NULL,'テスト用2 cc有り','テスト用2',0,2,'2015/10/08 15:36:52.652',1,'2022/09/16 10:53:35.070');
+INSERT INTO t_mail_que VALUES (3,'todelete@test.co.jp',NULL,NULL,'テスト用3 削除対象','テスト用3',0,3,'2015/10/08 15:36:52.652',1,'2022/09/16 10:53:25.541');
+INSERT INTO t_mail_que VALUES (4,'deleted@test.co.jp',NULL,NULL,'テスト用4 削除済み','テスト用4',1,1,'2015/10/08 15:36:52.652',1,'2015/10/08 15:36:52.652');
+
+INSERT INTO t_mail_que_file VALUES (1,1,1,0,1,'2015/10/08 15:36:52.652',1,'2015/10/08 15:36:52.652');
+INSERT INTO t_mail_que_file VALUES (2,2,2,0,2,'2015/10/08 15:36:52.652',2,'2015/10/08 15:36:52.652');
+INSERT INTO t_mail_que_file VALUES (3,3,3,0,3,'2015/10/08 15:36:52.652',3,'2015/10/08 15:36:52.652');
+INSERT INTO t_mail_que_file VALUES (4,4,4,1,1,'2015/10/08 15:36:52.652',1,'2015/10/08 15:36:52.652');

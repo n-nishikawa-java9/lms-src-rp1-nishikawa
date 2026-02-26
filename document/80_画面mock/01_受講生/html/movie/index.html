@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>動画一覧 | LMS</title>
+
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/lms.css" />
+  <link rel="shortcut icon" href="../../img/favicon.ico" />
+  <link href="https://use.fontawesome.com/releases/v5.6.4/css/all.css" rel="stylesheet" />
+
+  <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+  <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+  <script type="text/javascript" src="../../js/lms_common.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div id="header">
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../course/detail.html" class="navbar-brand">LMS 学習管理システム</a>
+        </div>
+        <div id="nav-content" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="../course/detail.html">マイコース</a>
+            </li>
+            <li>
+              <a href="../download/teachingMaterialList.html">教材ダウンロード</a>
+            </li>
+            <li>
+              <a href="../attendance/detail.html">勤怠</a>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> 機能<span
+                  class="caret"></span> </a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a href="../fileshare/list.html" class="form-horizontal">ファイル共有</a>
+                </li>
+                <li>
+                  <a href="./index.html" class="form-horizontal">動画視聴</a>
+                </li>
+                <li>
+                  <a href="../support/index.html" class="form-horizontal">サポートセンター</a>
+                </li>
+                <li>
+                  <a href="../help/index.html" class="form-horizontal">ヘルプ</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="text-center">
+              <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom"
+                title="お知らせ" data-content="" data-html="true"></span>
+            </li>
+            <li>
+              <a href="../user/detail.html"><small>ようこそ受講生さん</small></a>
+            </li>
+            <li>
+              <c:url var="logout" value="../../index.html"></c:url>
+              <button type="button" class="btn btn-default navbar-btn" onclick="location.href='${logout}'">
+                <a href="../../index.html" class="glyphicon glyphicon-log-out"> ログアウト</a>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div id="wrap">
+    <div class="container">
+      <div id="contents" class="clearfix">
+        <div id="main" class="main2clm">
+          <h2>動画視聴</h2>
+
+          <div class="panel panel-default">
+
+            <div class="panel-heading">Java<span class="toggle-btn toggle-btn-up"></span></div>
+            <div class="panel-body">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th class="wh">動画名</th>
+                    <th>視聴</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>01 クラスの宣言</td>
+                    <td>
+                      <a href="https://youtu.be/74gyiW-1PhM" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>02 オブジェクトの作成と利用</td>
+                    <td>
+                      <a href="https://youtu.be/9FwHE3rEfhk" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>03 メソッドの定義と呼び出し</td>
+                    <td>
+                      <a href="https://youtu.be/FmB2lp6BLwE" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>04 クラスを使ったプログラムの利点</td>
+                    <td>
+                      <a href="https://youtu.be/vAIIkaOtX7k" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>05 メソッドの引数</td>
+                    <td>
+                      <a href="https://youtu.be/E2jfBvvFBlE" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>06 メンバへのアクセス</td>
+                    <td>
+                      <a href="https://youtu.be/xHTj2zxB6hE" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>07 メソッドの戻り値</td>
+                    <td>
+                      <a href="https://youtu.be/45iPkFFD-Wc" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>08 アクセス修飾子</td>
+                    <td>
+                      <a href="https://youtu.be/ZcSQTQnTCvA" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>09 オーバーロード</td>
+                    <td>
+                      <a href="https://youtu.be/h4aR2HWI9fI" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>10 コンストラクタの定義と呼び出し</td>
+                    <td>
+                      <a href="https://youtu.be/-oQd9YFe4ok" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>11 コンストラクタのオーバーロード</td>
+                    <td>
+                      <a href="https://youtu.be/tj1AKRke7vk" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>12 継承</td>
+                    <td>
+                      <a href="https://youtu.be/Lfbfs1mFBkM" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>13 抽象クラス</td>
+                    <td>
+                      <a href="https://youtu.be/9uiPxfznhx0" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>14 抽象クラスの配列</td>
+                    <td>
+                      <a href="https://youtu.be/kdYibl3Lfp8" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>15 インターフェイス</td>
+                    <td>
+                      <a href="https://youtu.be/y2aOv9zsmpQ" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>16 例外の基本</td>
+                    <td>
+                      <a href="https://youtu.be/L2L5GODp01s" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>17 例外の種類</td>
+                    <td>
+                      <a href="https://youtu.be/j5q98Iy2X0o" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>18 例外の送出</td>
+                    <td>
+                      <a href="https://youtu.be/V11DM5l1mcY" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel panel-default">
+            <div class="panel-heading">Oracle<span class="toggle-btn toggle-btn-up"></span></div>
+            <div class="panel-body">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th class="wh">動画名</th>
+                    <th>視聴</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>01 制約</td>
+                    <td>
+                      <a href="https://youtu.be/7tliVT0NuoY" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>02 集合演算</td>
+                    <td>
+                      <a href="https://youtu.be/DetL8z7gnpU" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>03 結合</td>
+                    <td>
+                      <a href="https://youtu.be/FJW012zH75k" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>04 サブクエリ</td>
+                    <td>
+                      <a href="https://youtu.be/K7GQLVAbb9U" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>05 相関サブクエリ</td>
+                    <td>
+                      <a href="https://youtu.be/c8imT4W0elA" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel panel-default">
+            <div class="panel-heading">HTML/CSS<span class="toggle-btn toggle-btn-up"></span></div>
+            <div class="panel-body">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th class="wh">動画名</th>
+                    <th>視聴</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>01 絶対パスと相対パス</td>
+                    <td>
+                      <a href="https://youtu.be/zxyBBo8a-gs" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>02 CSSの記述位置</td>
+                    <td>
+                      <a href="https://youtu.be/70yqIrQiVUk" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>03 CSSによるレイアウト1</td>
+                    <td>
+                      <a href="https://youtu.be/iTnNEkTRp8k" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>04 CSSによるレイアウト2</td>
+                    <td>
+                      <a href="https://youtu.be/12eWSElECCc" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel panel-default">
+            <div class="panel-heading">Servlet/JSP<span class="toggle-btn toggle-btn-up"></span></div>
+            <div class="panel-body">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th class="wh">動画名</th>
+                    <th>視聴</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>01 コンテキストルート</td>
+                    <td>
+                      <a href="https://youtu.be/HZyb2b8ebAo" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>02 フィルタ</td>
+                    <td>
+                      <a href="https://youtu.be/hOdR2VyGxEM" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>03 フォワード</td>
+                    <td>
+                      <a href="https://youtu.be/1uUWy6pQZ4A" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>04 リダイレクト</td>
+                    <td>
+                      <a href="https://youtu.be/Txa09xuS3RU" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>05 セッション</td>
+                    <td>
+                      <a href="https://youtu.be/q18i9_1VJC8" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>06 JavaBeans</td>
+                    <td>
+                      <a href="https://youtu.be/KBwp8gXLAGw" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>07 EL式</td>
+                    <td>
+                      <a href="https://youtu.be/fLcqrC8BREo" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>08 カスタムタグ</td>
+                    <td>
+                      <a href="https://youtu.be/ZEjMD_aO040" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>09 データベース連携</td>
+                    <td>
+                      <a href="https://youtu.be/H1IzZu5vkuo" target="_blank" class="btn btn-info">視聴する</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div id="push"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="footer">
+    <div class="container">
+      <p class="muted credit">Copyright&copy; 2021 System Shared co., ltd, ALL Rights Reserved</p>
+    </div>
+    <div id="page_top"><a href="#"></a></div>
+  </div>
+  <script>
+    $("#page_top").hide();
+    $(window).scroll(function () {
+      if ($(this).scrollTop() > 300) {
+        $("#page_top").fadeIn();
+      } else {
+        $("#page_top").fadeOut();
+      }
+    });
+
+    $("#page_top").click(function () {
+      $("body,html").animate(
+        {
+          scrollTop: 0,
+        },
+        700
+      );
+      return false;
+    });
+
+    $(function () {
+      $('. ').click(function () {
+        if ($(this).parent().next('.panel-body').attr('class') === 'panel-body dn') {
+          $(this).parent().next('.panel-body').attr('class', 'panel-body');
+          $(this).attr('class','toggle-btn toggle-btn-up');
+        } else {
+          $(this).parent().next('.panel-body').attr('class', 'panel-body dn');
+          $(this).attr('class','toggle-btn toggle-btn-down');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

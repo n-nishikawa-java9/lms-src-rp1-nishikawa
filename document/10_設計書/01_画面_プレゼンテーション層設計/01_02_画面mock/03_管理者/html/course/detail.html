@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>コース詳細 | LMS</title>
+
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/lms.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/jstree.css" />
+  <link rel="shortcut icon" href="../../img/favicon.ico" />
+
+  <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+  <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+  <script type="text/javascript" src="../../js/lms_common.js"></script>
+  <script type="text/javascript" src="../../js/jstree.min.js"></script>
+  <script type="text/javascript" src="../../js/currency.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div id="wrap">
+    <nav class="navbar navbar-default">
+      <script>
+        $(function () {
+          $("#question").click(function (e) {
+            e.preventDefault();
+            $("#check-modal").modal("show");
+          });
+        });
+      </script>
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../course/list.html" class="navbar-brand">LMS 学習管理システム</a>
+
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-content">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="nav-content" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">事務<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../mail/templateList.html">メールテンプレート管理</a></li>
+                <li><a href="../mail/sendList.html">メール一斉送信</a></li>
+                <li><a href="../company/list.html">企業管理</a></li>
+                <li><a href="../user/list.html">ユーザー管理</a></li>
+                <li><a href="../contract/list.html">契約履歴</a></li>
+                <li><a href="../takeOver/candidateList.html">引継面談／会場見学 スケジュール</a></li>
+                <li><a href="../takeOver/list.html">引継面談／会場見学 実施予定</a></li>
+                <li><a href="../schedule/presentationList.html">成果報告会スケジュール</a></li>
+                <li><a href="../presentation/teamList.html">成果報告会チーム確定</a></li>
+                <li><a href="../presentation/list.html">成果報告会実施予定</a></li>
+                <li><a href="../estimate/list.html">請求情報ダウンロード</a></li>
+                <li><a href="../evReport/resultList.html">評価レポート公開</a></li>
+                <li><a href="../estimate/productList.html">見積もり品マスタ管理</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">営業<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../entry/list.html">エントリー情報確定</a></li>
+                <li><a href="../assign/spreadsheet.html">会場アサイン</a></li>
+                <li><a href="../takeOver/list.html">引継面談／会場見学 実施予定</a></li>
+                <li><a href="../presentation/reserveList.html">成果報告会実施予定</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">運営<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../place/list.html">会場管理</a></li>
+                <li><a href="../genre/list.html">試験カテゴリー管理</a></li>
+                <li><a href="../exam/list.html">試験内容管理</a></li>
+                <li><a href="../dailyReport/list.html">日報管理</a></li>
+                <li><a href="../deliverables/manageList.html">成果物管理</a></li>
+                <li><a href="../evReport/list.html">評価レポート管理</a></li>
+                <li><a href="../meeting/fileList.html">面談ファイル管理</a></li>
+                <li><a href="../holiday/list.html">休暇日設定</a></li>
+                <li><a href="../course/list.html">コース管理</a></li>
+                <li><a href="../movie/categoryList.html">動画管理</a></li>
+                <li><a href="../mail/sendList.html">メール一斉送信</a></li>
+                <li><a href="../user/list.html">ユーザー管理</a></li>
+                <li><a href="../displayControl/list.html">データの表示制御</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">助成金<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../subsidy/companyList.html">企業情報</a></li>
+                <li><a href="../subsidy/templateList.html">テンプレート管理</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">受講生情報<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../exam/list.html">試験</a></li>
+                <li><a href="../dailyReport/dailyList.html">レポート</a></li>
+                <li><a href="../deliverables/list.html">成果物</a></li>
+                <li><a href="../evReport/scoringConfirmation.html">評価レポート採点確認</a></li>
+                <li><a href="../attendance/list.html">勤怠</a></li>
+                <li><a href="../attendance/bulkRegistList.html">勤怠一括登録</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">その他<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../fileshare/index.html">ファイル共有</a></li>
+                <li><a href="../course/csv.html">CSV出力</a></li>
+                <li><a href="../faq/categoryList.html">FAQ管理</a></li>
+                <li><a href="../contract/list.html">契約内容変更</a></li>
+                <li><a href="../info/latest.html">お知らせ設定</a></li>
+                <li><a href="../repair/list.html">改修履歴設定</a></li>
+                <li><a href="../help/index.html">ヘルプ</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="text-center">
+              <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom"
+              title="お知らせ" data-content="お知らせ内容" data-html="true"></span>
+            </li>
+            <li>
+              <a><small>ようこそ管理者さん</small></a>
+            </li>
+            <li>
+              <button type="button" class="btn btn-default navbar-btn" onclick="location.href='../../index.html'">
+                <a href="../../index.html" class="glyphicon glyphicon-log-out">　ログアウト</a>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div id="contents" class="clearfix">
+        <div id="main" class="main2clm">
+          <ol class="breadcrumb">
+            <li class="active">コース詳細</li>
+          </ol>
+
+          <div>
+            <h2 class="di">
+              デモコース１ <small>2021年5月8日～ 2021年7月26日</small>
+            </h2>
+            <div class="fr pt10">
+              <button onclick="" class="mr4">すべて開く</button>
+              <button onclick="">すべて折りたたむ</button>
+            </div>
+          </div>
+          <br class="cb" />
+
+          <div class="panel panel-default">
+            <div class="panel-heading">管理者機能</div>
+            <div class="panel-body">
+              <a href="list.html" class="btn btn-default">コピー</a>
+              <a href="regist.html" class="btn btn-default">変更</a>
+              <a href="list.html" class="btn btn-default" onclick="return delcheck()">削除</a>
+            </div>
+          </div>
+
+          <div class="panel panel-default">
+            <div class="panel-heading">コース固定パスワード</div>
+            <div class="panel-body">
+              <strong>H0xqURdD</strong>
+            </div>
+          </div>
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title ib" data-toggle="popover" data-placement="right" data-content="カテゴリの概要">エンジニア基礎
+              </h3>
+              <span class="toggle-btn toggle-btn-up"></span>
+            </div>
+            <div class="panel-body">
+              <table class="table table-hover sctionList">
+                <tbody>
+                  <tr>
+                    <td class="clm1">2021年5月8日</td>
+                    <td class="clm2">エンジニア基礎 1日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5432" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年5月9日</td>
+                    <td class="clm2">エンジニア基礎 2日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5433" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年5月10日</td>
+                    <td class="clm2">エンジニア基礎 3日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5434" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年5月11日</td>
+                    <td class="clm2">エンジニア基礎 4日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5435" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年5月12日</td>
+                    <td class="clm2">エンジニア基礎 5日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5436" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title ib" data-toggle="popover" data-placement="right" data-content="カテゴリの概要">Java</h3>
+              <span class="toggle-btn toggle-btn-up"></span>
+            </div>
+            <div class="panel-body">
+              <table class="table table-hover sctionList">
+                <tbody>
+                  <tr>
+                    <td class="clm1">2021年5月15日</td>
+                    <td class="clm2">Java 1日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5437" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年5月16日</td>
+                    <td class="clm2">Java 2日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5438" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年5月17日</td>
+                    <td class="clm2">Java 3日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5439" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年5月18日</td>
+                    <td class="clm2">Java 4日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5440" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年5月19日</td>
+                    <td class="clm2">Java 5日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5441" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年5月22日</td>
+                    <td class="clm2">Java 6日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5442" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年5月23日</td>
+                    <td class="clm2">Java 7日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5443" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年5月24日</td>
+                    <td class="clm2">Java 8日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5444" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年5月25日</td>
+                    <td class="clm2">Java 9日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5445" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年5月26日</td>
+                    <td class="clm2">Java 10日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5446" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title ib" data-toggle="popover" data-placement="right" data-content="カテゴリの概要">Oracle</h3>
+              <span class="toggle-btn toggle-btn-up"></span>
+            </div>
+            <div class="panel-body">
+              <table class="table table-hover sctionList">
+                <tbody>
+                  <tr>
+                    <td class="clm1">2021年5月29日</td>
+                    <td class="clm2">Oracle 1日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5447" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年5月30日</td>
+                    <td class="clm2">Oracle 2日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5448" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年5月31日</td>
+                    <td class="clm2">Oracle 3日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5449" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年6月1日</td>
+                    <td class="clm2">Oracle 4日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5450" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年6月2日</td>
+                    <td class="clm2">Oracle 5日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5451" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title ib" data-toggle="popover" data-placement="right" data-content="カテゴリの概要">HTML/ CSS
+              </h3>
+              <span class="toggle-btn toggle-btn-up"></span>
+            </div>
+            <div class="panel-body">
+              <table class="table table-hover sctionList">
+                <tbody>
+                  <tr>
+                    <td class="clm1">2021年6月5日</td>
+                    <td class="clm2">HTML/ CSS</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5452" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title ib" data-toggle="popover" data-placement="right" data-content="カテゴリの概要">サーブレット/JSP
+              </h3>
+              <span class="toggle-btn toggle-btn-up"></span>
+            </div>
+            <div class="panel-body">
+              <table class="table table-hover sctionList">
+                <tbody>
+                  <tr>
+                    <td class="clm1">2021年6月6日</td>
+                    <td class="clm2">サーブレット/JSP 1日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5453" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年6月7日</td>
+                    <td class="clm2">サーブレット/JSP 2日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5454" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年6月8日</td>
+                    <td class="clm2">サーブレット/JSP 3日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5455" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年6月9日</td>
+                    <td class="clm2">サーブレット/JSP 4日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5456" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年6月12日</td>
+                    <td class="clm2">サーブレット/JSP 5日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5457" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年6月13日</td>
+                    <td class="clm2">サーブレット/JSP 6日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5458" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title ib" data-toggle="popover" data-placement="right" data-content="カテゴリの概要">JavaScript
+              </h3>
+              <span class="toggle-btn toggle-btn-up"></span>
+            </div>
+            <div class="panel-body">
+              <table class="table table-hover sctionList">
+                <tbody>
+                  <tr>
+                    <td class="clm1">2021年6月14日</td>
+                    <td class="clm2">JavaScript 1日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5459" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年6月15日</td>
+                    <td class="clm2">JavaScript 2日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5460" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title ib" data-toggle="popover" data-placement="right" data-content="カテゴリの概要">HTML5/ CSS3
+              </h3>
+              <span class="toggle-btn toggle-btn-up"></span>
+            </div>
+            <div class="panel-body">
+              <table class="table table-hover sctionList">
+                <tbody>
+                  <tr>
+                    <td class="clm1">2021年6月16日</td>
+                    <td class="clm2">HTML5/ CSS3</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5461" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title ib" data-toggle="popover" data-placement="right" data-content="カテゴリの概要">Spring</h3>
+              <span class="toggle-btn toggle-btn-up"></span>
+            </div>
+            <div class="panel-body">
+              <table class="table table-hover sctionList">
+                <tbody>
+                  <tr>
+                    <td class="clm1">2021年6月19日</td>
+                    <td class="clm2">Spring 1日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5462" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年6月20日</td>
+                    <td class="clm2">Spring 2日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5463" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年6月21日</td>
+                    <td class="clm2">Spring 3日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5464" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年6月22日</td>
+                    <td class="clm2">Spring 4日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5465" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年6月23日</td>
+                    <td class="clm2">Spring 5日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5466" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年6月26日</td>
+                    <td class="clm2">Spring 6日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5467" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年6月27日</td>
+                    <td class="clm2">Spring 7日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5468" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年6月28日</td>
+                    <td class="clm2">Spring 8日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5469" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <h3 class="panel-title ib" data-toggle="popover" data-placement="right" data-content="カテゴリの概要">チーム開発演習
+              </h3>
+              <span class="toggle-btn toggle-btn-up"></span>
+            </div>
+            <div class="panel-body">
+              <table class="table table-hover sctionList">
+                <tbody>
+                  <tr>
+                    <td class="clm1">2021年6月29日</td>
+                    <td class="clm2">チーム開発演習 1日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5470" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年6月30日</td>
+                    <td class="clm2">チーム開発演習 2日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5471" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年7月3日</td>
+                    <td class="clm2">チーム開発演習 3日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5472" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年7月4日</td>
+                    <td class="clm2">チーム開発演習 4日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5473" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年7月5日</td>
+                    <td class="clm2">チーム開発演習 5日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5474" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年7月6日</td>
+                    <td class="clm2">チーム開発演習 6日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5475" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年7月7日</td>
+                    <td class="clm2">チーム開発演習 7日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5476" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年7月10日</td>
+                    <td class="clm2">チーム開発演習 8日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5486" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年7月11日</td>
+                    <td class="clm2">チーム開発演習 9日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5487" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年7月12日</td>
+                    <td class="clm2">チーム開発演習 10日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5488" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年7月13日</td>
+                    <td class="clm2">チーム開発演習 11日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5477" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年7月14日</td>
+                    <td class="clm2">チーム開発演習 12日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5478" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年7月18日</td>
+                    <td class="clm2">チーム開発演習 13日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5479" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年7月19日</td>
+                    <td class="clm2">チーム開発演習 14日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5480" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年7月20日</td>
+                    <td class="clm2">チーム開発演習 15日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5481" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年7月21日</td>
+                    <td class="clm2">チーム開発演習 16日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5482" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年7月24日</td>
+                    <td class="clm2">チーム開発演習 17日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5483" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年7月25日</td>
+                    <td class="clm2">チーム開発演習 18日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5484" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="clm1">2021年7月26日</td>
+                    <td class="clm2">チーム開発演習 19日目</td>
+                    <td class="clm3">
+                      <form name="section_detailActionForm" method="post" action="../section/detail.html">
+                        <input type="hidden" name="courseId" value="136" />
+                        <input type="hidden" name="sectionId" value="5485" />
+                        <input type="submit" value="詳細" class="btn btn-default" />
+                      </form>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <!--#main-->
+      </div>
+      <!--#contents-->
+      <form id="screenTransForm" name="screenTransForm" method="post"></form>
+      <div id="push"></div>
+    </div>
+  </div>
+  <div id="footer">
+    <div class="container">
+      <p class="muted credit">Copyright(C) 2015 System Shared co., ltd, ALL Rights Reserved</p>
+    </div>
+  </div>
+  <!--#container-->
+</body>
+
+</html>

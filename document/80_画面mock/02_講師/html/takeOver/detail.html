@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>引継面談／会場見学 時間予約 | LMS</title>
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="../../css/lms.css">
+    <link rel="stylesheet" type="text/css" href="../../css/jstree.css">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+    <script type="text/javascript" src="../../js/lms_common.js"></script>
+    <script type="text/javascript" src="../../js/jstree.min.js"></script>
+    <script type="text/javascript" src="../../js/currency.js"></script>
+    <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../course/list.html" class="navbar-brand">LMS 学習管理システム</a>
+
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-content">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="nav-content" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="../course/detail/?courseId=602#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">研修管理<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../course/list.html">コース</a></li>
+                <li><a href="../user/list.html">受講生</a></li>
+                <li><a href="../dailyReport/dailyList.html">日報</a></li>
+                <li><a href="../exam/list.html">試験結果</a></li>
+                <li><a href="../deliverables/list.html">成果物</a></li>
+                <li><a href="../attendance/list.html">勤怠確認</a></li>
+                <li>
+                  <a href="../attendance/bulkRegist.html">勤怠一括登録</a>
+                </li>
+                <li>
+                  <a href="../evReport/scoringConfirmation.html">評価レポート採点確認</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="../course/detail/?courseId=602#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">面談・報告会<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a href="../takeOver/list.html">引継面談／会場見学 実施予定</a>
+                </li>
+                <li>
+                  <a href="../presentation/teamList.html">チーム編成</a>
+                </li>
+                <li>
+                  <a href="../presentation/list.html">成果報告会実施予定</a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="../course/detail/?courseId=602#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">その他<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+
+                <li>
+                  <a href="../fileshare/list.html" class="form-horizontal">ファイル共有</a>
+                </li>
+                <li>
+                  <a href="../movie/index.html" class="form-horizontal">動画視聴</a>
+                </li>
+
+                <li>
+                  <a href="../help/index.html" class="form-horizontal">ヘルプ</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="text-center">
+              <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom"
+                title="お知らせ" data-content="" data-html="true"></span>
+            </li>
+            <li><a href="../user/myAccount.html"><small>ようこそ講師さん</small></a></li>
+            <li>
+              <c:url var="logout" value="../../index.html"></c:url>
+              <button type="button" class="btn btn-default navbar-btn" onclick="location.href='../../index.html'">
+                <a href="../../index.html" class="glyphicon glyphicon-log-out"> ログアウト</a>
+              </button>
+            </li>
+          </ul>
+        </div>
+    </nav>
+        <div class="container">
+            <div id="contents" class="clearfix">
+                <div id="main" class="main2clm">
+
+                    <h2>引継面談／会場見学 時間予約</h2>
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th class="wq">用途</th>
+                                <td>体験型Java研修用【デモ】</td>
+                            </tr>
+                            <tr>
+                                <th>会場名</th>
+                                <td>動作確認</td>
+                            </tr>
+                            <tr>
+                                <th>会場備考</th>
+                                <td>$$</td>
+                            </tr>
+                            <tr>
+                                <th>会場住所</th>
+                                <td>東京都台東区台東</td>
+                            </tr>
+                            <tr>
+                                <th>予約編集期限</th>
+                                <td> 2021年3月31日</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>日時</h3>
+                    <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                <th class="wq">日時</th>
+                                <th>予約状況</th>
+                                <th>お客様ご要望欄</th>
+                            </tr>
+                            <tr>
+                                <td> 2021年3月24日 10:00</td>
+                                <td><span class="text-warning">他社様に既に予約されています</span></td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td> 2021年3月24日 13:00</td>
+                                <td><span>予約可能</span></td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td> 2021年3月25日 10:00</td>
+                                <td><span>予約可能</span></td>
+                                <td>-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <div id="push"></div>
+        </div>
+
+    </div>
+    <div id="footer">
+        <div class="container">
+            <p class="muted credit">Copyright(C) 2015 System Shared co., ltd, ALL Rights Reserved</p>
+        </div>
+    </div>
+
+</body>
+</html>

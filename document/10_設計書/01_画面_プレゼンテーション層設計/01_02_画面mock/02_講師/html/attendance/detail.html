@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>勤怠情報変更 | LMS</title>
+
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/lms.css">
+  <link rel="stylesheet" type="text/css" href="../../css/jstree.css">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+  <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+  <script type="text/javascript" src="../../js/lms_common.js"></script>
+  <script type="text/javascript" src="../../js/jstree.min.js"></script>
+  <script type="text/javascript" src="../../js/currency.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+  <div id="wrap">
+
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../course/list.html" class="navbar-brand">LMS 学習管理システム</a>
+        </div>
+        <div id="nav-content" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="../course/detail.html">マイコース</a>
+            </li>
+            <li>
+              <a href="../course/teachingMaterialList.html">教材ダウンロード</a>
+            </li>
+            <li>
+              <a href="../user/detail.html">マイページ</a>
+            </li>
+            <li>
+              <a href="../attendance/detail.html">勤怠</a>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                機能<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a href="../fileshare/list.html" class="form-horizontal">ファイル共有</a>
+                </li>
+                <li>
+                  <a href="../movie/index.html" class="form-horizontal">動画視聴</a>
+                </li>
+                <li>
+                  <a href="../help/index.html" class="form-horizontal">ヘルプ</a>
+                </li>
+
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="text-center">
+              <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom"
+                title="お知らせ" data-content="btn btn-default" value="詳細" data-html="true"></span>
+            </li>
+            <li><a href="../user/myAccount.html"><small>ようこそ講師さん</small></a></li>
+            <li>
+              <c:url var="logout" value="../../index.html"></c:url>
+              <button type="button" class="btn btn-default navbar-btn" onclick="location.href='../../index.html'">
+                <a href="../../index.html" class="glyphicon glyphicon-log-out"> ログアウト</a>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div id="contents" class="clearfix">
+        <div id="main" class="main2clm">
+
+          <h2>勤怠管理</h2>
+
+          <h3>受講生情報</h3>
+          <table class="table table-hover wh">
+            <tbody>
+              <tr>
+                <th>ユーザー名</th>
+                <td>デモ受講生テスト</td>
+              </tr>
+              <tr>
+                <th>企業名</th>
+                <td>動作確認【デモ】</td>
+              </tr>
+              <tr>
+                <th>コース名</th>
+                <td>体験型Java研修用【デモ】</td>
+              </tr>
+              <tr>
+                <th>会場名</th>
+                <td>動作確認<small>（$$）</small></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>勤怠情報</h3>
+
+          <div class="row">
+            <div class="bs-component col-sm-12">
+              <table class="table table-hover dataTable no-footer">
+                <thead>
+                  <tr>
+                    <th style="width: 160px;">日付</th>
+                    <th>コース内容</th>
+                    <th style="width: 70px;">出勤</th>
+                    <th style="width: 70px;">退勤</th>
+                    <th style="width: 120px;">中抜け時間</th>
+                    <th style="width: 120px;">ステータス</th>
+                    <th>備考</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr class="">
+                      <td>2020年11月2日(Mon)</td>
+                      <td>プロジェクト基礎1日目</td>
+                      <td>09:00</td>
+                      <td>18:00</td>
+                      <td>01:00</td>
+                      <td></td>
+                      <td>環境構築</td>
+                    </tr>
+                    <tr class="">
+                      <td>2020年11月4日(Wed)</td>
+                      <td>プロジェクト基礎2日目</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr class="">
+                      <td>2020年11月5日(Thu)</td>
+                      <td>プロジェクト基礎3日目</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr class="">
+                      <td>2020年11月6日(Fri)</td>
+                      <td>プロジェクト基礎4日目</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr class="">
+                      <td>2020年11月9日(Mon)</td>
+                      <td>プロジェクト基礎5日目</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr class="">
+                      <td>2020年11月10日(Tue)</td>
+                      <td>SE/MG基礎1日目</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr class="">
+                      <td>2020年11月11日(Wed)</td>
+                      <td>SE/MG基礎2日目</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr class="">
+                      <td>2020年11月12日(Thu)</td>
+                      <td>SE/MG基礎3日目</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr class="">
+                      <td>2020年11月13日(Fri)</td>
+                      <td>AWS基礎1日目</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr class="">
+                      <td>2020年11月16日(Mon)</td>
+                      <td>業務プロセス基礎1日目</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr class="">
+                      <td>2020年11月17日(Tue)</td>
+                      <td>チーム設計演習1日目</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr class="">
+                      <td>2020年11月18日(Wed)</td>
+                      <td>チーム設計演習2日目</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr class="">
+                      <td>2020年11月19日(Thu)</td>
+                      <td>チーム設計演習3日目</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr class="">
+                      <td>2020年11月20日(Fri)</td>
+                      <td>チーム設計演習4日目</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr class="">
+                      <td>2020年11月24日(Tue)</td>
+                      <td>チーム設計演習5日目</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr class="">
+                      <td>2020年11月25日(Wed)</td>
+                      <td>チーム設計演習6日目</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr class="">
+                      <td>2020年11月26日(Thu)</td>
+                      <td>チーム設計演習7日目</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr class="">
+                      <td>2020年11月27日(Fri)</td>
+                      <td>チーム設計演習8日目</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr class="">
+                      <td>2020年11月30日(Mon)</td>
+                      <td>チーム設計演習9日目</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <form id="screenTransForm" name="screenTransForm" method="post">
+        </form>
+        <div id="push"></div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">Copyright(C) 2015 System Shared co., ltd, ALL Rights Reserved</p>
+      </div>
+    </div>
+</body>
+
+</html>

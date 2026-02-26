@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>試験変更 | LMS</title>
+
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/lms.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/jstree.css" />
+  <link rel="shortcut icon" href="../../img/favicon.ico" />
+
+  <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+  <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+  <script type="text/javascript" src="../../js/lms_common.js"></script>
+  <script type="text/javascript" src="../../js/jstree.min.js"></script>
+  <script type="text/javascript" src="../../js/currency.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <div id="wrap">
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../course/list.html" class="navbar-brand">LMS 学習管理システム</a>
+
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav-content">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="nav-content" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">事務<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../mail/templateList.html">メールテンプレート管理</a></li>
+                <li><a href="../mail/sendList.html">メール一斉送信</a></li>
+                <li><a href="../company/list.html">企業管理</a></li>
+                <li><a href="../user/list.html">ユーザー管理</a></li>
+                <li><a href="../contract/list.html">契約履歴</a></li>
+                <li><a href="../takeOver/candidateList.html">引継面談／会場見学 スケジュール</a></li>
+                <li><a href="../takeOver/list.html">引継面談／会場見学 実施予定</a></li>
+                <li><a href="../schedule/presentationList.html">成果報告会スケジュール</a></li>
+                <li><a href="../presentation/teamList.html">成果報告会チーム確定</a></li>
+                <li><a href="../presentation/list.html">成果報告会実施予定</a></li>
+                <li><a href="../estimate/list.html">請求情報ダウンロード</a></li>
+                <li><a href="../evReport/resultList.html">評価レポート公開</a></li>
+                <li><a href="../estimate/productList.html">見積もり品マスタ管理</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">営業<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../entry/list.html">エントリー情報確定</a></li>
+                <li><a href="../assign/spreadsheet.html">会場アサイン</a></li>
+                <li><a href="../takeOver/list.html">引継面談／会場見学 実施予定</a></li>
+                <li><a href="../presentation/reserveList.html">成果報告会実施予定</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">運営<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../place/list.html">会場管理</a></li>
+                <li><a href="../genre/list.html">試験カテゴリー管理</a></li>
+                <li><a href="../exam/list.html">試験内容管理</a></li>
+                <li><a href="../dailyReport/list.html">日報管理</a></li>
+                <li><a href="../deliverables/manageList.html">成果物管理</a></li>
+                <li><a href="../evReport/list.html">評価レポート管理</a></li>
+                <li><a href="../meeting/fileList.html">面談ファイル管理</a></li>
+                <li><a href="../holiday/list.html">休暇日設定</a></li>
+                <li><a href="../course/list.html">コース管理</a></li>
+                <li><a href="../movie/categoryList.html">動画管理</a></li>
+                <li><a href="../mail/sendList.html">メール一斉送信</a></li>
+                <li><a href="../user/list.html">ユーザー管理</a></li>
+                <li><a href="../displayControl/list.html">データの表示制御</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">助成金<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../subsidy/companyList.html">企業情報</a></li>
+                <li><a href="../subsidy/templateList.html">テンプレート管理</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">受講生情報<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../exam/list.html">試験</a></li>
+                <li><a href="../dailyReport/dailyList.html">レポート</a></li>
+                <li><a href="../deliverables/list.html">成果物</a></li>
+                <li><a href="../evReport/scoringConfirmation.html">評価レポート採点確認</a></li>
+                <li><a href="../attendance/list.html">勤怠</a></li>
+                <li><a href="../attendance/bulkRegistList.html">勤怠一括登録</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown">
+              <a href="../course/list/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                aria-expanded="false">その他<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="../fileshare/index.html">ファイル共有</a></li>
+                <li><a href="../course/csv.html">CSV出力</a></li>
+                <li><a href="../faq/categoryList.html">FAQ管理</a></li>
+                <li><a href="../contract/list.html">契約内容変更</a></li>
+                <li><a href="../info/latest.html">お知らせ設定</a></li>
+                <li><a href="../repair/list.html">改修履歴設定</a></li>
+                <li><a href="../help/index.html">ヘルプ</a></li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="text-center">
+              <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom"
+              title="お知らせ" data-content="お知らせ内容" data-html="true"></span>
+            </li>
+            <li>
+              <a><small>ようこそ管理者さん</small></a>
+            </li>
+            <li>
+              <button type="button" class="btn btn-default navbar-btn" onclick="location.href='../../index.html'">
+                <a href="../../index.html" class="glyphicon glyphicon-log-out">　ログアウト</a>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div id="contents" class="clearfix">
+        <div id="main" class="main2clm">
+          <h2>試験内容変更</h2>
+          <form name="exam_updateActionForm" id="examForm" method="post" action="list.html" class="form-horizontal">
+            <h3>問題内容変更</h3>
+
+            <div class="well bs-component">
+              <fieldset>
+                <legend>第1問</legend>
+
+                <div class="form-group">
+                  <label for="question_0" class="col-lg-2 control-label">問題</label>
+                  <div class="col-lg-10">
+                    <textarea name="question[0]" id="question_0"
+                      class="form-control">コンピュータの歴史に関する説明として正しいものはどれか。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="answerNum_0" class="col-lg-2 control-label">正答</label>
+                  <div class="col-lg-10">
+                    <select name="answerNum[0]" id="answerNum_0" class="form-control">
+                      <option value=""></option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3" selected="selected">3</option>
+                      <option value="4">4</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice1_0" class="col-lg-2 control-label">選択肢１</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice1[0]" id="choice1_0"
+                      class="form-control">ソフトウェアの概念は1942年に開発されたコンピュータから導入された。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice2_0" class="col-lg-2 control-label">選択肢２</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice2[0]" id="choice2_0"
+                      class="form-control">世界初のデジタルコンピュータ「ABC」はアメリカ陸軍により独自に開発された。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice3_0" class="col-lg-2 control-label">選択肢３</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice3[0]" id="choice3_0"
+                      class="form-control">現在まで受け継がれているコンピュータの構成としてノイマン型が挙げられる。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice4_0" class="col-lg-2 control-label">選択肢４</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice4[0]" id="choice4_0"
+                      class="form-control">日時計、天体運行の計測を目的としてデジタルコンピュータは古代から開発されていた。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="explain_0" class="col-lg-2 control-label">解説</label>
+                  <div class="col-lg-10">
+                    <textarea name="explain[0]" id="explain_0"
+                      class="form-control">参考：講義資料「ハードウェア、ソフトウェア」 P1～P2</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="genreDetailId_0" class="col-lg-2 control-label">詳細試験カテゴリー</label>
+                  <div class="col-lg-10">
+                    <select name="genreDetailId[0]" id="genreDetailId_0" class="form-control">
+                      <option value=""></option>
+                      <option value="84" selected="selected">ITリテラシー①</option>
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <input type="hidden" name="questionId[0]" value="13" />
+
+            <div class="well bs-component">
+              <fieldset>
+                <legend>第2問</legend>
+
+                <div class="form-group">
+                  <label for="question_1" class="col-lg-2 control-label">問題</label>
+                  <div class="col-lg-10">
+                    <textarea name="question[1]" id="question_1"
+                      class="form-control">以下のコンピュータの5大装置の内、マウスはどれに該当するか。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="answerNum_1" class="col-lg-2 control-label">正答</label>
+                  <div class="col-lg-10">
+                    <select name="answerNum[1]" id="answerNum_1" class="form-control">
+                      <option value=""></option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3" selected="selected">3</option>
+                      <option value="4">4</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice1_1" class="col-lg-2 control-label">選択肢１</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice1[1]" id="choice1_1" class="form-control">制御装置</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice2_1" class="col-lg-2 control-label">選択肢２</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice2[1]" id="choice2_1" class="form-control">出力装置</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice3_1" class="col-lg-2 control-label">選択肢３</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice3[1]" id="choice3_1" class="form-control">入力装置</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice4_1" class="col-lg-2 control-label">選択肢４</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice4[1]" id="choice4_1" class="form-control">記憶装置</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="explain_1" class="col-lg-2 control-label">解説</label>
+                  <div class="col-lg-10">
+                    <textarea name="explain[1]" id="explain_1" class="form-control">参考：講義資料「ハードウェア、ソフトウェア」 P7</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="genreDetailId_1" class="col-lg-2 control-label">詳細試験カテゴリー</label>
+                  <div class="col-lg-10">
+                    <select name="genreDetailId[1]" id="genreDetailId_1" class="form-control">
+                      <option value=""></option>
+                      <option value="84" selected="selected">ITリテラシー①</option>
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <input type="hidden" name="questionId[1]" value="14" />
+
+            <div class="well bs-component">
+              <fieldset>
+                <legend>第3問</legend>
+
+                <div class="form-group">
+                  <label for="question_2" class="col-lg-2 control-label">問題</label>
+                  <div class="col-lg-10">
+                    <textarea name="question[2]" id="question_2"
+                      class="form-control">リフレッシュ動作が不要であり、キャッシュメモリに利用される半導体メモリの種類はどれか。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="answerNum_2" class="col-lg-2 control-label">正答</label>
+                  <div class="col-lg-10">
+                    <select name="answerNum[2]" id="answerNum_2" class="form-control">
+                      <option value=""></option>
+                      <option value="1" selected="selected">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice1_2" class="col-lg-2 control-label">選択肢１</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice1[2]" id="choice1_2" class="form-control">SRAM</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice2_2" class="col-lg-2 control-label">選択肢２</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice2[2]" id="choice2_2" class="form-control">CD-ROM</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice3_2" class="col-lg-2 control-label">選択肢３</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice3[2]" id="choice3_2" class="form-control">DRAM</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice4_2" class="col-lg-2 control-label">選択肢４</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice4[2]" id="choice4_2" class="form-control">DAT</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="explain_2" class="col-lg-2 control-label">解説</label>
+                  <div class="col-lg-10">
+                    <textarea name="explain[2]" id="explain_2" class="form-control">参考：講義資料「ハードウェア、ソフトウェア」 P5</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="genreDetailId_2" class="col-lg-2 control-label">詳細試験カテゴリー</label>
+                  <div class="col-lg-10">
+                    <select name="genreDetailId[2]" id="genreDetailId_2" class="form-control">
+                      <option value=""></option>
+                      <option value="84" selected="selected">ITリテラシー①</option>
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <input type="hidden" name="questionId[2]" value="15" />
+
+            <div class="well bs-component">
+              <fieldset>
+                <legend>第4問</legend>
+
+                <div class="form-group">
+                  <label for="question_3" class="col-lg-2 control-label">問題</label>
+                  <div class="col-lg-10">
+                    <textarea name="question[3]" id="question_3"
+                      class="form-control">プログラミング言語に関する説明として正しいものはどれか。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="answerNum_3" class="col-lg-2 control-label">正答</label>
+                  <div class="col-lg-10">
+                    <select name="answerNum[3]" id="answerNum_3" class="form-control">
+                      <option value=""></option>
+                      <option value="1" selected="selected">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice1_3" class="col-lg-2 control-label">選択肢１</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice1[3]" id="choice1_3"
+                      class="form-control">インタプリタ型言語の実行速度はコンパイラ型言語と比較して遅い。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice2_3" class="col-lg-2 control-label">選択肢２</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice2[3]" id="choice2_3"
+                      class="form-control">ソースコードとは機械が解釈できる形式に翻訳されたものを指す。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice3_3" class="col-lg-2 control-label">選択肢３</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice3[3]" id="choice3_3"
+                      class="form-control">Javaではインタプリタを利用してオブジェクトコードが生成される。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice4_3" class="col-lg-2 control-label">選択肢４</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice4[3]" id="choice4_3"
+                      class="form-control">全てのプログラミング言語は必ずコンパイラを介して実行される。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="explain_3" class="col-lg-2 control-label">解説</label>
+                  <div class="col-lg-10">
+                    <textarea name="explain[3]" id="explain_3" class="form-control">参考：講義資料「ハードウェア、ソフトウェア」 P9</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="genreDetailId_3" class="col-lg-2 control-label">詳細試験カテゴリー</label>
+                  <div class="col-lg-10">
+                    <select name="genreDetailId[3]" id="genreDetailId_3" class="form-control">
+                      <option value=""></option>
+                      <option value="84" selected="selected">ITリテラシー①</option>
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <input type="hidden" name="questionId[3]" value="16" />
+
+            <div class="well bs-component">
+              <fieldset>
+                <legend>第5問</legend>
+
+                <div class="form-group">
+                  <label for="question_4" class="col-lg-2 control-label">問題</label>
+                  <div class="col-lg-10">
+                    <textarea name="question[4]" id="question_4"
+                      class="form-control">10進数77を16進数で表したときの数値として正しいものどれか。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="answerNum_4" class="col-lg-2 control-label">正答</label>
+                  <div class="col-lg-10">
+                    <select name="answerNum[4]" id="answerNum_4" class="form-control">
+                      <option value=""></option>
+                      <option value="1">1</option>
+                      <option value="2" selected="selected">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice1_4" class="col-lg-2 control-label">選択肢１</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice1[4]" id="choice1_4" class="form-control">43</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice2_4" class="col-lg-2 control-label">選択肢２</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice2[4]" id="choice2_4" class="form-control">4D</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice3_4" class="col-lg-2 control-label">選択肢３</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice3[4]" id="choice3_4" class="form-control">49</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice4_4" class="col-lg-2 control-label">選択肢４</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice4[4]" id="choice4_4" class="form-control">45</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="explain_4" class="col-lg-2 control-label">解説</label>
+                  <div class="col-lg-10">
+                    <textarea name="explain[4]" id="explain_4"
+                      class="form-control">参考：講義資料「ハードウェア、ソフトウェア」 P13～P14</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="genreDetailId_4" class="col-lg-2 control-label">詳細試験カテゴリー</label>
+                  <div class="col-lg-10">
+                    <select name="genreDetailId[4]" id="genreDetailId_4" class="form-control">
+                      <option value=""></option>
+                      <option value="84" selected="selected">ITリテラシー①</option>
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <input type="hidden" name="questionId[4]" value="17" />
+
+            <div class="well bs-component">
+              <fieldset>
+                <legend>第6問</legend>
+
+                <div class="form-group">
+                  <label for="question_5" class="col-lg-2 control-label">問題</label>
+                  <div class="col-lg-10">
+                    <textarea name="question[5]" id="question_5"
+                      class="form-control">8進数17と2進数00100101を足した値を10進数で表記したものはどれか。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="answerNum_5" class="col-lg-2 control-label">正答</label>
+                  <div class="col-lg-10">
+                    <select name="answerNum[5]" id="answerNum_5" class="form-control">
+                      <option value=""></option>
+                      <option value="1">1</option>
+                      <option value="2" selected="selected">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice1_5" class="col-lg-2 control-label">選択肢１</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice1[5]" id="choice1_5" class="form-control">36</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice2_5" class="col-lg-2 control-label">選択肢２</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice2[5]" id="choice2_5" class="form-control">52</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice3_5" class="col-lg-2 control-label">選択肢３</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice3[5]" id="choice3_5" class="form-control">72</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice4_5" class="col-lg-2 control-label">選択肢４</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice4[5]" id="choice4_5" class="form-control">89</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="explain_5" class="col-lg-2 control-label">解説</label>
+                  <div class="col-lg-10">
+                    <textarea name="explain[5]" id="explain_5"
+                      class="form-control">参考：講義資料「ハードウェア、ソフトウェア」 P13～P14</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="genreDetailId_5" class="col-lg-2 control-label">詳細試験カテゴリー</label>
+                  <div class="col-lg-10">
+                    <select name="genreDetailId[5]" id="genreDetailId_5" class="form-control">
+                      <option value=""></option>
+                      <option value="84" selected="selected">ITリテラシー①</option>
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <input type="hidden" name="questionId[5]" value="18" />
+
+            <div class="well bs-component">
+              <fieldset>
+                <legend>第7問</legend>
+
+                <div class="form-group">
+                  <label for="question_6" class="col-lg-2 control-label">問題</label>
+                  <div class="col-lg-10">
+                    <textarea name="question[6]" id="question_6"
+                      class="form-control">プログラム中で変数を利用する利点として正しいものはどれか。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="answerNum_6" class="col-lg-2 control-label">正答</label>
+                  <div class="col-lg-10">
+                    <select name="answerNum[6]" id="answerNum_6" class="form-control">
+                      <option value=""></option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4" selected="selected">4</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice1_6" class="col-lg-2 control-label">選択肢１</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice1[6]" id="choice1_6" class="form-control">算術計算を行うことができる。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice2_6" class="col-lg-2 control-label">選択肢２</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice2[6]" id="choice2_6" class="form-control">文字列を画面に出力させることができる。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice3_6" class="col-lg-2 control-label">選択肢３</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice3[6]" id="choice3_6" class="form-control">条件分岐処理を実行できる。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice4_6" class="col-lg-2 control-label">選択肢４</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice4[6]" id="choice4_6" class="form-control">同じデータを何度も参照できる。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="explain_6" class="col-lg-2 control-label">解説</label>
+                  <div class="col-lg-10">
+                    <textarea name="explain[6]" id="explain_6" class="form-control">　</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="genreDetailId_6" class="col-lg-2 control-label">詳細試験カテゴリー</label>
+                  <div class="col-lg-10">
+                    <select name="genreDetailId[6]" id="genreDetailId_6" class="form-control">
+                      <option value=""></option>
+                      <option value="84" selected="selected">ITリテラシー①</option>
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <input type="hidden" name="questionId[6]" value="19" />
+
+            <div class="well bs-component">
+              <fieldset>
+                <legend>第8問</legend>
+
+                <div class="form-group">
+                  <label for="question_7" class="col-lg-2 control-label">問題</label>
+                  <div class="col-lg-10">
+                    <textarea name="question[7]" id="question_7"
+                      class="form-control">フローチャートで利用する部品に関する説明として正しいものはどれか。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="answerNum_7" class="col-lg-2 control-label">正答</label>
+                  <div class="col-lg-10">
+                    <select name="answerNum[7]" id="answerNum_7" class="form-control">
+                      <option value=""></option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3" selected="selected">3</option>
+                      <option value="4">4</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice1_7" class="col-lg-2 control-label">選択肢１</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice1[7]" id="choice1_7"
+                      class="form-control">フローチャートの始まりと終わりには「端子」が存在し、両端子間に存在する部品の個数には上限がある。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice2_7" class="col-lg-2 control-label">選択肢２</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice2[7]" id="choice2_7"
+                      class="form-control">「条件」は2つ以上の入り口と1つの出口を持っており、条件に応じた処理が実行される。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice3_7" class="col-lg-2 control-label">選択肢３</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice3[7]" id="choice3_7"
+                      class="form-control">「変数」は各部品の中に記述するものであり、「変数」自体が部品として扱われることはない。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice4_7" class="col-lg-2 control-label">選択肢４</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice4[7]" id="choice4_7" class="form-control">
+ループ処理は「始端」と「終端」で対となっており、最低1回以上ループ処理を実行したい場合は「始端」に条件を記述する。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="explain_7" class="col-lg-2 control-label">解説</label>
+                  <div class="col-lg-10">
+                    <textarea name="explain[7]" id="explain_7" class="form-control">　</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="genreDetailId_7" class="col-lg-2 control-label">詳細試験カテゴリー</label>
+                  <div class="col-lg-10">
+                    <select name="genreDetailId[7]" id="genreDetailId_7" class="form-control">
+                      <option value=""></option>
+                      <option value="84" selected="selected">ITリテラシー①</option>
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <input type="hidden" name="questionId[7]" value="20" />
+
+            <div class="well bs-component">
+              <fieldset>
+                <legend>第9問</legend>
+
+                <div class="form-group">
+                  <label for="question_8" class="col-lg-2 control-label">問題</label>
+                  <div class="col-lg-10">
+                    <textarea name="question[8]" id="question_8" class="form-control">
+バブルソートを用いてデータ「9　5　7　1　3」を降順に並べ替えた場合、何回要素の値を入れ替える処理が発生するか。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="answerNum_8" class="col-lg-2 control-label">正答</label>
+                  <div class="col-lg-10">
+                    <select name="answerNum[8]" id="answerNum_8" class="form-control">
+                      <option value=""></option>
+                      <option value="1">1</option>
+                      <option value="2" selected="selected">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice1_8" class="col-lg-2 control-label">選択肢１</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice1[8]" id="choice1_8" class="form-control">1回</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice2_8" class="col-lg-2 control-label">選択肢２</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice2[8]" id="choice2_8" class="form-control">2回</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice3_8" class="col-lg-2 control-label">選択肢３</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice3[8]" id="choice3_8" class="form-control">3回</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice4_8" class="col-lg-2 control-label">選択肢４</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice4[8]" id="choice4_8" class="form-control">4回</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="explain_8" class="col-lg-2 control-label">解説</label>
+                  <div class="col-lg-10">
+                    <textarea name="explain[8]" id="explain_8" class="form-control">　</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="genreDetailId_8" class="col-lg-2 control-label">詳細試験カテゴリー</label>
+                  <div class="col-lg-10">
+                    <select name="genreDetailId[8]" id="genreDetailId_8" class="form-control">
+                      <option value=""></option>
+                      <option value="84" selected="selected">ITリテラシー①</option>
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <input type="hidden" name="questionId[8]" value="21" />
+
+            <div class="well bs-component">
+              <fieldset>
+                <legend>第10問</legend>
+
+                <div class="form-group">
+                  <label for="question_9" class="col-lg-2 control-label">問題</label>
+                  <div class="col-lg-10">
+                    <textarea name="question[9]" id="question_9"
+                      class="form-control">同一建物や敷地内など比較的狭い範囲のネットワークの呼称として正しいものはどれか。</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="answerNum_9" class="col-lg-2 control-label">正答</label>
+                  <div class="col-lg-10">
+                    <select name="answerNum[9]" id="answerNum_9" class="form-control">
+                      <option value=""></option>
+                      <option value="1">1</option>
+                      <option value="2" selected="selected">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice1_9" class="col-lg-2 control-label">選択肢１</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice1[9]" id="choice1_9" class="form-control">WAN</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice2_9" class="col-lg-2 control-label">選択肢２</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice2[9]" id="choice2_9" class="form-control">LAN</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice3_9" class="col-lg-2 control-label">選択肢３</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice3[9]" id="choice3_9" class="form-control">WWW</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice4_9" class="col-lg-2 control-label">選択肢４</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice4[9]" id="choice4_9" class="form-control">インターネット</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="explain_9" class="col-lg-2 control-label">解説</label>
+                  <div class="col-lg-10">
+                    <textarea name="explain[9]" id="explain_9" class="form-control">参考：講義資料「WWW」 P1</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="genreDetailId_9" class="col-lg-2 control-label">詳細試験カテゴリー</label>
+                  <div class="col-lg-10">
+                    <select name="genreDetailId[9]" id="genreDetailId_9" class="form-control">
+                      <option value=""></option>
+                      <option value="84" selected="selected">ITリテラシー①</option>
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <input type="hidden" name="questionId[9]" value="22" />
+
+            <div class="well bs-component">
+              <fieldset>
+                <legend>第11問</legend>
+
+                <div class="form-group">
+                  <label for="question_10" class="col-lg-2 control-label">問題</label>
+                  <div class="col-lg-10">
+                    <textarea name="question[10]" id="question_10" class="form-control">
+①、②にあてはまる語句として正しいものはどれか。
+「①と②の変換を行うサーバを、DNSサーバと呼ぶ。」</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="answerNum_10" class="col-lg-2 control-label">正答</label>
+                  <div class="col-lg-10">
+                    <select name="answerNum[10]" id="answerNum_10" class="form-control">
+                      <option value=""></option>
+                      <option value="1">1</option>
+                      <option value="2" selected="selected">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice1_10" class="col-lg-2 control-label">選択肢１</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice1[10]" id="choice1_10" class="form-control">①IPアドレス ②ポート番号</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice2_10" class="col-lg-2 control-label">選択肢２</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice2[10]" id="choice2_10" class="form-control">①ドメイン名 ②IPアドレス</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice3_10" class="col-lg-2 control-label">選択肢３</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice3[10]" id="choice3_10" class="form-control">①マシン名   ②ドメイン名</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice4_10" class="col-lg-2 control-label">選択肢４</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice4[10]" id="choice4_10" class="form-control">①IPv4       ②IPv6</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="explain_10" class="col-lg-2 control-label">解説</label>
+                  <div class="col-lg-10">
+                    <textarea name="explain[10]" id="explain_10" class="form-control">参考：講義資料「WWW」 P7</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="genreDetailId_10" class="col-lg-2 control-label">詳細試験カテゴリー</label>
+                  <div class="col-lg-10">
+                    <select name="genreDetailId[10]" id="genreDetailId_10" class="form-control">
+                      <option value=""></option>
+                      <option value="84" selected="selected">ITリテラシー①</option>
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <input type="hidden" name="questionId[10]" value="23" />
+
+            <div class="well bs-component">
+              <fieldset>
+                <legend>第12問</legend>
+
+                <div class="form-group">
+                  <label for="question_11" class="col-lg-2 control-label">問題</label>
+                  <div class="col-lg-10">
+                    <textarea name="question[11]" id="question_11" class="form-control">
+下記のURLに関して、フォルダ名に該当する箇所はどれか。
+http://www.sss.co.jp/main/index.html</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="answerNum_11" class="col-lg-2 control-label">正答</label>
+                  <div class="col-lg-10">
+                    <select name="answerNum[11]" id="answerNum_11" class="form-control">
+                      <option value=""></option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3" selected="selected">3</option>
+                      <option value="4">4</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice1_11" class="col-lg-2 control-label">選択肢１</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice1[11]" id="choice1_11" class="form-control">http</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice2_11" class="col-lg-2 control-label">選択肢２</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice2[11]" id="choice2_11" class="form-control">www.sss.co.jp</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice3_11" class="col-lg-2 control-label">選択肢３</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice3[11]" id="choice3_11" class="form-control">main</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="choice4_11" class="col-lg-2 control-label">選択肢４</label>
+                  <div class="col-lg-10">
+                    <textarea name="choice4[11]" id="choice4_11" class="form-control">index.html</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="explain_11" class="col-lg-2 control-label">解説</label>
+                  <div class="col-lg-10">
+                    <textarea name="explain[11]" id="explain_11" class="form-control">参考：講義資料「WWW」 P7</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="genreDetailId_11" class="col-lg-2 control-label">詳細試験カテゴリー</label>
+                  <div class="col-lg-10">
+                    <select name="genreDetailId[11]" id="genreDetailId_11" class="form-control">
+                      <option value=""></option>
+                      <option value="84" selected="selected">ITリテラシー①</option>
+                    </select>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <input type="hidden" name="questionId[11]" value="24" />
+
+            <input type="hidden" name="numOfQuestion" value="12" />
+            <input type="hidden" name="examId" value="2" />
+            <input type="hidden" name="examName" value="2015_ITリテラシー①_単元" />
+            <input type="hidden" name="limitTime" value="20" />
+            <input type="hidden" name="genreId" value="16" />
+
+            <div class="well bs-component">
+              <fieldset>
+                <input type="submit" name="complete" value="変更する" onclick="return changecheck()" id="updBtn"
+                  class="btn btn-primary" />
+                <strong class="text-caution">※試験の問題数を変更する場合は、再度試験を作り直してください！！</strong><br />
+                <strong class="text-caution">　　　　　　 既に試験が受験されている場合、試験の問題を追加または削除すると試験結果が参照できなくなります。</strong>
+              </fieldset>
+            </div>
+          </form>
+        </div>
+        <!--#main-->
+      </div>
+      <!--#contents-->
+      <form id="screenTransForm" name="screenTransForm" method="post"></form>
+      <div id="push"></div>
+    </div>
+  </div>
+  <div id="footer">
+    <div class="container">
+      <p class="muted credit">Copyright(C) 2015 System Shared co., ltd, ALL Rights Reserved</p>
+    </div>
+  </div>
+  <!--#container-->
+</body>
+
+</html>

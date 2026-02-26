@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>申請種別選択 | LMS</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/lms.css">
+    <link rel="stylesheet" type="text/css" href="../../../css/jstree.css">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+    <script type="text/javascript" src="../../../js/jquery.2.1.1.min.js"></script>
+    <script type="text/javascript" src="../../../js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../../../js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../../js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="../../../js/bootstrap-datepicker.ja.min.js"></script>
+    <script type="text/javascript" src="../../../js/lms_common.js"></script>
+    <script type="text/javascript" src="../../../js/jstree.min.js"></script>
+    <script type="text/javascript" src="../../../js/currency.js"></script>
+    <script type="text/javascript" src="../../../js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+
+            var userTable = $('#user-table').DataTable({
+                searching: false,
+                lengthMenu: [[10, 20, 30, 40, 50, -1], [10, 20, 30, 40, 50, 'ALL']],
+                autoWidth: false,
+                language: l,
+                paging: false,
+                order: [1, 'asc'],
+                columnDefs: [{
+                    targets: [0],
+                    orderable: false
+                }]
+            });
+
+            $(document).on('change', '#courseId', function () {
+                $('#complete').prop('disabled', true);
+                userTable.rows().remove().draw();
+                var courseId = $(this).val();
+                if (courseId == '') {
+                    $('#submit-div').attr('class', 'dn');
+                    $("#subsidyCategoryId").html("");
+                    return;
+                }
+                $('#loading').attr('class', '');
+                $('#submit-div').attr('class', 'dn');
+
+                $.ajax({
+                    type: "POST",
+                    url: "/lms/subsidy/download/user/jsonUserDto",
+                    data: "courseId=" + courseId,
+                    success: function (subsidyStudentDtoList) {
+
+                        for (var i = 0; i < subsidyStudentDtoList.length; i++) {
+                            var chk = '';
+                            chk += '<input type="checkbox"  name="lmsUserIdArr[' + i + ']" id="lmsUserIdArr[' + i + ']" class="icon-checkbox" value="' + subsidyStudentDtoList[i].lmsUserId + '" />';
+                            chk += '<label for="lmsUserIdArr[' + i + ']" class="text-info">';
+                            chk += '  <span class="glyphicon glyphicon-unchecked unchecked"></span>';
+                            chk += '  <span class="glyphicon glyphicon-check checked"></span>';
+                            chk += '</label>';
+
+                            var statusCls = '';
+                            if (subsidyStudentDtoList[i].studentsStatus == '研修受講前') {
+                                statusCls = 'text-success';
+                            } else if (subsidyStudentDtoList[i].studentsStatus == '研修終了') {
+                                statusCls = 'text-info';
+                            } else if (subsidyStudentDtoList[i].studentsStatus == '受講中') {
+                                statusCls = 'text-muted';
+                            }
+
+                            var placeName = subsidyStudentDtoList[i].placeName;
+                            if (subsidyStudentDtoList[i].placeNote != null) {
+                                placeName = placeName + '<small>(' + subsidyStudentDtoList[i].placeNote + ')</small>';
+                            }
+
+                            var subsidyCategoryName = subsidyStudentDtoList[i].subsidyCategoryName;
+
+                            if (subsidyCategoryName == null) {
+                                subsidyCategoryName = '※登録されていません。'
+                            }
+
+                            userTable.row.add([
+                                chk,
+                                '<span class="' + statusCls + '">' + subsidyStudentDtoList[i].studentsStatus + '</span>',
+                                subsidyStudentDtoList[i].userName,
+                                placeName,
+                                subsidyStudentDtoList[i].studentsTime + '時間',
+                                subsidyCategoryName
+                            ]).draw(false);
+                        }
+                        $('#loading').attr('class', 'dn');
+                        $('#submit-div').attr('class', 'form-group');
+                    },
+                    fail: function () {
+                        alert('通信に失敗しました。');
+                        $('#loading').attr('class', 'dn');
+                    }
+                });
+
+                $.ajax({
+                    type: "POST",
+                    url: "/lms/subsidy/download/user/jsonSubsidyCategoryDto",
+                    data: "courseId=" + courseId,
+                    success: function (viewSubsidyCategoryDtoList) {
+                        $("#subsidyCategoryId").html("");
+                        $("#subsidyCategoryId").append("<option value = " + '' + ">" + '' + "</option>");
+                        for (var i = 0; i < viewSubsidyCategoryDtoList.length; i++) {
+                            $("#subsidyCategoryId").append("<option value = " + viewSubsidyCategoryDtoList[i].subsidyCategoryId + ">" + viewSubsidyCategoryDtoList[i].subsidyCategoryName + "</option>");
+                        }
+                    },
+                    fail: function () {
+                        alert('通信に失敗しました。');
+                        $('#loading').attr('class', 'dn');
+                    }
+                });
+            });
+
+            $(document).on('change', '#subsidyCategoryId', function () {
+                userTable.rows().remove().draw();
+                var subsidyCategoryId = $(this).val();
+                if (subsidyCategoryId == '') {
+                    $('#complete').prop('disabled', true);
+                } else {
+                    $('#complete').prop('disabled', false);
+                }
+                $('#loading').attr('class', '');
+                $('#submit-div').attr('class', 'dn');
+
+                $.ajax({
+                    type: "POST",
+                    url: "/lms/subsidy/download/user/jsonSubsidyUserDto",
+                    data: {
+                        courseId: $('[name = courseId]').val(),
+                        subsidyCategoryId: $('[name = subsidyCategoryId]').val()
+                    },
+                    success: function (subsidyStudentDtoList) {
+
+                        for (var i = 0; i < subsidyStudentDtoList.length; i++) {
+                            var chk = '';
+                            chk += '<input type="checkbox"  name="lmsUserIdArr[' + i + ']" id="lmsUserIdArr[' + i + ']" class="icon-checkbox" value="' + subsidyStudentDtoList[i].lmsUserId + '" />';
+                            chk += '<label for="lmsUserIdArr[' + i + ']" class="text-info">';
+                            chk += '  <span class="glyphicon glyphicon-unchecked unchecked"></span>';
+                            chk += '  <span class="glyphicon glyphicon-check checked"></span>';
+                            chk += '</label>';
+
+                            var statusCls = '';
+                            if (subsidyStudentDtoList[i].studentsStatus == '研修受講前') {
+                                statusCls = 'text-success';
+                            } else if (subsidyStudentDtoList[i].studentsStatus == '研修終了') {
+                                statusCls = 'text-info';
+                            } else if (subsidyStudentDtoList[i].studentsStatus == '受講中') {
+                                statusCls = 'text-muted';
+                            }
+
+                            var placeName = subsidyStudentDtoList[i].placeName;
+                            if (subsidyStudentDtoList[i].placeNote != null) {
+                                placeName = placeName + '<small>(' + subsidyStudentDtoList[i].placeNote + ')</small>';
+                            }
+
+                            var subsidyCategoryName = subsidyStudentDtoList[i].subsidyCategoryName;
+
+                            if (subsidyCategoryName == null) {
+                                subsidyCategoryName = '※登録されていません。'
+                            }
+
+                            userTable.row.add([
+                                chk,
+                                '<span class="' + statusCls + '">' + subsidyStudentDtoList[i].studentsStatus + '</span>',
+                                subsidyStudentDtoList[i].userName,
+                                placeName,
+                                subsidyStudentDtoList[i].studentsTime + '時間',
+                                subsidyCategoryName
+                            ]).draw(false);
+                        }
+                        $('#loading').attr('class', 'dn');
+                        $('#submit-div').attr('class', 'form-group');
+
+                    },
+                    fail: function () {
+                        alert('通信に失敗しました。');
+                        $('#loading').attr('class', 'dn');
+                    }
+                });
+            });
+
+            $('#checkbox-all').click(function () {
+                allCheck('#user-table', this);
+            });
+
+        });
+    </script>
+
+</head>
+
+<body>
+    <div id="wrap">
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header"> <a class="navbar-brand">LMS 学習管理システム</a> <button type="button"
+                        class="navbar-toggle" data-toggle="collapse" data-target="#nav-content"> <span
+                            class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    </button> </div>
+                <div id="nav-content" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                aria-expanded="false">研修管理<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="../../user/list/student.html">受講生一覧</a></li>
+                                <li><a href="../../dailyReport/dailyList.html">日報確認</a></li>
+                                <li><a href="../../attendance/list.html">勤怠情報確認</a></li>
+                                <li><a href="../../exam/list.html">試験結果確認</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="../user/list/student.html" class="dropdown-toggle" data-toggle="dropdown"
+                                role="button" aria-expanded="false">予約<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="../../takeOver/list.html">引継面談／会場見学 予約</a></li>
+                                 <li><a href="../../presentation/list.html">成果報告会出欠</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="../user/list/student.html" class="dropdown-toggle" data-toggle="dropdown"
+                                role="button" aria-expanded="false">助成金<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="../../subsidy/company/detail.html">企業情報編集</a></li>
+                                <li><a href="../../subsidy/download/type.html">申請書類DL</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="../user/list/student.html" class="dropdown-toggle" data-toggle="dropdown"
+                                role="button" aria-expanded="false">その他<span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="../../user/list/company.html">受講生以外のユーザー</a></li>
+                                <li><a href="../../contract/history/list.html">契約内容確認</a></li>
+                                <li><a href="../../fileshare/list.html" class="form-horizontal">ファイル共有</a></li>
+                                <li><a href="../../help/index.html" class="form-horizontal">ヘルプ</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="text-center">
+                          <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+                          <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom"
+                          title="お知らせ" data-content="お知らせ内容" data-html="true"></span>
+                        </li>
+                        <li><a><small>ようこそ企業担当者さん</small></a></li>
+                        <li> <button type="button" class="btn btn-default navbar-btn" onclick=""> <a
+                                    href="../../../index.html" class="glyphicon glyphicon-log-out">　ログアウト</a> </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div id="contents" class="clearfix">
+                <div id="main" class="main2clm">
+                    <h2>助成金書類ダウンロード 出力対象選択</h2>
+                    <h3>基本情報</h3>
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th style="width: 10em;">企業名</th>
+                                <td>動作確認【デモ】</td>
+                            </tr>
+                            <tr>
+                                <th style="width: 10em;">申請種別</th>
+                                <td>計画申請</td>
+                            </tr>
+                        </tbody>
+                    </table> <strong class="text-role">※コースと使用する助成金を選択してください。</strong><br>
+                    <h3>コース選択</h3>
+                    <form name="subsidy_download_userActionForm" method="post" action="user.html">
+                        <div><input type="hidden" name="org.apache.struts.taglib.html.TOKEN"
+                                value="60e2a13bd0b3fe37bcd9e67e30ef774c"></div>
+                        <div class="form-inline">
+                            <div class="form-group"> <label for="courseId" class="control-label">コース名</label> </div>
+                            <div class="form-group ml10"> <select name="courseId" id="courseId" class="form-control">
+                                    <option value=""> </option>
+                                    <option value="602">体験型Java研修用【デモ】 (2021年2月1日～2021年3月31日） </option>
+                                    <option value="610">テストコース(2021年4月1日～2021年4月30日） </option>
+                                </select> </div>
+                        </div>
+                        <h3>使用する助成金選択</h3>
+                        <div class="form-inline">
+                            <div class="form-group"> <label for="subsidyCategoryId" class="control-label">助成金名</label>
+                            </div>
+                            <div class="form-group ml10"> <select name="subsidyCategoryId" id="subsidyCategoryId"
+                                    class="form-control" style="width:66em;">
+                                    <option value=""></option>
+                                    <option value="1">人材開発支援助成金－一般訓練コース</option>
+                                </select> </div>
+                        </div>
+                        <h3>出力対象ユーザー<strong class="text-role">
+                                <font size="2">　※使用する助成金が未登録の場合は、助成金書類はダウンロードできませんので、ユーザー変更画面から登録を行ってください。</font>
+                            </strong></h3>
+                        <div id="user-table_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                            <div class="row">
+                                <div class="col-sm-6"></div>
+                                <div class="col-sm-6"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table class="table table-hover dataTable no-footer" id="user-table" role="grid"
+                                        aria-describedby="user-table_info">
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="sorting_disabled" rowspan="1" colspan="1"
+                                                    aria-label="                                                                              ">
+                                                    <input id="checkbox-all" class="icon-checkbox" type="checkbox">
+                                                    <label for="checkbox-all" class="text-info"> <span
+                                                            class="glyphicon glyphicon-unchecked unchecked"></span>
+                                                        <span class="glyphicon glyphicon-check checked"></span> </label>
+                                                </th>
+                                                <th class="sorting_asc" tabindex="0" aria-controls="user-table"
+                                                    rowspan="1" colspan="1"
+                                                    aria-label="受講状態: activate to sort column descending"
+                                                    aria-sort="ascending">受講状態</th>
+                                                <th class="sorting" tabindex="0" aria-controls="user-table" rowspan="1"
+                                                    colspan="1" aria-label="受講生名: activate to sort column ascending">
+                                                    受講生名</th>
+                                                <th class="sorting" tabindex="0" aria-controls="user-table" rowspan="1"
+                                                    colspan="1" aria-label="会場: activate to sort column ascending">会場
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="user-table" rowspan="1"
+                                                    colspan="1" aria-label="総受講時間: activate to sort column ascending">
+                                                    総受講時間</th>
+                                                <th class="sorting" tabindex="0" aria-controls="user-table" rowspan="1"
+                                                    colspan="1" aria-label="助成金名: activate to sort column ascending">
+                                                    助成金名</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr role="row" class="odd">
+                                                <td><input type="checkbox" name="lmsUserIdArr[0]" id="lmsUserIdArr[0]"
+                                                        class="icon-checkbox" value="24656"><label for="lmsUserIdArr[0]"
+                                                        class="text-info"> <span
+                                                            class="glyphicon glyphicon-unchecked unchecked"></span>
+                                                        <span class="glyphicon glyphicon-check checked"></span></label>
+                                                </td>
+                                                <td class="sorting_1"><span class="text-muted">受講中</span></td>
+                                                <td>テスト</td>
+                                                <td>動作確認<small>($$)</small></td>
+                                                <td>0時間</td>
+                                                <td>人材開発支援助成金－一般訓練コース</td>
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td><input type="checkbox" name="lmsUserIdArr[1]" id="lmsUserIdArr[1]"
+                                                        class="icon-checkbox" value="24655"><label for="lmsUserIdArr[1]"
+                                                        class="text-info"> <span
+                                                            class="glyphicon glyphicon-unchecked unchecked"></span>
+                                                        <span class="glyphicon glyphicon-check checked"></span></label>
+                                                </td>
+                                                <td class="sorting_1"><span class="text-success">研修受講前</span></td>
+                                                <td>テスト</td>
+                                                <td>動作確認<small>($$)</small></td>
+                                                <td>0時間</td>
+                                                <td>人材開発支援助成金－一般訓練コース</td>
+                                            </tr>
+                                            <tr role="row" class="even">
+                                                <td><input type="checkbox" name="lmsUserIdArr[3]" id="lmsUserIdArr[3]"
+                                                        class="icon-checkbox" value="24512"><label for="lmsUserIdArr[3]"
+                                                        class="text-info"> <span
+                                                            class="glyphicon glyphicon-unchecked unchecked"></span>
+                                                        <span class="glyphicon glyphicon-check checked"></span></label>
+                                                </td>
+                                                <td class="sorting_1"><span class="text-info">研修終了</span></td>
+                                                <td>デモ受講生</td>
+                                                <td>動作確認<small>($$)</small></td>
+                                                <td>0時間</td>
+                                                <td>※登録されていません。</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" id="submit-div"> <button type="submit" id="complete"
+                                class="btn btn-primary" disabled="">助成金出力対象確定</button> </div>
+                    </form>
+                </div>
+
+            </div>
+
+            <form id="screenTransForm" name="screenTransForm" method="post"> </form>
+            <div id="push"></div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="container">
+            <p class="muted credit">Copyright(C) 2015 System Shared co., ltd, ALL Rights Reserved</p>
+        </div>
+    </div>
+</body>
+
+</html>

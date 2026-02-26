@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>勤怠情報変更 | LMS</title>
+
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" type="text/css" href="../../css/lms.css">
+  <link rel="stylesheet" type="text/css" href="../../css/jstree.css">
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <link href="https://use.fontawesome.com/releases/v5.6.4/css/all.css" rel="stylesheet">
+
+  <script type="text/javascript" src="../../js/jquery.2.1.1.min.js"></script>
+  <script type="text/javascript" src="../../js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="../../js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.min.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap-datepicker.ja.min.js"></script>
+  <script type="text/javascript" src="../../js/lms_common.js"></script>
+  <script type="text/javascript" src="../../js/jstree.min.js"></script>
+  <script type="text/javascript" src="../../js/currency.js"></script>
+  <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+  <div id="header">
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../course/detail.html" class="navbar-brand">LMS 学習管理システム</a>
+        </div>
+        <div id="nav-content" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <a href="../course/detail.html">マイコース</a>
+            </li>
+            <li>
+              <a href="../download/teachingMaterialList.html">教材ダウンロード</a>
+            </li>
+            <li>
+              <a href="../attendance/detail.html">勤怠</a>
+            </li>
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                機能<span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu">
+                <li>
+                  <a href="../fileshare/list.html" class="form-horizontal">ファイル共有</a>
+                </li>
+                <li>
+                  <a href="../movie/index.html" class="form-horizontal">動画視聴</a>
+                </li>
+                <li>
+                  <a href="../support/index.html" class="form-horizontal">サポートセンター</a>
+                </li>
+                <li>
+                  <a href="../help/index.html" class="form-horizontal">ヘルプ</a>
+                </li>
+
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="text-center">
+              <a href="#" id="lms-infomation"><span class="glyphicon glyphicon-info-sign"></span></a>
+              <span id="lms-infomation-hide" data-container="body" data-toggle="popover" data-placement="bottom"
+                title="お知らせ" data-content="btn btn-default" value="詳細" data-html="true"></span>
+            </li>
+            <li><a href="../user/detail.html"><small>ようこそ受講生さん</small></a></li>
+            <li>
+              <c:url var="logout" value="../../index.html"></c:url>
+              <button type="button" class="btn btn-default navbar-btn" onclick="location.href='${logout}'">
+                <a href="../../index.html" class="glyphicon glyphicon-log-out"> ログアウト</a>
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div id="wrap">
+    <div class="container">
+
+      <div id="contents" class="clearfix">
+        <div id="main" class="main2clm">
+
+          <h2>勤怠管理</h2>
+
+          <div class="row">
+            <div class="bs-component col-sm-12">
+              <html:errors />
+              <form method="POST" action="./complete.html">
+                <table class="table table-hover dataTable no-footer">
+                  <thead style="display: block;">
+                    <tr>
+						<th class="w140">日付</th>
+						<th class="w140">コース内容</th>
+						<th class="w60"></th>
+						<th class="w180" colspan="3">出勤</th>
+						<th class="w180" colspan="3">退勤</th>
+						<th class="w80">中抜け時間</th>
+						<th class="w70">ステータス</th>
+						<th class="w140">備考</th>
+                    </tr>
+                  </thead>
+                  <tbody style="display: block; overflow-y: scroll; height: 560px;">
+                    <tr>
+                      <td class="w140">2020年11月2日(月)</td>
+                      <td class="w140">プロジェクト基礎 1日目</td>
+                      <td class="w60"><input type="button" class="btn btn-success" value="定時" /></td>
+                      <td class="w70">
+                        <select name="" class="form-control" errorStyleClass="form-control errorInput"
+                          name="attendanceList" property="trainingStartTimeHh" indexed="true">
+							<option value="" inlne="text" class="form-control"></option>
+							<option value="0" inlne="text" class="form-control">00</option>
+							<option value="1" inlne="text" class="form-control">01</option>
+							<option value="2" inlne="text" class="form-control">02</option>
+							<option value="3" inlne="text" class="form-control">03</option>
+							<option value="4" inlne="text" class="form-control">04</option>
+							<option value="5" inlne="text" class="form-control">05</option>
+							<option value="6" inlne="text" class="form-control">06</option>
+							<option value="7" inlne="text" class="form-control">07</option>
+							<option value="8" inlne="text" class="form-control">08</option>
+							<option value="9" inlne="text" class="form-control" selected="selected">09</option>
+							<option value="10" inlne="text" class="form-control">10</option>
+							<option value="11" inlne="text" class="form-control">11</option>
+							<option value="12" inlne="text" class="form-control">12</option>
+							<option value="13" inlne="text" class="form-control">13</option>
+							<option value="14" inlne="text" class="form-control">14</option>
+							<option value="15" inlne="text" class="form-control">15</option>
+							<option value="16" inlne="text" class="form-control">16</option>
+							<option value="17" inlne="text" class="form-control">17</option>
+							<option value="18" inlne="text" class="form-control">18</option>
+							<option value="19" inlne="text" class="form-control">19</option>
+							<option value="20" inlne="text" class="form-control">20</option>
+							<option value="21" inlne="text" class="form-control">21</option>
+							<option value="22" inlne="text" class="form-control">22</option>
+							<option value="23" inlne="text" class="form-control">23</option>
+						</select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="" class="form-control" errorStyleClass="form-control errorInput"
+                          name="attendanceList" property="trainingStartTimeMi" indexed="true">
+							<option value="" inlne="text" class="form-control"></option>
+							<option value="0" inlne="text" class="form-control">00</option>
+							<option value="1" inlne="text" class="form-control">01</option>
+							<option value="2" inlne="text" class="form-control">02</option>
+							<option value="3" inlne="text" class="form-control">03</option>
+							<option value="4" inlne="text" class="form-control">04</option>
+							<option value="5" inlne="text" class="form-control">05</option>
+							<option value="6" inlne="text" class="form-control">06</option>
+							<option value="7" inlne="text" class="form-control">07</option>
+							<option value="8" inlne="text" class="form-control">08</option>
+							<option value="9" inlne="text" class="form-control">09</option>
+							<option value="10" inlne="text" class="form-control">10</option>
+							<option value="11" inlne="text" class="form-control">11</option>
+							<option value="12" inlne="text" class="form-control">12</option>
+							<option value="13" inlne="text" class="form-control">13</option>
+							<option value="14" inlne="text" class="form-control">14</option>
+							<option value="15" inlne="text" class="form-control">15</option>
+							<option value="16" inlne="text" class="form-control">16</option>
+							<option value="17" inlne="text" class="form-control" selected="selected">17</option>
+							<option value="18" inlne="text" class="form-control">18</option>
+							<option value="19" inlne="text" class="form-control">19</option>
+							<option value="20" inlne="text" class="form-control">20</option>
+							<option value="21" inlne="text" class="form-control">21</option>
+							<option value="22" inlne="text" class="form-control">22</option>
+							<option value="23" inlne="text" class="form-control">23</option>
+							<option value="24" inlne="text" class="form-control">24</option>
+							<option value="25" inlne="text" class="form-control">25</option>
+							<option value="26" inlne="text" class="form-control">26</option>
+							<option value="27" inlne="text" class="form-control">27</option>
+							<option value="28" inlne="text" class="form-control">28</option>
+							<option value="29" inlne="text" class="form-control">29</option>
+							<option value="30" inlne="text" class="form-control">30</option>
+							<option value="31" inlne="text" class="form-control">31</option>
+							<option value="32" inlne="text" class="form-control">32</option>
+							<option value="33" inlne="text" class="form-control">33</option>
+							<option value="34" inlne="text" class="form-control">34</option>
+							<option value="35" inlne="text" class="form-control">35</option>
+							<option value="36" inlne="text" class="form-control">36</option>
+							<option value="37" inlne="text" class="form-control">37</option>
+							<option value="38" inlne="text" class="form-control">38</option>
+							<option value="39" inlne="text" class="form-control">39</option>
+							<option value="40" inlne="text" class="form-control">40</option>
+							<option value="41" inlne="text" class="form-control">41</option>
+							<option value="42" inlne="text" class="form-control">42</option>
+							<option value="43" inlne="text" class="form-control">43</option>
+							<option value="44" inlne="text" class="form-control">44</option>
+							<option value="45" inlne="text" class="form-control">45</option>
+							<option value="46" inlne="text" class="form-control">46</option>
+							<option value="47" inlne="text" class="form-control">47</option>
+							<option value="48" inlne="text" class="form-control">48</option>
+							<option value="49" inlne="text" class="form-control">49</option>
+							<option value="50" inlne="text" class="form-control">50</option>
+							<option value="51" inlne="text" class="form-control">51</option>
+							<option value="52" inlne="text" class="form-control">52</option>
+							<option value="53" inlne="text" class="form-control">53</option>
+							<option value="54" inlne="text" class="form-control">54</option>
+							<option value="55" inlne="text" class="form-control">55</option>
+							<option value="56" inlne="text" class="form-control">56</option>
+							<option value="57" inlne="text" class="form-control">57</option>
+							<option value="58" inlne="text" class="form-control">58</option>
+							<option value="59" inlne="text" class="form-control">59</option>
+						</select>
+                      </td>
+                      <td>
+                        <select name="" class="form-control" errorStyleClass="form-control errorInput"
+                          name="attendanceList" property="trainingEndTimeHh" indexed="true">
+							<option value="" inlne="text" class="form-control"></option>
+							<option value="0" inlne="text" class="form-control">00</option>
+							<option value="1" inlne="text" class="form-control">01</option>
+							<option value="2" inlne="text" class="form-control">02</option>
+							<option value="3" inlne="text" class="form-control">03</option>
+							<option value="4" inlne="text" class="form-control">04</option>
+							<option value="5" inlne="text" class="form-control">05</option>
+							<option value="6" inlne="text" class="form-control">06</option>
+							<option value="7" inlne="text" class="form-control">07</option>
+							<option value="8" inlne="text" class="form-control">08</option>
+							<option value="9" inlne="text" class="form-control">09</option>
+							<option value="10" inlne="text" class="form-control">10</option>
+							<option value="11" inlne="text" class="form-control">11</option>
+							<option value="12" inlne="text" class="form-control">12</option>
+							<option value="13" inlne="text" class="form-control">13</option>
+							<option value="14" inlne="text" class="form-control">14</option>
+							<option value="15" inlne="text" class="form-control">15</option>
+							<option value="16" inlne="text" class="form-control">16</option>
+							<option value="17" inlne="text" class="form-control">17</option>
+							<option value="18" inlne="text" class="form-control" selected="selected">18</option>
+							<option value="19" inlne="text" class="form-control">19</option>
+							<option value="20" inlne="text" class="form-control">20</option>
+							<option value="21" inlne="text" class="form-control">21</option>
+							<option value="22" inlne="text" class="form-control">22</option>
+							<option value="23" inlne="text" class="form-control">23</option>
+						</select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="" class="form-control" errorStyleClass="form-control errorInput"
+                          name="attendanceList" property="trainingEndTimeMi" indexed="true">
+							<option value="" inlne="text" class="form-control"></option>
+							<option value="0" inlne="text" class="form-control">00</option>
+							<option value="1" inlne="text" class="form-control">01</option>
+							<option value="2" inlne="text" class="form-control">02</option>
+							<option value="3" inlne="text" class="form-control">03</option>
+							<option value="4" inlne="text" class="form-control">04</option>
+							<option value="5" inlne="text" class="form-control">05</option>
+							<option value="6" inlne="text" class="form-control">06</option>
+							<option value="7" inlne="text" class="form-control">07</option>
+							<option value="8" inlne="text" class="form-control">08</option>
+							<option value="9" inlne="text" class="form-control">09</option>
+							<option value="10" inlne="text" class="form-control">10</option>
+							<option value="11" inlne="text" class="form-control" selected="selected">11</option>
+							<option value="12" inlne="text" class="form-control">12</option>
+							<option value="13" inlne="text" class="form-control">13</option>
+							<option value="14" inlne="text" class="form-control">14</option>
+							<option value="15" inlne="text" class="form-control">15</option>
+							<option value="16" inlne="text" class="form-control">16</option>
+							<option value="17" inlne="text" class="form-control">17</option>
+							<option value="18" inlne="text" class="form-control">18</option>
+							<option value="19" inlne="text" class="form-control">19</option>
+							<option value="20" inlne="text" class="form-control">20</option>
+							<option value="21" inlne="text" class="form-control">21</option>
+							<option value="22" inlne="text" class="form-control">22</option>
+							<option value="23" inlne="text" class="form-control">23</option>
+							<option value="24" inlne="text" class="form-control">24</option>
+							<option value="25" inlne="text" class="form-control">25</option>
+							<option value="26" inlne="text" class="form-control">26</option>
+							<option value="27" inlne="text" class="form-control">27</option>
+							<option value="28" inlne="text" class="form-control">28</option>
+							<option value="29" inlne="text" class="form-control">29</option>
+							<option value="30" inlne="text" class="form-control">30</option>
+							<option value="31" inlne="text" class="form-control">31</option>
+							<option value="32" inlne="text" class="form-control">32</option>
+							<option value="33" inlne="text" class="form-control">33</option>
+							<option value="34" inlne="text" class="form-control">34</option>
+							<option value="35" inlne="text" class="form-control">35</option>
+							<option value="36" inlne="text" class="form-control">36</option>
+							<option value="37" inlne="text" class="form-control">37</option>
+							<option value="38" inlne="text" class="form-control">38</option>
+							<option value="39" inlne="text" class="form-control">39</option>
+							<option value="40" inlne="text" class="form-control">40</option>
+							<option value="41" inlne="text" class="form-control">41</option>
+							<option value="42" inlne="text" class="form-control">42</option>
+							<option value="43" inlne="text" class="form-control">43</option>
+							<option value="44" inlne="text" class="form-control">44</option>
+							<option value="45" inlne="text" class="form-control">45</option>
+							<option value="46" inlne="text" class="form-control">46</option>
+							<option value="47" inlne="text" class="form-control">47</option>
+							<option value="48" inlne="text" class="form-control">48</option>
+							<option value="49" inlne="text" class="form-control">49</option>
+							<option value="50" inlne="text" class="form-control">50</option>
+							<option value="51" inlne="text" class="form-control">51</option>
+							<option value="52" inlne="text" class="form-control">52</option>
+							<option value="53" inlne="text" class="form-control">53</option>
+							<option value="54" inlne="text" class="form-control">54</option>
+							<option value="55" inlne="text" class="form-control">55</option>
+							<option value="56" inlne="text" class="form-control">56</option>
+							<option value="57" inlne="text" class="form-control">57</option>
+							<option value="58" inlne="text" class="form-control">58</option>
+							<option value="59" inlne="text" class="form-control">59</option>
+						</select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="blankTime" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+							<option value="" inlne="text" class="form-control" selected="selected"></option>
+							<option value="15" inlne="text" class="form-control">15分</option>
+							<option value="30" inlne="text" class="form-control">30分</option>
+							<option value="45" inlne="text" class="form-control">45分</option>
+							<option value="60" inlne="text" class="form-control">1時間</option>
+							<option value="75" inlne="text" class="form-control">1時15分</option>
+							<option value="90" inlne="text" class="form-control">1時30分</option>
+							<option value="105" inlne="text" class="form-control">1時45分</option>
+							<option value="120" inlne="text" class="form-control">2時間</option>
+							<option value="135" inlne="text" class="form-control">2時15分</option>
+							<option value="150" inlne="text" class="form-control">2時30分</option>
+							<option value="165" inlne="text" class="form-control">2時45分</option>
+							<option value="180" inlne="text" class="form-control">3時間</option>
+							<option value="195" inlne="text" class="form-control">3時15分</option>
+							<option value="210" inlne="text" class="form-control">3時30分</option>
+							<option value="225" inlne="text" class="form-control">3時45分</option>
+							<option value="240" inlne="text" class="form-control">4時間</option>
+							<option value="255" inlne="text" class="form-control">4時15分</option>
+							<option value="270" inlne="text" class="form-control">4時30分</option>
+							<option value="285" inlne="text" class="form-control">4時45分</option>
+							<option value="300" inlne="text" class="form-control">5時間</option>
+							<option value="315" inlne="text" class="form-control">5時15分</option>
+							<option value="330" inlne="text" class="form-control">5時30分</option>
+							<option value="345" inlne="text" class="form-control">5時45分</option>
+							<option value="360" inlne="text" class="form-control">6時間</option>
+							<option value="375" inlne="text" class="form-control">6時15分</option>
+							<option value="390" inlne="text" class="form-control">6時30分</option>
+							<option value="405" inlne="text" class="form-control">6時45分</option>
+							<option value="420" inlne="text" class="form-control">7時間</option>
+							<option value="435" inlne="text" class="form-control">7時15分</option>
+							<option value="450" inlne="text" class="form-control">7時30分</option>
+							<option value="465" inlne="text" class="form-control">7時45分</option>
+						</select>
+                      </td>
+                      <td class="w70">遅刻</td>
+                      <td class="w140">
+                        <input type="text" name="attendanceList" property="note" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput" value="環境構築" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="w140">2020年11月4日(水)</td>
+                      <td class="w140">プロジェクト基礎 2日目</td>
+                      <td class="w60"><input type="button" class="btn btn-success" value="定時" /></td>
+                      <td>
+                        <select type="text" name="attendanceList" property="trainingStartTimeHh" indexed="true"
+                          class="form-control" errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingStartTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeHh" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="blankTime" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="attendanceList" property="blankTimes" label="" value="key"
+                            class="form-control" />
+                        </select>
+                      </td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList" property="note" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput" value="" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="w140">2020年11月5日(木)</td>
+                      <td class="w140">プロジェクト基礎 3日目</td>
+                      <td class="w60"><input type="button" class="btn btn-success" value="定時" /></td>
+                      <td>
+                        <select type="text" name="attendanceList" property="trainingStartTimeHh" indexed="true"
+                          class="form-control" errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingStartTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeHh" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="blankTime" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="attendanceList" property="blankTimes" label="" value="key"
+                            class="form-control" />
+                        </select>
+                      </td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList" property="note" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput" value="" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="w140">2020年11月6日(金)</td>
+                      <td class="w140">プロジェクト基礎 4日目</td>
+                      <td class="w60"><input type="button" class="btn btn-success" value="定時" /></td>
+                      <td>
+                        <select type="text" name="attendanceList" property="trainingStartTimeHh" indexed="true"
+                          class="form-control" errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingStartTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeHh" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="blankTime" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="attendanceList" property="blankTimes" label="" value="key"
+                            class="form-control" />
+                        </select>
+                      </td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList" property="note" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput" value="" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="w140">2020年11月9日(月)</td>
+                      <td class="w140">プロジェクト基礎 5日目</td>
+                      <td class="w60"><input type="button" class="btn btn-success" value="定時" /></td>
+                      <td>
+                        <select type="text" name="attendanceList" property="trainingStartTimeHh" indexed="true"
+                          class="form-control" errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingStartTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeHh" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="blankTime" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="attendanceList" property="blankTimes" label="" value="key"
+                            class="form-control" />
+                        </select>
+                      </td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList" property="note" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput" value="" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="w140">2020年11月10日(火)</td>
+                      <td class="w140">SE/MG基礎 1日目</td>
+                      <td class="w60"><input type="button" class="btn btn-success" value="定時" /></td>
+                      <td>
+                        <select type="text" name="attendanceList" property="trainingStartTimeHh" indexed="true"
+                          class="form-control" errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingStartTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeHh" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="blankTime" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="attendanceList" property="blankTimes" label="" value="key"
+                            class="form-control" />
+                        </select>
+                      </td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList" property="note" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput" value="" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="w140">2020年11月11日(水)</td>
+                      <td class="w140">SE/MG基礎 2日目</td>
+                      <td class="w60"><input type="button" class="btn btn-success" value="定時" /></td>
+                      <td>
+                        <select type="text" name="attendanceList" property="trainingStartTimeHh" indexed="true"
+                          class="form-control" errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingStartTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeHh" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="blankTime" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="attendanceList" property="blankTimes" label="" value="key"
+                            class="form-control" />
+                        </select>
+                      </td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList" property="note" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput" value="" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="w140">2020年11月12日(木)</td>
+                      <td class="w140">SE/MG基礎 3日目</td>
+                      <td class="w60"><input type="button" class="btn btn-success" value="定時" /></td>
+                      <td>
+                        <select type="text" name="attendanceList" property="trainingStartTimeHh" indexed="true"
+                          class="form-control" errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingStartTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeHh" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="blankTime" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="attendanceList" property="blankTimes" label="" value="key"
+                            class="form-control" />
+                        </select>
+                      </td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList" property="note" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput" value="" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="w140">2020年11月13日(金)</td>
+                      <td class="w140">AWS基礎 1日目</td>
+                      <td class="w60"><input type="button" class="btn btn-success" value="定時" /></td>
+                      <td>
+                        <select type="text" name="attendanceList" property="trainingStartTimeHh" indexed="true"
+                          class="form-control" errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingStartTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeHh" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="blankTime" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="attendanceList" property="blankTimes" label="" value="key"
+                            class="form-control" />
+                        </select>
+                      </td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList" property="note" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput" value="" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="w140">2020年11月16日(月)</td>
+                      <td class="w140">業務プロセス基礎 1日目</td>
+                      <td class="w60"><input type="button" class="btn btn-success" value="定時" /></td>
+                      <td>
+                        <select type="text" name="attendanceList" property="trainingStartTimeHh" indexed="true"
+                          class="form-control" errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingStartTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeHh" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="blankTime" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="attendanceList" property="blankTimes" label="" value="key"
+                            class="form-control" />
+                        </select>
+                      </td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList" property="note" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput" value="" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="w140">2020年11月17日(火)</td>
+                      <td class="w140">チーム設計演習 1日目</td>
+                      <td class="w60"><input type="button" class="btn btn-success" value="定時" /></td>
+                      <td>
+                        <select type="text" name="attendanceList" property="trainingStartTimeHh" indexed="true"
+                          class="form-control" errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingStartTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeHh" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="blankTime" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="attendanceList" property="blankTimes" label="" value="key"
+                            class="form-control" />
+                        </select>
+                      </td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList" property="note" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput" value="" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="w140">2020年11月18日(水)</td>
+                      <td class="w140">チーム設計演習 2日目</td>
+                      <td class="w60"><input type="button" class="btn btn-success" value="定時" /></td>
+                      <td>
+                        <select type="text" name="attendanceList" property="trainingStartTimeHh" indexed="true"
+                          class="form-control" errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingStartTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeHh" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="blankTime" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="attendanceList" property="blankTimes" label="" value="key"
+                            class="form-control" />
+                        </select>
+                      </td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList" property="note" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput" value="" />
+                      </td>
+                    <tr>
+                      <td class="w140">2020年11月19日(木)</td>
+                      <td class="w140">チーム設計演習 3日目</td>
+                      <td class="w60"><input type="button" class="btn btn-success" value="定時" /></td>
+                      <td>
+                        <select type="text" name="attendanceList" property="trainingStartTimeHh" indexed="true"
+                          class="form-control" errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingStartTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeHh" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="blankTime" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="attendanceList" property="blankTimes" label="" value="key"
+                            class="form-control" />
+                        </select>
+                      </td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList" property="note" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput" value="" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="w140">2020年11月20日(金)</td>
+                      <td class="w140">チーム設計演習 1日目</td>
+                      <td class="w60"><input type="button" class="btn btn-success" value="定時" /></td>
+                      <td>
+                        <select type="text" name="attendanceList" property="trainingStartTimeHh" indexed="true"
+                          class="form-control" errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingStartTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeHh" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="blankTime" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="attendanceList" property="blankTimes" label="" value="key"
+                            class="form-control" />
+                        </select>
+                      </td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList" property="note" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput" value="" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="w140">2020年11月24日(火)</td>
+                      <td class="w140">チーム設計演習 5日目</td>
+                      <td class="w60"><input type="button" class="btn btn-success" value="定時" /></td>
+                      <td>
+                        <select type="text" name="attendanceList" property="trainingStartTimeHh" indexed="true"
+                          class="form-control" errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingStartTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeHh" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="blankTime" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="attendanceList" property="blankTimes" label="" value="key"
+                            class="form-control" />
+                        </select>
+                      </td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList" property="note" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput" value="" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="w140">2020年11月25日(水)</td>
+                      <td class="w140">チーム設計演習 6日目</td>
+                      <td class="w60"><input type="button" class="btn btn-success" value="定時" /></td>
+                      <td>
+                        <select type="text" name="attendanceList" property="trainingStartTimeHh" indexed="true"
+                          class="form-control" errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingStartTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeHh" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="blankTime" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="attendanceList" property="blankTimes" label="" value="key"
+                            class="form-control" />
+                        </select>
+                      </td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList" property="note" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput" value="" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="w140">2020年11月26日(木)</td>
+                      <td class="w140">チーム設計演習 7日目</td>
+                      <td class="w60"><input type="button" class="btn btn-success" value="定時" /></td>
+                      <td>
+                        <select type="text" name="attendanceList" property="trainingStartTimeHh" indexed="true"
+                          class="form-control" errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingStartTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeHh" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="blankTime" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="attendanceList" property="blankTimes" label="" value="key"
+                            class="form-control" />
+                        </select>
+                      </td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList" property="note" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput" value="" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="w140">2020年11月27日(金)</td>
+                      <td class="w140">チーム設計演習 8日目</td>
+                      <td class="w60"><input type="button" class="btn btn-success" value="定時" /></td>
+                      <td>
+                        <select type="text" name="attendanceList" property="trainingStartTimeHh" indexed="true"
+                          class="form-control" errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingStartTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeHh" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="blankTime" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="attendanceList" property="blankTimes" label="" value="key"
+                            class="form-control" />
+                        </select>
+                      </td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList" property="note" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput" value="" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="w140">2020年11月30日(月)</td>
+                      <td class="w140">チーム設計演習 9日目</td>
+                      <td class="w60"><input type="button" class="btn btn-success" value="定時" /></td>
+                      <td>
+                        <select type="text" name="attendanceList" property="trainingStartTimeHh" indexed="true"
+                          class="form-control" errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingStartTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeHh" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>:</td>
+                      <td>
+                        <select name="attendanceList" property="trainingEndTimeMi" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="" label="" class="form-control" />
+                        </select>
+                      </td>
+                      <td>
+                        <select name="attendanceList" property="blankTime" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput">
+                          <option name="attendanceList" property="blankTimes" label="" value="key"
+                            class="form-control" />
+                        </select>
+                      </td>
+                      <td></td>
+                      <td>
+                        <input type="text" name="attendanceList" property="note" indexed="true" class="form-control"
+                          errorStyleClass="form-control errorInput" value="" />
+                      </td>
+                    </tr>
+                    </tr>
+                  </tbody>
+                </table>
+                <div class="form-group">
+                  <a href="./detail.html" class="btn btn-default">戻る</a>
+                  <input type="submit" name="complete" class="btn btn-info" value="更新"
+                    onclick="return registCheck();" />
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+        <div id="push"></div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">Copyright&copy; 2021 System Shared co., ltd, ALL Rights Reserved</p>
+      </div>
+      <div id="page_top"><a href="#"></a></div>
+    </div>
+    <script>
+      $('#page_top').hide();
+      $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
+          $('#page_top').fadeIn();
+        } else {
+          $('#page_top').fadeOut();
+        }
+      });
+
+      $('#page_top').click(function () {
+        $('body,html').animate({
+          scrollTop: 0
+        }, 700);
+        return false;
+      });
+    </script>
+
+    <script>
+      function registCheck() {
+        if (confirm("更新します。よろしいですか？")) {
+          return true;
+        }
+        else {
+          return false;
+        }
+      }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ログイン | LMS</title>
+
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./css/dataTables.bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap-datepicker.min.css" />
+    <link rel="stylesheet" type="text/css" href="./css/lms.css" />
+    <link rel="shortcut icon" href="./img/favicon.ico" />
+
+    <script type="text/javascript" src="./js/jquery.2.1.1.min.js"></script>
+    <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="./js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="./js/bootstrap-datepicker.ja.min.js"></script>
+    <script type="text/javascript" src="./js/lms_common.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <div id="header">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <a href="../course/list.html" class="navbar-brand">LMS 学習管理システム</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div id="wrap">
+      <div class="container">
+        <div id="contents" class="clearfix">
+          <div id="main" class="main2clm">
+            <h2>ログイン</h2>
+            <div class="well bs-component">
+              <form class="form-horizontal" action="./html/course/list.html">
+                <fieldset>
+                  <div class="form-group">
+                    <label for="loginId" class="col-lg-2 control-label">ログインID</label>
+                    <div class="col-lg-10">
+                      <input type="text" class="form-control" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="password" class="col-lg-2 control-label">パスワード</label>
+                    <div class="col-lg-10">
+                      <input type="password" class="form-control" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                      <input type="submit" class="btn btn-primary" value="ログイン" />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                      <p class="text-left">
+                        <a href="./html/password/resetPassword.html">パスワードを忘れた方はこちら</a>
+                      </p>
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+            </div>
+
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title di">お知らせ</h3>
+                <small class="fc_red b">&nbsp;new</small>
+              </div>
+              <div class="panel-body" style="overflow-y: auto; height: 170px">
+                <p class="lead">--------------------------------------------------<br />お知らせ内容<br />1.<br />2.<br />3.<br />4.<br />5.<br />6.<br />7.<br />8.<br />9.<br />10.</p>
+                <p class="tar">2020/12/01 10:00</p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">マニュアルはこちらからダウンロード</h3>
+                  </div>
+                  <div class="panel-body">
+                    <p>
+                      <a href="./pdf/manual_comp_001.pdf" download="manual_comp_001.pdf">企業担当者様・育成担当者様LMS利用マニュアル</a>
+                    </p>
+                    <p>
+                      <a href="./pdf/manual_stud_001.pdf" download="manual_stud_001.pdf">受講生LMS利用マニュアル</a>
+                    </p>
+                    <p>
+                      <a href="./pdf/manual_comp_account_001.pdf" download="manual_comp_account_001.pdf">企業担当者アカウントご変更の際のご注意</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">よくあるご質問はこちら</h3>
+                  </div>
+                  <div class="panel-body">
+                    <p>
+                      <a href="./html/faq/index.html" target="_blank">よくあるご質問</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="push"></div>
+      </div>
+    </div>
+    <div id="footer">
+      <div class="container">
+        <p class="muted credit">Copyright&copy; 2021 System Shared co., ltd, ALL Rights Reserved</p>
+      </div>
+    </div>
+  </body>
+</html>
