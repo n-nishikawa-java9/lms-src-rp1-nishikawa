@@ -1,7 +1,6 @@
 package jp.co.sss.lms.service;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -344,9 +343,8 @@ public class StudentAttendanceService {
 	public Boolean notEnterCheck() throws ParseException {
 
 		//現在の日付を取得
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		String todayString = simpleDateFormat.format(new Date());
-		Date todayDate = simpleDateFormat.parse(todayString);
+		String todayString = dateUtil.toString(new Date());
+		Date todayDate = dateUtil.parse(todayString);
 
 		//未入力件数取得
 		Integer count = tStudentAttendanceMapper.notEnterCount(
