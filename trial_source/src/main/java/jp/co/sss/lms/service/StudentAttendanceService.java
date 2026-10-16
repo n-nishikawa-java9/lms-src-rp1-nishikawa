@@ -334,37 +334,35 @@ public class StudentAttendanceService {
 		// 完了メッセージ
 		return messageUtil.getMessage(Constants.PROP_KEY_ATTENDANCE_UPDATE_NOTICE);
 	}
-	
+
 	/**
 	 * 勤怠未入力チェック
-	 * Task.25 西川
-	 * 
+	 * @author 西川直希 - Task.25
 	 * @return 未入力チェック結果
 	 * @throws ParseException
 	 */
-	public Boolean notEnterCheck() throws ParseException{
-		
+	public Boolean notEnterCheck() throws ParseException {
+
 		//現在の日付を取得
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		String todayString = simpleDateFormat.format(new Date());
 		Date todayDate = simpleDateFormat.parse(todayString);
-		
+
 		//未入力件数取得
 		Integer count = tStudentAttendanceMapper.notEnterCount(
 				loginUserDto.getLmsUserId(),
-				(short) 0,
-				todayDate
-				);
-		
+				Constants.DB_FLG_FALSE,
+				todayDate);
+
 		//未入力チェック
-		if(count > 0) {
+		if (count > 0) {
 			//未入力がある場合
 			return true;
 		} else {
 			//未入力がない場合
 			return false;
 		}
-		
+
 	}
 
 }
