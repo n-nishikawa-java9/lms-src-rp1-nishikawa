@@ -30,6 +30,7 @@ public class AttendanceController {
 	@Autowired
 	private LoginUserDto loginUserDto;
 
+	//西川直希 - Task.25
 	/**
 	 * 勤怠管理画面 初期表示
 	 * 
@@ -46,12 +47,11 @@ public class AttendanceController {
 		List<AttendanceManagementDto> attendanceManagementDtoList = studentAttendanceService
 				.getAttendanceManagement(loginUserDto.getCourseId(), loginUserDto.getLmsUserId());
 		model.addAttribute("attendanceManagementDtoList", attendanceManagementDtoList);
-		
-		//Task.25 - 西川
+
 		//未入力チェックの結果取得
 		Boolean notEnterFlag = studentAttendanceService.notEnterCheck();
 		model.addAttribute("notEnterFlag", notEnterFlag);
-		
+
 		return "attendance/detail";
 	}
 
