@@ -79,6 +79,14 @@
 			setInterval(function() {
 				$("#now").text('現在の時刻は　' + getClock() + '　です。');
 			}, 1000);
+			
+			//西川直希 - Task.25
+			//過去日未入力確認ダイアログ表示
+			const notEnterFlag = /*[[${notEnterFlag}]]*/ false;
+			if (notEnterFlag) {
+				alert("過去日の勤怠に未入力があります。")
+			}
+
 		});
 		function getClock() {
 			const today =  new Date();
