@@ -343,8 +343,7 @@ public class StudentAttendanceService {
 	public Boolean notEnterCheck() throws ParseException {
 
 		//現在の日付を取得
-		String todayString = dateUtil.toString(new Date());
-		Date todayDate = dateUtil.parse(todayString);
+		Date todayDate = attendanceUtil.getTrainingDate();
 
 		//未入力件数取得
 		Integer count = tStudentAttendanceMapper.notEnterCount(
