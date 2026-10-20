@@ -88,10 +88,8 @@
 	
 	<!-- 西川直希- Task.25 -->
 	<select id="notEnterCount" resultType="Integer">
-		SELECT
-			COUNT(*)
-		FROM
-			t_student_attendance
+		SELECT COUNT(*)
+		FROM t_student_attendance
 		WHERE
 			lms_user_id = #{lmsUserId}
 			AND delete_flg = #{deleteFlg}
