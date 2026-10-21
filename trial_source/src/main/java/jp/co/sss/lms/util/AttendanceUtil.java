@@ -174,5 +174,27 @@ public class AttendanceUtil {
 		}
 		return minuteMap;
 	}
+	
+	/**
+	 * 時間(時)の切り出し
+	 * @author 西川直希
+	 * @param trainingTime 出退勤時間
+	 * @return 出退勤時間(時)
+	 */
+	public Integer getHour(String trainingTime) {
+		 Integer trainingHour = Integer.parseInt(trainingTime.substring(0, 2));
+		 return trainingHour;
+	}
+	
+	/**
+	 * 時間(分)の切り出し
+	 * @author 西川直希
+	 * @param trainingTime 出退勤時間
+	 * @return 出退勤時間(分)
+	 */
+	public Integer getMinute(String trainingTime) {
+		Integer trainingMinute = Integer.parseInt(trainingTime.substring(3, 5));
+		 return trainingMinute;
+	}
 
 }
