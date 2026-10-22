@@ -375,9 +375,33 @@ public class StudentAttendanceService {
 
 	}
 	
-	//西川 - Task.26
+	/**
+	 * 入力された出退勤の{時間}{分}をhh:mm形式に変換
+	 * @author 西川直希 - Task.26
+	 * @param attendanceForm
+	 */
 	public void formatConversion(AttendanceForm attendanceForm) {
 		
+		for (DailyAttendanceForm dailyAttendanceForm : attendanceForm.getAttendanceList()) {
+			
+			//出勤時間の取得
+			Integer startHour = dailyAttendanceForm.getTrainingStartTimeHour();
+			Integer startMinute = dailyAttendanceForm.getTrainingStartTimeMinute();
+			
+			//退勤時間の時・分が両方入力されている場合に時・分を結合
+			if (startHour != null && startMinute != null) {
+				dailyAttendanceForm.setTrainingStartTime(String.format("%02d:%02d", startHour, startMinute));
+			}
+			
+			//出勤時間の取得
+			Integer endHour = dailyAttendanceForm.getTrainingEndTimeHour();
+			Integer endMinute = dailyAttendanceForm.getTrainingEndTimeMinute();
+			
+			//退勤時間の時・分が両方入力されている場合に時・分を結合
+			if (endHour != null && endMinute != null) {
+				dailyAttendanceForm.setTrainingEndTime(String.format("%02d:%02d", endHour, endMinute));
+			}
+		}
 	}
 
 }
