@@ -371,14 +371,7 @@ public class StudentAttendanceService {
 				Constants.DB_FLG_FALSE,
 				todayDate);
 
-		//未入力チェック
-		if (count > 0) {
-			//未入力がある場合
-			return true;
-		} else {
-			//未入力がない場合
-			return false;
-		}
+		return count > 0;
 
 	}
 	
