@@ -53,7 +53,7 @@
 										th:selected="${hour.key == dailyAttendanceForm.trainingStartTimeHour}">[[${hour.value}]]</option>
 									</select>
 								</td>
-								<td>：</td>
+								<td>:</td>
 								<td class="w70">
 									<select th:name="|attendanceList[${stat.index}].trainingStartTimeMinute|" class="form-control">
 										<option th:each="minute : ${attendanceForm.minuteMap}" th:value="${minute.key}"
@@ -66,7 +66,7 @@
 										th:selected="${hour.key == dailyAttendanceForm.trainingEndTimeHour}">[[${hour.value}]]</option>
 									</select>
 								</td>
-								<td>：</td>
+								<td>:</td>
 								<td class="w70">
 									<select th:name="|attendanceList[${stat.index}].trainingEndTimeMinute|" class="form-control">
 										<option th:each="minute : ${attendanceForm.minuteMap}" th:value="${minute.key}"
