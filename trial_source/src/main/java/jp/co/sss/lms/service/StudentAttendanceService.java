@@ -243,6 +243,7 @@ public class StudentAttendanceService {
 					.setTrainingStartTime(attendanceManagementDto.getTrainingStartTime());
 			dailyAttendanceForm.setTrainingEndTime(attendanceManagementDto.getTrainingEndTime());
 			//西川直希 - Task.26
+			//勤怠の出勤時間がある場合、時間を時、分に分割して差し替え
 			if (attendanceManagementDto.getTrainingStartTime() != null 
 						&& !attendanceManagementDto.getTrainingStartTime().isBlank()) {
 				dailyAttendanceForm
@@ -250,6 +251,7 @@ public class StudentAttendanceService {
 				dailyAttendanceForm
 						.setTrainingStartTimeMinute(attendanceUtil.getMinute(attendanceManagementDto.getTrainingStartTime()));
 			}
+			//勤怠の退勤時間がある場合、時間を時、分に分割して差し替え
 			if (attendanceManagementDto.getTrainingEndTime() != null 
 					&& !attendanceManagementDto.getTrainingEndTime().isBlank()) {
 				dailyAttendanceForm
@@ -257,7 +259,7 @@ public class StudentAttendanceService {
 				dailyAttendanceForm
 						.setTrainingEndTimeMinute(attendanceUtil.getMinute(attendanceManagementDto.getTrainingEndTime()));
 			}
-			//Task.26 - ここまで
+			
 			if (attendanceManagementDto.getBlankTime() != null) {
 				dailyAttendanceForm.setBlankTime(attendanceManagementDto.getBlankTime());
 				dailyAttendanceForm.setBlankTimeValue(String.valueOf(
