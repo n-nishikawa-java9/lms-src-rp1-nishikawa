@@ -219,6 +219,10 @@ public class StudentAttendanceService {
 		attendanceForm.setUserName(loginUserDto.getUserName());
 		attendanceForm.setLeaveFlg(loginUserDto.getLeaveFlg());
 		attendanceForm.setBlankTimes(attendanceUtil.setBlankTime());
+		//西川直希 - Task.26
+		attendanceForm.setHourMap(attendanceUtil.getHourMap());
+		attendanceForm.setMinuteMap(attendanceUtil.getHourMap());
+		//Task.26 - ここまで
 
 		// 途中退校している場合のみ設定
 		if (loginUserDto.getLeaveDate() != null) {
@@ -238,6 +242,22 @@ public class StudentAttendanceService {
 			dailyAttendanceForm
 					.setTrainingStartTime(attendanceManagementDto.getTrainingStartTime());
 			dailyAttendanceForm.setTrainingEndTime(attendanceManagementDto.getTrainingEndTime());
+			//西川直希 - Task.26
+			if (attendanceManagementDto.getTrainingStartTime() != null 
+						&& !attendanceManagementDto.getTrainingStartTime().isBlank()) {
+				dailyAttendanceForm
+						.setTrainingStartTimeHour(attendanceUtil.getHour(attendanceManagementDto.getTrainingStartTime()));
+				dailyAttendanceForm
+						.setTrainingStartTimeMinute(attendanceUtil.getMinute(attendanceManagementDto.getTrainingStartTime()));
+			}
+			if (attendanceManagementDto.getTrainingEndTime() != null 
+					&& !attendanceManagementDto.getTrainingEndTime().isBlank()) {
+				dailyAttendanceForm
+						.setTrainingEndTimeHour(attendanceUtil.getHour(attendanceManagementDto.getTrainingEndTime()));
+				dailyAttendanceForm
+						.setTrainingEndTimeMinute(attendanceUtil.getMinute(attendanceManagementDto.getTrainingEndTime()));
+			}
+			//Task.26 - ここまで
 			if (attendanceManagementDto.getBlankTime() != null) {
 				dailyAttendanceForm.setBlankTime(attendanceManagementDto.getBlankTime());
 				dailyAttendanceForm.setBlankTimeValue(String.valueOf(
@@ -360,6 +380,11 @@ public class StudentAttendanceService {
 			return false;
 		}
 
+	}
+	
+	//西川 - Task.26
+	public void formatConversion(AttendanceForm attendanceForm) {
+		
 	}
 
 }
