@@ -8,6 +8,8 @@ import java.util.List;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 
 import jp.co.sss.lms.dto.AttendanceManagementDto;
 import jp.co.sss.lms.dto.LoginUserDto;
@@ -407,6 +409,61 @@ public class StudentAttendanceService {
 				dailyAttendanceForm.setTrainingEndTime(String.format("%02d:%02d", endHour, endMinute));
 			}
 		}
+	}
+
+	public void updateInputCheck(AttendanceForm attendanceForm, BindingResult result) {
+
+		int i = 0;
+
+		for (DailyAttendanceForm dailyAttendanceForm : attendanceForm.getAttendanceList()) {
+
+			Integer startHour = dailyAttendanceForm.getTrainingStartTimeHour();
+			Integer startMinute = dailyAttendanceForm.getTrainingStartTimeMinute();
+			Integer endHour = dailyAttendanceForm.getTrainingEndTimeHour();
+			Integer endMinute = dailyAttendanceForm.getTrainingEndTimeMinute();
+			String startTime = dailyAttendanceForm.getTrainingStartTime();
+			String endTime = dailyAttendanceForm.getTrainingEndTime();
+
+			if (dailyAttendanceForm.getNote().length() > Constants.ATTENDANCE_NOTE_MAX_LENGTH) {
+
+				result.addError(new FieldError(result.getObjectName(),
+						"attendanceList[" + i + "].note",
+						messageUtil.getMessage(Constants.VALID_KEY_MAXLENGTH,
+								new String[] { "備考", String.valueOf(Constants.ATTENDANCE_NOTE_MAX_LENGTH) })));
+			}
+
+			//出勤時間の時・分の片方が未入力のときにエラーメッセージを追加設定
+			if (startHour == null && startMinute != null || startHour != null && startMinute == null) {
+
+				result.addError(new FieldError(result.getObjectName(),
+						"attendanceList[" + i + "].trainingStartHour",
+						messageUtil.getMessage(Constants.INPUT_INVALID,
+								new String[] { "出勤時間" })));
+			}
+			
+			//退勤時間の時・分の片方が未入力のときにエラーメッセージを追加設定
+			if (endHour == null && endMinute != null || endHour != null && endMinute == null) {
+				
+				result.addError(new FieldError(result.getObjectName(),
+						"attendanceList[" + i + "].trainingEndHour",
+						messageUtil.getMessage(Constants.INPUT_INVALID,
+								new String[] { "退勤時間" })));
+			}
+			
+			if (startTime == null && endTime != null) {
+				
+				result.addError(new FieldError(result.getObjectName(),
+						"attendanceList[" + i + "].trainingStartTime",
+						messageUtil.getMessage(Constants.VALID_KEY_ATTENDANCE_PUNCHINEMPTY)));
+			}
+			
+			if (startTime != null && endTime != null && startTime.compareTo(endTime) > 0) {
+				
+			}
+
+		}
+
+		i++;
 	}
 
 }
