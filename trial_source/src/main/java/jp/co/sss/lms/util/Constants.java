@@ -362,5 +362,9 @@ public interface Constants {
 	/** 管理者フラグ */
 	public static final Short ADMIN_FLG_FALSE = 0;
 	public static final Short ADMIN_FLG_TRUE = 1;
+	
+	//西川直希 - Task.27
+	/** 勤怠情報備考欄最大文字数 */
+	public static final int ATTENDANCE_NOTE_MAX_LENGTH = 100;
 
 }
