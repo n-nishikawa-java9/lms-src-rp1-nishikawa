@@ -196,5 +196,15 @@ public class AttendanceUtil {
 		Integer trainingMinute = Integer.parseInt(trainingTime.substring(3, 5));
 		return trainingMinute;
 	}
+	
+	public TrainingTime calcJukoTime(TrainingTime trainingStartTime,
+			 TrainingTime trainingEndTime) {
+		return trainingEndTime.subtract(trainingStartTime);
+	}
+	
+	public Integer reverseBlankTime(String blankTime) {
+		
+		return getHour(blankTime) * 60 + getMinute(blankTime);
+	}
 
 }
