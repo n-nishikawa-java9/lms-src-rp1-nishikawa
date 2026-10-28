@@ -177,7 +177,7 @@ public class AttendanceUtil {
 
 	/**
 	 * 時間(時)の切り出し
-	 * @author 西川直希
+	 * @author 西川直希 - Task.26
 	 * @param trainingTime 出退勤時間
 	 * @return 出退勤時間(時)
 	 */
@@ -188,7 +188,7 @@ public class AttendanceUtil {
 
 	/**
 	 * 時間(分)の切り出し
-	 * @author 西川直希
+	 * @author 西川直希 - Task.26
 	 * @param trainingTime 出退勤時間
 	 * @return 出退勤時間(分)
 	 */
@@ -196,14 +196,26 @@ public class AttendanceUtil {
 		Integer trainingMinute = Integer.parseInt(trainingTime.substring(3, 5));
 		return trainingMinute;
 	}
-	
+
+	/**
+	 * 受講時間数を算出
+	 * @author 西川直希 - Task.27
+	 * @param trainingStartTime
+	 * @param trainingEndTime
+	 * @return 受講時間数
+	 */
 	public TrainingTime calcJukoTime(TrainingTime trainingStartTime,
-			 TrainingTime trainingEndTime) {
+			TrainingTime trainingEndTime) {
 		return trainingEndTime.subtract(trainingStartTime);
 	}
-	
+
+	/**
+	 * 中抜け時間(文字列)を数字に変換
+	 * @author 西川直希 - Task.27
+	 * @param blankTime
+	 * @return 中抜け時間(数字)
+	 */
 	public Integer reverseBlankTime(String blankTime) {
-		
 		return getHour(blankTime) * 60 + getMinute(blankTime);
 	}
 
