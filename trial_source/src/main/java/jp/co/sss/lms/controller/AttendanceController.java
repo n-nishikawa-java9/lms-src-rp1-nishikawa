@@ -148,7 +148,7 @@ public class AttendanceController {
 		//入力チェック
 		studentAttendanceService.updateInputCheck(attendanceForm, result);
 		//エラーがあった場合
-		if(result.hasErrors()) {
+		if (result.hasErrors()) {
 			attendanceForm.setBlankTimes(attendanceUtil.setBlankTime());
 			attendanceForm.setHourMap(attendanceUtil.getHourMap());
 			attendanceForm.setMinuteMap(attendanceUtil.getMinuteMap());
