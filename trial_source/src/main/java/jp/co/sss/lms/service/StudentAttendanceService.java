@@ -415,7 +415,7 @@ public class StudentAttendanceService {
 	}
 
 	/**
-	 * 
+	 * 入力チェック
 	 * @author 西川直希 - Task.27
 	 * @param attendanceForm
 	 * @param result
