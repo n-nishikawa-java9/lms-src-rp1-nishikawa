@@ -432,7 +432,7 @@ public class StudentAttendanceService {
 			String trainingStartTime = attendance.getTrainingStartTime();
 			String trainingEndTime = attendance.getTrainingEndTime();
 
-			//備考欄の文字数が100文字異常の時エラーメッセージを追加設定
+			//備考欄の文字数が100文字を超える時エラーメッセージを追加設定
 			if (!StringUtils.isBlank(attendance.getNote()) && attendance.getNote().length() > 100) {
 
 				result.addError(new FieldError(result.getObjectName(),
@@ -485,6 +485,12 @@ public class StudentAttendanceService {
 
 			//エラーがあるかどうかチェック
 			if (result.hasErrors()) {
+				continue;
+			}
+			
+			//出勤時間のみ入力されている場合
+			if(!StringUtils.isBlank(attendance.getTrainingStartTime())
+					&& StringUtils.isBlank(attendance.getTrainingEndTime())) {
 				continue;
 			}
 
